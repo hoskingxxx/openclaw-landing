@@ -2,12 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Users, Code, Workflow } from 'lucide-react';
+import { Users, Code, Workflow, ShoppingCart, Megaphone, TrendingUp } from 'lucide-react';
 
 export function UseCases() {
   const t = useTranslations('useCases');
 
-  const icons = [Users, Code, Workflow];
+  const icons = [Users, Code, Workflow, ShoppingCart, Megaphone, TrendingUp];
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">

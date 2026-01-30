@@ -2,12 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Zap, Clock, Download } from 'lucide-react';
+import { Zap, Clock, Download, Shield, Rocket, DollarSign } from 'lucide-react';
 
 export function Why() {
   const t = useTranslations('why');
 
-  const icons = [Zap, Clock, Download];
+  const icons = [Zap, Clock, Download, Shield, Rocket, DollarSign];
 
   return (
     <section id="why" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30" aria-labelledby="why-heading">
