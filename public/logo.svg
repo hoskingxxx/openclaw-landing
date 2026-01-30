@@ -1,0 +1,30 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle with gradient -->
+  <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" opacity="0.2"/>
+
+  <!-- Main claw shape -->
+  <path d="M70 60 L60 90 L80 85 L75 100 L95 95 L90 110 L110 105 L105 95 L125 100 L120 85 L140 90 L130 60 Z"
+        fill="url(#logoGradient)"
+        stroke="url(#logoGradient)"
+        stroke-width="2"
+        stroke-linejoin="round"/>
+
+  <!-- Inner circle -->
+  <circle cx="100" cy="80" r="15" fill="white" opacity="0.9"/>
+
+  <!-- Letter O -->
+  <text x="100" y="86"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="20"
+        font-weight="bold"
+        fill="#6366f1">O</text>
+</svg>
