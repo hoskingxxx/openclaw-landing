@@ -101,7 +101,33 @@
     "subtitle": "See results in one sentence, let natural language drive it to work for you",
     "intro": "This section introduces 6 core usage scenarios of the framework, from file management to content creation, showing you the practical applications of AI Bot.",
     "cta": "Want to experience its powerful capabilities immediately?",
-    "ctaBtn": "Get Started Now"
+    "ctaBtn": "Get Started Now",
+    "items": [
+      {
+        "title": "E-commerce & Retail Teams",
+        "description": "Monitor competitor pricing strategies, track product availability across multiple sellers, analyze customer reviews and sentiment, extract product specifications for catalog building, and automate price comparison dashboards."
+      },
+      {
+        "title": "Marketing & Content Teams",
+        "description": "Scrape competitor blog content for SEO analysis, extract social media engagement metrics, aggregate industry news from multiple sources, build lead databases from business directories, and monitor brand mentions across the web."
+      },
+      {
+        "title": "Sales & Lead Generation",
+        "description": "Extract contact information from business directories (Yellow Pages, Yelp), scrape LinkedIn public profiles (within ethical guidelines), gather company data from Crunchbase, and build targeted prospect lists with verified email addresses and phone numbers."
+      },
+      {
+        "title": "Financial & Market Research",
+        "description": "Collect stock prices, financial statements, analyst reports, and economic indicators. Track real estate listings and property values, monitor cryptocurrency exchanges, and aggregate data from multiple financial APIs into unified spreadsheets."
+      },
+      {
+        "title": "AI & Automation Enthusiasts",
+        "description": "Feed clean web data to ChatGPT, Claude, or custom LLMs for RAG applications. Build knowledge bases from scraped documentation, train AI models on curated web content, and create automated workflows with Make.com, Zapier, or n8n integrations."
+      },
+      {
+        "title": "Researchers & Academics",
+        "description": "Gather data from academic publications, extract information from public databases, monitor scientific trends, and compile research datasets from multiple web sources without writing custom scraping scripts."
+      }
+    ]
   },
   "scenarios": {
     "title": "3 Irreplaceable Core Scenarios",
@@ -114,7 +140,21 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Common questions and answers about OpenClaw"
+    "subtitle": "Common questions and answers about OpenClaw",
+    "items": [
+      {
+        "question": "What is web scraping and how does OpenClaw work?",
+        "answer": "Web scraping is the automated process of extracting data from websites. OpenClaw is a no-code web scraping tool that uses AI to analyze webpage structure and identify extractable data patterns."
+      },
+      {
+        "question": "Is OpenClaw really no-code? Do I need any technical skills?",
+        "answer": "Yes, OpenClaw is completely no-code by design. If you can copy and paste a URL and click a button, you can extract web data."
+      },
+      {
+        "question": "What types of data can I extract with OpenClaw?",
+        "answer": "OpenClaw extracts structured data from virtually any webpage: product information, business listings, article metadata, social media data, reviews and ratings, tables and lists, and more."
+      }
+    ]
   },
   "footer": {
     "tagline": "OpenClaw — Make AI Beyond Chat, Actually Work for You",
@@ -122,15 +162,55 @@
     "backToTop": "Back to Top"
   },
   "demo": {
-    "title": "See OpenClaw in Action"
+    "title": "See OpenClaw in Action",
+    "screenshotAlt": "OpenClaw data extraction interface demo",
+    "placeholderText": "Product Screenshot Placeholder - Replace with actual web scraping interface"
   },
   "why": {
-    "title": "Why Choose OpenClaw"
+    "title": "Why Choose OpenClaw for Web Data Extraction?",
+    "subtitle": "The most efficient no-code scraping solution with 99.9% success rate",
+    "items": [
+      {
+        "title": "Zero Coding Required",
+        "description": "OpenClaw eliminates the need for Python, BeautifulSoup, or Selenium."
+      },
+      {
+        "title": "Extract Data 10x Faster",
+        "description": "OpenClaw delivers structured data extraction in under 10 seconds per URL."
+      },
+      {
+        "title": "Export to CSV, JSON & API",
+        "description": "Direct integration with your existing workflow."
+      }
+    ]
   },
   "how": {
-    "title": "How to Use"
+    "title": "How to Extract Web Data Without Code",
+    "subtitle": "Three simple steps to turn any webpage into structured data",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Paste Your Target URL",
+        "description": "Copy any webpage address—product listings, article directories, business directories, social media profiles, or search results."
+      },
+      {
+        "number": "2",
+        "title": "AI Analyzes Page Structure",
+        "description": "Our web scraping engine automatically identifies data patterns."
+      },
+      {
+        "number": "3",
+        "title": "Export Clean Data",
+        "description": "Download structured CSV for spreadsheet analysis, copy JSON for developers."
+      }
+    ]
   },
   "waitlist": {
-    "title": "Join Waitlist"
+    "title": "Get Early Access to OpenClaw",
+    "subtitle": "Join 2,000+ professionals waiting to transform their web data extraction workflow",
+    "placeholder": "Enter your email address",
+    "button": "Join Waitlist",
+    "success": "Welcome to the waitlist! Check your inbox for confirmation.",
+    "error": "Something went wrong. Please try again."
   }
 }
