@@ -18,28 +18,28 @@ export function Hero() {
 
         {/* 主标题 */}
         <h1 className="text-5xl md:text-7xl font-bold text-text-primary mb-6 leading-tight">
-          不是聊天机器人
+          Run OpenClaw Locally
           <br />
-          <span className="text-brand-primary">而是你的 AI 员工</span>
+          <span className="text-brand-primary">with DeepSeek R1</span>
         </h1>
 
         {/* 副标题 */}
         <p className="text-xl md:text-2xl text-text-secondary mb-12 max-w-2xl mx-auto">
-          你给目标，它负责拆解、执行、汇报
+          The open-source agent framework. Automate tasks with $0 API cost using local LLMs.
         </p>
 
-        {/* CTA 按钮组 - 全部指向站内内容 */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="primary" size="lg" href="/command-builder">
-            ⚡ Launch Command Generator
+        {/* CTA 按钮组 */}
+        <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center items-center w-full sm:w-auto">
+          <Button variant="primary" size="lg" href="/command-generator">
+            ⚡ Open Command Generator
           </Button>
           <Button variant="secondary" size="lg" href="/blog/how-to-use-deepseek-with-openclaw">
-            📖 Read Setup Guide
+            📖 Read DeepSeek Guide
           </Button>
         </div>
 
-        {/* 核心特性预览 */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        {/* 核心特性预览 - 暂时隐藏 */}
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
           <div className="glass-card p-4 rounded-lg">
             <div className="text-brand-primary text-2xl mb-2">⚡</div>
             <h4 className="text-text-primary font-semibold mb-1">本地执行</h4>
@@ -55,7 +55,7 @@ export function Hero() {
             <h4 className="text-text-primary font-semibold mb-1">多平台支持</h4>
             <p className="text-sm text-text-secondary">WhatsApp、Telegram、Slack、Discord 等</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
