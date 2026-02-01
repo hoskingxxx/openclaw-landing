@@ -75,10 +75,9 @@ export const metadata: Metadata = {
   },
 
   // Verification（需要时添加）
-  // verification: {
-  //   google: "your-google-verification-code",
-  //   bing: "your-bing-verification-code",
-  // },
+  verification: {
+    google: "lnGWnIBkynUpLCvSTBaQo1UJC_tBWsGTlrZKZOzMkUM",
+  },
 };
 
 export default function RootLayout({
