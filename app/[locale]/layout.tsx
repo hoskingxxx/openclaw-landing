@@ -120,9 +120,67 @@ export default async function LocaleLayout({
   // Get messages for the locale
   const messages = await getMessages();
 
+  // Hot keywords for SEO
+  const hotKeywords = [
+    'web scraping',
+    'data extraction',
+    'no code',
+    'CSV export',
+    'JSON export',
+    'web data',
+    '爬虫',
+    '数据提取',
+    '无代码',
+    '网页抓取',
+    'openclaw',
+    'openclaw ai',
+    'AI Bot框架',
+    'openclaw bot',
+    'openclaw install',
+    'moltbot',
+    'clawdbot',
+    '开源AI助手',
+    'AI自动化',
+  ];
+
+  // WebSite JSON-LD Structured Data
+  const webSiteStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'OpenClaw AI',
+    url: 'https://openclaw-AI.org',
+    description: locale === 'zh'
+      ? 'OpenClaw是开源AI Bot框架，让AI真正替你干活。OpenClaw bot可通过自然语言在你的电脑执行文件管理、内容创作、自动化部署等真实任务。'
+      : 'OpenClaw is an open-source AI Bot framework that lets AI truly work for you. OpenClaw bot can execute real tasks like file management, content creation, and automated deployment through natural language.',
+    inLanguage: locale,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://openclaw-AI.org/search?q={search_term_string}',
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    keywords: hotKeywords,
+    about: hotKeywords.map((keyword) => ({
+      '@type': 'Thing',
+      name: keyword,
+    })),
+    publisher: {
+      '@type': 'Organization',
+      name: 'OpenClaw AI',
+      url: 'https://openclaw-AI.org',
+    },
+  };
+
   return (
     <html lang={locale} className="dark">
       <head>
+        {/* WebSite JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteStructuredData) }}
+        />
         <AnalyticsScript />
       </head>
       <body className="font-sans antialiased">
