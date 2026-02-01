@@ -26,10 +26,11 @@ export function generateStaticParams() {
 
 // Generate metadata based on locale
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const t = metadataByLocale[locale as Locale] || metadataByLocale.en;
 
   return {
