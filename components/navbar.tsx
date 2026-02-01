@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useTransition } from 'react';
@@ -8,6 +8,7 @@ import { Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 export function Navbar() {
+  const t = useTranslations('nav');
   const locale = useLocale();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -15,32 +16,32 @@ export function Navbar() {
 
   const switchLocale = (newLocale: string) => {
     startTransition(() => {
-      // Replace the current locale in the pathname
       const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
       window.location.href = newPathname;
     });
   };
 
   const otherLocale = locale === 'en' ? 'zh' : 'en';
-  const localeLabel = locale === 'en' ? '中文' : 'English';
+  const localeLabel = locale === 'en' ? '中文' : 'EN';
 
-  // Navigation links with anchors
+  // Navigation links matching the index.html structure
   const navLinks = [
-    { href: '#why', label: locale === 'en' ? 'Why' : '为什么' },
-    { href: '#how', label: locale === 'en' ? 'How to Use' : '如何使用' },
-    { href: '#faq', label: locale === 'en' ? 'FAQ' : '常见问题' },
+    { href: '#what-is', key: 'intro' },
+    { href: '#features', key: 'features' },
+    { href: '#use-cases', key: 'useCases' },
+    { href: '#scenarios', key: 'scenarios' },
+    { href: '#quick-start', key: 'quickStart' },
+    { href: '#videos', key: 'videos' },
+    { href: '#faq', key: 'faq' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border" role="navigation" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[rgba(13,13,15,0.8)] backdrop-blur-[20px] border-b border-[#323238]" role="navigation" aria-label="Main navigation">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="flex items-center justify-between h-[60px]">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center space-x-2" aria-label="OpenClaw AI Home">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">O</span>
-            </div>
-            <span className="text-white font-semibold text-lg">OpenClaw AI</span>
+          <Link href={`/${locale}`} className="flex items-center space-x-2" aria-label="OpenClaw Home">
+            <span className="text-[20px] font-bold bg-gradient-to-r from-[#FF3B30] to-[#FF6B5B] bg-clip-text text-transparent">OpenClaw</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,31 +50,40 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                className="text-sm text-[#c5c5c9] hover:text-[#FF3B30] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-[#FF3B30] after:to-[#FF6B5B] after:transition-all hover:after:w-full"
               >
-                {link.label}
+                {t(link.key as any)}
               </a>
             ))}
           </div>
 
-          {/* Language Switcher & Mobile Menu Button */}
+          {/* CTA Button & Language Switcher */}
           <div className="flex items-center space-x-4">
+            <a
+              href="#quick-start"
+              className="hidden md:inline-flex px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-[#FF3B30] to-[#FF6B5B] hover:translate-y-[-2px] hover:scale-105 hover:shadow-[0_6px_25px_rgba(255,59,48,0.35)] transition-all"
+            >
+              {t('getStarted')}
+            </a>
+
             {/* Language Switcher */}
             <button
               onClick={() => switchLocale(otherLocale)}
               disabled={isPending}
-              className="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-md text-sm text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
+              className="flex items-center space-x-1.5 px-3.5 py-2 rounded-full text-sm text-[#c5c5c9] bg-[#1a1a1d] border border-[#323238] hover:border-[#FF3B30] hover:text-[#FF3B30] hover:translate-y-[-2px] hover:shadow-[0_4px_15px_rgba(255,59,48,0.15)] transition-all"
               aria-label={`Switch to ${otherLocale === 'en' ? 'English' : '中文'}`}
             >
-              <Globe className="w-4 h-4" aria-hidden="true" />
-              <span>{localeLabel}</span>
+              <span className="font-semibold">{localeLabel}</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-md text-zinc-400 hover:text-white hover:bg-white/5"
-              aria-label="Toggle menu"
+              className="md:hidden p-2 rounded-md text-[#f5f5f7] bg-transparent"
+              aria-label={t('menu')}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -83,26 +93,25 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-[#323238]">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-zinc-400 hover:text-white transition-colors"
+                  className="text-[#c5c5c9] hover:text-[#FF3B30] transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  {t(link.key as any)}
                 </a>
               ))}
-              <button
-                onClick={() => switchLocale(otherLocale)}
-                disabled={isPending}
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-md text-sm text-zinc-400 hover:text-white hover:bg-white/5 transition-colors self-start"
+              <a
+                href="#quick-start"
+                className="text-[#FF3B30] font-semibold"
+                onClick={() => setMobileMenuOpen(false)}
               >
-                <Globe className="w-4 h-4" aria-hidden="true" />
-                <span>{localeLabel}</span>
-              </button>
+                {t('getStarted')}
+              </a>
             </div>
           </div>
         )}

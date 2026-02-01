@@ -1,180 +1,136 @@
 {
   "locale": "English",
   "nav": {
-    "switchLang": "中文",
-    "switchLangUrl": "/zh"
+    "intro": "Introduction",
+    "features": "Features",
+    "useCases": "Use Cases",
+    "scenarios": "Scenarios",
+    "quickStart": "Quick Start",
+    "videos": "Videos",
+    "faq": "FAQ",
+    "getStarted": "Get Started",
+    "switchLang": "Switch Language",
+    "menu": "Menu"
   },
   "hero": {
-    "h1": "No-Code Web Scraping: Extract Structured Data from Any Webpage in Seconds",
-    "subtitle": "Transform any URL into clean CSV/JSON data. No coding required. The fastest web scraping tool for non-technical users in 2025.",
-    "cta": "Join Waitlist",
-    "badge1": "No Code Required",
-    "badge2": "10 Second Setup",
-    "badge3": "CSV & JSON Export",
-    "badge4": "Early Access"
+    "title": "Open Claw: Make AI Beyond Chat",
+    "titleSpan": "Actually Work for You",
+    "subtitle": "Open Source AI Bot Framework · 10-Minute Quick Start · Fully Open Source",
+    "installBtn": "Install Now (10-Minute Quick Start)",
+    "quickGuide": "Quick Installation Guide",
+    "step1": "Prepare Environment",
+    "step1Desc": "Node ≥ 22 + npm",
+    "step2": "Install Command",
+    "step3": "Configuration Wizard",
+    "step4": "Start Using",
+    "terminal": "Hide Demo",
+    "terminalShow": "View Demo"
   },
-  "demo": {
-    "title": "See OpenClaw Web Scraper in Action",
-    "screenshotAlt": "OpenClaw data extraction interface demo",
-    "placeholderText": "Product Screenshot Placeholder - Replace with actual web scraping interface"
+  "what": {
+    "title": "What is OpenClaw Bot?",
+    "subtitle": "Open Source AI Bot Framework That Actually Works for You",
+    "botName": "OpenClaw Bot",
+    "coreTitle": "Core Concept",
+    "coreDesc1": "OpenClaw is an open-source AI Bot framework that makes AI do more than just chat—it actually does the work for you. It's your AI execution assistant that can complete real tasks like file management, content creation, and automated deployment on your local computer.",
+    "coreDesc2": "Simply put: ChatGPT tells you how to do it, OpenClaw just does it for you.",
+    "frameworkDesc": "This is an open-source AI assistant framework that accepts natural language commands and executes real tasks on your local computer or server.",
+    "frameworkDesc2": "It's not just a simple chatbot, but an agent that can truly take action and do things for you. It quickly gained popularity in tech communities, social media, and developer circles, attracting tens of thousands of developers and reaching millions of visits in a short time.",
+    "jarvis": "Many people describe it as a personal JARVIS from Iron Man after using it—it not only understands your commands, but actually completes tasks for you.",
+    "whyTitle": "Why is it so popular?",
+    "whyDesc": "Before this framework, people were used to using various AI chatbots. But soon, a huge gap emerged:",
+    "compare1": "Write copy → OK",
+    "compare2": "Explain concepts → OK",
+    "compare3": "Actually do the work → ❌❌❌",
+    "compareQuote": "AI is smart, but why am I still so busy?",
+    "answer": "It gives a very direct answer: Because you're using the wrong form. Not Chatbot, but Agent.",
+    "evolutionTitle": "Project Name Evolution",
+    "evolutionDesc": "Former names: Clawdbot → Moltbot → Now OpenClaw",
+    "evolutionNote": "Many early tutorials and videos may use clawdbot or moltbot, searching these keywords can find more historical content.",
+    "evolutionWarning": "moltbook is a common typo, not the project name.",
+    "diffTitle": "Key Difference from Traditional AI"
   },
-  "why": {
-    "title": "Why OpenClaw for Web Data Extraction?",
-    "subtitle": "The most efficient no-code scraping solution with 99.9% success rate for data extraction from any website",
-    "items": [
-      {
-        "title": "Zero Coding Required",
-        "description": "OpenClaw eliminates the need for Python, BeautifulSoup, or Selenium. Simply paste any URL and our AI-powered web scraper handles complex JavaScript rendering, dynamic content loading, and anti-bot protection automatically."
-      },
-      {
-        "title": "Extract Data 10x Faster",
-        "description": "Traditional web scraping takes hours of development time. OpenClaw delivers structured data extraction in under 10 seconds per URL. Save 67% of your time on data collection tasks compared to manual scraping methods."
-      },
-      {
-        "title": "Export to CSV, JSON & API",
-        "description": "Direct integration with your existing workflow. Export structured data to CSV for Excel, JSON for applications, or connect via API to tools like Zapier, Make, or n8n. Perfect for feeding data to LLMs and AI automation pipelines."
-      },
-      {
-        "title": "Handle Complex Websites",
-        "description": "Unlike basic scrapers, OpenClaw navigates pagination, handles infinite scroll, bypasses CAPTCHAs through intelligent proxy rotation, and extracts data from authenticated areas. Works on e-commerce sites, news portals, and social platforms."
-      },
-      {
-        "title": "Enterprise-Grade Reliability",
-        "description": "Built for scale with 99.9% uptime and automatic retry mechanisms. Your data extraction runs continuously with scheduled refreshes—set it once and receive fresh data hourly, daily, or weekly without manual intervention."
-      },
-      {
-        "title": "Cost-Effective Alternative",
-        "description": "Save 76% compared to traditional IT solutions and 43% versus manual data entry. No developer resources needed—business users can create and manage their own web scraping workflows independently."
-      }
-    ]
+  "features": {
+    "title": "AI Bot Core Features",
+    "titleSpan": "Core Features",
+    "subtitle": "Six core capabilities to make AI Bot truly your productivity assistant",
+    "intro": "This section introduces the framework's core capabilities and features, and how to use it in different scenarios to improve productivity.",
+    "goalTitle": "Goal-Oriented",
+    "goalDesc": "You give a goal, it breaks down steps and executes itself. You only say what you want, it figures out how to do it",
+    "actionTitle": "Actionable",
+    "actionDesc": "Can operate file system, execute commands, call tools. It can read/write your local files, execute shell/scripts, open web pages to scrape data, call APIs, connect third-party tools",
+    "memoryTitle": "Long-term Memory",
+    "memoryDesc": "Remembers previous tasks and context. It remembers what you've done before and can carry context between tasks",
+    "controlTitle": "Highly Controllable",
+    "controlDesc": "Every step is traceable, auditable, manageable. Behavior is traceable, every step can be rolled back, tool calls are explicit, you can interrupt/redirect anytime",
+    "modelTitle": "Flexible Models",
+    "modelDesc": "Supports OpenAI, Claude, Google Gemini, OpenRouter, local models (via Ollama) and more. Use GPT today, switch to Claude tomorrow, connect local models the day after",
+    "openTitle": "Open Source & Transparent",
+    "openDesc": "Code is open source, self-hostable, customizable. Not a product, but an Agent operating system prototype"
   },
-  "how": {
-    "title": "How to Extract Web Data Without Code",
-    "subtitle": "Three simple steps to turn any webpage into structured data for your business",
-    "steps": [
-      {
-        "number": "1",
-        "title": "Paste Your Target URL",
-        "description": "Copy any webpage address—product listings, article directories, business directories, social media profiles, or search results. OpenClaw accepts URLs from e-commerce sites (Amazon, eBay), news sites, review platforms (Yelp, TripAdvisor), and virtually any public webpage."
-      },
-      {
-        "number": "2",
-        "title": "AI Analyzes Page Structure",
-        "description": "Our web scraping engine automatically identifies data patterns: product names, prices, ratings, availability, contact information, addresses, phone numbers, emails, article titles, publication dates, author names, and more. The AI adapts to each site's unique HTML structure."
-      },
-      {
-        "number": "3",
-        "title": "Export Clean Data",
-        "description": "Download structured CSV for spreadsheet analysis, copy JSON for developers, or set up automated exports to Google Sheets, Airtable, Notion databases, or via webhooks to your custom applications. Data arrives clean, deduplicated, and ready to use."
-      }
-    ]
+  "install": {
+    "title": "OpenClaw Install Guide · 10-Minute Quick Start",
+    "titleSpan": "10-Minute Quick Start",
+    "subtitle": "Just four steps to complete installation (formerly Clawdbot/Moltbot)",
+    "step1Title": "Prepare Environment",
+    "step1Need": "You need to prepare:",
+    "step1Item1": "A computer — macOS, Linux, or Windows (WSL2)",
+    "step1Item2": "Node.js runtime: Node ≥22 (download from nodejs.org)",
+    "step1Item3": "Package manager: npm (included), pnpm, or bun",
+    "step1Item4": "LLM API Key: Anthropic, OpenAI, OpenRouter, or local model",
+    "step1Check": "How to check your environment:",
+    "step1CheckDesc": "Open Terminal and type:",
+    "step1Version": "Node version needs to be ≥22. If version is too low, download the latest LTS from nodejs.org.",
+    "step2Title": "OpenClaw Install: Installation Steps",
+    "step2Desc": "OpenClaw Install command description:",
+    "step2Desc2": "Open your command line (terminal) and execute the following openclaw install command:",
+    "step2Note": "Recommend using -g for global installation, so you can use openclaw command in any directory. If you encounter permission issues, macOS/Linux may need to use sudo.",
+    "step2Recommend": "Recommended method: npm installation is the simplest and quickest openclaw install method. The next openclaw onboard wizard will automatically complete all configurations, including API Key, Gateway daemon, and workspace setup.",
+    "step3Title": "Configuration & Initialization",
+    "step3Desc": "Run the wizard command to start configuration:",
+    "step3Auto": "The wizard will automatically complete:",
+    "step3Item1": "Detect your system environment",
+    "step3Item2": "Configure API Key (supports Anthropic, OpenAI, OpenRouter, etc.)",
+    "step3Item3": "Install Gateway daemon service (runs in background)",
+    "step3Item4": "Set default workspace and permissions",
+    "step3Daemon": "After the OpenClaw Gateway daemon service is installed, it will run continuously in the background and can receive commands from platforms like Telegram, WhatsApp.",
+    "step4Title": "Start Using",
+    "step4Desc": "Now you can start using OpenClaw!"
   },
   "useCases": {
-    "title": "Who Uses OpenClaw Web Scraper?",
-    "subtitle": "Powering data extraction for diverse industries and use cases",
-    "items": [
-      {
-        "title": "E-commerce & Retail Teams",
-        "description": "Monitor competitor pricing strategies, track product availability across multiple sellers, analyze customer reviews and sentiment, extract product specifications for catalog building, and automate price comparison dashboards."
-      },
-      {
-        "title": "Marketing & Content Teams",
-        "description": "Scrape competitor blog content for SEO analysis, extract social media engagement metrics, aggregate industry news from multiple sources, build lead databases from business directories, and monitor brand mentions across the web."
-      },
-      {
-        "title": "Sales & Lead Generation",
-        "description": "Extract contact information from business directories (Yellow Pages, Yelp), scrape LinkedIn public profiles (within ethical guidelines), gather company data from Crunchbase, and build targeted prospect lists with verified email addresses and phone numbers."
-      },
-      {
-        "title": "Financial & Market Research",
-        "description": "Collect stock prices, financial statements, analyst reports, and economic indicators. Track real estate listings and property values, monitor cryptocurrency exchanges, and aggregate data from multiple financial APIs into unified spreadsheets."
-      },
-      {
-        "title": "AI & Automation Enthusiasts",
-        "description": "Feed clean web data to ChatGPT, Claude, or custom LLMs for RAG applications. Build knowledge bases from scraped documentation, train AI models on curated web content, and create automated workflows with Make.com, Zapier, or n8n integrations."
-      },
-      {
-        "title": "Researchers & Academics",
-        "description": "Gather data from academic publications, extract information from public databases, monitor scientific trends, and compile research datasets from multiple web sources without writing custom scraping scripts."
-      }
-    ]
+    "title": "6 Core Use Cases",
+    "subtitle": "See results in one sentence, let natural language drive it to work for you",
+    "intro": "This section introduces 6 core usage scenarios of the framework, from file management to content creation, showing you the practical applications of AI Bot.",
+    "cta": "Want to experience its powerful capabilities immediately?",
+    "ctaBtn": "Get Started Now"
+  },
+  "scenarios": {
+    "title": "3 Irreplaceable Core Scenarios",
+    "subtitle": "In these scenarios, its value is irreplaceable",
+    "intro": "This section introduces where the framework's value is maximized, and why these scenarios need AI Bot rather than traditional tools."
+  },
+  "videos": {
+    "title": "Video Demo Resources",
+    "subtitle": "Watch video tutorials along the learning path to quickly understand how to use. Many early videos may use old names"
   },
   "faq": {
-    "title": "Web Scraping FAQ",
-    "items": [
-      {
-        "question": "What is web scraping and how does OpenClaw work?",
-        "answer": "Web scraping is the automated process of extracting data from websites. OpenClaw is a no-code web scraping tool that uses AI to analyze webpage structure and identify extractable data patterns. Unlike traditional scrapers requiring Python or JavaScript knowledge, OpenClaw works through a simple interface: paste any URL, and our system renders the page (including JavaScript-heavy content), identifies data elements, and exports them in your preferred format—CSV, JSON, or direct API integration."
-      },
-      {
-        "question": "Is OpenClaw really no-code? Do I need any technical skills?",
-        "answer": "Yes, OpenClaw is completely no-code by design. If you can copy and paste a URL and click a button, you can extract web data. No Python, JavaScript, HTML knowledge, or command-line experience required. The interface is built for marketers, sales teams, researchers, entrepreneurs, students—anyone who needs data from the web but lacks programming expertise."
-      },
-      {
-        "question": "What types of data can I extract with OpenClaw?",
-        "answer": "OpenClaw extracts structured data from virtually any webpage: product information (name, price, description, images, specifications, availability), business listings (name, address, phone, email, hours, website), article metadata (title, author, date, category, tags, content), social media data (profile names, follower counts, post text), reviews and ratings, tables and lists, real estate listings, job postings, event details, and more. We support custom field extraction for specialized data types."
-      },
-      {
-        "question": "Can OpenClaw handle dynamic websites and JavaScript-heavy pages?",
-        "answer": "Absolutely. Unlike simple HTML parsers, OpenClaw uses headless browser technology that executes JavaScript, renders dynamic content, waits for AJAX calls to complete, and handles SPAs (Single Page Applications) built with React, Vue, Angular, and other frameworks. This means you can scrape data from modern web applications, infinite-scroll pages, and content that loads after user interactions."
-      },
-      {
-        "question": "How does OpenClaw bypass anti-scraping measures and CAPTCHAs?",
-        "answer": "OpenClaw employs advanced anti-detection techniques including intelligent proxy rotation, realistic browser fingerprinting, adaptive request timing that mimics human behavior, automatic CAPTCHA solving through third-party services, and header randomization. For enterprise users with high-volume needs, we offer residential proxy pools and dedicated IP solutions. However, we always advocate ethical scraping practices and compliance with website terms of service."
-      },
-      {
-        "question": "What file formats can I export my scraped data to?",
-        "answer": "OpenClaw supports multiple export formats to fit your workflow: CSV (compatible with Excel, Google Sheets, Numbers, and database import tools), JSON (for developers and API integrations), Excel files with formatting preserved, direct Google Sheets export for automatic updates, XML for enterprise systems, and SQL INSERT statements for direct database import. We also offer webhook notifications for real-time data delivery to your applications."
-      },
-      {
-        "question": "Can I schedule automated data extraction and updates?",
-        "answer": "Yes, OpenClaw supports scheduled scraping jobs. Set up hourly, daily, weekly, or custom interval extractions. The system monitors your target pages for changes, extracts new or modified data, and delivers updates to your designated destination. Perfect for price monitoring, content tracking, news aggregation, and maintaining fresh datasets without manual re-running extractions."
-      },
-      {
-        "question": "Is web scraping legal? What about ethical considerations?",
-        "answer": "Web scraping legality varies by jurisdiction and use case. Generally, scraping publicly available data for personal or internal business use is acceptable in most regions. However, scraping behind authentication, bypassing explicit technical barriers, or scraping for competitive intelligence may violate terms of service. OpenClaw encourages responsible scraping: respect robots.txt files, rate-limit requests to avoid server overload, don't scrape personal data without consent, and comply with GDPR, CCPA, and other privacy regulations. Consult legal counsel for your specific situation."
-      },
-      {
-        "question": "How much does OpenClaw cost compared to other web scraping tools?",
-        "answer": "OpenClaw offers competitive pricing with no hidden fees. Unlike enterprise solutions costing $500-2000/month, our plans start at a fraction of that cost. Compared to hiring a developer ($50-150/hour) to build and maintain custom scrapers, OpenClaw pays for itself in hours. We offer a free tier for testing, and paid plans scale based on extraction volume. No per-site fees—extract from unlimited domains within your monthly quota."
-      },
-      {
-        "question": "What's the difference between OpenClaw and tools like Octoparse, ParseHub, or Browse AI?",
-        "answer": "While all tools offer no-code scraping, OpenClaw differentiates with: AI-powered pattern recognition that adapts to site changes automatically (no broken scrapers when websites update), faster processing with our optimized cloud infrastructure, simpler 3-step interface versus complex visual workflows, built-in data cleaning and deduplication, more affordable pricing without per-project limits, and specialized support for LLM and AI workflow integrations. Try our free tier to compare with your current solution."
-      },
-      {
-        "question": "Can I scrape data behind login walls or authenticated pages?",
-        "answer": "OpenClaw supports authenticated scraping through our browser extension. You log into your account once through our secure browser session, grant OpenClaw access to specific pages, and our system maintains session state for extraction. This works for dashboards, member-only content, SaaS platforms, and personalized feeds. Your credentials are encrypted and never stored on our servers. Note: You must have legitimate access rights to scrape authenticated content."
-      },
-      {
-        "question": "How accurate is the extracted data? What about data quality?",
-        "answer": "OpenClaw achieves 99%+ accuracy on structured data extraction. Our AI identifies data types (prices, dates, emails, phone numbers) and formats them consistently. We automatically remove duplicates, normalize text (trim whitespace, standardize formats), validate data (check email syntax, verify phone patterns), and handle missing fields gracefully. You can also define custom validation rules and transformation rules for your specific use case."
-      },
-      {
-        "question": "What happens when a website changes its structure? Will my scraper break?",
-        "answer": "Traditional scrapers break when websites update. OpenClaw's AI continuously learns and adapts—when site changes are detected, our system re-analyzes the page structure and updates extraction patterns automatically. In cases requiring manual intervention, you'll receive notifications with simple one-click fixes. Most users report significantly fewer maintenance issues compared to rule-based scrapers."
-      },
-      {
-        "question": "Can I integrate OpenClaw with other tools and platforms?",
-        "answer": "OpenClaw integrates with popular platforms: direct export to Google Sheets with automatic refresh, Zapier and Make.com connections for 5000+ app integrations, webhook notifications for custom systems, API access for developer workflows, Airtable and Notion database imports, Slack and email notifications for extraction completion, and compatibility with tools like Tableau, Power BI, and Looker for visualization. We also provide SDKs for Python and JavaScript users."
-      },
-      {
-        "question": "When can I start using OpenClaw?",
-        "answer": "OpenClaw is currently in closed beta with onboarding in batches. Join our waitlist for early access priority. Beta users receive exclusive lifetime discounts and help shape our product roadmap. We're rolling out access gradually to ensure infrastructure stability and quality support. Typical waitlist-to-access time is 1-3 weeks. Enterprise users can contact us for expedited onboarding."
-      }
-    ]
-  },
-  "waitlist": {
-    "title": "Get Early Access to OpenClaw Web Scraper",
-    "subtitle": "Join 2,000+ professionals already waiting to transform their web data extraction workflow. Limited early adopter slots available.",
-    "placeholder": "Enter your email address",
-    "button": "Join Waitlist",
-    "success": "Welcome to the waitlist! Check your inbox for confirmation and next steps.",
-    "error": "Something went wrong. Please try again or contact support."
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common questions and answers about OpenClaw"
   },
   "footer": {
-    "copyright": "© 2025 OpenClaw AI. All rights reserved. The fastest no-code web scraping tool.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
+    "tagline": "OpenClaw — Make AI Beyond Chat, Actually Work for You",
+    "copyright": "© 2025 OpenClaw AI · Open Source Self-Hosted AI Agent",
+    "backToTop": "Back to Top"
+  },
+  "demo": {
+    "title": "See OpenClaw in Action"
+  },
+  "why": {
+    "title": "Why Choose OpenClaw"
+  },
+  "how": {
+    "title": "How to Use"
+  },
+  "waitlist": {
+    "title": "Join Waitlist"
   }
 }
