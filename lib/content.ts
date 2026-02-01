@@ -313,6 +313,10 @@ export const faqs = [
         q: "和 AutoGPT / CrewAI 有什么不同？",
         a: "AutoGPT：偏实验/Demo\nCrewAI：偏多 Agent 编排\nOpenClaw：偏「真实干活 + 工程实用」",
       },
+      {
+        q: "OpenClaw 与 AutoGPT/OpenDevin 有什么区别？",
+        a: "核心区别在架构稳定性。\n\n**AutoGPT/OpenDevin**：\n- 自主循环决策，容易陷入死循环\n- 缺乏明确的执行边界\n- 常需要人工干预重置\n\n**OpenClaw 车道队列架构 (Lane-based queue)**：\n- 任务像车道一样排队执行，不会「撞车」\n- 每个任务有明确的起点和终点\n- 失败自动重试，不会无限循环\n- 天然支持多任务并发和状态保存\n\n简单说：OpenClaw 是「有序的工厂流水线」，其他是「自由奔跑的机器人」。",
+      },
     ],
   },
 ]
