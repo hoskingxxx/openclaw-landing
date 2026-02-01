@@ -1,11 +1,12 @@
 /**
- * Vercel Analytics Script Component
+ * Vercel Analytics & Speed Insights Script Component
  *
- * Add this to the root layout to enable Vercel analytics tracking.
+ * Add this to the root layout to enable Vercel analytics tracking and speed insights.
  */
 'use client';
 
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 export function AnalyticsScript() {
   // Don't load if in development
@@ -13,5 +14,10 @@ export function AnalyticsScript() {
     return null;
   }
 
-  return <Analytics />;
+  return (
+    <>
+      <Analytics />
+      <SpeedInsights />
+    </>
+  );
 }
