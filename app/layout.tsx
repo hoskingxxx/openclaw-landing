@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { FAQStructuredData, SoftwareStructuredData, WebSiteStructuredData } from "@/components/SEO/StructuredData";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -106,6 +107,11 @@ export default function RootLayout({
         */}
       </head>
       <body className="font-sans antialiased">
+        <NextTopLoader
+          color="#FF4500"
+          showSpinner={false}
+          speed={200}
+        />
         {children}
       </body>
     </html>
