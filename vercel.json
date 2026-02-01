@@ -1,13 +1,9 @@
 {
   "name": "openclaw-landing",
-  "version": 2,
-  "buildCommand": null,
+  "buildCommand": {
+    "src": "echo 'Static site - no build needed'"
+  },
   "outputDirectory": "./",
   "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "installCommand": "echo 'Skip install'"
 }
