@@ -1,8 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { trackEvent, ANALYTICS_EVENTS } from '@/lib/analytics';
 
@@ -15,11 +13,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent opacity-50" />
 
       <div className="relative max-w-7xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        {/* 使用 CSS 动画替代 framer-motion - 更轻量 */}
+        <div className="animate-fade-in-up">
           {/* Trust badges */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
             {[
@@ -47,17 +42,18 @@ export function Hero() {
             {t('subtitle')}
           </p>
 
-          {/* CTA Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          {/* CTA Button - 纯 CSS hover 效果 */}
+          <button
             onClick={() => trackEvent(ANALYTICS_EVENTS.CTA_CLICK, { location: 'hero' })}
-            className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-primary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/25 transition-all"
+            className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-primary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/25 hover:scale-105 active:scale-95 transition-all duration-200"
           >
             <span>{t('cta')}</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-        </motion.div>
+            {/* 内联 SVG 替代 lucide-react 图标 */}
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );
