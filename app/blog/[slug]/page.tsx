@@ -6,6 +6,11 @@ import { ArticleStructuredData } from "@/components/SEO/StructuredData";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import remarkHtml from "remark-html";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -32,21 +37,39 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+async function getPostContent(slug: string) {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  const processedContent = await remark()
+    .use(remarkHtml)
+    .process(content);
+
+  return {
+    frontmatter: data,
+    content: processedContent.toString(),
+  };
+}
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  // 这里应该从 MDX 文件读取内容，暂时使用占位符
-  const content = (
-    <div className="prose prose-invert max-w-none">
-      <p className="text-text-secondary">
-        文章内容将从 MDX 文件加载...
-      </p>
-    </div>
-  );
+  const postContent = await getPostContent(post.slug);
+
+  if (!postContent) {
+    notFound();
+  }
 
   return (
     <>
@@ -92,7 +115,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </header>
 
           {/* 文章正文 */}
-          <div className="glass-card p-8">{content}</div>
+          <div
+            className="glass-card p-8 prose prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: postContent.content }}
+          />
 
           {/* 文章底部 CTA */}
           <div className="mt-12 p-6 bg-brand-muted/20 rounded-xl border border-brand-primary/30">
