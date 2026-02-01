@@ -2,6 +2,9 @@ import dynamic from 'next/dynamic';
 import { setRequestLocale } from 'next-intl/server';
 import { Hero } from '@/components/hero';
 
+// 强制静态生成 - 所有页面在构建时预渲染
+export const dynamicParams = false;
+
 // 动态导入非首屏组件 - 代码分割
 // Demo 组件在首屏后显示，延迟加载
 const Demo = dynamic(() => import('@/components/demo').then(mod => ({ default: mod.Demo })), {

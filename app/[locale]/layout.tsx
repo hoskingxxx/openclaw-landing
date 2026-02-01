@@ -20,6 +20,9 @@ const metadataByLocale: Record<Locale, { title: string; description: string }> =
   },
 };
 
+// 强制静态生成 - 所有页面在构建时预渲染
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
