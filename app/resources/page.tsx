@@ -74,8 +74,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">$5</span>
                   <span className="text-sm text-text-secondary">/月起</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.vultr.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   查看优惠
@@ -110,8 +113,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">$4</span>
                   <span className="text-sm text-text-secondary">/月起</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.digitalocean.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
                 >
                   查看详情
@@ -145,8 +151,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">€6.99</span>
                   <span className="text-sm text-text-secondary">/月起</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://contabo.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
                 >
                   查看详情
@@ -193,8 +202,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">免费</span>
                   <span className="text-sm text-text-secondary">额度充足</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.deepseek.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   立即注册
@@ -232,6 +244,7 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">95折</span>
                   <span className="text-sm text-text-secondary">专属优惠</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
                   href="#"
                   className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
@@ -268,8 +281,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">$15</span>
                   <span className="text-sm text-text-secondary">/百万 tokens</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.anthropic.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
                 >
                   官网
@@ -316,8 +332,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">$449</span>
                   <span className="text-sm text-text-secondary">起</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.apple.com/mac-mini/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   查看优惠
@@ -348,8 +367,11 @@ export default function ResourcesPage() {
                   <span className="text-2xl font-bold text-text-primary">$320</span>
                   <span className="text-sm text-text-secondary">起</span>
                 </div>
+                {/* TODO: 替换为 Affiliate 链接 */}
                 <a
-                  href="#"
+                  href="https://www.nvidia.com/en-us/geforce/graphics-cards/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
                 >
                   查看详情
