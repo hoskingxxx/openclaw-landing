@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { trackEvent, ANALYTICS_EVENTS } from '@/lib/analytics';
 
 export function WaitlistForm() {
   const t = useTranslations('waitlist');
@@ -14,10 +15,14 @@ export function WaitlistForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Track submit attempt
+    trackEvent(ANALYTICS_EVENTS.WAITLIST_SUBMIT);
+
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setStatus('error');
+      trackEvent(ANALYTICS_EVENTS.WAITLIST_ERROR, { reason: 'invalid_email' });
       return;
     }
 
@@ -26,6 +31,7 @@ export function WaitlistForm() {
     // Simulate API call (Phase 2: Replace with actual API call)
     setTimeout(() => {
       setStatus('success');
+      trackEvent(ANALYTICS_EVENTS.WAITLIST_SUCCESS, { email_domain: email.split('@')[1] });
       setEmail('');
       setIsLoading(false);
     }, 1000);

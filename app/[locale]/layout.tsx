@@ -7,6 +7,7 @@ import { locales, type Locale } from '../i18n';
 import '../globals.css';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
+import { AnalyticsScript } from '@/components/analytics-script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -123,6 +124,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className="dark">
+      <head>
+        <AnalyticsScript />
+      </head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <div className="min-h-screen flex flex-col">

@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { trackEvent, ANALYTICS_EVENTS } from '@/lib/analytics';
 
 export function Hero() {
   const t = useTranslations('hero');
@@ -47,16 +48,15 @@ export function Hero() {
           </p>
 
           {/* CTA Button */}
-          <Link href="#waitlist">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-primary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/25 transition-all"
-            >
-              <span>{t('cta')}</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </Link>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => trackEvent(ANALYTICS_EVENTS.CTA_CLICK, { location: 'hero' })}
+            className="group inline-flex items-center space-x-2 px-8 py-4 bg-gradient-primary text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/25 transition-all"
+          >
+            <span>{t('cta')}</span>
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </motion.button>
         </motion.div>
       </div>
     </section>
