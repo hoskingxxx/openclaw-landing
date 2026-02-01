@@ -37,7 +37,7 @@ export async function generateMetadata({
   const t = metadataByLocale[locale as Locale] || metadataByLocale.en;
 
   return {
-    metadataBase: new URL('https://openclaw-AI.org'),
+    metadataBase: new URL('https://openclaw-ai.org'),
     title: t.title,
     description: t.description,
     keywords: [
@@ -63,7 +63,7 @@ export async function generateMetadata({
     openGraph: {
       title: t.title,
       description: t.description,
-      url: `https://openclaw-AI.org/${locale}`,
+      url: `https://openclaw-ai.org/${locale}`,
       siteName: 'OpenClaw AI',
       type: 'website',
       locale: locale,
@@ -85,10 +85,10 @@ export async function generateMetadata({
       creator: '@openclawai',
     },
     alternates: {
-      canonical: `https://openclaw-AI.org/${locale}`,
+      canonical: `https://openclaw-ai.org/${locale}`,
       languages: {
-        en: 'https://openclaw-AI.org/en',
-        zh: 'https://openclaw-AI.org/zh',
+        en: 'https://openclaw-ai.org/en',
+        zh: 'https://openclaw-ai.org/zh',
       },
     },
     robots: {
@@ -152,7 +152,7 @@ export default async function LocaleLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'OpenClaw AI',
-    url: 'https://openclaw-AI.org',
+    url: 'https://openclaw-ai.org',
     description: locale === 'zh'
       ? 'OpenClaw是开源AI Bot框架，让AI真正替你干活。OpenClaw bot可通过自然语言在你的电脑执行文件管理、内容创作、自动化部署等真实任务。'
       : 'OpenClaw is an open-source AI Bot framework that lets AI truly work for you. OpenClaw bot can execute real tasks like file management, content creation, and automated deployment through natural language.',
@@ -161,7 +161,7 @@ export default async function LocaleLayout({
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://openclaw-AI.org/search?q={search_term_string}',
+        urlTemplate: 'https://openclaw-ai.org/search?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },
@@ -173,7 +173,7 @@ export default async function LocaleLayout({
     publisher: {
       '@type': 'Organization',
       name: 'OpenClaw AI',
-      url: 'https://openclaw-AI.org',
+      url: 'https://openclaw-ai.org',
     },
   };
 
