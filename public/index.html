@@ -374,6 +374,49 @@ nav a:hover::after {
   box-shadow: 0 6px 25px rgba(255, 59, 48, 0.35);
 }
 
+/* Language Switcher */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 16px;
+  padding: 8px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-switcher:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.15);
+}
+
+.lang-switcher svg {
+  transition: transform 0.3s ease;
+}
+
+.lang-switcher:hover svg {
+  transform: scale(1.1);
+}
+
+.lang-current {
+  font-weight: 600;
+}
+
+/* Hide elements based on language */
+html[lang="zh"] [data-lang="en"],
+html[lang="en"] [data-lang="zh"] {
+  display: none !important;
+}
+
 .mobile-menu-btn {
   display: none;
   background: none;
@@ -4417,16 +4460,22 @@ footer {
     <a href="#" class="logo">OpenClaw</a>
     <nav>
       <ul>
-        <li><a href="#what-is">介绍</a></li>
-        <li><a href="#features">特点</a></li>
-        <li><a href="#use-cases">玩法</a></li>
-        <li><a href="#scenarios">场景</a></li>
-        <li><a href="#quick-start">快速上手</a></li>
-        <li><a href="#videos">视频教程</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#what-is" data-i18n="nav.intro">介绍</a></li>
+        <li><a href="#features" data-i18n="nav.features">特点</a></li>
+        <li><a href="#use-cases" data-i18n="nav.useCases">玩法</a></li>
+        <li><a href="#scenarios" data-i18n="nav.scenarios">场景</a></li>
+        <li><a href="#quick-start" data-i18n="nav.quickStart">快速上手</a></li>
+        <li><a href="#videos" data-i18n="nav.videos">视频教程</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       </ul>
     </nav>
-    <a href="#quick-start" class="btn-cta">开始使用</a>
+    <a href="#quick-start" class="btn-cta" data-i18n="nav.getStarted">开始使用</a>
+    <button class="lang-switcher" id="langSwitcher" aria-label="切换语言">
+      <span class="lang-current">中文</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
     <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M3 12h18M3 6h18M3 18h18"/>
@@ -4437,14 +4486,14 @@ footer {
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#what-is">介绍</a>
-  <a href="#features">特点</a>
-  <a href="#use-cases">玩法</a>
-  <a href="#scenarios">场景</a>
-  <a href="#quick-start">快速上手</a>
-  <a href="#videos">视频教程</a>
-  <a href="#faq">FAQ</a>
-  <a href="#quick-start" style="color: var(--primary);">开始使用</a>
+  <a href="#what-is" data-i18n="nav.intro">介绍</a>
+  <a href="#features" data-i18n="nav.features">特点</a>
+  <a href="#use-cases" data-i18n="nav.useCases">玩法</a>
+  <a href="#scenarios" data-i18n="nav.scenarios">场景</a>
+  <a href="#quick-start" data-i18n="nav.quickStart">快速上手</a>
+  <a href="#videos" data-i18n="nav.videos">视频教程</a>
+  <a href="#faq" data-i18n="nav.faq">FAQ</a>
+  <a href="#quick-start" style="color: var(--primary);" data-i18n="nav.getStarted">开始使用</a>
 </div>
 
 <!-- Main Content -->
@@ -4454,12 +4503,12 @@ footer {
     <div class="container">
       <div class="hero-content">
         <div class="hero-text animate-in">
-          <h1>Open Claw：让 AI 不再只会聊天<br><span>而是真正替你干活</span></h1>
-          <p class="subtitle">开源 AI Bot 框架 · 10分钟快速上手 · 完全开源可控</p>
+          <h1 data-i18n="hero.title">Open Claw：让 AI 不再只会聊天<br><span data-i18n="hero.titleSpan">而是真正替你干活</span></h1>
+          <p class="subtitle" data-i18n="hero.subtitle">开源 AI Bot 框架 · 10分钟快速上手 · 完全开源可控</p>
 
           <!-- Main CTA -->
           <div class="hero-main-cta">
-            <button class="btn-primary" id="installGuideBtn">
+            <button class="btn-primary" id="installGuideBtn" data-i18n="hero.installBtn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 10l7-7m0 0l7 7m-7-7v18"/>
               </svg>
@@ -4470,7 +4519,7 @@ footer {
           <!-- Embedded Install Guide (Collapsible) -->
           <div class="install-guide-panel" id="installGuidePanel">
             <div class="install-guide-header">
-              <span class="install-guide-title">快速安装向导</span>
+              <span class="install-guide-title" data-i18n="hero.quickGuide">快速安装向导</span>
               <button class="install-guide-close" id="closeInstallGuide">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="18" y1="6" x2="6" y2="18"/>
@@ -4482,28 +4531,28 @@ footer {
               <div class="quick-step">
                 <span class="quick-step-num">1</span>
                 <div class="quick-step-content">
-                  <strong>准备环境</strong>
-                  <p class="text-small">Node ≥ 22 + npm</p>
+                  <strong data-i18n="hero.step1">准备环境</strong>
+                  <p class="text-small" data-i18n="hero.step1Desc">Node ≥ 22 + npm</p>
                 </div>
               </div>
               <div class="quick-step">
                 <span class="quick-step-num">2</span>
                 <div class="quick-step-content">
-                  <strong>安装命令</strong>
+                  <strong data-i18n="hero.step2">安装命令</strong>
                   <code class="inline-code">npm install -g openclaw@latest</code>
                 </div>
               </div>
               <div class="quick-step">
                 <span class="quick-step-num">3</span>
                 <div class="quick-step-content">
-                  <strong>配置向导</strong>
+                  <strong data-i18n="hero.step3">配置向导</strong>
                   <code class="inline-code">openclaw onboard --install-daemon</code>
                 </div>
               </div>
               <div class="quick-step">
                 <span class="quick-step-num">4</span>
                 <div class="quick-step-content">
-                  <strong>开始使用</strong>
+                  <strong data-i18n="hero.step4">开始使用</strong>
                   <code class="inline-code">openclaw "帮我整理下载文件夹"</code>
                 </div>
               </div>
@@ -4613,40 +4662,40 @@ footer {
   <section id="what-is" class="what-is">
     <div class="container">
       <div class="section-title">
-        <h2>什么是 <span>OpenClaw Bot</span>？</h2>
-        <p class="sub-title" style="color: var(--text-secondary); font-size: 14px; margin-top: -8px;">开源AI Bot框架，让AI真正替你干活</p>
+        <h2 data-i18n="what.title">什么是 <span>OpenClaw Bot</span>？</h2>
+        <p class="sub-title" style="color: var(--text-secondary); font-size: 14px; margin-top: -8px;" data-i18n="what.subtitle">开源AI Bot框架，让AI真正替你干活</p>
       </div>
       <div class="what-is-grid">
         <!-- What is OpenClaw 说明板块 -->
         <div class="what-is-intro" style="grid-column: 1 / -1; margin-bottom: 32px; padding: 24px; background: var(--bg-secondary); border-radius: 12px; border-left: 4px solid var(--primary);">
           <h3 style="font-size: 20px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
             <span>🤔</span>
-            <span>什么是 OpenClaw？</span>
+            <span data-i18n="what.botName">什么是 OpenClaw？</span>
           </h3>
-          <p>OpenClaw 是一款开源的 AI Bot 框架，它能让 AI 不再只会聊天，而是真正替你干活。这是你的 AI 执行助手，可以在本地电脑上完成文件管理、内容创作、自动化部署等真实任务。</p>
-          <p><strong>简单来说：</strong>ChatGPT 告诉你"怎么做"，OpenClaw 直接"帮你做完"。</p>
+          <p data-i18n="what.coreDesc1">OpenClaw 是一款开源的 AI Bot 框架，它能让 AI 不再只会聊天，而是真正替你干活。这是你的 AI 执行助手，可以在本地电脑上完成文件管理、内容创作、自动化部署等真实任务。</p>
+          <p data-i18n="what.coreDesc2"><strong>简单来说：</strong>ChatGPT 告诉你"怎么做"，OpenClaw 直接"帮你做完"。</p>
         </div>
         <div class="what-is-content">
-          <p>这是一款<strong>开源的 AI 智能助手框架</strong>，能接受自然语言指令，在你的本地电脑或服务器上执行真实任务。</p>
-          <p>它不是简单的聊天机器人，而是可以真正采取行动、帮你做事情的智能体。在技术社区、社交媒体和开发者圈里迅速走红，短短几天就吸引了上万开发者参与，访问量在短时间内达到上百万级。</p>
-          <p>很多人第一次使用它后，形容该框架就像《钢铁侠》里的"个人版 Jarvis"——不仅能理解你的指令，更能真正替你把事情做完。</p>
+          <p data-i18n="what.frameworkDesc">这是一款<strong>开源的 AI 智能助手框架</strong>，能接受自然语言指令，在你的本地电脑或服务器上执行真实任务。</p>
+          <p data-i18n="what.frameworkDesc2">它不是简单的聊天机器人，而是可以真正采取行动、帮你做事情的智能体。在技术社区、社交媒体和开发者圈里迅速走红，短短几天就吸引了上万开发者参与，访问量在短时间内达到上百万级。</p>
+          <p data-i18n="what.jarvis">很多人第一次使用它后，形容该框架就像《钢铁侠》里的"个人版 Jarvis"——不仅能理解你的指令，更能真正替你把事情做完。</p>
           <div class="highlight-box">
-            <p><strong>为什么它会广受欢迎？</strong></p>
-            <p>在该框架出现之前，大家已经习惯了使用各种 AI 聊天机器人。但很快，一个巨大的落差显现出来：</p>
-            <p>❌ 写点文案 → OK</p>
-            <p>❌ 解释概念 → OK</p>
-            <p>❌ 真正替我把事做完 → ❌❌❌</p>
-            <p class="text-tertiary text-italic">"AI 很聪明，但为什么我每天还是这么忙？"</p>
-            <p>它给了一个非常直接的答案：<strong>因为你用错形态了</strong>。不是 Chatbot，而是 Agent。</p>
+            <p data-i18n="what.whyTitle"><strong>为什么它会广受欢迎？</strong></p>
+            <p data-i18n="what.whyDesc">在该框架出现之前，大家已经习惯了使用各种 AI 聊天机器人。但很快，一个巨大的落差显现出来：</p>
+            <p data-i18n="what.compare1">❌ 写点文案 → OK</p>
+            <p data-i18n="what.compare2">❌ 解释概念 → OK</p>
+            <p data-i18n="what.compare3">❌ 真正替我把事做完 → ❌❌❌</p>
+            <p class="text-tertiary text-italic" data-i18n="what.compareQuote">"AI 很聪明，但为什么我每天还是这么忙？"</p>
+            <p data-i18n="what.answer">它给了一个非常直接的答案：<strong>因为你用错形态了</strong>。不是 Chatbot，而是 Agent。</p>
           </div>
         </div>
         <div class="what-is-content">
-          <h3>项目名称的演进</h3>
-          <p>项目曾用名：<strong>Clawdbot</strong> → <strong>Moltbot</strong> → 现在的 <strong>OpenClaw</strong></p>
-          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">💡 很多早期教程和视频可能使用"clawdbot"或"moltbot"，搜索这些关键词可以找到更多历史内容。</p>
-          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">⚠️ "moltbook" 是常见的拼写错误，不是项目名称。</p>
+          <h3 data-i18n="what.evolutionTitle">项目名称的演进</h3>
+          <p data-i18n="what.evolutionDesc">项目曾用名：<strong>Clawdbot</strong> → <strong>Moltbot</strong> → 现在的 <strong>OpenClaw</strong></p>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;" data-i18n="what.evolutionNote">💡 很多早期教程和视频可能使用"clawdbot"或"moltbot"，搜索这些关键词可以找到更多历史内容。</p>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;" data-i18n="what.evolutionWarning">⚠️ "moltbook" 是常见的拼写错误，不是项目名称。</p>
 
-          <h3 class="mt-32">和传统 AI 的本质区别</h3>
+          <h3 class="mt-32" data-i18n="what.diffTitle">和传统 AI 的本质区别</h3>
           <div class="comparison-table">
             <table>
               <thead>
@@ -4697,11 +4746,11 @@ footer {
   <section id="features" class="core-features">
     <div class="container">
       <div class="section-title">
-        <h2>AI Bot 的<span>核心特点</span></h2>
-        <p>六大核心能力，让 AI Bot 真正成为你的生产力助手</p>
+        <h2 data-i18n="features.title">AI Bot 的<span>核心特点</span></h2>
+        <p data-i18n="features.subtitle">六大核心能力，让 AI Bot 真正成为你的生产力助手</p>
       </div>
       <div class="section-intro" style="background: var(--bg-secondary); border-radius: 12px; padding: 20px; margin-bottom: 24px; border-left: 4px solid var(--primary);">
-        <p>本节介绍框架的核心能力和特点，以及如何在不同场景中使用它提升生产力。</p>
+        <p data-i18n="features.intro">本节介绍框架的核心能力和特点，以及如何在不同场景中使用它提升生产力。</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
@@ -4711,8 +4760,8 @@ footer {
               <path d="M12 6v6l4 2"/>
             </svg>
           </div>
-          <h3>目标导向</h3>
-          <p>你给一个目标，它自己拆解步骤并执行。你只说"想要什么"，它自己想"怎么做"</p>
+          <h3 data-i18n="features.goalTitle">目标导向</h3>
+          <p data-i18n="features.goalDesc">你给一个目标，它自己拆解步骤并执行。你只说"想要什么"，它自己想"怎么做"</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -4720,8 +4769,8 @@ footer {
               <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
             </svg>
           </div>
-          <h3>有手有脚</h3>
-          <p>能操作文件系统、执行命令、调用工具。它可以读写你的本地文件、执行 shell/脚本、打开网页抓数据、调 API、连第三方工具</p>
+          <h3 data-i18n="features.actionTitle">有手有脚</h3>
+          <p data-i18n="features.actionDesc">能操作文件系统、执行命令、调用工具。它可以读写你的本地文件、执行 shell/脚本、打开网页抓数据、调 API、连第三方工具</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -4731,8 +4780,8 @@ footer {
               <line x1="12" y1="22.08" x2="12" y2="12"/>
             </svg>
           </div>
-          <h3>长期记忆</h3>
-          <p>记住之前的任务和上下文。它记得你之前做过什么，能在任务之间承接上下文</p>
+          <h3 data-i18n="features.memoryTitle">长期记忆</h3>
+          <p data-i18n="features.memoryDesc">记住之前的任务和上下文。它记得你之前做过什么，能在任务之间承接上下文</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -4740,8 +4789,8 @@ footer {
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <h3>高度可控</h3>
-          <p>每一步都可追踪、可审计、可管理。行为可追踪、每一步可回溯、工具调用是显式的、你可以随时打断/重定向</p>
+          <h3 data-i18n="features.controlTitle">高度可控</h3>
+          <p data-i18n="features.controlDesc">每一步都可追踪、可审计、可管理。行为可追踪、每一步可回溯、工具调用是显式的、你可以随时打断/重定向</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -4751,8 +4800,8 @@ footer {
               <line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <h3>模型灵活</h3>
-          <p>支持 OpenAI、Claude、Google Gemini、OpenRouter、本地模型（通过 Ollama）等多种选择。今天用 GPT，明天换 Claude，后天接本地模型</p>
+          <h3 data-i18n="features.modelTitle">模型灵活</h3>
+          <p data-i18n="features.modelDesc">支持 OpenAI、Claude、Google Gemini、OpenRouter、本地模型（通过 Ollama）等多种选择。今天用 GPT，明天换 Claude，后天接本地模型</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -4760,8 +4809,8 @@ footer {
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
             </svg>
           </div>
-          <h3>开源透明</h3>
-          <p>代码开源，可自托管，可定制。不是产品，而是"Agent 操作系统雏形"</p>
+          <h3 data-i18n="features.openTitle">开源透明</h3>
+          <p data-i18n="features.openDesc">代码开源，可自托管，可定制。不是产品，而是"Agent 操作系统雏形"</p>
         </div>
       </div>
     </div>
@@ -4771,15 +4820,15 @@ footer {
   <section id="quick-start" class="quick-start">
     <div class="container">
       <div class="section-title">
-        <h2>Install 指南<span>10分钟快速上手</span></h2>
-        <p>只需四个步骤，即可完成安装（原Clawdbot/Moltbot）</p>
+        <h2 data-i18n="install.title">Install 指南<span>10分钟快速上手</span></h2>
+        <p data-i18n="install.subtitle">只需四个步骤，即可完成安装（原Clawdbot/Moltbot）</p>
       </div>
       <div class="steps-container">
         <div class="step-card">
           <div class="step-header">
             <div class="step-title">
               <div class="step-number">1</div>
-              <h3>准备环境</h3>
+              <h3 data-i18n="install.step1Title">准备环境</h3>
             </div>
             <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"/>
@@ -4787,18 +4836,18 @@ footer {
           </div>
           <div class="step-content">
             <div class="step-body">
-              <p><strong>你需要准备：</strong></p>
+              <p data-i18n="install.step1Need"><strong>你需要准备：</strong></p>
               <ul>
-                <li><strong>一台电脑</strong> — macOS、Linux 或 Windows (WSL2)</li>
-                <li><strong>Node.js 运行时：</strong>Node ≥22（<a href="https://nodejs.org/" target="_blank" class="text-primary">nodejs.org</a> 下载安装）</li>
-                <li><strong>包管理器：</strong>npm（自带）、pnpm 或 bun</li>
-                <li><strong>大模型 API Key：</strong>Anthropic、OpenAI、OpenRouter 或本地模型</li>
+                <li data-i18n="install.step1Item1"><strong>一台电脑</strong> — macOS、Linux 或 Windows (WSL2)</li>
+                <li data-i18n="install.step1Item2"><strong>Node.js 运行时：</strong>Node ≥22（<a href="https://nodejs.org/" target="_blank" class="text-primary">nodejs.org</a> 下载安装）</li>
+                <li data-i18n="install.step1Item3"><strong>包管理器：</strong>npm（自带）、pnpm 或 bun</li>
+                <li data-i18n="install.step1Item4"><strong>大模型 API Key：</strong>Anthropic、OpenAI、OpenRouter 或本地模型</li>
               </ul>
-              <p><strong>如何检查你的环境：</strong></p>
-              <p>打开终端（Terminal），输入：</p>
+              <p data-i18n="install.step1Check"><strong>如何检查你的环境：</strong></p>
+              <p data-i18n="install.step1CheckDesc">打开终端（Terminal），输入：</p>
               <div class="code-example">node --version<br>npm --version</div>
               <div class="note-box">
-                <p>Node 版本需要 ≥22。如果版本过低，请从 nodejs.org 下载最新 LTS 版本。</p>
+                <p data-i18n="install.step1Version">Node 版本需要 ≥22。如果版本过低，请从 nodejs.org 下载最新 LTS 版本。</p>
               </div>
             </div>
           </div>
@@ -6715,8 +6764,8 @@ footer {
 <footer>
   <div class="container">
     <div class="footer-content">
-      <p class="footer-tagline">OpenClaw — 让 AI 不再只会聊天，而是真正替你干活</p>
-      <p class="footer-copyright">© 2025 OpenClaw AI · 开源自托管 AI Agent</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">OpenClaw — 让 AI 不再只会聊天，而是真正替你干活</p>
+      <p class="footer-copyright" data-i18n="footer.copyright">© 2025 OpenClaw AI · 开源自托管 AI Agent</p>
     </div>
   </div>
 </footer>
@@ -6735,7 +6784,7 @@ footer {
 </div>
 
 <!-- Back to Top Button -->
-<button class="back-to-top" id="backToTop" aria-label="返回顶部">
+<button class="back-to-top" id="backToTop" data-i18n="footer.backToTop" aria-label="返回顶部">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <polyline points="18 15 12 9 6 15"/>
   </svg>
@@ -6744,6 +6793,332 @@ footer {
 <script>
 (function() {
   'use strict';
+
+  // ==================== i18n Configuration ====================
+  const translations = {
+    zh: {
+      // Navigation
+      'nav.intro': '介绍',
+      'nav.features': '特点',
+      'nav.useCases': '玩法',
+      'nav.scenarios': '场景',
+      'nav.quickStart': '快速上手',
+      'nav.videos': '视频教程',
+      'nav.faq': 'FAQ',
+      'nav.getStarted': '开始使用',
+      'nav.menu': '菜单',
+      'nav.switchLang': '切换语言',
+
+      // Hero
+      'hero.title': 'Open Claw：让 AI 不再只会聊天',
+      'hero.titleSpan': '而是真正替你干活',
+      'hero.subtitle': '开源 AI Bot 框架 · 10分钟快速上手 · 完全开源可控',
+      'hero.installBtn': '立即安装（10分钟快速上手）',
+      'hero.quickGuide': '快速安装向导',
+      'hero.step1': '准备环境',
+      'hero.step1Desc': 'Node ≥ 22 + npm',
+      'hero.step2': '安装命令',
+      'hero.step3': '配置向导',
+      'hero.step4': '开始使用',
+      'hero.terminal': '收起演示',
+      'hero.terminalShow': '查看演示',
+
+      // What is
+      'what.title': '什么是 OpenClaw Bot？',
+      'what.subtitle': '开源AI Bot框架，让AI真正替你干活',
+      'what.botName': 'OpenClaw Bot',
+      'what.coreTitle': '核心概念',
+      'what.coreDesc1': 'OpenClaw 是一款开源的 AI Bot 框架，它能让 AI 不再只会聊天，而是真正替你干活。这是你的 AI 执行助手，可以在本地电脑上完成文件管理、内容创作、自动化部署等真实任务。',
+      'what.coreDesc2': '简单来说：ChatGPT 告诉你"怎么做"，OpenClaw 直接"帮你做完"。',
+      'what.frameworkDesc': '这是一款开源的 AI 智能助手框架，能接受自然语言指令，在你的本地电脑或服务器上执行真实任务。',
+      'what.frameworkDesc2': '它不是简单的聊天机器人，而是可以真正采取行动、帮你做事情的智能体。在技术社区、社交媒体和开发者圈里迅速走红，短短几天就吸引了上万开发者参与，访问量在短时间内达到上百万级。',
+      'what.jarvis': '很多人第一次使用它后，形容该框架就像《钢铁侠》里的"个人版 Jarvis"——不仅能理解你的指令，更能真正替你把事情做完。',
+      'what.whyTitle': '为什么它会广受欢迎？',
+      'what.whyDesc': '在该框架出现之前，大家已经习惯了使用各种 AI 聊天机器人。但很快，一个巨大的落差显现出来：',
+      'what.compare1': '写点文案 → OK',
+      'what.compare2': '解释概念 → OK',
+      'what.compare3': '真正替我把事做完 → ❌❌❌',
+      'what.compareQuote': '"AI 很聪明，但为什么我每天还是这么忙？"',
+      'what.answer': '它给了一个非常直接的答案：因为你用错形态了。不是 Chatbot，而是 Agent。',
+      'what.evolutionTitle': '项目名称的演进',
+      'what.evolutionDesc': '项目曾用名：Clawdbot → Moltbot → 现在的 OpenClaw',
+      'what.evolutionNote': '很多早期教程和视频可能使用"clawdbot"或"moltbot"，搜索这些关键词可以找到更多历史内容。',
+      'what.evolutionWarning': '"moltbook" 是常见的拼写错误，不是项目名称。',
+      'what.diffTitle': '和传统 AI 的本质区别',
+      'what.diffChatbot': '传统 Chatbot',
+      'what.diffAgent': 'AI Agent（OpenClaw）',
+      'what.diffQ1': '能帮我写代码吗？',
+      'what.diffA1': '能写，但复制粘贴要你自己来',
+      'what.diffQ2': '能帮我写代码吗？',
+      'what.diffA2': '直接创建文件，写好代码，保存',
+      'what.diffQ3': '能部署我的项目吗？',
+      'what.diffA3': '给你命令，你自己敲',
+      'what.diffQ4': '能部署我的项目吗？',
+      'what.diffA4': '执行构建、测试、部署一条龙',
+      'what.diffQ5': '能分析数据吗？',
+      'what.diffA5': '给你分析结果，你自己看',
+      'what.diffQ6': '能分析数据吗？',
+      'what.diffA6': '读取数据，分析图表，生成报告',
+      'what.diffSummary': '💡 核心：前者是"建议者"，后者是"执行者"',
+
+      // Features
+      'features.title': 'AI Bot 的核心特点',
+      'features.titleSpan': '核心特点',
+      'features.subtitle': '六大核心能力，让 AI Bot 真正成为你的生产力助手',
+      'features.intro': '本节介绍框架的核心能力和特点，以及如何在不同场景中使用它提升生产力。',
+      'features.goalTitle': '目标导向',
+      'features.goalDesc': '你给一个目标，它自己拆解步骤并执行。你只说"想要什么"，它自己想"怎么做"',
+      'features.actionTitle': '有手有脚',
+      'features.actionDesc': '能操作文件系统、执行命令、调用工具。它可以读写你的本地文件、执行 shell/脚本、打开网页抓数据、调 API、连第三方工具',
+      'features.memoryTitle': '长期记忆',
+      'features.memoryDesc': '记住之前的任务和上下文。它记得你之前做过什么，能在任务之间承接上下文',
+      'features.controlTitle': '高度可控',
+      'features.controlDesc': '每一步都可追踪、可审计、可管理。行为可追踪、每一步可回溯、工具调用是显式的、你可以随时打断/重定向',
+      'features.modelTitle': '模型灵活',
+      'features.modelDesc': '支持 OpenAI、Claude、Google Gemini、OpenRouter、本地模型（通过 Ollama）等多种选择。今天用 GPT，明天换 Claude，后天接本地模型',
+      'features.openTitle': '开源透明',
+      'features.openDesc': '代码开源，可自托管，可定制。不是产品，而是"Agent 操作系统雏形"',
+
+      // Quick Start
+      'install.title': 'OpenClaw 安装指南 · 10分钟快速上手',
+      'install.titleSpan': '10分钟快速上手',
+      'install.subtitle': '只需四个步骤，即可完成安装（原Clawdbot/Moltbot）',
+      'install.step1Title': '准备环境',
+      'install.step1Need': '你需要准备：',
+      'install.step1Item1': '一台电脑 — macOS、Linux 或 Windows (WSL2)',
+      'install.step1Item2': 'Node.js 运行时：Node ≥22（nodejs.org 下载安装）',
+      'install.step1Item3': '包管理器：npm（自带）、pnpm 或 bun',
+      'install.step1Item4': '大模型 API Key：Anthropic、OpenAI、OpenRouter 或本地模型',
+      'install.step1Check': '如何检查你的环境：',
+      'install.step1CheckDesc': '打开终端（Terminal），输入：',
+      'install.step1Version': 'Node 版本需要 ≥22。如果版本过低，请从 nodejs.org 下载最新 LTS 版本。',
+      'install.step2Title': 'OpenClaw Install: 安装步骤',
+      'install.step2Desc': 'OpenClaw Install 命令说明：',
+      'install.step2Desc2': '打开你的命令行（终端），执行以下 openclaw install 命令：',
+      'install.step2Note': '推荐使用 -g 全局安装，这样可以在任何目录下使用 openclaw 命令。如果遇到权限问题，macOS/Linux 可能需要使用 sudo。',
+      'install.step2Recommend': '推荐方式：npm 安装是最简单快捷的 openclaw install 方式。下一步的 openclaw onboard 向导会自动完成所有配置，包括 API Key、Gateway daemon 和工作区设置。',
+      'install.step3Title': '配置与初始化',
+      'install.step3Desc': '运行向导命令开始配置：',
+      'install.step3Auto': '向导会自动完成：',
+      'install.step3Item1': '检测你的系统环境',
+      'install.step3Item2': '配置 API Key（支持 Anthropic、OpenAI、OpenRouter 等）',
+      'install.step3Item3': '安装 Gateway daemon 服务（后台运行）',
+      'install.step3Item4': '设置默认工作目录和权限',
+      'install.step3Daemon': 'OpenClaw Gateway daemon 服务安装后，它将在后台持续运行，可以接收来自 Telegram、WhatsApp 等平台的指令。',
+      'install.step4Title': '开始使用',
+      'install.step4Desc': '现在你可以开始使用 OpenClaw 了！',
+
+      // FAQ
+      'faq.title': '常见问题',
+      'faq.subtitle': '关于 OpenClaw 的常见问题解答',
+
+      // Footer
+      'footer.tagline': 'OpenClaw — 让 AI 不再只会聊天，而是真正替你干活',
+      'footer.copyright': '© 2025 OpenClaw AI · 开源自托管 AI Agent',
+      'footer.backToTop': '返回顶部',
+
+      // Meta
+      'meta.title': 'OpenClaw - 开源AI Agent框架 | 让AI真正替你干事的智能助手',
+      'meta.description': 'What is OpenClaw? OpenClaw是开源AI Bot框架，让AI真正替你干活。OpenClaw bot可通过自然语言在你的电脑执行文件管理、内容创作、自动化部署等真实任务。支持OpenAI、Claude，10分钟openclaw install快速上手。'
+    },
+    en: {
+      // Navigation
+      'nav.intro': 'Introduction',
+      'nav.features': 'Features',
+      'nav.useCases': 'Use Cases',
+      'nav.scenarios': 'Scenarios',
+      'nav.quickStart': 'Quick Start',
+      'nav.videos': 'Videos',
+      'nav.faq': 'FAQ',
+      'nav.getStarted': 'Get Started',
+      'nav.menu': 'Menu',
+      'nav.switchLang': 'Switch Language',
+
+      // Hero
+      'hero.title': 'Open Claw: Make AI Beyond Chat',
+      'hero.titleSpan': 'Actually Work for You',
+      'hero.subtitle': 'Open Source AI Bot Framework · 10-Minute Quick Start · Fully Open Source',
+      'hero.installBtn': 'Install Now (10-Minute Quick Start)',
+      'hero.quickGuide': 'Quick Installation Guide',
+      'hero.step1': 'Prepare Environment',
+      'hero.step1Desc': 'Node ≥ 22 + npm',
+      'hero.step2': 'Install Command',
+      'hero.step3': 'Configuration Wizard',
+      'hero.step4': 'Start Using',
+      'hero.terminal': 'Hide Demo',
+      'hero.terminalShow': 'View Demo',
+
+      // What is
+      'what.title': 'What is OpenClaw Bot?',
+      'what.subtitle': 'Open Source AI Bot Framework That Actually Works for You',
+      'what.botName': 'OpenClaw Bot',
+      'what.coreTitle': 'Core Concept',
+      'what.coreDesc1': 'OpenClaw is an open-source AI Bot framework that makes AI do more than just chat—it actually does the work for you. It\'s your AI execution assistant that can complete real tasks like file management, content creation, and automated deployment on your local computer.',
+      'what.coreDesc2': 'Simply put: ChatGPT tells you "how to do it", OpenClaw just "does it for you".',
+      'what.frameworkDesc': 'This is an open-source AI assistant framework that accepts natural language commands and executes real tasks on your local computer or server.',
+      'what.frameworkDesc2': 'It\'s not just a simple chatbot, but an agent that can truly take action and do things for you. It quickly gained popularity in tech communities, social media, and developer circles, attracting tens of thousands of developers and reaching millions of visits in a short time.',
+      'what.jarvis': 'Many people describe it as a "personal JARVIS" from Iron Man after using it—it not only understands your commands, but actually completes tasks for you.',
+      'what.whyTitle': 'Why is it so popular?',
+      'what.whyDesc': 'Before this framework, people were used to using various AI chatbots. But soon, a huge gap emerged:',
+      'what.compare1': 'Write copy → OK',
+      'what.compare2': 'Explain concepts → OK',
+      'what.compare3': 'Actually do the work → ❌❌❌',
+      'what.compareQuote': '"AI is smart, but why am I still so busy?"',
+      'what.answer': 'It gives a very direct answer: Because you\'re using the wrong form. Not Chatbot, but Agent.',
+      'what.evolutionTitle': 'Project Name Evolution',
+      'what.evolutionDesc': 'Former names: Clawdbot → Moltbot → Now OpenClaw',
+      'what.evolutionNote': 'Many early tutorials and videos may use "clawdbot" or "moltbot", searching these keywords can find more historical content.',
+      'what.evolutionWarning': '"moltbook" is a common typo, not the project name.',
+      'what.diffTitle': 'Key Difference from Traditional AI',
+      'what.diffChatbot': 'Traditional Chatbot',
+      'what.diffAgent': 'AI Agent (OpenClaw)',
+      'what.diffQ1': 'Can you help me write code?',
+      'what.diffA1': 'Can write, but you copy-paste yourself',
+      'what.diffQ2': 'Can you help me write code?',
+      'what.diffA2': 'Create file, write code, save directly',
+      'what.diffQ3': 'Can you deploy my project?',
+      'what.diffA3': 'Give you commands, you type them',
+      'what.diffQ4': 'Can you deploy my project?',
+      'what.diffA4': 'Build, test, deploy all-in-one',
+      'what.diffQ5': 'Can you analyze data?',
+      'what.diffA5': 'Give analysis results, you read them',
+      'what.diffQ6': 'Can you analyze data?',
+      'what.diffA6': 'Read data, analyze charts, generate report',
+      'what.diffSummary': 'Core: The former is an "advisor", the latter is an "executor"',
+
+      // Features
+      'features.title': 'AI Bot Core Features',
+      'features.titleSpan': 'Core Features',
+      'features.subtitle': 'Six core capabilities to make AI Bot truly your productivity assistant',
+      'features.intro': 'This section introduces the framework\'s core capabilities and features, and how to use it in different scenarios to improve productivity.',
+      'features.goalTitle': 'Goal-Oriented',
+      'features.goalDesc': 'You give a goal, it breaks down steps and executes itself. You only say "what you want", it figures out "how to do it"',
+      'features.actionTitle': 'Actionable',
+      'features.actionDesc': 'Can operate file system, execute commands, call tools. It can read/write your local files, execute shell/scripts, open web pages to scrape data, call APIs, connect third-party tools',
+      'features.memoryTitle': 'Long-term Memory',
+      'features.memoryDesc': 'Remembers previous tasks and context. It remembers what you\'ve done before and can carry context between tasks',
+      'features.controlTitle': 'Highly Controllable',
+      'features.controlDesc': 'Every step is traceable, auditable, manageable. Behavior is traceable, every step can be rolled back, tool calls are explicit, you can interrupt/redirect anytime',
+      'features.modelTitle': 'Flexible Models',
+      'features.modelDesc': 'Supports OpenAI, Claude, Google Gemini, OpenRouter, local models (via Ollama) and more. Use GPT today, switch to Claude tomorrow, connect local models the day after',
+      'features.openTitle': 'Open Source & Transparent',
+      'features.openDesc': 'Code is open source, self-hostable, customizable. Not a product, but an "Agent operating system prototype"',
+
+      // Quick Start
+      'install.title': 'OpenClaw Install Guide · 10-Minute Quick Start',
+      'install.titleSpan': '10-Minute Quick Start',
+      'install.subtitle': 'Just four steps to complete installation (formerly Clawdbot/Moltbot)',
+      'install.step1Title': 'Prepare Environment',
+      'install.step1Need': 'You need to prepare:',
+      'install.step1Item1': 'A computer — macOS, Linux, or Windows (WSL2)',
+      'install.step1Item2': 'Node.js runtime: Node ≥22 (download from nodejs.org)',
+      'install.step1Item3': 'Package manager: npm (included), pnpm, or bun',
+      'install.step1Item4': 'LLM API Key: Anthropic, OpenAI, OpenRouter, or local model',
+      'install.step1Check': 'How to check your environment:',
+      'install.step1CheckDesc': 'Open Terminal and type:',
+      'install.step1Version': 'Node version needs to be ≥22. If version is too low, download the latest LTS from nodejs.org.',
+      'install.step2Title': 'OpenClaw Install: Installation Steps',
+      'install.step2Desc': 'OpenClaw Install command description:',
+      'install.step2Desc2': 'Open your command line (terminal) and execute the following openclaw install command:',
+      'install.step2Note': 'Recommend using -g for global installation, so you can use openclaw command in any directory. If you encounter permission issues, macOS/Linux may need to use sudo.',
+      'install.step2Recommend': 'Recommended method: npm installation is the simplest and quickest openclaw install method. The next openclaw onboard wizard will automatically complete all configurations, including API Key, Gateway daemon, and workspace setup.',
+      'install.step3Title': 'Configuration & Initialization',
+      'install.step3Desc': 'Run the wizard command to start configuration:',
+      'install.step3Auto': 'The wizard will automatically complete:',
+      'install.step3Item1': 'Detect your system environment',
+      'install.step3Item2': 'Configure API Key (supports Anthropic, OpenAI, OpenRouter, etc.)',
+      'install.step3Item3': 'Install Gateway daemon service (runs in background)',
+      'install.step3Item4': 'Set default workspace and permissions',
+      'install.step3Daemon': 'After the OpenClaw Gateway daemon service is installed, it will run continuously in the background and can receive commands from platforms like Telegram, WhatsApp.',
+      'install.step4Title': 'Start Using',
+      'install.step4Desc': 'Now you can start using OpenClaw!',
+
+      // FAQ
+      'faq.title': 'Frequently Asked Questions',
+      'faq.subtitle': 'Common questions and answers about OpenClaw',
+
+      // Footer
+      'footer.tagline': 'OpenClaw — Make AI Beyond Chat, Actually Work for You',
+      'footer.copyright': '© 2025 OpenClaw AI · Open Source Self-Hosted AI Agent',
+      'footer.backToTop': 'Back to Top',
+
+      // Meta
+      'meta.title': 'OpenClaw - Open Source AI Agent Framework | Let AI Truly Work for You',
+      'meta.description': 'What is OpenClaw? OpenClaw is an open-source AI Bot framework that makes AI actually work for you. OpenClaw bot can execute real tasks like file management, content creation, automated deployment on your computer through natural language. Supports OpenAI, Claude, 10-minute openclaw install quick start.'
+    }
+  };
+
+  // Current language
+  let currentLang = localStorage.getItem('openclaw-lang') || 'zh';
+
+  // Apply translation
+  function t(key, params = {}) {
+    const lang = translations[currentLang] || translations.zh;
+    let text = lang[key] || translations.zh[key] || key;
+
+    // Replace placeholders like {bot}, {span}
+    Object.keys(params).forEach(param => {
+      text = text.replace(`{${param}}`, params[param]);
+    });
+
+    return text;
+  }
+
+  // Update all elements with data-i18n attribute
+  function updateTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const text = t(key);
+
+      // For elements with aria-label (buttons)
+      if (el.getAttribute('aria-label') && !el.textContent.trim()) {
+        el.setAttribute('aria-label', text);
+      }
+
+      // Handle different element types
+      if (el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
+        el.setAttribute('placeholder', text);
+      } else if (el.querySelector('svg, code')) {
+        // For elements with SVG or code - preserve structure but update text
+        let html = el.innerHTML;
+        // Simple text replacement for common cases
+        if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
+          el.childNodes[0].textContent = text;
+        } else if (el.querySelector('svg') && el.childNodes.length > 0) {
+          // For buttons with SVG, replace text node after SVG
+          let textNode = null;
+          el.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+              node.textContent = ' ' + text;
+            } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'svg' &&
+                       !node.querySelector('svg') && node.textContent.trim()) {
+              node.textContent = text;
+            }
+          });
+        } else {
+          el.textContent = text;
+        }
+      } else {
+        el.textContent = text;
+      }
+    });
+
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+
+    // Update language switcher text
+    const langCurrent = document.querySelector('.lang-current');
+    if (langCurrent) {
+      langCurrent.textContent = currentLang === 'zh' ? '中文' : 'EN';
+    }
+  }
+
+  // Switch language
+  function switchLanguage() {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    localStorage.setItem('openclaw-lang', currentLang);
+    updateTranslations();
+  }
 
   // Elements
   const scrollProgress = document.getElementById('scrollProgress');
@@ -6758,6 +7133,15 @@ footer {
   // Variables
   let lastScrollY = 0;
   let ticking = false;
+
+  // Language switcher
+  const langSwitcher = document.getElementById('langSwitcher');
+  if (langSwitcher) {
+    langSwitcher.addEventListener('click', switchLanguage);
+  }
+
+  // Initialize translations on page load
+  updateTranslations();
 
   // Scroll Progress & Header Hide/Show
   function onScroll() {
