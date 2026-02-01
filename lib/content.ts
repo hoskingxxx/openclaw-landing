@@ -20,7 +20,7 @@ export const navigation = [
   { title: "使用场景", href: "/use-cases" },
   { title: "指令生成器", href: "/command-builder" },
   { title: "博客", href: "/blog" },
-  { title: "资源推荐", href: "/resources" },
+  // { title: "资源推荐", href: "/resources" }, // 暂时隐藏，页面未完成
   { title: "视频教程", href: "/videos" },
   { title: "常见问题", href: "/faq" },
 ]

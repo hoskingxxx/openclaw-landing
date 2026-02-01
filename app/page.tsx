@@ -1,10 +1,10 @@
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { FeatureCard } from "@/components/FeatureCard";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 import { NextStepCard } from "@/components/NextSteps";
-import Link from "next/link";
 import {
   useCases,
   comparisonTable,
@@ -13,10 +13,37 @@ import {
   installSteps,
 } from "@/lib/content";
 
+function PromoBanner() {
+  return (
+    <Link
+      href="/blog/how-to-use-deepseek-with-openclaw"
+      className="block relative overflow-hidden group cursor-pointer"
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20" />
+      <div className="relative max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-center gap-3">
+          <span className="text-2xl animate-pulse"></span>
+          <span className="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+            热门教程：如何用 DeepSeek R1 零成本驱动 OpenClaw
+          </span>
+          <span className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm font-medium group-hover:bg-white/30 transition-colors">
+            立即查看
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       <Navigation />
+      <PromoBanner />
       <main>
         {/* Hero 区域 */}
         <Hero />
