@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://openclaw-ai.org/sitemap.xml
+
+# Disallow if needed
+# Disallow: /admin/
+# Disallow: /private/
