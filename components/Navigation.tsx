@@ -10,7 +10,7 @@ export function Navigation() {
 
   return (
     <>
-      {/* 移动端遮罩 */}
+      {/* Mobile Overlay */}
       {mobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -33,7 +33,7 @@ export function Navigation() {
               <span className="text-lg font-semibold text-text-primary hidden sm:block">OpenClaw</span>
             </Link>
 
-            {/* 桌面导航 */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
               {navigation.map((item) => (
                 <Link
@@ -46,17 +46,17 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* 移动端菜单按钮 */}
+            {/* Mobile Menu Button */}
             <button
               className="lg:hidden p-3 text-text-primary hover:bg-white/5 rounded-lg transition-colors min-h-[44px] min-w-[44px]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "关闭菜单" : "打开菜单"}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
           </div>
 
-          {/* 移动端导航菜单 */}
+          {/* Mobile Navigation Menu */}
           {mobileMenuOpen && (
             <div className="lg:hidden mt-4 pb-4 border-t border-white/10 pt-4">
               <div className="flex flex-col gap-1">

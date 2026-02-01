@@ -1,189 +1,191 @@
 ---
-title: "如何使用 DeepSeek R1 驱动 OpenClaw：零成本打造本地最强 AI 员工"
+title: "How to Run OpenClaw with DeepSeek R1: The Zero-Cost Local Agent Guide"
 date: "2026-02-01"
-description: "Claude API 太贵？试试免费的 DeepSeek R1。本文手把手教你配置 DeepSeek 驱动 OpenClaw，实现零成本本地 AI 员工。"
-tags: ["DeepSeek", "OpenClaw", "教程", "本地部署", "降本增效"]
-category: "教程"
+description: "Claude API too expensive? Try the free DeepSeek R1. Step-by-step guide to configure DeepSeek with OpenClaw for zero-cost local AI agents."
+tags: ["DeepSeek", "OpenClaw", "Tutorial", "Local Deployment", "Cost Optimization"]
+category: "Tutorial"
 featured: true
 seoKeywords: ["DeepSeek R1", "OpenClaw tutorial", "Local LLM Agent", "DeepSeek API setup"]
 ---
 
-> **免责声明**：本文基于 DeepSeek 与 OpenClaw 最新 API 文档编写。技术迭代较快，如遇配置问题，欢迎在评论区反馈。
+> **🇨🇳 中文用户请点这里阅读中文版指南** [中文版](/blog/deepseek-guide-cn)
 
-Claude API 太贵？OpenAI 充值太麻烦？不妨试试 **DeepSeek R1**。
+> **Disclaimer**: This guide is based on the latest DeepSeek and OpenClaw API documentation. Technology evolves quickly—if you encounter any setup issues, leave a comment below.
 
-本文将手把手教你如何配置 DeepSeek 驱动 OpenClaw，在保持 **GPT-4 级别推理能力** 的同时，大幅降低甚至做到 **零 API 成本**。
+Claude API too expensive? OpenAI top-up a hassle? Give **DeepSeek R1** a try.
 
----
-
-## 引言：为什么 DeepSeek R1 是 OpenClaw 的绝配？
-
-使用 OpenClaw 搭配 Claude Opus 或 GPT-4，效果确实很强，但跑一个月下来账单可能让你怀疑人生。
-
-好消息是：**DeepSeek R1** 作为一款国产最强推理模型，在 Agent 任务和中文理解上已经展现出 **超越 GPT-4** 的能力，而价格只有 Claude 的 **1/10** 甚至更低。
-
-**DeepSeek R1 的核心优势：**
-
-- ✅ **完全兼容 OpenAI 协议**：可以无缝接入 OpenClaw
-- ✅ **推理模式 (Chain of Thought)**：在执行复杂代码任务时，比普通模型更稳，不易死循环
-- ✅ **新用户福利**：注册即送 **500 万 tokens**（够 OpenClaw 跑好几个月）
-- ✅ **支持本地运行**：配合 Ollama，连网费都能省
+This guide walks you through setting up DeepSeek with OpenClaw—maintaining **GPT-4 level reasoning** while reducing your API costs to **near zero**.
 
 ---
 
-## 步骤一：注册 DeepSeek API
+## Why DeepSeek R1 is Perfect for OpenClaw
 
-1. **访问官网**：打开 [DeepSeek 开放平台](https://www.deepseek.com/)
-2. **注册账号**：支持手机号或邮箱注册
-3. **创建 API Key**：
-   - 登录后点击左侧菜单「API Keys」
-   - 点击「创建 API Key」
-   - *注意：复制并保存好你的 Key（sk-开头），它只会出现一次*
+OpenClaw with Claude Opus or GPT-4 performs exceptionally well, but run it for a month and your credit card statement might shock you.
+
+Here's the key: **DeepSeek R1** delivers **GPT-4 tier performance** on Agent tasks and Chinese understanding—at **1/10th the cost** of Claude or less.
+
+**Why choose DeepSeek R1:**
+
+- ✅ **Full OpenAI API compatibility**: Drop-in replacement for OpenClaw
+- ✅ **Chain of Thought (CoT)**: More stable on complex code tasks, fewer infinite loops
+- ✅ **New user bonus**: **5 million tokens** on signup (enough for months of OpenClaw)
+- ✅ **Local deployment**: Pair with Ollama and skip the API entirely
 
 ---
 
-## 步骤二：配置 OpenClaw（关键步骤）
+## Step 1: Get a DeepSeek API Key
 
-我们将使用 **OpenAI 兼容模式** 来接入 DeepSeek。这是最稳定、最简单的配置方法。
+1. **Visit the site**: [DeepSeek Platform](https://www.deepseek.com/)
+2. **Sign up**: Phone or email registration available
+3. **Create API Key**:
+   - Click "API Keys" in the left sidebar
+   - Click "Create API Key"
+   - *Copy and save your key (starts with `sk-`)—it only displays once*
 
-### 方式 A：修改项目配置文件（推荐）
+---
 
-如果你是在项目中使用 OpenClaw，直接修改根目录下的 `.env` 文件是最快的方法。
+## Step 2: Configure OpenClaw (The Important Part)
 
-打开你的 `.env` 文件，更新以下字段：
+We'll use **OpenAI compatibility mode** to integrate DeepSeek. Straightforward and reliable.
+
+### Method A: Edit `.env` File (Recommended)
+
+If you're running OpenClaw in a project, editing the `.env` file is the quickest approach.
+
+Update your `.env` file:
 
 ```bash
-# 设置模型提供商为 OpenAI (因为 DeepSeek 兼容 OpenAI 协议)
+# Set provider to OpenAI (DeepSeek is OpenAI-compatible)
 LLM_PROVIDER="openai"
 
-# ⚠️ 关键点：必须加上 /v1 后缀，否则会报错！
+# ⚠️ CRITICAL: Must include /v1 suffix or requests will fail!
 LLM_BASE_URL="https://api.deepseek.com/v1"
 
-# 填入你的 DeepSeek API Key
-LLM_API_KEY="sk-你的密钥"
+# Your DeepSeek API Key
+LLM_API_KEY="sk-your-key-here"
 
-# 指定使用推理模型 (R1)
+# Use the reasoning model (R1)
 LLM_MODEL="deepseek-reasoner"
-# 如果你想用更便宜的 V3 模型，可以使用 "deepseek-chat"
+# For cheaper V3 model, use "deepseek-chat"
 ```
 
-### 方式 B：临时环境变量（Linux/Mac）
+### Method B: One-time Environment Variables (Linux/Mac)
 
-如果你不想修改配置文件，也可以在终端直接运行：
+Prefer not to edit config files? Run directly from terminal:
 
 ```bash
 export LLM_PROVIDER="openai"
 export LLM_BASE_URL="https://api.deepseek.com/v1"
-export LLM_API_KEY="sk-你的密钥"
+export LLM_API_KEY="sk-your-key-here"
 export LLM_MODEL="deepseek-reasoner"
 
-# 然后直接启动 OpenClaw
-openclaw run "帮我分析当前目录下的代码逻辑"
+# Then start OpenClaw
+openclaw run "Analyze the codebase in this directory"
 ```
 
-### 方式 C：Windows PowerShell
+### Method C: Windows PowerShell
 
 ```powershell
 $env:LLM_PROVIDER="openai"
 $env:LLM_BASE_URL="https://api.deepseek.com/v1"
-$env:LLM_API_KEY="sk-你的密钥"
+$env:LLM_API_KEY="sk-your-key-here"
 $env:LLM_MODEL="deepseek-reasoner"
 ```
 
 ---
 
-## 步骤三：验证运行
+## Step 3: Verify Setup
 
-配置完成后，让我们来测试一下"新员工"的智商。
+Let's test your new AI agent's capabilities.
 
-在终端输入：
+Run in terminal:
 
 ```bash
-openclaw run "请详细解释一下 DeepSeek R1 的推理模式和普通模式有什么区别？"
+openclaw run "Explain the difference between DeepSeek R1 reasoning mode and normal mode"
 ```
 
-**观察输出**：
+**Watch the output**:
 
-如果你看到终端里不仅输出了回答，还输出了类似 `
-```
-` 的思考过程标签，恭喜你！你已经成功用上了 DeepSeek R1 的推理能力。
+If you see the response plus thinking tags like ``
+
+```, you've successfully enabled DeepSeek R1's reasoning engine.
 
 ---
 
-> 💡 **小贴士**：记不住复杂的命令行参数？可以使用本站开发的 [OpenClaw 指令生成器](/command-generator) ，可视化生成所有运行命令，直接复制即可。
+> 💡 **Pro Tip**: Can't remember CLI flags? Use our [OpenClaw Command Generator](/command-generator)—visual builder, ready to copy-paste.
 
 ---
 
-## 进阶玩法：本地运行（完全免费）
+## Advanced: Run Locally (Completely Free)
 
-如果你有一台高性能电脑（Mac M1/M2/M3 或 NVIDIA 显卡），你可以把模型直接装进电脑里，实现 0 成本、离线运行。
+Have a powerful machine (Mac M1/M2/M3 or NVIDIA GPU)? Run the model locally for fully offline, zero-cost operation.
 
-### 1. 安装 Ollama
+### 1. Install Ollama
 
-访问 [Ollama 官网](https://ollama.com/) 下载并安装。
+Download from [Ollama](https://ollama.com/).
 
-### 2. 下载 DeepSeek R1 模型
+### 2. Pull DeepSeek R1 Model
 
-在终端运行：
+Run in terminal:
 
 ```bash
-# 下载 7B 版本 (适合 8G-16G 内存)
+# Pull 7B version (for 8GB-16GB RAM)
 ollama run deepseek-r1:7b
 
-# 或者下载 1.5B 版本 (适合老旧电脑)
+# Or 1.5B version (for older hardware)
 ollama run deepseek-r1:1.5b
 ```
 
-### 3. 配置 OpenClaw 连接本地
+### 3. Point OpenClaw to Local Model
 
-修改你的 `.env` 文件：
+Edit your `.env`:
 
 ```bash
 LLM_PROVIDER="openai"
 
-# ⚠️ 注意：本地 Ollama 的默认端口是 11434
+# ⚠️ Note: Default Ollama port is 11434
 LLM_BASE_URL="http://localhost:11434/v1"
 
-LLM_API_KEY="ollama"  # 本地运行随便填
+LLM_API_KEY="ollama"  # Arbitrary value for local models
 
 LLM_MODEL="deepseek-r1:7b"
 ```
 
-**特别提示**：如果你是在 Docker 中运行 OpenClaw，请将 `localhost` 改为 `host.docker.internal`，否则容器连不上你的宿主机。
+**Note**: If running OpenClaw in Docker, use `host.docker.internal` instead of `localhost` or the container won't reach your host machine.
 
 ---
 
-## 性能与成本对比
+## Performance & Cost Comparison
 
-| 方案 | 月成本 | 推理能力 | 推荐指数 | 备注 |
+| Method | Monthly Cost | Reasoning | Rating | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **DeepSeek API** | ¥0 - ¥10 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | (首选，新用户送额度) |
-| **本地 Ollama (7B)** | ¥0 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | (隐私高，需好电脑) |
-| **Claude Opus** | ¥100+ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | (土豪选) |
+| **DeepSeek API** | $0 - $10 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | (Recommended, free credits for new users) |
+| **Local Ollama (7B)** | $0 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | (Privacy-first, requires decent hardware) |
+| **Claude Opus** | $100+ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | (For those with unlimited budget) |
 
 ---
 
-## 常见问题（FAQ）
+## FAQ
 
-### Q: 为什么 OpenClaw 报错 "404 Not Found"？
+### Q: Why does OpenClaw throw "404 Not Found"?
 
-**A**: 99% 的情况是因为你的 Base URL 忘了加 `/v1`。请检查是否填写为 `https://api.deepseek.com/v1`。
+**A**: 99% of the time you forgot the `/v1` suffix in your Base URL. Verify it's set to `https://api.deepseek.com/v1`.
 
-### Q: deepseek-reasoner 和 deepseek-chat 选哪个？
+### Q: What's the difference between `deepseek-reasoner` and `deepseek-chat`?
 
-**A**: `reasoner` 是 R1（推理版），适合写代码、复杂逻辑分析；`chat` 是 V3（通用版），适合翻译、写文案，速度更快更便宜。
+**A**: `reasoner` is R1 (reasoning model)—best for coding, complex logic. `chat` is V3 (general model)—better for translation, copywriting. Faster and cheaper.
 
-### Q: 我需要改 OpenClaw 的源码吗？
+### Q: Do I need to modify OpenClaw source code?
 
-**A**: 完全不需要。利用 OpenAI 兼容模式即可完美适配。
+**A**: Not at all. OpenAI compatibility mode handles everything.
 
-### Q: 支持函数调用吗？
+### Q: Does function calling work?
 
-**A**: 完全支持！DeepSeek 兼容 OpenAI API，OpenClaw 的所有功能都可以正常使用：
+**A**: Fully supported! DeepSeek is OpenAI-compatible, so all OpenClaw features work:
 
-- ✅ 文件读写
-- ✅ 代码执行
-- ✅ 工具调用
-- ✅ 多 Agent 协作
+- ✅ File read/write
+- ✅ Code execution
+- ✅ Tool calling
+- ✅ Multi-agent collaboration
 
 ---

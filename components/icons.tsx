@@ -1,4 +1,4 @@
-// 图标组件库
+// Icon Component Library
 import { type SVGProps } from "react";
 
 export function HomeIcon(props: SVGProps<SVGSVGElement>) {

@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} - OpenClaw 博客`,
+    title: `${post.title} - OpenClaw Blog`,
     description: post.description,
     keywords: post.seoKeywords.join(", "),
     openGraph: {
@@ -85,19 +85,19 @@ export default async function BlogPostPage({
     <>
       <Navigation />
       <main className="min-h-screen">
-        {/* 面包屑 */}
+        {/* Breadcrumbs */}
         <div className="max-w-4xl mx-auto px-6 pt-8">
           <Breadcrumbs
             items={[
-              { label: "博客", href: "/blog" },
+              { label: "Blog", href: "/blog" },
               { label: post.title, href: `/blog/${post.slug}` },
             ]}
           />
         </div>
 
-        {/* 文章内容 */}
+        {/* Article Content */}
         <article className="max-w-4xl mx-auto px-6 py-8">
-          {/* 文章头部 */}
+          {/* Article Header */}
           <header className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded">
@@ -112,7 +112,7 @@ export default async function BlogPostPage({
               {post.description}
             </p>
             <div className="flex items-center gap-4 text-sm text-text-tertiary">
-              <span>作者: {post.author}</span>
+              <span>By: {post.author}</span>
               <span>•</span>
               <div className="flex gap-2">
                 {post.tags.map((tag) => (
@@ -124,25 +124,25 @@ export default async function BlogPostPage({
             </div>
           </header>
 
-          {/* 文章正文 */}
+          {/* Article Body */}
           <div
             className="glass-card p-8 prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary prose-code:text-blue-300 prose-code:bg-background-tertiary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700 prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-text-secondary prose-img:rounded-lg prose-hr:border-white/10 break-words"
             dangerouslySetInnerHTML={{ __html: postContent.content }}
           />
 
-          {/* 文章底部 CTA */}
+          {/* Article Bottom CTA */}
           <div className="mt-12 p-6 bg-brand-muted/20 rounded-xl border border-brand-primary/30">
             <h3 className="text-xl font-semibold text-text-primary mb-2">
-              想要更多实用教程？
+              Want More Practical Tutorials?
             </h3>
             <p className="text-text-secondary mb-4">
-              订阅我们的博客，获取最新的 OpenClaw 教程和技巧。
+              Subscribe to our blog for the latest OpenClaw tutorials and tips.
             </p>
             <Link
               href="/resources"
               className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-medium rounded-lg transition-colors"
             >
-              查看推荐资源
+              View Recommended Resources
             </Link>
           </div>
         </article>
@@ -150,7 +150,7 @@ export default async function BlogPostPage({
 
       <Footer />
 
-      {/* Article 结构化数据 */}
+      {/* Article Structured Data */}
       <ArticleStructuredData
         title={post.title}
         description={post.description}

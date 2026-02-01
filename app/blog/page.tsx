@@ -7,11 +7,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw 博客 - 教程、案例和最佳实践",
-  description: "深入学习 OpenClaw 的使用技巧、部署教程、实战案例和最新动态。DeepSeek、本地部署、AI Agent 架构解析。",
+  title: "OpenClaw Blog - Tutorials, Cases and Best Practices",
+  description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates. DeepSeek, local deployment, AI Agent architecture explained.",
   openGraph: {
-    title: "OpenClaw 博客 - 教程、案例和最佳实践",
-    description: "深入学习 OpenClaw 的使用技巧、部署教程、实战案例和最新动态。",
+    title: "OpenClaw Blog - Tutorials, Cases and Best Practices",
+    description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates.",
     url: "https://openclaw-ai.org/blog",
   },
 };
@@ -21,25 +21,25 @@ export default function BlogPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        {/* 面包屑 */}
+        {/* Breadcrumbs */}
         <div className="max-w-7xl mx-auto px-6 pt-8">
-          <Breadcrumbs items={[{ label: "博客", href: "/blog" }]} />
+          <Breadcrumbs items={[{ label: "Blog", href: "/blog" }]} />
         </div>
 
-        {/* 页面标题 */}
+        {/* Page Title */}
         <section className="max-w-7xl mx-auto px-6 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            OpenClaw 博客
+            OpenClaw Blog
           </h1>
           <p className="text-xl text-text-secondary">
-            教程、案例和最佳实践
+            Tutorials, Cases and Best Practices
           </p>
         </section>
 
-        {/* 特色文章 */}
+        {/* Featured Posts */}
         {blogPosts.filter((post) => post.featured).length > 0 && (
           <section className="max-w-7xl mx-auto px-6 pb-12">
-            <h2 className="text-2xl font-bold text-text-primary mb-6">精选文章</h2>
+            <h2 className="text-2xl font-bold text-text-primary mb-6">Featured Posts</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {blogPosts.filter((post) => post.featured).map((post) => (
                 <Link
@@ -49,7 +49,7 @@ export default function BlogPage() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="px-2 py-1 text-xs font-medium bg-brand-primary/20 text-brand-primary rounded">
-                      热门
+                      Hot
                     </span>
                     <span className="text-xs text-text-tertiary">{post.date}</span>
                   </div>
@@ -75,9 +75,9 @@ export default function BlogPage() {
           </section>
         )}
 
-        {/* 所有文章 */}
+        {/* All Posts */}
         <section className="max-w-7xl mx-auto px-6 pb-12">
-          <h2 className="text-2xl font-bold text-text-primary mb-6">全部文章</h2>
+          <h2 className="text-2xl font-bold text-text-primary mb-6">All Posts</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogPosts.map((post) => (
               <Link
@@ -112,13 +112,13 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* 下一步推荐 */}
+        {/* Next Step */}
         <NextStepCard
           icon="🛠️"
-          title="查看资源推荐"
-          description="精选 VPS、API 和工具推荐，帮你快速搭建 OpenClaw 环境。"
+          title="View Resources"
+          description="Curated VPS, API and tool recommendations to help you quickly set up OpenClaw."
           href="/resources"
-          linkText="查看推荐资源"
+          linkText="View Recommended Resources"
         />
       </main>
       <Footer />

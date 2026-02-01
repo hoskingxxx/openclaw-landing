@@ -6,16 +6,16 @@ import { faqs, commandTemplates } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw 常见问题 FAQ - 安装配置使用疑难解答",
-  description: "OpenClaw 安装、配置、模型选择、平台接入等常见问题解答。包含快速指令模板和使用场景速查。",
+  title: "OpenClaw FAQ - Installation, Configuration & Usage",
+  description: "Common questions about OpenClaw installation, configuration, model selection, and platform integration. Includes quick command templates and use case reference.",
   openGraph: {
-    title: "OpenClaw 常见问题 FAQ - 安装配置使用疑难解答",
-    description: "OpenClaw 安装、配置、模型选择、平台接入等常见问题解答。",
+    title: "OpenClaw FAQ - Installation, Configuration & Usage",
+    description: "Common questions about OpenClaw installation, configuration, model selection, and platform integration.",
     url: "https://openclaw-ai.org/faq",
   },
 };
 
-// 目录数据
+// TOC data
 const tocItems = faqs.map((cat) => ({
   id: cat.category.replace(/\s+/g, "-").toLowerCase(),
   label: cat.category,
@@ -26,25 +26,25 @@ export default function FAQPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        {/* 面包屑 */}
+        {/* Breadcrumbs */}
         <div className="max-w-4xl mx-auto px-6 pt-8">
-          <Breadcrumbs items={[{ label: "常见问题", href: "/faq" }]} />
+          <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
         </div>
 
-        {/* 页面标题 */}
+        {/* Page Title */}
         <section className="max-w-4xl mx-auto px-6 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            常见问题
+            Frequently Asked Questions
           </h1>
           <p className="text-xl text-text-secondary mb-2">
-            关于 OpenClaw 的常见疑问解答
+            Answers to common questions about OpenClaw
           </p>
           <p className="text-sm text-text-tertiary">
-            原名 Clawdbot / Moltbot —— 你可能在其他地方看到过这些名称
+            Formerly known as Clawdbot / Moltbot —— you may have seen these names elsewhere
           </p>
         </section>
 
-        {/* FAQ 列表 */}
+        {/* FAQ List */}
         <section className="max-w-4xl mx-auto px-6 pb-12">
           <div className="space-y-8">
             {faqs.map((category) => (
@@ -93,14 +93,14 @@ export default function FAQPage() {
           </div>
         </section>
 
-        {/* 指令模板预览 */}
+        {/* Command Templates Preview */}
         <section className="max-w-4xl mx-auto px-6 pb-12">
           <div className="glass-card p-8">
             <h2 className="text-2xl font-bold text-text-primary mb-4">
-              💡 快速指令模板
+              💡 Quick Command Templates
             </h2>
             <p className="text-text-secondary mb-6">
-              使用这些预设模板快速开始，或去指令生成器自定义你的命令。
+              Use these preset templates to get started quickly, or visit the Command Generator to customize your commands.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {commandTemplates.map((template) => (
@@ -116,13 +116,13 @@ export default function FAQPage() {
           </div>
         </section>
 
-        {/* 下一步推荐 */}
+        {/* Next Step */}
         <NextStepCard
           icon="📋"
-          title="查看完整速查表"
-          description="掌握 OpenClaw 的 6 大玩法、万能指令模板和安全指南。"
+          title="View Complete Reference"
+          description="Master OpenClaw's 6 use cases, universal command templates, and safety guide."
           href="/use-cases"
-          linkText="查看使用场景"
+          linkText="View Use Cases"
         />
       </main>
       <Footer />

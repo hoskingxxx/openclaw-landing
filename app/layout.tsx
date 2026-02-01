@@ -4,48 +4,48 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://openclaw-ai.org"),
-  title: "OpenClaw (Clawdbot) - 支持 DeepSeek 的本地 AI 员工",
-  description: "不是聊天机器人，而是你的 AI 员工。你给目标，它负责拆解、执行、汇报。本地部署、隐私安全、支持 DeepSeek R1 / Ollama / Claude / GPT，支持 WhatsApp/Telegram/Slack 等 13+ 平台。",
+  title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
+  description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
   keywords: [
     "OpenClaw",
     "Clawdbot",
     "Moltbot",
     "AI Agent",
     "Local AI Agent",
-    "AI 助手",
-    "AI 员工",
+    "AI Employee",
     "DeepSeek R1",
     "Ollama",
     "Claude",
     "ChatGPT",
-    "本地 AI",
-    "AI 自动化",
+    "Local AI",
+    "AI Automation",
     "Lane-based queue",
-    "车道队列架构",
     "WhatsApp AI",
     "Telegram AI",
     "Slack AI",
-    "AI 程序员",
-    "AI 运维",
+    "AI Programmer",
+    "Devin alternative",
+    "AI Software Engineer",
+    "Zero cost AI",
   ].join(", "),
-  authors: [{ name: "OpenClaw 中文社区" }],
-  creator: "OpenClaw 中文社区",
-  publisher: "OpenClaw 中文社区",
+  authors: [{ name: "OpenClaw Community" }],
+  creator: "OpenClaw Community",
+  publisher: "OpenClaw Community",
 
   // Open Graph
   openGraph: {
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
     url: "https://openclaw-ai.org",
-    title: "OpenClaw 中文资源站 - 你的 AI 员工",
-    description: "不是聊天机器人，而是你的 AI 员工。你给目标，它负责拆解、执行、汇报。",
-    siteName: "OpenClaw 中文资源站",
+    title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
+    description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
+    siteName: "OpenClaw Resource Site",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "OpenClaw 中文资源站",
+        alt: "OpenClaw Resource Site",
       },
     ],
   },
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "OpenClaw 中文资源站 - 你的 AI 员工",
-    description: "不是聊天机器人，而是你的 AI 员工。你给目标，它负责拆解、执行、汇报。",
+    title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
+    description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
     images: ["/og-image.png"],
   },
 
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
 
-  // Verification（需要时添加）
+  // Verification
   verification: {
     google: "lnGWnIBkynUpLCvSTBaQo1UJC_tBWsGTlrZKZOzMkUM",
   },
@@ -83,14 +83,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <head>
-        {/* 结构化数据 */}
+        {/* Structured Data */}
         <WebSiteStructuredData />
         <SoftwareStructuredData />
         <FAQStructuredData />
 
-        {/* Microsoft Clarity 热力图埋点 - 上线时取消注释并替换 PROJECT_ID */}
+        {/* Microsoft Clarity Analytics - Uncomment and replace PROJECT_ID when going live */}
         {/*
         <script
           dangerouslySetInnerHTML={{

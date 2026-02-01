@@ -1,46 +1,46 @@
-// OpenClaw 中文资源站 - 核心内容数据
-// 根据 https://github.com/openclaw/openclaw 官方仓库校验
+// OpenClaw Resource Site - Core Content Data
+// Based on https://github.com/openclaw/openclaw official repository
 
 // ============================================================================
-// 站点配置
+// Site Config
 // ============================================================================
 export const siteConfig = {
-  title: "OpenClaw 中文资源站",
-  description: "不是聊天机器人，而是你的 AI 员工。你给目标，它负责拆解、执行、汇报。",
+  title: "OpenClaw Resource Site",
+  description: "Not just a chatbot, but your AI Employee. You set goals, it breaks them down, executes, and reports back.",
   url: "https://openclaw-ai.org",
   ogImage: "/og-image.png",
 }
 
 // ============================================================================
-// 导航配置
+// Navigation
 // ============================================================================
 export const navigation = [
-  { title: "首页", href: "/" },
-  { title: "快速开始", href: "/quick-start" },
-  { title: "使用场景", href: "/use-cases" },
-  { title: "指令生成器", href: "/command-builder" },
-  { title: "博客", href: "/blog" },
-  // { title: "资源推荐", href: "/resources" }, // 暂时隐藏，页面未完成
-  { title: "视频教程", href: "/videos" },
-  { title: "常见问题", href: "/faq" },
+  { title: "Home", href: "/" },
+  { title: "Quick Start", href: "/quick-start" },
+  { title: "Use Cases", href: "/use-cases" },
+  { title: "Generator", href: "/command-builder" },
+  { title: "Blog", href: "/blog" },
+  // { title: "Resources", href: "/resources" }, // Hidden - page not ready
+  { title: "Videos", href: "/videos" },
+  { title: "FAQ", href: "/faq" },
 ]
 
 // ============================================================================
-// 安装步骤（已根据官方 GitHub 更新）
+// Installation Steps (updated from official GitHub)
 // ============================================================================
 export const installSteps = [
   {
-    title: "安装运行时",
-    description: "确保已安装 Node.js ≥22",
+    title: "Install Runtime",
+    description: "Ensure Node.js ≥22 is installed",
     commands: {
       macos: "brew install node",
-      linux: "apt install nodejs  # 或 distro 包管理器",
-      windows: "从 nodejs.org 下载安装",
+      linux: "apt install nodejs  # or distro package manager",
+      windows: "Download from nodejs.org",
     },
   },
   {
-    title: "安装 OpenClaw",
-    description: "使用 npm 全局安装最新版本",
+    title: "Install OpenClaw",
+    description: "Install latest version globally with npm",
     commands: {
       npm: "npm install -g openclaw@latest",
       pnpm: "pnpm add -g openclaw@latest",
@@ -48,8 +48,8 @@ export const installSteps = [
     },
   },
   {
-    title: "运行向导",
-    description: "向导会自动配置 Gateway daemon 和基础设置",
+    title: "Run Onboarding Wizard",
+    description: "Wizard will auto-configure Gateway daemon and basic settings",
     commands: {
       main: "openclaw onboard --install-daemon",
     },
@@ -57,13 +57,13 @@ export const installSteps = [
 ]
 
 // ============================================================================
-// 支持的模型列表（已根据官方 GitHub 更新）
+// Supported Models (updated from official GitHub)
 // ============================================================================
 export const supportedModels = {
   recommended: {
     provider: "Anthropic",
     models: ["Claude Pro/Max (100/200)", "Opus 4.5"],
-    reason: "长上下文 + 更好的 prompt-injection 抗性",
+    reason: "Long context + better prompt-injection resistance",
   },
   providers: [
     {
@@ -74,21 +74,21 @@ export const supportedModels = {
     },
     {
       name: "OpenAI",
-      auth: "API Key 或 OAuth (ChatGPT/Codex)",
+      auth: "API Key or OAuth (ChatGPT/Codex)",
       models: ["GPT-4", "GPT-4o"],
       recommended: false,
     },
     {
-      name: "本地模型",
-      auth: "自定义配置",
-      models: "通过配置接入",
+      name: "Local Models",
+      auth: "Custom config",
+      models: "Connect via configuration",
       recommended: false,
     },
   ],
 }
 
 // ============================================================================
-// 支持的频道/平台（已根据官方 GitHub 更新）
+// Supported Channels/Platforms (updated from official GitHub)
 // ============================================================================
 export const supportedChannels = {
   mainstream: [
@@ -116,101 +116,101 @@ export const supportedChannels = {
 }
 
 // ============================================================================
-// 6 大使用场景
+// 6 Use Cases
 // ============================================================================
 export const useCases = [
   {
     id: "ai-programmer",
-    title: "AI 程序员",
+    title: "AI Programmer",
     icon: "👨‍💻",
-    description: "自动读仓库、定位 bug、修改代码、输出 patch",
-    audience: ["独立开发者", "工程师", "在维护旧项目的人"],
-    exampleCommand: `目标：修复当前项目的报错
-范围：src/ 目录
-约束：不新增依赖
-输出：diff + 原因说明`,
+    description: "Auto-read repos, locate bugs, modify code, output patches",
+    audience: ["Indie developers", "Engineers", "Maintaining legacy projects"],
+    exampleCommand: `Goal: Fix current project errors
+Scope: src/ directory
+Constraints: No new dependencies
+Output: diff + explanation`,
     popular: true,
   },
   {
     id: "ai-ops",
-    title: "AI 运维/SRE",
+    title: "AI DevOps/SRE",
     icon: "🔧",
-    description: "查日志、跑命令、重启服务、自动排查故障",
-    audience: ["运维", "技术负责人", "有服务器的人"],
-    exampleCommand: `检查最近 24 小时服务异常
-分析日志
-给出最小修复方案
-不要执行破坏性命令`,
+    description: "Check logs, run commands, restart services, auto-troubleshoot",
+    audience: ["DevOps", "Tech leads", "Server owners"],
+    exampleCommand: `Check service anomalies in last 24 hours
+Analyze logs
+Give minimal fix plan
+Don't run destructive commands`,
     popular: false,
   },
   {
     id: "data-processing",
-    title: "自动化数据处理",
+    title: "Automated Data Processing",
     icon: "📊",
-    description: "清洗数据、合并文件、统计分析、输出新文件",
-    audience: ["做数据/运营/SEO", "经常处理 CSV/Excel 的人"],
-    exampleCommand: `读取 data/ 下所有 CSV
-清洗空值
-合并为一个表
-输出 summary.csv`,
+    description: "Clean data, merge files, statistical analysis, output new files",
+    audience: ["Data/Operations/SEO", "Regular CSV/Excel processors"],
+    exampleCommand: `Read all CSVs in data/
+Clean null values
+Merge into single table
+Output summary.csv`,
     popular: false,
   },
   {
     id: "knowledge-assistant",
-    title: "本地知识助理",
+    title: "Local Knowledge Assistant",
     icon: "📚",
-    description: "只基于本地资料回答问题、查文档、总结信息",
-    audience: ["有大量文档的人", "不想上传资料到云端的人"],
-    exampleCommand: `仅基于 docs/ 目录
-回答：我们的退款规则是什么
-给出处文件路径`,
+    description: "Answer questions based on local docs, search docs, summarize info",
+    audience: ["Lots of documentation", "Don't want to upload to cloud"],
+    exampleCommand: `Only based on docs/ directory
+Answer: What is our refund policy
+Cite source file paths`,
     popular: false,
   },
   {
     id: "seo-content",
-    title: "SEO/内容批量生产",
+    title: "SEO/Content Batch Production",
     icon: "✍️",
-    description: "扫描目录、批量生成内容、改写优化文案",
-    audience: ["站长", "内容创业者", "做 niche site 的人"],
-    exampleCommand: `读取 keywords.txt
-为每个关键词生成 SEO 页面草稿
-输出为 markdown 文件`,
+    description: "Scan directories, batch generate content, rewrite and optimize copy",
+    audience: ["Site owners", "Content creators", "Niche site builders"],
+    exampleCommand: `Read keywords.txt
+Generate SEO page draft for each keyword
+Output as markdown files`,
     popular: false,
   },
   {
     id: "multi-agent",
-    title: "多 Agent 协作",
+    title: "Multi-Agent Collaboration",
     icon: "🤖",
-    description: "一个 Agent 分析、一个执行、一个校验",
-    audience: ["高阶用户", "想玩 Agent 架构的人"],
-    exampleCommand: `Agent A：拆解任务
-Agent B：执行操作
-Agent C：检查结果是否符合目标`,
+    description: "One agent analyzes, one executes, one verifies",
+    audience: ["Advanced users", "Want to play with Agent architecture"],
+    exampleCommand: `Agent A: Break down task
+Agent B: Execute operations
+Agent C: Check if results meet goals`,
     popular: false,
     advanced: true,
   },
 ]
 
 // ============================================================================
-// 视频教程（带指令提取）
+// Video Tutorials (with command extraction)
 // ============================================================================
 export const videoTutorials = [
   {
     id: "dpFSzPiYwac",
     platform: "youtube",
-    title: "OpenClaw 爆火的 AI 自动化神器！本地部署最新教程",
+    title: "OpenClaw Viral AI Automation Tool! Latest Local Deployment Tutorial",
     duration: "12:34",
     notes: [
       {
-        title: "安装命令",
+        title: "Install Command",
         code: "npm install -g openclaw@latest",
       },
       {
-        title: "启动向导",
+        title: "Start Wizard",
         code: "openclaw onboard --install-daemon",
       },
       {
-        title: "启动 Gateway",
+        title: "Start Gateway",
         code: "openclaw gateway --port 18789 --verbose",
       },
     ],
@@ -222,11 +222,11 @@ export const videoTutorials = [
     duration: "15:20",
     notes: [
       {
-        title: "发送消息",
+        title: "Send Message",
         code: "openclaw message send --to +1234567890 --message \"Hello from OpenClaw\"",
       },
       {
-        title: "与助手对话",
+        title: "Chat with Agent",
         code: "openclaw agent --message \"Ship checklist\" --thinking high",
       },
     ],
@@ -234,15 +234,15 @@ export const videoTutorials = [
   {
     id: "fs6HeBIl8fc",
     platform: "youtube",
-    title: "如何在 Mac mini 上安装万能私人 AI 助理 OpenClaw",
+    title: "How to Install Universal Personal AI Assistant OpenClaw on Mac mini",
     duration: "18:45",
     notes: [
       {
-        title: "系统要求",
+        title: "System Requirements",
         code: "Node ≥22\nmacOS / Linux / Windows (WSL2)",
       },
       {
-        title: "推荐模型配置",
+        title: "Recommended Model Config",
         code: "agent.model = \"anthropic/claude-opus-4-5\"",
       },
     ],
@@ -250,180 +250,180 @@ export const videoTutorials = [
 ]
 
 // ============================================================================
-// 常见问题 FAQ
+// FAQ
 // ============================================================================
 export const faqs = [
   {
-    category: "基础认知",
+    category: "Basics",
     questions: [
       {
-        q: "OpenClaw 是什么？是一个 App 吗？",
-        a: "不是 App。OpenClaw 是一个开源 AI Agent 框架/执行型 AI 助手，通常跑在你的电脑或服务器上，用来执行真实任务，而不是聊天。",
+        q: "What is OpenClaw? Is it an App?",
+        a: "Not an App. OpenClaw is an open-source AI Agent framework / execution AI assistant that runs on your computer or server to execute real tasks, not chat.",
       },
       {
-        q: "它和 ChatGPT / Claude 有什么本质区别？",
-        a: "一句话：ChatGPT 负责「想」，OpenClaw 负责「干」。\n\nChatGPT：回答问题、给建议\nOpenClaw：读文件、跑命令、改代码、执行流程",
+        q: "What's the essential difference from ChatGPT / Claude?",
+        a: "In short: ChatGPT 'thinks', OpenClaw 'does'.\n\nChatGPT: Answers questions, gives advice\nOpenClaw: Reads files, runs commands, modifies code, executes workflows",
       },
       {
-        q: "OpenClaw 自己有大模型吗？",
-        a: "没有。它是一个「调度器」，需要你自己接：OpenAI、Claude 或本地模型。\n\n👉 它不卖模型，只负责让模型「动起来」。",
+        q: "Does OpenClaw have its own LLM?",
+        a: "No. It's a 'scheduler' that needs you to connect: OpenAI, Claude or local models.\n\n👉 It doesn't sell models, just makes models 'work'.",
       },
       {
-        q: "支持 DeepSeek 吗？",
-        a: "✅ 完美支持！DeepSeek R1 是 OpenClaw 本地部署的最佳搭档。\n\n**为什么推荐 DeepSeek + OpenClaw**：\n- DeepSeek R1 本地运行，零 API 成本\n- 推理能力强，适合复杂任务拆解\n- 隐私完全可控，数据不外传\n- 适合在 Mac Mini 或本地服务器上 7×24 运行\n\n**配置示例**：\n```bash\n# 安装 Ollama\nollama run deepseek-r1\n\n# 配置 OpenClaw 使用本地模型\nagent.model = \"ollama/deepseek-r1```\n\n👉 这是「最便宜的私有 AI 员工」方案。",
+        q: "Does it support DeepSeek?",
+        a: "✅ Perfect support! DeepSeek R1 is the best partner for OpenClaw local deployment.\n\n**Why recommend DeepSeek + OpenClaw**:\n- DeepSeek R1 runs locally, zero API cost\n- Strong reasoning, suitable for complex task breakdown\n- Fully controllable privacy, data stays local\n- Perfect for 7×24 operation on Mac Mini or local servers\n\n**Config example**:\n```bash\n# Install Ollama\nollama run deepseek-r1\n\n# Configure OpenClaw to use local model\nagent.model = \"ollama/deepseek-r1```\n\n👉 This is the 'cheapest private AI employee' solution.",
       },
     ],
   },
   {
-    category: "使用与安装",
+    category: "Usage & Installation",
     questions: [
       {
-        q: "我需要会编程才能用吗？",
-        a: "基础使用：不需要写代码，但要懂基本逻辑\n深度使用：懂一点命令行/项目结构会非常加分\n\n👉 它不是「零门槛」，而是「低门槛高上限」。",
+        q: "Do I need to know programming?",
+        a: "Basic use: No coding needed, but need basic logic\nAdvanced use: Knowing some command line/project structure helps\n\n👉 It's not 'zero barrier', but 'low barrier, high ceiling'.",
       },
       {
-        q: "能在 Windows / Mac / Linux 用吗？",
-        a: "✅ Mac：最友好\n✅ Linux / 服务器：生产环境首选\n⚠️ Windows：通常通过 WSL2（强烈推荐）",
+        q: "Can it run on Windows / Mac / Linux?",
+        a: "✅ Mac: Most friendly\n✅ Linux / Server: First choice for production\n⚠️ Windows: Usually via WSL2 (strongly recommended)",
       },
       {
-        q: "OpenClaw 能一直运行吗？",
-        a: "可以。它可以：长时间运行、失败重试、保存中间状态、按规则停止。\n\n这也是它被称为「AI 员工」的原因。",
+        q: "Can OpenClaw run continuously?",
+        a: "Yes. It can: run long-term, retry on failure, save intermediate state, stop by rules.\n\nThis is why it's called an 'AI Employee'.",
       },
     ],
   },
   {
-    category: "安全与风险",
+    category: "Security & Risks",
     questions: [
       {
-        q: "OpenClaw 安全吗？如何防止 Prompt Injection？",
-        a: "安全最佳实践：\n\n**推荐隔离方案**：\n- 使用 Docker 容器运行，限制文件系统访问\n- 使用独立设备如 Mac Mini 专机专用\n- 设置只读权限，明确可写目录\n- 禁止危险命令（rm、format 等）\n\n**防止 Prompt Injection**：\n- 不要在提示词中暴露系统命令\n- 使用约束条件限制执行范围\n- 定期审查执行日志\n\n👉 本质上，把它当作一个「有系统权限的远程员工」来对待。",
+        q: "Is OpenClaw safe? How to prevent Prompt Injection?",
+        a: "Security best practices:\n\n**Recommended isolation**:\n- Run in Docker container, limit file system access\n- Use dedicated device like Mac Mini\n- Set read-only permissions, specify writable directories\n- Block dangerous commands (rm, format, etc.)\n\n**Prevent Prompt Injection**:\n- Don't expose system commands in prompts\n- Use constraints to limit execution scope\n- Regularly review execution logs\n\n👉 Essentially, treat it like a 'remote employee with system privileges'.",
       },
       {
-        q: "它会「自己乱来」吗？",
-        a: "如果你权限给太大，会。\n\nOpenClaw 的能力 ≈ 你给的权限\n\n正确姿势：默认只读、明确可写目录、禁止危险命令",
+        q: "Will it 'go rogue'?",
+        a: "If you give too many permissions, yes.\n\nOpenClaw's capabilities ≈ permissions you give\n\nCorrect approach: read-only by default, specify writable directories, block dangerous commands",
       },
       {
-        q: "适合在生产环境用吗？",
-        a: "适合，但前提是：你清楚它能做什么、有权限隔离、有日志/回滚机制。\n\n新手不建议一上来就上生产。",
+        q: "Suitable for production?",
+        a: "Yes, but only if: you know what it can do, have permission isolation, have logging/rollback mechanisms.\n\nBeginners should not start with production.",
       },
     ],
   },
   {
-    category: "成本与对比",
+    category: "Cost & Comparison",
     questions: [
       {
-        q: "OpenClaw 免费吗？",
-        a: "框架本身：开源免费\n成本主要在：模型 API / 服务器",
+        q: "Is OpenClaw free?",
+        a: "Framework itself: Open source and free\nMain costs: Model API / Servers",
       },
       {
-        q: "和 AutoGPT / CrewAI 有什么不同？",
-        a: "AutoGPT：偏实验/Demo\nCrewAI：偏多 Agent 编排\nOpenClaw：偏「真实干活 + 工程实用」",
+        q: "How is it different from AutoGPT / CrewAI?",
+        a: "AutoGPT: More experimental/Demo\nCrewAI: More multi-agent orchestration\nOpenClaw: More 'real work + engineering practical'",
       },
       {
-        q: "OpenClaw 与 AutoGPT/OpenDevin 有什么区别？",
-        a: "核心区别在架构稳定性。\n\n**AutoGPT/OpenDevin**：\n- 自主循环决策，容易陷入死循环\n- 缺乏明确的执行边界\n- 常需要人工干预重置\n\n**OpenClaw 车道队列架构 (Lane-based queue)**：\n- 任务像车道一样排队执行，不会「撞车」\n- 每个任务有明确的起点和终点\n- 失败自动重试，不会无限循环\n- 天然支持多任务并发和状态保存\n\n简单说：OpenClaw 是「有序的工厂流水线」，其他是「自由奔跑的机器人」。",
+        q: "What's the difference between OpenClaw and AutoGPT/OpenDevin?",
+        a: "The core difference is architectural stability.\n\n**AutoGPT/OpenDevin**:\n- Autonomous loop decisions, prone to infinite loops\n- Lacks clear execution boundaries\n- Often requires manual intervention to reset\n\n**OpenClaw Lane-based Queue Architecture**:\n- Tasks execute in lanes like traffic, no 'collisions'\n- Each task has clear start and end points\n- Auto-retry on failure, no infinite loops\n- Naturally supports multi-task concurrency and state saving\n\nSimply put: OpenClaw is an 'orderly factory assembly line', others are 'free-running robots'.",
       },
     ],
   },
 ]
 
 // ============================================================================
-// 指令模板
+// Command Templates
 // ============================================================================
 export const commandTemplates = [
   {
     id: "bug-fix",
-    title: "🐛 修复 Bug",
+    title: "🐛 Fix Bug",
     icon: "bug-fix",
-    template: `目标：修复当前项目的报错
-范围：src/ 目录
-约束：不新增依赖、保持 API 兼容
-输出：diff + 原因说明`,
+    template: `Goal: Fix current project errors
+Scope: src/ directory
+Constraints: No new dependencies, keep API compatible
+Output: diff + explanation`,
   },
   {
     id: "data-process",
-    title: "📊 数据处理",
+    title: "📊 Data Processing",
     icon: "data-process",
-    template: `目标：处理数据文件
-范围：data/ 目录
-操作：清洗空值、合并文件
-输出：处理后的 summary.csv`,
+    template: `Goal: Process data files
+Scope: data/ directory
+Operations: Clean null values, merge files
+Output: Processed summary.csv`,
   },
   {
     id: "seo-content",
-    title: "📝 SEO 内容生成",
+    title: "📝 SEO Content Generation",
     icon: "seo-content",
-    template: `目标：批量生成 SEO 内容
-范围：读取 keywords.txt
-操作：为每个关键词生成页面草稿
-输出：markdown 文件`,
+    template: `Goal: Batch generate SEO content
+Scope: Read keywords.txt
+Operations: Generate page draft for each keyword
+Output: markdown files`,
   },
   {
     id: "log-analysis",
-    title: "🔍 日志分析",
+    title: "🔍 Log Analysis",
     icon: "log-analysis",
-    template: `目标：排查服务异常
-范围：最近 24 小时日志
-操作：分析错误、给出修复方案
-约束：不要执行破坏性命令`,
+    template: `Goal: Troubleshoot service anomalies
+Scope: Last 24 hours logs
+Operations: Analyze errors, give fix plan
+Constraints: Don't run destructive commands`,
   },
   {
     id: "code-review",
-    title: "👁️ 代码审查",
+    title: "👁️ Code Review",
     icon: "code-review",
-    template: `目标：审查最近提交
-范围：最近 7 天的提交
-操作：找出引入的 bug、给出修复方案
-输出：patch 文件`,
+    template: `Goal: Review recent commits
+Scope: Last 7 days of commits
+Operations: Find introduced bugs, give fix plan
+Output: patch file`,
   },
 ]
 
 // ============================================================================
-// 对比数据
+// Comparison Data
 // ============================================================================
 export const comparisonTable = {
-  columns: ["特性", "ChatGPT", "OpenClaw"],
+  columns: ["Feature", "ChatGPT", "OpenClaw"],
   rows: [
-    { feature: "角色", chatgpt: "顾问", openclaw: "执行者" },
-    { feature: "工作方式", chatgpt: "你问 → 它答", openclaw: "你给目标 → 它拆解 → 执行 → 汇报" },
-    { feature: "核心能力", chatgpt: "回答问题、给建议", openclaw: "读文件、跑命令、改代码、执行流程" },
-    { feature: "部署方式", chatgpt: "云端", openclaw: "本地/服务器" },
-    { feature: "数据隐私", chatgpt: "需要上传", openclaw: "私有可控" },
+    { feature: "Role", chatgpt: "Advisor", openclaw: "Executor" },
+    { feature: "How it works", chatgpt: "You ask → It answers", openclaw: "You set goal → It breaks down → Executes → Reports" },
+    { feature: "Core capability", chatgpt: "Answers questions, gives advice", openclaw: "Reads files, runs commands, modifies code, executes workflows" },
+    { feature: "Deployment", chatgpt: "Cloud", openclaw: "Local/Server" },
+    { feature: "Data privacy", chatgpt: "Needs upload", openclaw: "Private & controllable" },
   ],
 }
 
 // ============================================================================
-// 安全指南
+// Safety Guide
 // ============================================================================
 export const safetyGuide = {
   recommended: [
-    "默认只读权限",
-    "明确可写目录",
-    "打开日志",
-    "小任务先跑通",
+    "Read-only by default",
+    "Specify writable directories",
+    "Enable logging",
+    "Test with small tasks first",
   ],
   avoid: [
-    "不给 root/全盘权限",
-    "不要给模糊目标",
-    "不要忽视日志",
-    "不要在生产环境直接测试",
+    "Don't give root/full disk permissions",
+    "Don't give vague goals",
+    "Don't ignore logs",
+    "Don't test directly in production",
   ],
 }
 
 // ============================================================================
-// 万能指令模板
+// Universal Command Template
 // ============================================================================
-export const universalCommandTemplate = `目标：
-范围：
-约束：
-允许的操作：
-输出要求：
+export const universalCommandTemplate = `Goal:
+Scope:
+Constraints:
+Allowed operations:
+Output requirements:
 
 ---
-💡 复制后直接发送给 OpenClaw 即可执行`
+💡 Copy and send to OpenClaw to execute`
 
 // ============================================================================
-// 导出所有内容
+// Export all content
 // ============================================================================
 export default {
   siteConfig,

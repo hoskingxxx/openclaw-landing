@@ -18,8 +18,8 @@ export function NextSteps({ steps }: NextStepsProps) {
   return (
     <section className="max-w-4xl mx-auto px-6 py-12 border-t border-white/10">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-text-primary mb-2">下一步</h2>
-        <p className="text-text-secondary">继续探索 OpenClaw 的更多功能</p>
+        <h2 className="text-2xl font-bold text-text-primary mb-2">Next Steps</h2>
+        <p className="text-text-secondary">Continue exploring more OpenClaw features</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -44,7 +44,7 @@ export function NextSteps({ steps }: NextStepsProps) {
   );
 }
 
-// 单个下一步推荐卡片（用于页面底部）
+// Individual next step card (used at page bottom)
 interface NextStepCardProps {
   title: string;
   description: string;
@@ -53,7 +53,7 @@ interface NextStepCardProps {
   icon?: string;
 }
 
-export function NextStepCard({ title, description, href, linkText = "立即前往", icon = "👉" }: NextStepCardProps) {
+export function NextStepCard({ title, description, href, linkText = "Get Started", icon = "👉" }: NextStepCardProps) {
   return (
     <section className="max-w-4xl mx-auto px-6 py-12 border-t border-white/10">
       <Link

@@ -12,14 +12,14 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav className="flex items-center gap-2 text-sm text-text-tertiary py-4" aria-label="面包屑导航">
+    <nav className="flex items-center gap-2 text-sm text-text-tertiary py-4" aria-label="Breadcrumb navigation">
       <Link
         href="/"
         className="flex items-center gap-1 hover:text-text-primary transition-colors p-2 -m-2 rounded-lg hover:bg-white/5"
-        aria-label="返回首页"
+        aria-label="Go to home"
       >
         <HomeIcon className="w-4 h-4" />
-        <span className="hidden sm:inline">首页</span>
+        <span className="hidden sm:inline">Home</span>
       </Link>
 
       {items.map((item, index) => (

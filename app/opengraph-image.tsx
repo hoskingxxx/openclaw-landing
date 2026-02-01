@@ -27,7 +27,7 @@ export default async function Image() {
           color: "#ffffff",
         }}
       >
-        {/* 装饰圆圈 */}
+        {/* Decorative circles */}
         <div
           style={{
             position: "absolute",
@@ -70,7 +70,7 @@ export default async function Image() {
           <span style={{ fontSize: "56px" }}>🦞</span>
         </div>
 
-        {/* 标题 */}
+        {/* Title */}
         <div
           style={{
             fontSize: "64px",
@@ -86,7 +86,7 @@ export default async function Image() {
           OpenClaw
         </div>
 
-        {/* 副标题 */}
+        {/* Subtitle */}
         <div
           style={{
             fontSize: "32px",
@@ -94,10 +94,10 @@ export default async function Image() {
             marginBottom: "24px",
           }}
         >
-          不是聊天机器人，而是你的 AI 员工
+          Not Just Another Chatbot, Your AI Employee
         </div>
 
-        {/* 标签 */}
+        {/* Tags */}
         <div
           style={{
             display: "flex",
@@ -115,7 +115,7 @@ export default async function Image() {
               color: "#FF4500",
             }}
           >
-            本地部署
+            Local Deployment
           </div>
           <div
             style={{
@@ -127,7 +127,7 @@ export default async function Image() {
               color: "#FF4500",
             }}
           >
-            多平台支持
+            Multi-Platform
           </div>
           <div
             style={{
@@ -139,11 +139,11 @@ export default async function Image() {
               color: "#FF4500",
             }}
           >
-            开源免费
+            Open Source
           </div>
         </div>
 
-        {/* 底部 URL */}
+        {/* Bottom URL */}
         <div
           style={{
             position: "absolute",

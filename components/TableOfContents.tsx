@@ -55,9 +55,9 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <aside className="hidden lg:block fixed right-0 top-24 w-64 pr-8">
-      <nav className="space-y-1" aria-label="目录导航">
+      <nav className="space-y-1" aria-label="Table of contents">
         <h3 className="text-sm font-semibold text-text-tertiary uppercase tracking-wider mb-4 px-3">
-          目录
+          Contents
         </h3>
         <ul className="space-y-1">
           {items.map((item) => {
@@ -92,7 +92,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   );
 }
 
-// 移动端折叠目录
+// Mobile collapsible TOC
 export function MobileTableOfContents({ items }: TableOfContentsProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -104,7 +104,7 @@ export function MobileTableOfContents({ items }: TableOfContentsProps) {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full glass-card p-4 flex items-center justify-between text-left"
       >
-        <span className="text-sm font-semibold text-text-primary">📑 目录导航</span>
+        <span className="text-sm font-semibold text-text-primary">📑 Table of Contents</span>
         <svg
           className={`w-5 h-5 text-text-secondary transition-transform ${isOpen ? "rotate-180" : ""}`}
           fill="none"

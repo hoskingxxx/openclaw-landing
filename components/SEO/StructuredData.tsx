@@ -1,6 +1,6 @@
 import { siteConfig, faqs, videoTutorials } from "@/lib/content";
 
-// FAQPage 结构化数据
+// FAQPage Structured Data
 export function FAQStructuredData() {
   const schema = {
     "@context": "https://schema.org",
@@ -25,7 +25,7 @@ export function FAQStructuredData() {
   );
 }
 
-// SoftwareApplication 结构化数据
+// SoftwareApplication Structured Data
 export function SoftwareStructuredData() {
   const schema = {
     "@context": "https://schema.org",
@@ -61,7 +61,7 @@ export function SoftwareStructuredData() {
   );
 }
 
-// VideoObject 结构化数据
+// VideoObject Structured Data
 export function VideoStructuredData() {
   const schemas = videoTutorials.map((video) => ({
     "@context": "https://schema.org",
@@ -88,7 +88,7 @@ export function VideoStructuredData() {
   );
 }
 
-// WebSite 结构化数据
+// WebSite Structured Data
 export function WebSiteStructuredData() {
   const schema = {
     "@context": "https://schema.org",
@@ -114,7 +114,7 @@ export function WebSiteStructuredData() {
   );
 }
 
-// Article 结构化数据（博客文章）
+// Article Structured Data (Blog Posts)
 interface ArticleStructuredDataProps {
   title: string;
   description: string;
@@ -146,7 +146,7 @@ export function ArticleStructuredData({
     },
     publisher: {
       "@type": "Organization",
-      name: "OpenClaw 中文社区",
+      name: "OpenClaw Community",
       logo: {
         "@type": "ImageObject",
         url: `${siteConfig.url}/og-image.png`,
