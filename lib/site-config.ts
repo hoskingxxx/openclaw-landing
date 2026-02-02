@@ -22,9 +22,9 @@ export const siteConfig = {
 // Navigation Links (Header)
 // ============================================================================
 export const navLinks = [
-  { title: "Start", href: "/quick-start" },
+  { title: "Start", href: "/docs" },
   { title: "Guides", href: "/guides" },
-  { title: "Troubleshooting", href: "/oom" },
+  { title: "Troubleshooting", href: "/troubleshooting" },
   { title: "Resources", href: "/resources" },
 ] as const;
 
@@ -33,9 +33,11 @@ export const navLinks = [
 // ============================================================================
 export const footerLinks = {
   documentation: [
+    { title: "Start", href: "/docs" },
     { title: "Quick Start", href: "/quick-start" },
     { title: "Guides", href: "/guides" },
-    { title: "Troubleshooting", href: "/oom" },
+    { title: "Troubleshooting", href: "/troubleshooting" },
+    { title: "FAQ", href: "/faq" },
   ],
   official: [
     {
