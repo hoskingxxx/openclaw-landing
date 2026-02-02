@@ -101,8 +101,9 @@ export function getFeaturedPostPath(): string {
   return featured.canonicalPath;
 }
 
-// Export the featured post path directly for convenience
-export const FEATURED_POST_PATH = getFeaturedPostPath();
+// HARDCODED PATH - Nuclear fix for redirect loop
+// The actual file is at: app/guides/[slug]/page.tsx with slug "how-to-use-deepseek-with-openclaw"
+export const FEATURED_POST_PATH = "/guides/how-to-use-deepseek-with-openclaw";
 
 // ============================================================================
 // Export for convenience

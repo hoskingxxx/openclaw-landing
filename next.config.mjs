@@ -30,28 +30,9 @@ const nextConfig = {
     ];
   },
 
-  // Redirects for legacy paths and trailing slash normalization
+  // REDIRECTS DISABLED - Nuclear fix for redirect loop
   async redirects() {
-    return [
-      // Legacy /blog/* routes → /guides/* (permanent 301)
-      {
-        source: '/blog/:path*',
-        destination: '/guides/:path*',
-        permanent: true,
-      },
-      // Legacy /posts/* routes → /guides/* (permanent 301)
-      {
-        source: '/posts/:path*',
-        destination: '/guides/:path*',
-        permanent: true,
-      },
-      // Trailing slash normalization (remove trailing slashes)
-      {
-        source: '/:path*/',
-        destination: '/:path*',
-        permanent: true,
-      },
-    ];
+    return [];
   },
 };
 
