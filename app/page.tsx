@@ -3,11 +3,12 @@ import { Hero } from "@/components/features/Hero";
 import { Footer } from "@/components/features/Footer";
 import { Navigation } from "@/components/features/Navigation";
 import { Button } from "@/components/ui/Button";
+import { FEATURED_POST_PATH } from "@/lib/blog";
 
 function PromoBanner() {
   return (
     <Link
-      href="/guides/how-to-use-deepseek-with-openclaw"
+      href={FEATURED_POST_PATH}
       className="block relative overflow-hidden group cursor-pointer"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
@@ -66,7 +67,7 @@ ollama run deepseek-r1:8b`}
 
           <div className="text-center">
             <Link
-              href="/guides/how-to-use-deepseek-with-openclaw"
+              href={FEATURED_POST_PATH}
               className="text-sm text-brand-primary hover:text-brand-hover underline font-mono"
             >
               Hardware Reality Check →

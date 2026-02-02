@@ -3,6 +3,7 @@ import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { NextStepCard } from "@/components/features/NextSteps";
 import { faqs } from "@/lib/content";
+import { FEATURED_POST_PATH } from "@/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -98,7 +99,7 @@ export default function FAQPage() {
           icon="📖"
           title="Read the DeepSeek R1 Guide"
           description="Learn how to deploy OpenClaw with DeepSeek R1 locally without running into OOM errors."
-          href="/guides/how-to-use-deepseek-with-openclaw"
+          href={FEATURED_POST_PATH}
           linkText="Read the Guide"
         />
       </main>

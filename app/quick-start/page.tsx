@@ -3,6 +3,7 @@ import { Footer } from "@/components/features/Footer";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import { FEATURED_POST_PATH } from "@/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -352,7 +353,7 @@ openclaw start        ← .env is read from HERE`}
           <div className="glass-card p-8 text-center mt-12">
              <h3 className="text-xl font-bold text-text-primary mb-2">System Crashed?</h3>
              <p className="text-text-secondary mb-6">Read the crash logs. Don't touch the settings if it works.</p>
-             <Button href="/guides/how-to-use-deepseek-with-openclaw" variant="secondary">
+             <Button href={FEATURED_POST_PATH} variant="secondary">
                Debug Crash Logs →
              </Button>
           </div>

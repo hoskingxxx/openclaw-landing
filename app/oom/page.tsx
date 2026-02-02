@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import { FEATURED_POST_PATH } from "@/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -280,7 +281,7 @@ PID    COMMAND        %CPU  %MEM
             <p className="text-text-secondary mb-6">
               This page only covers crash fixes. For complete setup, see the main guide.
             </p>
-            <Button href="/guides/how-to-use-deepseek-with-openclaw">
+            <Button href={FEATURED_POST_PATH}>
               Read the Complete Guide →
             </Button>
           </div>

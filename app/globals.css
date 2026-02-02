@@ -58,18 +58,18 @@ html, body {
   position: relative;
 }
 
-/* 2. Text Safety - Prevent text overflow */
+/* 2. Text Safety - Prevent text overflow (STRICT MODE) */
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   hyphens: auto;
   max-width: 100%;
 }
 
 p, span, div, a, li, td, th, label, button {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
+  word-break: break-word;
   max-width: 100%;
 }
 
@@ -79,12 +79,12 @@ pre {
   max-width: 100%;
   white-space: pre;
   border-radius: 0.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Inline code should wrap */
 code, .code {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   word-break: break-word;
   max-width: 100%;
 }
@@ -99,7 +99,8 @@ pre code {
 main > section,
 section > div,
 article > div,
-.glass-card {
+.glass-card,
+.flex > * {
   min-width: 0; /* Prevent flex items from overflowing */
 }
 
@@ -124,6 +125,13 @@ table {
   display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Table cells should also wrap if needed */
+td, th {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
 }
 
 /* Prevent images from overflowing */
@@ -165,7 +173,7 @@ a {
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
-  break-words: keep-all;
+  -webkit-overflow-scrolling: touch;
   word-break: normal;
 }
 

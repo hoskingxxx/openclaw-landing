@@ -44,7 +44,7 @@ export default function BlogPage() {
               {blogPosts.filter((post) => post.featured).map((post) => (
                 <Link
                   key={post.slug}
-                  href={`/guides/${post.slug}`}
+                  href={post.canonicalPath}
                   className="glass-card p-6 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 group"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -82,7 +82,7 @@ export default function BlogPage() {
             {blogPosts.map((post) => (
               <Link
                 key={post.slug}
-                href={`/guides/${post.slug}`}
+                href={post.canonicalPath}
                 className="glass-card p-6 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className="flex items-center gap-2 mb-3">
