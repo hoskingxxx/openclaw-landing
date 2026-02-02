@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { navigation } from "@/lib/content";
+import { siteConfig, navLinks, disclaimers } from "@/lib/site-config";
 import { MenuIcon, XIcon } from "@/components/icons";
 
 export function Navigation() {
@@ -28,14 +28,14 @@ export function Navigation() {
               onClick={() => setMobileMenuOpen(false)}
             >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-primary to-brand-hover flex items-center justify-center shadow-lg shadow-brand-primary/20">
-                <span className="text-white font-bold text-lg">🦞</span>
+                <span className="text-white font-bold text-lg">{siteConfig.logo.emoji}</span>
               </div>
-              <span className="text-lg font-semibold text-text-primary hidden sm:block">OpenClaw Hub</span>
+              <span className="text-lg font-semibold text-text-primary hidden sm:block">{siteConfig.name}</span>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
-              {navigation.map((item) => (
+              {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -60,7 +60,7 @@ export function Navigation() {
           {mobileMenuOpen && (
             <div className="lg:hidden mt-4 pb-4 border-t border-white/10 pt-4 bg-background-primary rounded-lg">
               <div className="flex flex-col gap-1">
-                {navigation.map((item) => (
+                {navLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -74,7 +74,7 @@ export function Navigation() {
               {/* Unofficial Site Disclaimer */}
               <div className="mt-4 px-4 py-3 bg-white/5 rounded-lg mx-1">
                 <p className="text-xs text-gray-400 font-mono leading-relaxed">
-                  This is an <span className="text-white">unofficial</span> community site.
+                  {disclaimers.navigation}
                 </p>
               </div>
             </div>
