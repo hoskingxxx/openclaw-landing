@@ -127,103 +127,58 @@ LLM_MODEL="deepseek-r1:8b" # Match the model you pulled
 
 ---
 
-### 📊 Real-World Speed Benchmarks
+### 📊 The "Forensic" Benchmark Log
 
-I tested the exact same OpenClaw task ("Refactor this Python file") across three setups. Here is the raw speed:
+I didn't trust the official specs, so I ran specific tests. Here is exactly where my hardware died.
 
 <div className="overflow-x-auto my-6 rounded-lg border border-white/10">
   <table className="min-w-full text-left text-sm">
     <thead>
       <tr className="bg-white/5 border-b border-white/10">
-        <th className="px-6 py-4 text-left font-semibold text-white">Setup</th>
-        <th className="px-6 py-4 text-left font-semibold text-white">Speed (Tokens/s)</th>
-        <th className="px-6 py-4 text-left font-semibold text-white">User Experience</th>
+        <th className="px-4 py-3 text-left font-semibold text-white">Setup</th>
+        <th className="px-4 py-3 text-left font-semibold text-white">Model Config</th>
+        <th className="px-4 py-3 text-left font-semibold text-white">Context</th>
+        <th className="px-4 py-3 text-left font-semibold text-white">Result</th>
+        <th className="px-4 py-3 text-left font-semibold text-white">Notes</th>
       </tr>
     </thead>
     <tbody className="divide-y divide-white/5">
       <tr className="border-b border-white/5">
-        <td className="px-6 py-4">
-          <strong>MacBook Air M2 (16GB)</strong>
-          <span className="text-xs text-text-tertiary">Local Quantized (4-bit)</span>
-        </td>
-        <td className="px-6 py-4 text-red-400">3.2 t/s</td>
-        <td className="px-6 py-4">☕ Painfully slow. "Thinking" takes 40+ seconds.</td>
+        <td className="px-4 py-3 text-white/90"><strong>MacBook Air M2 (16GB)</strong></td>
+        <td className="px-4 py-3 text-white/90">R1-Distill-Llama-8B (Q4_K_M)</td>
+        <td className="px-4 py-3 text-white/90">4k</td>
+        <td className="px-4 py-3 text-yellow-400">⚠️ Crawl (3 t/s)</td>
+        <td className="px-4 py-3 text-white/90">Usable for chat, impossible for Agent loops. Throttled after 15 mins.</td>
       </tr>
       <tr className="border-b border-white/5">
-        <td className="px-6 py-4">
-          <strong>Desktop RTX 4090 (24GB)</strong>
-          <span className="text-xs text-text-tertiary">Local FP16</span>
-        </td>
-        <td className="px-6 py-4 text-green-400">45 t/s</td>
-        <td className="px-6 py-4">🚀 Usable. But the GPU costs $1,800.</td>
+        <td className="px-4 py-3 text-white/90"><strong>RTX 3070 Ti (8GB)</strong></td>
+        <td className="px-4 py-3 text-white/90">R1-Distill-Qwen-7B (FP16)</td>
+        <td className="px-4 py-3 text-white/90">8k</td>
+        <td className="px-4 py-3 text-red-400">❌ OOM Crash</td>
+        <td className="px-4 py-3 text-white/90">Hit 8.1GB VRAM immediately. System froze.</td>
+      </tr>
+      <tr className="border-b border-white/5">
+        <td className="px-4 py-3 text-white/90"><strong>RTX 4090 (24GB)</strong></td>
+        <td className="px-4 py-3 text-white/90">DeepSeek-R1-Distill-Llama-70B (IQ2_XS)</td>
+        <td className="px-4 py-3 text-white/90">16k</td>
+        <td className="px-4 py-3 text-green-400">✅ Stable (35 t/s)</td>
+        <td className="px-4 py-3 text-white/90">The "IQ2" quant makes it dumb, but it fits.</td>
       </tr>
       <tr>
-        <td className="px-6 py-4">
-          <strong>Vultr Cloud A100</strong>
-          <span className="text-xs text-text-tertiary">Cloud FP16</span>
-        </td>
-        <td className="px-6 py-4 text-green-400">110 t/s</td>
-        <td className="px-6 py-4">⚡ Instant. Costs ~$0.80/hr.</td>
+        <td className="px-4 py-3 text-white/90"><strong>Vultr A100 (80GB)</strong></td>
+        <td className="px-4 py-3 text-white/90">DeepSeek-R1 (Full 671B - API)</td>
+        <td className="px-4 py-3 text-white/90">128k</td>
+        <td className="px-4 py-3 text-green-400">⚡ Fly (100+ t/s)</td>
+        <td className="px-4 py-3 text-white/90">This is cheating, but it's the only way to run the full model.</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-**Verdict:** Unless you own a 4090, local is for testing, cloud is for working.
-
----
-
-## Hardware Reality Check (The "Money" Section)
-
-This is where most guides lie by omission.
-
-### DeepSeek R1 Is Not Lightweight
-
-<div className="overflow-x-auto my-6 rounded-lg border border-white/10">
-  <table className="w-full text-sm">
-    <thead>
-      <tr className="bg-white/5 border-b border-white/10">
-        <th className="px-4 py-3 text-left font-semibold text-white">Model Variant</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Approx VRAM Required</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Reality</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90">R1 (Full Precision)</td>
-        <td className="px-4 py-3 text-white/90">40GB+</td>
-        <td className="px-4 py-3 text-white/90">Will not run on consumer GPUs.</td>
-      </tr>
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90">R1 (FP16)</td>
-        <td className="px-4 py-3 text-white/90">~32GB</td>
-        <td className="px-4 py-3 text-white/90">Crashes or OOM on almost everything.</td>
-      </tr>
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90">R1 (8-bit)</td>
-        <td className="px-4 py-3 text-white/90">~24GB</td>
-        <td className="px-4 py-3 text-white/90">Barely usable on RTX 3090/4090, slow.</td>
-      </tr>
-      <tr>
-        <td className="px-4 py-3 text-white/90">R1 (4-bit quantized)</td>
-        <td className="px-4 py-3 text-white/90">~16GB</td>
-        <td className="px-4 py-3 text-white/90">Runs, but reasoning is degraded.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-### The Brutal Truth
-
-- **Most laptops:** No chance.
-- **Most consumer GPUs:** Painful.
-- **Cloud GPU:** Works immediately.
-
-If you value your time, this is the point where most people switch.
-
-> **👉 The Shortcut:** Instead of burning your laptop, Rent a 40GB GPU on Vultr for $0.50/hr
->
-> Yes, it costs money. No, it's not expensive compared to wasting a weekend.
+**My Verdict:**
+- **Under 12GB VRAM:** Stick to the 7B/8B Distill models. Don't dream of the big one.
+- **16GB - 24GB VRAM:** You are in "Quantization Hell". You can run 32B/70B but you have to crush them down to Q2/Q3.
+- **Production Work:** Just rent the metal. I wasted 3 weekends trying to optimize for my 3070. It wasn't worth the $5 I saved.
 
 ---
 
