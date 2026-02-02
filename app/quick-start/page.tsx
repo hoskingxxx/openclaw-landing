@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Installation Protocols - OpenClaw Survivor Guide",
+  title: "Documentation - OpenClaw Survivor Guide",
   description: "Two paths to running OpenClaw: The stable Cloud API route, or the experimental Local Hardware route.",
 };
 
@@ -19,7 +19,7 @@ export default function QuickStartPage() {
           {/* Header */}
           <div className="mb-12 border-b border-white/10 pb-8">
             <h1 className="text-4xl font-bold text-text-primary mb-4 font-mono">
-              Deployment Protocols
+              Documentation
             </h1>
             <p className="text-xl text-text-secondary">
               Choose your pain level.

@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!post) return {};
 
   return {
-    title: `${post.title} - OpenClaw Blog`,
+    title: `${post.title} - OpenClaw Guides`,
     description: post.description,
     keywords: post.seoKeywords.join(", "),
     openGraph: {
@@ -89,7 +89,7 @@ export default async function BlogPostPage({
         <div className="max-w-4xl mx-auto px-6 pt-8">
           <Breadcrumbs
             items={[
-              { label: "Blog", href: "/blog" },
+              { label: "Guides", href: "/blog" },
               { label: post.title, href: `/blog/${post.slug}` },
             ]}
           />

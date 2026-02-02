@@ -7,10 +7,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw Blog - Tutorials, Cases and Best Practices",
+  title: "OpenClaw Guides - Tutorials & Best Practices",
   description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates. DeepSeek, local deployment, AI Agent architecture explained.",
   openGraph: {
-    title: "OpenClaw Blog - Tutorials, Cases and Best Practices",
+    title: "OpenClaw Guides - Tutorials & Best Practices",
     description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates.",
     url: "https://openclaw-ai.org/blog",
   },
@@ -23,13 +23,13 @@ export default function BlogPage() {
       <main className="min-h-screen">
         {/* Breadcrumbs */}
         <div className="max-w-7xl mx-auto px-6 pt-8">
-          <Breadcrumbs items={[{ label: "Blog", href: "/blog" }]} />
+          <Breadcrumbs items={[{ label: "Guides", href: "/blog" }]} />
         </div>
 
         {/* Page Title */}
         <section className="max-w-7xl mx-auto px-6 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            OpenClaw Blog
+            OpenClaw Guides
           </h1>
           <p className="text-xl text-text-secondary">
             Tutorials, Cases and Best Practices
