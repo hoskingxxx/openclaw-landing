@@ -16,13 +16,13 @@ export const siteConfig = {
 // ============================================================================
 export const navigation = [
   { title: "Home", href: "/" },
-  { title: "Quick Start", href: "/quick-start" },
-  { title: "Use Cases", href: "/use-cases" },
-  { title: "Generator", href: "/command-builder" },
-  { title: "Blog", href: "/blog" },
-  // { title: "Resources", href: "/resources" }, // Hidden - page not ready
-  { title: "Videos", href: "/videos" },
-  { title: "FAQ", href: "/faq" },
+  { title: "Docs", href: "/quick-start" },
+  { title: "Guides", href: "/blog" },
+  // Temporarily hidden for "Survivor" pivot - focus on documentation only
+  // { title: "Use Cases", href: "/use-cases" },
+  // { title: "Generator", href: "/command-builder" },
+  // { title: "Videos", href: "/videos" },
+  // { title: "FAQ", href: "/faq" },
 ]
 
 // ============================================================================

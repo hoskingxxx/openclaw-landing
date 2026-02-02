@@ -40,23 +40,25 @@ export function Hero() {
 
         {/* Installation Code Block */}
         <div className="mt-12 max-w-2xl mx-auto">
-          <div className="bg-[#0d1117] rounded-lg overflow-hidden border border-white/10 shadow-xl">
+          <div className="bg-[#0d1117] rounded-lg overflow-hidden border border-red-500/30 shadow-xl">
             <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-white/10">
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-xs text-gray-400 font-mono">Terminal</span>
+              <span className="ml-2 text-xs text-gray-400 font-mono">terminal</span>
             </div>
             <pre className="p-4 overflow-x-auto">
-              <code className="text-sm text-gray-100 font-mono leading-relaxed">
-{`# Install OpenClaw CLI
-npm install -g openclaw@latest
-
-# Initialize your agent (requires API key OR GPU)
-openclaw onboard`}
+              <code className="text-sm text-red-300 font-mono leading-relaxed">
+{`$ openclaw start --model deepseek-r1
+Loading model...
+Error: CUDA out of memory. Tried to allocate 14.20 GiB...
+[System Halted]`}
               </code>
             </pre>
           </div>
+          <p className="text-xs text-text-tertiary mt-3 font-mono">
+            If your terminal looks like this, read the guide below.
+          </p>
         </div>
 
         {/* Core Features Preview - Hidden for now */}
