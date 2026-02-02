@@ -102,17 +102,22 @@ ollama run deepseek-r1:8b
 ollama run deepseek-r1:1.5b
 ```
 
-### Step 2: Point OpenClaw to Ollama
+### Step 2: Configure OpenClaw
+
+Point OpenClaw to your local Ollama instance.
 
 ```bash
-# .env configuration for Ollama
-LLM_PROVIDER="openai"
+# .env configuration for Local Ollama
+LLM_PROVIDER="ollama"
 LLM_BASE_URL="http://localhost:11434/v1"
-LLM_API_KEY="ollama"  # Dummy value, Ollama doesn't check
-LLM_MODEL="deepseek-r1:8b"  # Or :1.5b if you're desperate
+LLM_MODEL="deepseek-r1:8b" # Match the model you pulled
 ```
 
-> **Reality Check:** The 1.5B version will work, but don't expect complex reasoning. It's good enough for simple file operations and basic tasks. The 8B version is the minimum for anything "smart".
+> **⚠️ The Trade-off:** The 7B/8B models are fast, but they lose the "Galaxy Brain" reasoning capabilities of the full 671B parameter model. They might fail at complex OpenClaw task breakdowns.
+>
+> **But if you need the REAL reasoning power...**
+>
+> *(The next section "Hardware Reality Check" follows here)*
 
 ---
 
