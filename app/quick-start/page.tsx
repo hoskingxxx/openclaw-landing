@@ -1,278 +1,156 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { TableOfContents, MobileTableOfContents } from "@/components/TableOfContents";
+import { CodeBlock } from "@/components/ui/CodeBlock";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quick Start - OpenClaw Setup Guide",
-  description: "Get OpenClaw running with DeepSeek R1. Two paths: DeepSeek API or local Ollama.",
-  openGraph: {
-    title: "Quick Start - OpenClaw Setup Guide",
-    description: "Get OpenClaw running with DeepSeek R1.",
-    url: "https://openclaw-ai.org/quick-start",
-  },
+  title: "Installation Protocols - OpenClaw Survivor Guide",
+  description: "Two paths to running OpenClaw: The stable Cloud API route, or the experimental Local Hardware route.",
 };
-
-const tocItems = [
-  { id: "requirements", label: "Requirements" },
-  { id: "option-api", label: "Option 1: DeepSeek API" },
-  { id: "option-local", label: "Option 2: Local Ollama" },
-];
 
 export default function QuickStartPage() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen">
-        {/* Breadcrumbs */}
-        <div className="max-w-4xl mx-auto px-6 pt-8">
-          <Breadcrumbs items={[{ label: "Quick Start", href: "/quick-start" }]} />
-        </div>
+      <main className="min-h-screen bg-background-primary">
+        <div className="max-w-3xl mx-auto px-6 py-12">
 
-        {/* Page Title */}
-        <section className="max-w-4xl mx-auto px-6 py-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            Quick Start
-          </h1>
-          <p className="text-xl text-text-secondary">
-            Get OpenClaw running with DeepSeek R1
-          </p>
-          <p className="text-sm text-text-tertiary mt-2">
-            Two paths: Cloud API (fastest) or Local Ollama (free but hardware-dependent)
-          </p>
-
-          {/* Mobile TOC */}
-          <MobileTableOfContents items={tocItems} />
-        </section>
-
-        {/* Content + Sidebar */}
-        <div className="max-w-7xl mx-auto px-6 pb-12 lg:flex lg:gap-12">
-          <div className="lg:flex-1 min-w-0">
-            {/* Requirements */}
-            <section id="requirements" className="mb-12 scroll-mt-24">
-              <div className="glass-card p-6">
-                <h2 className="text-2xl font-semibold text-text-primary mb-4">Requirements</h2>
-                <ul className="space-y-2 text-text-secondary">
-                  <li>✅ macOS / Linux / Windows (WSL2 recommended)</li>
-                  <li>✅ Node.js ≥22</li>
-                  <li>✅ DeepSeek API key <span className="text-text-tertiary">(for Option 1)</span></li>
-                  <li>✅ 16GB+ RAM <span className="text-text-tertiary">(for Option 2)</span></li>
-                </ul>
-                <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded">
-                  <p className="text-sm text-yellow-200">
-                    <strong>⚠️ Hardware Warning:</strong> Local DeepSeek R1 requires significant VRAM. Read the <Link href="/oom" className="underline">OOM Error Guide</Link> first.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Option 1: DeepSeek API */}
-            <section id="option-api" className="mb-12 scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-text-primary mb-6">
-                Option 1: DeepSeek API (Recommended)
-              </h2>
-              <p className="text-text-secondary mb-6">
-                Fastest path to get started. No hardware requirements beyond a basic computer.
-              </p>
-
-              <div className="space-y-6">
-                {/* Step 1 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      1
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Install OpenClaw</h3>
-                      <p className="text-sm text-text-secondary">Install via npm</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-green-400">
-                      <code>npm install -g openclaw@latest</code>
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Step 2 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      2
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Get API Key</h3>
-                      <p className="text-sm text-text-secondary">Sign up at DeepSeek</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-text-secondary mb-4">
-                    Visit <a href="https://www.deepseek.com/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">deepseek.com</a> to get your API key.
-                  </p>
-                </div>
-
-                {/* Step 3 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      3
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Configure OpenClaw</h3>
-                      <p className="text-sm text-text-secondary">Create .env file</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-100">
-                      <code>{`# .env file (keep this local, never commit)
-LLM_PROVIDER="openai"
-LLM_BASE_URL="https://api.deepseek.com/v1"
-LLM_API_KEY="ds-your-api-key-here"
-LLM_MODEL="deepseek-reasoner"`}</code>
-                    </pre>
-                  </div>
-                  <p className="text-xs text-text-tertiary mt-3">
-                    🔒 <strong>SECURITY:</strong> Keep your .env file local. Never commit API keys to git.
-                  </p>
-                </div>
-
-                {/* Step 4 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      4
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Run OpenClaw</h3>
-                      <p className="text-sm text-text-secondary">Start the agent</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-green-400">
-                      <code>openclaw start</code>
-                    </pre>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Option 2: Local Ollama */}
-            <section id="option-local" className="mb-12 scroll-mt-24">
-              <h2 className="text-2xl font-semibold text-text-primary mb-6">
-                Option 2: Local Ollama (Free)
-              </h2>
-              <p className="text-text-secondary mb-6">
-                Run DeepSeek R1 locally using Ollama. Requires 16GB+ RAM for usable performance.
-              </p>
-
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded">
-                <p className="text-sm text-red-200">
-                  <strong>⚠️ Hardware Warning:</strong> Full DeepSeek R1 requires 40GB+ VRAM. Use quantized versions (7B/8B) for consumer hardware.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {/* Step 1 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      1
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Install Ollama</h3>
-                      <p className="text-sm text-text-secondary">Download from ollama.com</p>
-                    </div>
-                  </div>
-                  <p className="text-sm text-text-secondary mb-4">
-                    Visit <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:underline">ollama.com</a> to install.
-                  </p>
-                </div>
-
-                {/* Step 2 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      2
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Pull DeepSeek Model</h3>
-                      <p className="text-sm text-text-secondary">Download quantized version</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-green-400">
-                      <code># 8B version (fits in 16GB RAM)
-ollama pull deepseek-r1:8b
-
-# OR 1.5B version (fits in 8GB RAM, limited capability)
-ollama pull deepseek-r1:1.5b</code>
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Step 3 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      3
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Configure OpenClaw</h3>
-                      <p className="text-sm text-text-secondary">Point to local Ollama</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-gray-100">
-                      <code>{`# .env file for local Ollama
-LLM_PROVIDER="ollama"
-LLM_BASE_URL="http://localhost:11434/v1"
-LLM_MODEL="deepseek-r1:8b"`}</code>
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Step 4 */}
-                <div className="glass-card p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                      4
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-text-primary">Start OpenClaw</h3>
-                      <p className="text-sm text-text-secondary">Run with local model</p>
-                    </div>
-                  </div>
-                  <div className="bg-[#0d1117] rounded p-4 overflow-x-auto">
-                    <pre className="text-sm text-green-400">
-                      <code>openclaw start</code>
-                    </pre>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 glass-card p-4">
-                <p className="text-sm text-text-secondary mb-2">
-                  <strong>📖 Performance Reality Check:</strong>
-                </p>
-                <ul className="text-sm text-text-secondary space-y-1">
-                  <li>• MacBook M2 (16GB): ~3 tokens/sec (very slow)</li>
-                  <li>• RTX 4090 (24GB): ~45 tokens/sec (usable)</li>
-                  <li>• Cloud A100: ~110 tokens/sec (instant)</li>
-                </ul>
-                <p className="text-xs text-text-tertiary mt-3">
-                  If local performance is poor, consider <Link href="/resources" className="text-brand-primary hover:underline">renting a GPU</Link>.
-                </p>
-              </div>
-            </section>
+          {/* Header */}
+          <div className="mb-12 border-b border-white/10 pb-8">
+            <h1 className="text-4xl font-bold text-text-primary mb-4 font-mono">
+              Deployment Protocols
+            </h1>
+            <p className="text-xl text-text-secondary">
+              Choose your pain level.
+            </p>
           </div>
 
-          {/* Sidebar TOC */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
-            <div className="sticky top-24">
-              <TableOfContents items={tocItems} />
+          {/* Decision Matrix (Reality Check) */}
+          <section className="mb-16 bg-white/5 rounded-lg p-6 border border-white/10">
+            <h2 className="text-lg font-semibold text-text-primary mb-4 flex items-center gap-2">
+              <span>⚖️</span> Reality Check
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 className="text-green-400 font-mono text-sm mb-2">PATH A: CLOUD API</h3>
+                <ul className="space-y-2 text-sm text-text-secondary">
+                  <li>✅ Setup time: 5 mins</li>
+                  <li>✅ Hardware: Any laptop</li>
+                  <li>✅ Cost: ~$1-5/mo (Usage based)</li>
+                  <li>✅ Stability: Production Ready</li>
+                </ul>
+              </div>
+              <div className="border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
+                <h3 className="text-orange-400 font-mono text-sm mb-2">PATH B: LOCAL HARDWARE</h3>
+                <ul className="space-y-2 text-sm text-text-secondary">
+                  <li>⚠️ Setup time: 1-4 hours</li>
+                  <li>⚠️ Hardware: 16GB+ RAM / GPU</li>
+                  <li>⚠️ Cost: Electricity + Sanity</li>
+                  <li>⚠️ Stability: Experimental</li>
+                </ul>
+              </div>
             </div>
-          </aside>
+          </section>
+
+          {/* PATH A */}
+          <section id="cloud" className="mb-20">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs font-mono font-bold">RECOMMENDED</span>
+              <h2 className="text-2xl font-bold text-text-primary">Path A: The "Just Work" Method</h2>
+            </div>
+
+            <div className="space-y-8 border-l-2 border-green-500/20 pl-6 ml-2">
+              {/* Step 1 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">1. Install OpenClaw</h3>
+                <p className="text-sm text-text-secondary mb-3">Requires Node.js 22+</p>
+                <CodeBlock code="npm install -g openclaw@latest" />
+              </div>
+
+              {/* Step 2 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">2. Get DeepSeek Key</h3>
+                <p className="text-sm text-text-secondary mb-3">
+                  Sign up at <a href="https://platform.deepseek.com" target="_blank" rel="noopener noreferrer" className="text-brand-primary underline">platform.deepseek.com</a>.
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">3. Configure .env</h3>
+                <p className="text-sm text-text-secondary mb-3">Create a file named <code>.env</code> in your folder.</p>
+                <CodeBlock
+                  title=".env"
+                  code={`# Use OpenAI provider because DeepSeek is compatible
+LLM_PROVIDER="openai"
+LLM_BASE_URL="https://api.deepseek.com"
+LLM_API_KEY="sk-your-key-here"
+LLM_MODEL="deepseek-reasoner"`}
+                />
+              </div>
+
+              {/* Step 4 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">4. Launch</h3>
+                <CodeBlock code="openclaw start" />
+              </div>
+            </div>
+          </section>
+
+          {/* PATH B */}
+          <section id="local" className="mb-20 pt-8 border-t border-white/10">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="bg-orange-500/20 text-orange-400 px-3 py-1 rounded text-xs font-mono font-bold">HARDWARE REQUIRED</span>
+              <h2 className="text-2xl font-bold text-text-primary">Path B: Local (Ollama)</h2>
+            </div>
+
+            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
+              <p className="text-sm text-orange-200">
+                <strong>⚠️ Warning:</strong> If you have less than 16GB RAM, turn back now. Your system will freeze.
+              </p>
+            </div>
+
+            <div className="space-y-8 border-l-2 border-orange-500/20 pl-6 ml-2">
+              {/* Step 1 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">1. Install Ollama & Pull Model</h3>
+                <CodeBlock code={`# Install Ollama (Mac/Linux)
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Pull the 8B model (Fits in 8GB VRAM)
+ollama run deepseek-r1:8b`} />
+              </div>
+
+              {/* Step 2 */}
+              <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">2. Configure OpenClaw</h3>
+                <p className="text-sm text-text-secondary mb-3">Point it to your local Ollama server.</p>
+                <CodeBlock
+                  title=".env"
+                  code={`LLM_PROVIDER="ollama"
+LLM_BASE_URL="http://localhost:11434/v1"
+LLM_MODEL="deepseek-r1:8b"`}
+                />
+              </div>
+
+               {/* Step 3 */}
+               <div>
+                <h3 className="text-lg font-medium text-text-primary mb-2">3. Launch</h3>
+                <CodeBlock code="openclaw start" />
+              </div>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <div className="glass-card p-8 text-center mt-12">
+             <h3 className="text-xl font-bold text-text-primary mb-2">Stuck?</h3>
+             <p className="text-text-secondary mb-6">Read the full guide for common OOM fixes.</p>
+             <Link href="/blog/how-to-use-deepseek-with-openclaw" className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors">
+               Go to Survival Guide →
+             </Link>
+          </div>
+
         </div>
       </main>
       <Footer />
