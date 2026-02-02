@@ -87,7 +87,7 @@ export default async function BlogPostPage({
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <div className="max-w-4xl mx-auto px-6 pt-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8">
           <Breadcrumbs
             items={[
               { label: "Guides", href: "/guides" },
@@ -97,27 +97,27 @@ export default async function BlogPostPage({
         </div>
 
         {/* Article Content */}
-        <article className="max-w-4xl mx-auto px-6 py-8">
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
           {/* Article Header */}
           <header className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
+              <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
                 {post.category}
               </span>
-              <span className="text-sm text-text-tertiary">{post.date}</span>
+              <span className="text-xs sm:text-sm text-text-tertiary break-words">{post.date}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4 break-words leading-tight">
               {post.title}
             </h1>
-            <p className="text-xl text-text-secondary mb-6">
+            <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 break-words">
               {post.description}
             </p>
-            <div className="flex items-center gap-4 text-sm text-text-tertiary">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
               <span>By: {post.author}</span>
               <span>•</span>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {post.tags.map((tag) => (
-                  <span key={tag} className="text-brand-primary">
+                  <span key={tag} className="text-brand-primary break-words">
                     #{tag}
                   </span>
                 ))}
@@ -127,7 +127,7 @@ export default async function BlogPostPage({
 
           {/* Article Body */}
           <div
-            className="glass-card p-8 prose prose-invert prose-lg max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary prose-code:text-blue-300 prose-code:bg-background-tertiary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700 prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-text-secondary prose-img:rounded-lg prose-hr:border-white/10 break-words"
+            className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary prose-code:text-blue-300 prose-code:bg-background-tertiary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700 prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-text-secondary prose-img:rounded-lg prose-hr:border-white/10 break-words"
             dangerouslySetInnerHTML={{ __html: postContent.content }}
           />
 
