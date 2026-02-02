@@ -40,6 +40,13 @@ export function Hero() {
 
         {/* Installation Code Block */}
         <div className="mt-12 max-w-2xl mx-auto">
+          {/* Context Tag */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="text-xs font-mono text-text-tertiary bg-background-tertiary px-2 py-1 rounded">
+              System: RTX 3070 Ti (8GB) | Model: DeepSeek R1 Distill
+            </span>
+          </div>
+
           <div className="bg-[#0d1117] rounded-lg overflow-hidden border border-red-500/30 shadow-xl">
             <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-white/10">
               <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -49,15 +56,19 @@ export function Hero() {
             </div>
             <pre className="p-4 overflow-x-auto">
               <code className="text-sm text-red-300 font-mono leading-relaxed">
-{`$ openclaw start --model deepseek-r1
-Loading model...
-Error: CUDA out of memory. Tried to allocate 14.20 GiB...
-[System Halted]`}
+{`user@dev-machine:~/openclaw$ openclaw start --model deepseek-r1:67b
+[2026-02-01 23:42:15] INFO: Initializing Gateway...
+[2026-02-01 23:42:16] INFO: Loading Model [deepseek-r1:67b] via Ollama...
+[2026-02-01 23:42:19] WARN: VRAM usage spike detected (15.8GB / 16.0GB)
+Traceback (most recent call last):
+  File "core/engine.py", line 402, in load_model
+    torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.40 GiB (GPU 0; 8.00 GiB total capacity; 6.42 GiB already allocated; 102.00 MiB free)
+[System Halted] Agent crashed.`}
               </code>
             </pre>
           </div>
           <p className="text-xs text-text-tertiary mt-3 font-mono">
-            If your terminal looks like this, read the guide below.
+            Log captured from a standard RTX 3070 setup running R1. <Link href="/blog/how-to-use-deepseek-with-openclaw" className="text-brand-primary hover:text-brand-hover underline">Read the fix →</Link>
           </p>
         </div>
 

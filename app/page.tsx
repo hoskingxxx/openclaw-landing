@@ -91,7 +91,7 @@ If supported, you can use 'max_memory' to limit memory usage.
               What Actually Happens
             </h2>
             <p className="text-text-secondary text-sm">
-              This is not a joke. This is what most of you will see.
+              Log captured from a standard RTX 3070 setup running R1.
             </p>
           </div>
 
@@ -104,19 +104,21 @@ If supported, you can use 'max_memory' to limit memory usage.
             </div>
             <pre className="p-4 overflow-x-auto">
               <code className="text-sm text-gray-100 font-mono leading-relaxed">
-{`> openclaw start --model deepseek-r1
-Loading model...
-Error: CUDA out of memory. Tried to allocate 14.20 GiB (GPU 0;
-       8.00 GiB total capacity; 6.42 GiB already allocated;
-       5.18 GiB free; 6.42 GiB reserved in total by PyTorch)
-If supported, you can use 'max_memory' to limit memory usage.
-[Process finished with exit code 1]`}
+{`user@dev-machine:~/openclaw$ openclaw start --model deepseek-r1:67b
+[2026-02-01 23:42:15] INFO: Initializing Gateway...
+[2026-02-01 23:42:16] INFO: Loading Model [deepseek-r1:67b] via Ollama...
+[2026-02-01 23:42:19] WARN: VRAM usage spike detected (15.8GB / 16.0GB)
+Traceback (most recent call last):
+  File "core/engine.py", line 402, in load_model
+    torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.40 GiB (GPU 0; 8.00 GiB total capacity; 6.42 GiB already allocated; 102.00 MiB free)
+[System Halted] Agent crashed.`}
               </code>
             </pre>
           </div>
 
           <p className="text-center text-sm text-text-tertiary mt-4 font-mono">
-            If your terminal looks like this, <Link href="/blog/how-to-use-deepseek-with-openclaw" className="text-brand-primary hover:text-brand-hover underline">read the Hardware Guide</Link>.
+            <span className="text-xs font-mono text-text-tertiary bg-background-tertiary px-2 py-1 rounded mr-2">System: RTX 3070 Ti (8GB) | Model: DeepSeek R1 Distill</span>
+            <Link href="/blog/how-to-use-deepseek-with-openclaw" className="text-brand-primary hover:text-brand-hover underline">Read the Hardware Guide →</Link>
           </p>
         </section>
 
