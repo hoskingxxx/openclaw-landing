@@ -94,7 +94,7 @@ export default async function Image() {
             marginBottom: "24px",
           }}
         >
-          Not Just Another Chatbot, Your AI Employee
+          Unofficial Field Guide: Hardware & Config Logs
         </div>
 
         {/* Tags */}

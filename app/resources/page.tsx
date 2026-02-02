@@ -5,11 +5,11 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Recommended Resources - Best VPS, API and Tools for OpenClaw",
-  description: "Curated recommendations for the best hardware, VPS, API services and tools to run OpenClaw. Help you quickly set up a cost-effective local AI employee environment.",
+  title: "Recommended Resources - VPS, API and Tools for OpenClaw",
+  description: "Curated recommendations for hardware, VPS, API services and tools to run OpenClaw. Honest reviews from actual users.",
   openGraph: {
-    title: "Recommended Resources - Best VPS, API and Tools for OpenClaw",
-    description: "Curated recommendations for the best hardware, VPS, API services and tools to run OpenClaw.",
+    title: "Recommended Resources - VPS, API and Tools for OpenClaw",
+    description: "Curated recommendations for hardware, VPS, API services and tools to run OpenClaw.",
     url: "https://openclaw-ai.org/resources",
   },
 };
@@ -214,44 +214,7 @@ export default function ResourcesPage() {
               </p>
             </div>
 
-            {/* API Card 2 */}
-            <div className="glass-card p-6 hover:border-brand-primary/50 transition-all">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-text-primary mb-1">
-                    APIFFFF
-                  </h3>
-                  <p className="text-sm text-text-tertiary">China acceleration relay</p>
-                </div>
-                <span className="px-2 py-1 text-xs bg-blue-500/20 text-blue-400 rounded">
-                  Accelerated
-                </span>
-              </div>
-
-              <ul className="space-y-2 text-sm text-text-secondary mb-6">
-                <li>✅ Direct connection in China, low latency</li>
-                <li>✅ Multi-model aggregation</li>
-                <li>✅ Transparent pricing, no hidden fees</li>
-                <li>✅ 24/7 technical support</li>
-              </ul>
-
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-2xl font-bold text-text-primary">5% off</span>
-                  <span className="text-sm text-text-secondary">exclusive discount</span>
-                </div>
-                <a
-                  href="#"
-                  className="px-4 py-2 bg-background-tertiary hover:bg-background-elevated text-text-primary text-sm font-medium rounded-lg border border-white/10 transition-colors"
-                >
-                  View Details
-                </a>
-              </div>
-
-              <p className="text-xs text-text-tertiary mt-3">
-                Promo code: OPENCLAW95
-              </p>
-            </div>
+            {/* API Card 2 - REMOVED: APIFFFF (dead link) */}
 
             {/* API Card 3 */}
             <div className="glass-card p-6 hover:border-brand-primary/50 transition-all">

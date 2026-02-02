@@ -8,11 +8,11 @@ import { installSteps, supportedChannels, supportedModels } from "@/lib/content"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw Quick Start - Deploy Your AI Employee in 5 Minutes",
-  description: "Complete OpenClaw deployment in just 3 steps. Supports Node.js ≥22, Anthropic Claude / OpenAI GPT models, WhatsApp / Telegram / Slack and 13+ platforms.",
+  title: "OpenClaw Setup Guide - The Honest Version",
+  description: "How to actually deploy OpenClaw without crashing. Hardware requirements, configuration steps, and troubleshooting OOM errors.",
   openGraph: {
-    title: "OpenClaw Quick Start - Deploy Your AI Employee in 5 Minutes",
-    description: "Complete OpenClaw deployment in just 3 steps, supports 13+ platforms.",
+    title: "OpenClaw Setup Guide - The Honest Version",
+    description: "How to actually deploy OpenClaw without crashing.",
     url: "https://openclaw-ai.org/quick-start",
   },
 };

@@ -5,16 +5,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://openclaw-ai.org"),
-  title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
-  description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
+  title: "Running DeepSeek R1 Locally: The Unofficial OpenClaw Guide",
+  description: "Battle-tested configurations, hardware reality checks, and OOM error logs. Stop burning your GPU.",
   keywords: [
     "OpenClaw",
     "Clawdbot",
     "Moltbot",
     "AI Agent",
     "Local AI Agent",
-    "AI Employee",
-    "DeepSeek R1",
+    "DeepSeek R1 Local",
+    "VRAM Requirements",
+    "OpenClaw Config",
     "Ollama",
     "Claude",
     "ChatGPT",
@@ -25,28 +26,27 @@ export const metadata: Metadata = {
     "Telegram AI",
     "Slack AI",
     "AI Programmer",
-    "Devin alternative",
-    "AI Software Engineer",
-    "Zero cost AI",
+    "Private AI",
+    "Local inference",
   ].join(", "),
-  authors: [{ name: "OpenClaw Community" }],
-  creator: "OpenClaw Community",
-  publisher: "OpenClaw Community",
+  authors: [{ name: "LazyDev" }],
+  creator: "OpenClaw Hub",
+  publisher: "OpenClaw Hub",
 
   // Open Graph
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://openclaw-ai.org",
-    title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
-    description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
-    siteName: "OpenClaw Resource Site",
+    title: "Running DeepSeek R1 Locally: The Unofficial OpenClaw Guide",
+    description: "Battle-tested configurations, hardware reality checks, and OOM error logs. Stop burning your GPU.",
+    siteName: "OpenClaw Hub",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "OpenClaw Resource Site",
+        alt: "OpenClaw Hub",
       },
     ],
   },
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Run DeepSeek R1 Locally with OpenClaw - The Ultimate AI Agent Guide",
-    description: "Zero-cost AI Employee setup. Comprehensive guide for OpenClaw configuration, DeepSeek R1 integration, and command generation. The best alternative to Devin.",
+    title: "Running DeepSeek R1 Locally: The Unofficial OpenClaw Guide",
+    description: "Battle-tested configurations, hardware reality checks, and OOM error logs. Stop burning your GPU.",
     images: ["/og-image.png"],
   },
 

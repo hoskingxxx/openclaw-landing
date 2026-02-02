@@ -270,7 +270,7 @@ export const faqs = [
       },
       {
         q: "Does it support DeepSeek?",
-        a: "✅ Perfect support! DeepSeek R1 is the best partner for OpenClaw local deployment.\n\n**Why recommend DeepSeek + OpenClaw**:\n- DeepSeek R1 runs locally, zero API cost\n- Strong reasoning, suitable for complex task breakdown\n- Fully controllable privacy, data stays local\n- Perfect for 7×24 operation on Mac Mini or local servers\n\n**Config example**:\n```bash\n# Install Ollama\nollama run deepseek-r1\n\n# Configure OpenClaw to use local model\nagent.model = \"ollama/deepseek-r1```\n\n👉 This is the 'cheapest private AI employee' solution.",
+        a: "✅ Perfect support! DeepSeek R1 is the best partner for OpenClaw local deployment.\n\n**Why recommend DeepSeek + OpenClaw**:\n- DeepSeek R1 runs locally, hardware dependent\n- Strong reasoning, suitable for complex task breakdown\n- Fully controllable privacy, data stays local\n- Perfect for 7×24 operation on Mac Mini or local servers\n\n**Config example**:\n```bash\n# Install Ollama\nollama run deepseek-r1\n\n# Configure OpenClaw to use local model\nagent.model = \"ollama/deepseek-r1```\n\n👉 Check the hardware requirements before running local models.",
       },
     ],
   },
@@ -287,7 +287,7 @@ export const faqs = [
       },
       {
         q: "Can OpenClaw run continuously?",
-        a: "Yes. It can: run long-term, retry on failure, save intermediate state, stop by rules.\n\nThis is why it's called an 'AI Employee'.",
+        a: "Yes. It can: run long-term, retry on failure, save intermediate state, stop by rules.\n\nThis is why it's called an autonomous agent.",
       },
     ],
   },
@@ -296,7 +296,7 @@ export const faqs = [
     questions: [
       {
         q: "Is OpenClaw safe? How to prevent Prompt Injection?",
-        a: "Security best practices:\n\n**Recommended isolation**:\n- Run in Docker container, limit file system access\n- Use dedicated device like Mac Mini\n- Set read-only permissions, specify writable directories\n- Block dangerous commands (rm, format, etc.)\n\n**Prevent Prompt Injection**:\n- Don't expose system commands in prompts\n- Use constraints to limit execution scope\n- Regularly review execution logs\n\n👉 Essentially, treat it like a 'remote employee with system privileges'.",
+        a: "Security best practices:\n\n**Recommended isolation**:\n- Run in Docker container, limit file system access\n- Use dedicated device like Mac Mini\n- Set read-only permissions, specify writable directories\n- Block dangerous commands (rm, format, etc.)\n\n**Prevent Prompt Injection**:\n- Don't expose system commands in prompts\n- Use constraints to limit execution scope\n- Regularly review execution logs\n\n👉 Essentially, treat it like an autonomous process with system privileges.",
       },
       {
         q: "Will it 'go rogue'?",
