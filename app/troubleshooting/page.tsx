@@ -28,6 +28,20 @@ const crashFixes = [
     ],
   },
   {
+    title: "Low VRAM Trap (<12GB)",
+    description: "You tried to run a model that doesn't fit. This is a hardware limit.",
+    severity: "critical",
+    href: "#low-vram",
+    icon: "🪤",
+    symptoms: [
+      "RTX 3060 / 8GB VRAM trying to run 32B+ models",
+      "Instant OOM on model load",
+      "System hangs when context grows",
+    ],
+    isTrap: true,
+    fix: null,
+  },
+  {
     title: "System Hangs / Kernel Swap",
     description: "RAM exhausted. System becomes unresponsive.",
     severity: "high",
@@ -109,7 +123,9 @@ export default function TroubleshootingPage() {
             {crashFixes.map((fix) => (
               <div
                 key={fix.href}
-                className="glass-card p-6 border-l-4 border-l-brand-primary hover:bg-white/5 transition-colors"
+                className={`glass-card p-6 border-l-4 hover:bg-white/5 transition-colors ${
+                  fix.isTrap ? "border-l-red-500 bg-red-500/5" : "border-l-brand-primary"
+                }`}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
@@ -146,31 +162,59 @@ export default function TroubleshootingPage() {
                         </pre>
                       </div>
                     )}
+
+                    {/* THE TRAP - Affiliate CTA */}
+                    {fix.isTrap && (
+                      <div className="mt-6 p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-lg">
+                        <h4 className="text-lg font-bold text-red-400 mb-3">💀 The Verdict: Hardware Limit</h4>
+                        <p className="text-sm text-text-secondary mb-4">
+                          <strong>This is a hardware limit.</strong> No config change, no quantization trick, no CPU offloading will fix this.<br />
+                          You're debugging physics.
+                        </p>
+                        <div className="bg-terminal-bg rounded p-4 mb-4">
+                          <pre className="text-sm text-green-400 font-mono">
+                            <code>$0.80/hr (Cloud GPU) &lt; 4 hours of debugging (Your Rate)</code>
+                          </pre>
+                        </div>
+                        <p className="text-sm text-text-secondary mb-4">
+                          Renting a GPU isn't giving up—it's basic math. Stop debugging hardware and start shipping code.
+                        </p>
+                        <a
+                          href="https://www.vultr.com/products/gpu/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-mono text-sm font-bold rounded-lg transition-colors"
+                        >
+                          Rent a GPU (~$0.50/hr) →
+                        </a>
+                      </div>
+                    )}
                   </div>
 
-                  <Button
-                    href={fix.href}
-                    variant="secondary"
-                    className="shrink-0"
-                  >
-                    View Fix →
-                  </Button>
+                  {!fix.isTrap && (
+                    <Button
+                      href={fix.href}
+                      variant="secondary"
+                      className="shrink-0"
+                    >
+                      View Fix →
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Bottom CTA */}
+          {/* Bottom CTA - Soft */}
           <div className="glass-card p-8 text-center">
             <h3 className="text-xl font-bold text-text-primary mb-4">
-              Still stuck? Hardware might be the issue.
+              Still stuck? Read the full crash logs.
             </h3>
             <p className="text-text-secondary mb-6">
-              If you've tried everything and nothing works, your hardware might not be capable.
-              Consider renting cloud GPU or upgrading your setup.
+              The OOM page has detailed logs, "Things I tried" sections, and the math on VRAM budgets.
             </p>
-            <Button href="/resources" variant="primary">
-              View Recommended Resources →
+            <Button href="/oom" variant="secondary">
+              Read Full OOM Logs →
             </Button>
           </div>
 
