@@ -31,12 +31,12 @@ export default function HomePage() {
         <Hero />
 
         {/* The Fix You Probably Needed */}
-        <section id="quick-fix" className="max-w-4xl mx-auto px-6 py-16">
+        <section id="quick-fix" className="max-w-4xl mx-auto px-4 sm:px-6 py-16">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-mono text-brand-primary mb-4">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-mono text-brand-primary mb-4 break-words">
               The Fix You Probably Needed
             </h2>
-            <p className="text-text-secondary text-sm md:text-base mb-2">
+            <p className="text-text-secondary text-sm md:text-base mb-2 break-words">
               Stop trying to run the 67B model on your laptop. It won't happen.
             </p>
             <p className="text-text-tertiary text-sm font-mono">
@@ -44,7 +44,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="glass-card p-6 mb-6">
+          <div className="glass-card p-4 sm:p-6 mb-6">
             <div className="bg-terminal-bg rounded-lg overflow-hidden border border-brand-primary/30">
               <div className="flex items-center gap-2 px-4 py-3 bg-terminal-header border-b border-white/10">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -52,14 +52,14 @@ export default function HomePage() {
                 <div className="w-3 h-3 rounded-full bg-green-500" />
                 <span className="ml-2 text-xs text-gray-400 font-mono">terminal</span>
               </div>
-              <pre className="p-4 overflow-x-auto">
-                <code className="text-sm text-green-400 font-mono leading-relaxed">
+              <pre className="p-4 overflow-x-auto text-xs sm:text-sm">
+                <code className="text-green-400 font-mono leading-relaxed break-all">
 {`# The "Poor Man's Fix" (Fits in 8GB VRAM)
 ollama run deepseek-r1:8b`}
                 </code>
               </pre>
             </div>
-            <p className="text-sm text-text-secondary mt-4">
+            <p className="text-sm text-text-secondary mt-4 break-words">
               This downloads the 8B Distilled version. It's dumber, but it runs.
             </p>
           </div>
@@ -75,18 +75,18 @@ ollama run deepseek-r1:8b`}
         </section>
 
         {/* Final CTA - Survivor Style */}
-        <section className="max-w-4xl mx-auto px-6 py-20">
-          <div className="glass-card p-8 text-center">
-            <h2 className="text-2xl font-mono text-text-primary mb-4">
+        <section className="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+          <div className="glass-card p-6 sm:p-8 text-center">
+            <h2 className="text-xl md:text-2xl font-mono text-text-primary mb-4 break-words">
               If you are here, you probably already broke things.
             </h2>
-            <p className="text-text-secondary mb-6">
+            <p className="text-text-secondary mb-6 break-words">
               That's why this site exists. You're not alone.
             </p>
             <Button href="/docs" className="font-mono text-sm">
               Start Setup (Survivor Mode) →
             </Button>
-            <p className="text-xs text-text-tertiary font-mono mt-6">
+            <p className="text-xs text-text-tertiary font-mono mt-6 break-words">
               Bookmark this page. You will be back after your next OOM.
             </p>
           </div>
