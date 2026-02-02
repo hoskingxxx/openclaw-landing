@@ -18,23 +18,23 @@ export function Hero() {
 
         {/* Main Title */}
         <h1 className="text-4xl md:text-6xl font-bold text-text-primary mb-6 leading-tight">
-          The Unofficial Guide to
+          OpenClaw is powerful.
           <br />
-          <span className="text-brand-primary">OpenClaw + DeepSeek R1</span>
+          <span className="text-brand-primary">It's also annoying.</span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
-          Battle-tested configs, hardware reality checks, and local deployment secrets. Stop breaking your setup.
+          DeepSeek R1 runs locally. But probably not on your laptop. This site documents what actually broke so you don't burn your weekend.
         </p>
 
         {/* CTA Button Group */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center items-center w-full sm:w-auto">
-          <Button variant="primary" size="lg" href="/command-builder">
-            ⚡ Open Command Generator
+          <Button variant="primary" size="lg" href="/blog/how-to-use-deepseek-with-openclaw">
+            Read the DeepSeek R1 Guide
           </Button>
-          <Button variant="secondary" size="lg" href="/blog/how-to-use-deepseek-with-openclaw">
-            📖 Read DeepSeek Guide
+          <Button variant="secondary" size="lg" href="#hardware-reality">
+            View the OOM Error Log
           </Button>
         </div>
 

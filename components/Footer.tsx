@@ -106,7 +106,7 @@ export function Footer() {
           {/* Row 2: Legal Disclaimer */}
           <div className="mt-6 p-4 bg-background-tertiary/50 rounded-lg border border-white/5">
             <p className="text-xs text-text-tertiary leading-relaxed">
-              <strong className="text-text-secondary">Unofficial Community Hub.</strong> Not affiliated with OpenClaw or DeepSeek. Content is for educational purposes.
+              Not affiliated. Not sponsored. Just notes from someone who paid the bill.
             </p>
           </div>
         </div>
