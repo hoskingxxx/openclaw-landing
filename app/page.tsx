@@ -3,7 +3,9 @@ import { Hero } from "@/components/features/Hero";
 import { Footer } from "@/components/features/Footer";
 import { Navigation } from "@/components/features/Navigation";
 import { Button } from "@/components/ui/Button";
-import { FEATURED_POST_PATH } from "@/lib/blog";
+
+// HARDCODED PATH - Nuclear fix for redirect loop
+const FEATURED_POST_PATH = "/guides/how-to-use-deepseek-with-openclaw";
 
 function PromoBanner() {
   return (
