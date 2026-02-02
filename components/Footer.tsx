@@ -85,7 +85,10 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <div className="mt-4 text-center">
+          <div className="mt-4 text-center space-y-2">
+            <p className="text-xs text-text-tertiary font-mono">
+              No auth. No telemetry. No keys required. Just logs.
+            </p>
             <p className="text-sm text-text-tertiary">
               © 2026 OpenClaw Community Documentation
             </p>

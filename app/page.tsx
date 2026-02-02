@@ -30,51 +30,45 @@ export default function HomePage() {
         {/* Hero Section */}
         <Hero />
 
-        {/* No-Phishing Trust Signal */}
-        <section className="max-w-4xl mx-auto px-6 py-8">
-          <div className="flex items-center justify-center gap-3 text-sm text-text-tertiary">
-            <span>🔒</span>
-            <span className="font-mono">No-Phishing Promise:</span>
-            <span>We never ask for your API keys. No login, no telemetry. All examples use placeholders.</span>
-          </div>
-        </section>
-
-        {/* Crash Simulation - REPLACES comparison table */}
-        <section id="hardware-reality" className="max-w-4xl mx-auto px-6 py-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-mono text-red-400 mb-4">
-              What Actually Happens
+        {/* The Fix You Probably Needed */}
+        <section id="quick-fix" className="max-w-4xl mx-auto px-6 py-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-mono text-brand-primary mb-4">
+              The Fix You Probably Needed
             </h2>
-            <p className="text-text-secondary text-sm">
-              Log captured from a standard RTX 3070 setup running R1.
+            <p className="text-text-secondary text-sm md:text-base">
+              Stop trying to run the 671B model on your laptop. It won't happen.
             </p>
           </div>
 
-          <div className="bg-[#0d1117] rounded-lg overflow-hidden border border-red-500/30 shadow-xl">
-            <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-white/10">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-2 text-xs text-gray-400 font-mono">terminal</span>
+          <div className="glass-card p-6 mb-6">
+            <div className="bg-[#0d1117] rounded-lg overflow-hidden border border-brand-primary/30">
+              <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-white/10">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <span className="ml-2 text-xs text-gray-400 font-mono">terminal</span>
+              </div>
+              <pre className="p-4 overflow-x-auto">
+                <code className="text-sm text-green-400 font-mono leading-relaxed">
+{`# The "Poor Man's Fix" (Fits in 8GB VRAM)
+ollama run deepseek-r1:8b`}
+                </code>
+              </pre>
             </div>
-            <pre className="p-4 overflow-x-auto">
-              <code className="text-sm text-gray-100 font-mono leading-relaxed">
-{`user@dev-machine:~/openclaw$ openclaw start --model deepseek-r1:67b
-[2026-02-01 23:42:15] INFO: Initializing Gateway...
-[2026-02-01 23:42:16] INFO: Loading Model [deepseek-r1:67b] via Ollama...
-[2026-02-01 23:42:19] WARN: VRAM usage spike detected (15.8GB / 16.0GB)
-Traceback (most recent call last):
-  File "core/engine.py", line 402, in load_model
-    torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.40 GiB (GPU 0; 8.00 GiB total capacity; 6.42 GiB already allocated; 102.00 MiB free)
-[System Halted] Agent crashed.`}
-              </code>
-            </pre>
+            <p className="text-sm text-text-secondary mt-4">
+              This downloads the 8B Distilled version. It's dumber, but it runs.
+            </p>
           </div>
 
-          <p className="text-center text-sm text-text-tertiary mt-4 font-mono">
-            <span className="text-xs font-mono text-text-tertiary bg-background-tertiary px-2 py-1 rounded mr-2">System: RTX 3070 Ti (8GB) | Model: DeepSeek R1 Distill</span>
-            <Link href="/blog/how-to-use-deepseek-with-openclaw" className="text-brand-primary hover:text-brand-hover underline">Read the Hardware Guide →</Link>
-          </p>
+          <div className="text-center">
+            <Link
+              href="/blog/how-to-use-deepseek-with-openclaw"
+              className="text-sm text-brand-primary hover:text-brand-hover underline font-mono"
+            >
+              Read the full Hardware Reality Check →
+            </Link>
+          </div>
         </section>
 
         {/* Use Cases Section - REMOVED (marketing fluff) */}
