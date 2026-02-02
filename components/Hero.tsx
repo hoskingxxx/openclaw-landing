@@ -36,7 +36,7 @@ export function Hero() {
 
         {/* CTA Button Group */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-4 justify-center items-center w-full sm:w-auto">
-          <Button variant="primary" size="lg" href="/blog/how-to-use-deepseek-with-openclaw">
+          <Button variant="primary" size="lg" href="/guides/how-to-use-deepseek-with-openclaw">
             Read the DeepSeek R1 Guide
           </Button>
           <Button variant="secondary" size="lg" href="/oom">

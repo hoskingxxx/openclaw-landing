@@ -24,7 +24,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
+                <Link href="/guides" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
                   Guides & Tutorials
                 </Link>
               </li>

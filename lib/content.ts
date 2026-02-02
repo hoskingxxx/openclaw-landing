@@ -17,7 +17,7 @@ export const siteConfig = {
 export const navigation = [
   { title: "Home", href: "/" },
   { title: "Docs", href: "/quick-start" },
-  { title: "Guides", href: "/blog" },
+  { title: "Guides", href: "/guides" },
   // Removed: Use Cases, Generator, Videos, FAQ (out of scope per SITE_SCOPE.md)
 ]
 

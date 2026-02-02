@@ -7,7 +7,7 @@ import { installSteps } from "@/lib/content";
 function PromoBanner() {
   return (
     <Link
-      href="/blog/how-to-use-deepseek-with-openclaw"
+      href="/guides/how-to-use-deepseek-with-openclaw"
       className="block relative overflow-hidden group cursor-pointer"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
@@ -63,7 +63,7 @@ ollama run deepseek-r1:8b`}
 
           <div className="text-center">
             <Link
-              href="/blog/how-to-use-deepseek-with-openclaw"
+              href="/guides/how-to-use-deepseek-with-openclaw"
               className="text-sm text-brand-primary hover:text-brand-hover underline font-mono"
             >
               Read the full Hardware Reality Check →
@@ -87,7 +87,7 @@ ollama run deepseek-r1:8b`}
               Read the guide before you waste hours debugging hardware issues.
             </p>
             <Link
-              href="/blog/how-to-use-deepseek-with-openclaw"
+              href="/guides/how-to-use-deepseek-with-openclaw"
               className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-mono text-sm rounded transition-colors"
             >
               Read the Survival Guide →

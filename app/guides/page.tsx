@@ -7,12 +7,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw Guides - Tutorials & Best Practices",
+  title: "OpenClaw Guides - Battle-Tested Tutorials & Fixes",
   description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates. DeepSeek, local deployment, AI Agent architecture explained.",
   openGraph: {
-    title: "OpenClaw Guides - Tutorials & Best Practices",
+    title: "OpenClaw Guides - Battle-Tested Tutorials & Fixes",
     description: "Deep dive into OpenClaw tips, deployment guides, real-world cases and latest updates.",
-    url: "https://openclaw-ai.org/blog",
+    url: "https://openclaw-ai.org/guides",
   },
 };
 
@@ -23,16 +23,16 @@ export default function BlogPage() {
       <main className="min-h-screen">
         {/* Breadcrumbs */}
         <div className="max-w-7xl mx-auto px-6 pt-8">
-          <Breadcrumbs items={[{ label: "Guides", href: "/blog" }]} />
+          <Breadcrumbs items={[{ label: "Guides", href: "/guides" }]} />
         </div>
 
         {/* Page Title */}
         <section className="max-w-7xl mx-auto px-6 py-8">
           <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-            OpenClaw Guides
+            OpenClaw Survival Guides
           </h1>
           <p className="text-xl text-text-secondary">
-            Tutorials, Cases and Best Practices
+            Battle-Tested Tutorials & Fixes
           </p>
         </section>
 
@@ -82,7 +82,7 @@ export default function BlogPage() {
             {blogPosts.map((post) => (
               <Link
                 key={post.slug}
-                href={`/blog/${post.slug}`}
+                href={`/guides/${post.slug}`}
                 className="glass-card p-6 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 group"
               >
                 <div className="flex items-center gap-2 mb-3">

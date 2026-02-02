@@ -34,7 +34,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `https://openclaw-ai.org/blog/${post.slug}`,
+      url: `https://openclaw-ai.org/guides/${post.slug}`,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -89,8 +89,8 @@ export default async function BlogPostPage({
         <div className="max-w-4xl mx-auto px-6 pt-8">
           <Breadcrumbs
             items={[
-              { label: "Guides", href: "/blog" },
-              { label: post.title, href: `/blog/${post.slug}` },
+              { label: "Guides", href: "/guides" },
+              { label: post.title, href: `/guides/${post.slug}` },
             ]}
           />
         </div>
@@ -156,7 +156,7 @@ export default async function BlogPostPage({
         description={post.description}
         datePublished={post.date}
         author={post.author}
-        url={`https://openclaw-ai.org/blog/${post.slug}`}
+        url={`https://openclaw-ai.org/guides/${post.slug}`}
       />
     </>
   );

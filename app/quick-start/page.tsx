@@ -146,7 +146,7 @@ LLM_MODEL="deepseek-r1:8b"`}
           <div className="glass-card p-8 text-center mt-12">
              <h3 className="text-xl font-bold text-text-primary mb-2">Stuck?</h3>
              <p className="text-text-secondary mb-6">Read the full guide for common OOM fixes.</p>
-             <Link href="/blog/how-to-use-deepseek-with-openclaw" className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors">
+             <Link href="/guides/how-to-use-deepseek-with-openclaw" className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors">
                Go to Survival Guide →
              </Link>
           </div>

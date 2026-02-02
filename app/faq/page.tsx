@@ -98,7 +98,7 @@ export default function FAQPage() {
           icon="📖"
           title="Read the DeepSeek R1 Guide"
           description="Learn how to deploy OpenClaw with DeepSeek R1 locally without running into OOM errors."
-          href="/blog/how-to-use-deepseek-with-openclaw"
+          href="/guides/how-to-use-deepseek-with-openclaw"
           linkText="Read the Guide"
         />
       </main>
