@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { CodeBlock } from "@/components/ui/CodeBlock";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -146,9 +147,9 @@ LLM_MODEL="deepseek-r1:8b"`}
           <div className="glass-card p-8 text-center mt-12">
              <h3 className="text-xl font-bold text-text-primary mb-2">Stuck?</h3>
              <p className="text-text-secondary mb-6">Read the full guide for common OOM fixes.</p>
-             <Link href="/guides/how-to-use-deepseek-with-openclaw" className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors">
+             <Button href="/guides/how-to-use-deepseek-with-openclaw" variant="secondary">
                Go to Survival Guide →
-             </Link>
+             </Button>
           </div>
 
         </div>

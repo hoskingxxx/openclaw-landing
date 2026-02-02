@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -226,12 +227,9 @@ LLM_BASE_URL="https://api.deepseek.com/v1"</code>
             <p className="text-text-secondary mb-6">
               This page only covers crash fixes. For complete setup, see the main guide.
             </p>
-            <Link
-              href="/guides/how-to-use-deepseek-with-openclaw"
-              className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-medium rounded transition-colors"
-            >
+            <Button href="/guides/how-to-use-deepseek-with-openclaw">
               Read the Complete Guide →
-            </Link>
+            </Button>
           </div>
         </div>
       </main>

@@ -3,6 +3,7 @@ import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData } from "@/components/SEO/StructuredData";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -138,12 +139,9 @@ export default async function BlogPostPage({
             <p className="text-text-secondary mb-4">
               Subscribe to our blog for the latest OpenClaw tutorials and tips.
             </p>
-            <Link
-              href="/resources"
-              className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-medium rounded-lg transition-colors"
-            >
+            <Button href="/resources">
               View Recommended Resources
-            </Link>
+            </Button>
           </div>
         </article>
       </main>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Hero } from "@/components/features/Hero";
 import { Footer } from "@/components/features/Footer";
 import { Navigation } from "@/components/features/Navigation";
+import { Button } from "@/components/ui/Button";
 import { installSteps } from "@/lib/content";
 
 function PromoBanner() {
@@ -86,12 +87,9 @@ ollama run deepseek-r1:8b`}
             <p className="text-text-secondary mb-6">
               Read the guide before you waste hours debugging hardware issues.
             </p>
-            <Link
-              href="/guides/how-to-use-deepseek-with-openclaw"
-              className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-mono text-sm rounded transition-colors"
-            >
+            <Button href="/guides/how-to-use-deepseek-with-openclaw" className="font-mono text-sm">
               Read the Survival Guide →
-            </Link>
+            </Button>
           </div>
         </section>
       </main>

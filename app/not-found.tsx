@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 import { NextStepCard } from "@/components/features/NextSteps";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 
@@ -38,29 +38,23 @@ export default function NotFoundPage() {
             </li>
             <li className="flex items-center gap-3">
               <span className="text-brand-primary">•</span>
-              <span>Check the <Link href="/guides" className="text-brand-primary hover:underline">Guides</Link> or <Link href="/faq" className="text-brand-primary hover:underline">FAQ</Link></span>
+              <span>Check the <a href="/guides" className="text-brand-primary hover:underline">Guides</a> or <a href="/faq" className="text-brand-primary hover:underline">FAQ</a></span>
             </li>
           </ul>
         </div>
 
         {/* Return Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-medium rounded-lg transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <Button variant="primary" href="/">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
             Back to Home
-          </Link>
-          <Link
-            href="/guides"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-background-tertiary hover:bg-background-elevated text-text-primary font-medium rounded-lg border border-white/10 transition-colors"
-          >
+          </Button>
+          <Button variant="secondary" href="/guides">
             <span className="text-xl">📖</span>
             View Guides
-          </Link>
+          </Button>
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
+import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -273,12 +274,9 @@ export default function ResourcesPage() {
             <p className="text-text-secondary mb-4">
               Getting CUDA out of memory errors?
             </p>
-            <Link
-              href="/oom"
-              className="inline-block px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-medium rounded transition-colors"
-            >
+            <Button href="/oom">
               View OOM Error Solutions →
-            </Link>
+            </Button>
           </div>
         </section>
       </main>
