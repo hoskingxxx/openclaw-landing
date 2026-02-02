@@ -91,20 +91,12 @@ export default function RootLayout({
         <SoftwareStructuredData />
         <FAQStructuredData />
 
-        {/* Microsoft Clarity Analytics - Uncomment and replace PROJECT_ID when going live */}
-        {/*
+        {/* Umami Analytics */}
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "YOUR_PROJECT_ID");
-            `,
-          }}
+          defer
+          src="https://analytics.umami.is/script.js"
+          data-website-id="5db90e55-9103-490f-8df0-9636a84942c8"
         />
-        */}
       </head>
       <body className="font-sans antialiased">
         <NextTopLoader
