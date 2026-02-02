@@ -40,7 +40,6 @@ export default function HomePage() {
         </section>
 
         {/* Crash Simulation - REPLACES comparison table */}
-        <section id="hardware-reality" className="max-w-4xl mx-auto px-6 py-16">
         <section id="hardware-reality" className="max-w-4xl mx-auto px-6 py-20">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-mono text-red-400 mb-4">

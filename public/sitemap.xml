@@ -8,14 +8,6 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Quick Start Guide -->
-  <url>
-    <loc>https://openclaw-ai.org/quick-start</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
   <!-- Blog / Guides -->
   <url>
     <loc>https://openclaw-ai.org/blog</loc>

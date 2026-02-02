@@ -180,7 +180,7 @@ export default function ResourcesPage() {
                   <h3 className="text-xl font-semibold text-text-primary mb-1">
                     DeepSeek Official
                   </h3>
-                  <p className="text-sm text-text-tertiary">Best value for money</p>
+                  <p className="text-sm text-text-tertiary">Cost-effective option</p>
                 </div>
                 <span className="px-2 py-1 text-xs bg-green-500/20 text-green-400 rounded">
                   Recommended
