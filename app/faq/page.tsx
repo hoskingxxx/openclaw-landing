@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { NextStepCard } from "@/components/NextSteps";
-import { faqs, commandTemplates } from "@/lib/content";
+import { faqs } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -93,36 +93,13 @@ export default function FAQPage() {
           </div>
         </section>
 
-        {/* Command Templates Preview */}
-        <section className="max-w-4xl mx-auto px-6 pb-12">
-          <div className="glass-card p-8">
-            <h2 className="text-2xl font-bold text-text-primary mb-4">
-              💡 Quick Command Templates
-            </h2>
-            <p className="text-text-secondary mb-6">
-              Use these preset templates to get started quickly, or visit the Command Generator to customize your commands.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {commandTemplates.map((template) => (
-                <div
-                  key={template.id}
-                  className="p-4 bg-background-tertiary rounded-lg border border-white/5 hover:border-brand-primary/30 transition-colors"
-                >
-                  <div className="text-2xl mb-2">{template.icon}</div>
-                  <div className="text-text-primary font-medium">{template.title}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Next Step */}
         <NextStepCard
-          icon="📋"
-          title="View Complete Reference"
-          description="Master OpenClaw's 6 use cases, universal command templates, and safety guide."
-          href="/use-cases"
-          linkText="View Use Cases"
+          icon="📖"
+          title="Read the DeepSeek R1 Guide"
+          description="Learn how to deploy OpenClaw with DeepSeek R1 locally without running into OOM errors."
+          href="/blog/how-to-use-deepseek-with-openclaw"
+          linkText="Read the Guide"
         />
       </main>
       <Footer />

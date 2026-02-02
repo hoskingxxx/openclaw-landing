@@ -2,9 +2,8 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TableOfContents, MobileTableOfContents } from "@/components/TableOfContents";
-import { NextStepCard } from "@/components/NextSteps";
 import { CodeBlock } from "@/components/ui/CodeBlock";
-import { installSteps, supportedChannels, supportedModels } from "@/lib/content";
+import { installSteps, supportedModels } from "@/lib/content";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,7 +21,6 @@ const tocItems = [
   { id: "requirements", label: "Requirements" },
   { id: "install", label: "Installation" },
   { id: "models", label: "Model Configuration" },
-  { id: "platforms", label: "Supported Platforms" },
 ];
 
 export default function QuickStartPage() {
@@ -41,7 +39,7 @@ export default function QuickStartPage() {
             Quick Start
           </h1>
           <p className="text-xl text-text-secondary">
-            Deploy Your AI Employee in 5 Minutes
+            Get OpenClaw running without crashing your system
           </p>
 
           {/* Mobile TOC */}
@@ -112,30 +110,34 @@ export default function QuickStartPage() {
             {/* Supported Platforms */}
             <section id="platforms" className="mb-12 scroll-mt-24">
               <h2 className="text-2xl font-semibold text-text-primary mb-6">Supported Platforms</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="glass-card p-4">
-                  <h3 className="text-text-primary font-medium mb-2">Mainstream</h3>
-                  <ul className="space-y-1 text-sm text-text-secondary">
-                    {supportedChannels.mainstream.map((channel) => (
-                      <li key={channel}>• {channel}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="glass-card p-4">
-                  <h3 className="text-text-primary font-medium mb-2">Extended</h3>
-                  <ul className="space-y-1 text-sm text-text-secondary">
-                    {supportedChannels.extended.map((channel) => (
-                      <li key={channel}>• {channel}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="glass-card p-4">
-                  <h3 className="text-text-primary font-medium mb-2">Voice</h3>
-                  <ul className="space-y-1 text-sm text-text-secondary">
-                    {supportedChannels.voice.map((channel) => (
-                      <li key={channel}>• {channel}</li>
-                    ))}
-                  </ul>
+              <div className="glass-card p-6">
+                <p className="text-text-secondary mb-4">
+                  OpenClaw integrates with popular communication platforms and developer tools.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-white/5 rounded p-4">
+                    <h3 className="text-text-primary font-medium mb-2">Communication</h3>
+                    <ul className="space-y-1 text-sm text-text-secondary">
+                      <li>• Discord</li>
+                      <li>• Slack</li>
+                      <li>• Telegram</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white/5 rounded p-4">
+                    <h3 className="text-text-primary font-medium mb-2">Development</h3>
+                    <ul className="space-y-1 text-sm text-text-secondary">
+                      <li>• GitHub</li>
+                      <li>• GitLab</li>
+                      <li>• CLI Tools</li>
+                    </ul>
+                  </div>
+                  <div className="bg-white/5 rounded p-4">
+                    <h3 className="text-text-primary font-medium mb-2">Voice</h3>
+                    <ul className="space-y-1 text-sm text-text-secondary">
+                      <li>• Discord Voice</li>
+                      <li>• Custom Audio</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </section>
@@ -148,15 +150,6 @@ export default function QuickStartPage() {
             </div>
           </aside>
         </div>
-
-        {/* Next Step */}
-        <NextStepCard
-          icon="🎬"
-          title="Watch Video Tutorials"
-          description="Learn OpenClaw through videos, each with copyable commands."
-          href="/videos"
-          linkText="View Video Tutorials"
-        />
       </main>
       <Footer />
     </>

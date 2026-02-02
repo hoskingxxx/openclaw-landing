@@ -114,11 +114,11 @@ export default function BlogPage() {
 
         {/* Next Step */}
         <NextStepCard
-          icon="🛠️"
-          title="View Resources"
-          description="Curated VPS, API and tool recommendations to help you quickly set up OpenClaw."
-          href="/resources"
-          linkText="View Recommended Resources"
+          icon="🚀"
+          title="Get Started with OpenClaw"
+          description="Follow the quick start guide to set up OpenClaw on your system."
+          href="/quick-start"
+          linkText="View Quick Start Guide"
         />
       </main>
       <Footer />

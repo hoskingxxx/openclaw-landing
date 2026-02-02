@@ -1,4 +1,4 @@
-import { siteConfig, faqs, videoTutorials } from "@/lib/content";
+import { siteConfig, faqs } from "@/lib/content";
 
 // FAQPage Structured Data
 export function FAQStructuredData() {
@@ -58,33 +58,6 @@ export function SoftwareStructuredData() {
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
-  );
-}
-
-// VideoObject Structured Data
-export function VideoStructuredData() {
-  const schemas = videoTutorials.map((video) => ({
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    name: video.title,
-    thumbnailUrl: `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`,
-    uploadDate: "2026-01-01",
-    duration: `PT${video.duration.replace(":", "M")}S`,
-    contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
-    embedUrl: `https://www.youtube.com/embed/${video.id}`,
-    description: video.notes.map((n) => n.title).join(", "),
-  }));
-
-  return (
-    <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-    </>
   );
 }
 

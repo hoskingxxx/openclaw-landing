@@ -1,54 +1,28 @@
-# Project Identity
-- This site is an UNOFFICIAL survival guide and field notes.
-- It is NOT a product landing page.
-- It must read like documentation written after failures, not before success.
-- Do not imply authority, endorsement, or official status.
+# OpenClaw Project Constitution
 
-# Core Principle
-- Accuracy > Completeness > Persuasion
-- If something is not tested, say it is not tested.
-- If something failed, document the failure before suggesting alternatives.
+## 1. IDENTITY & TONE (The "Survivor" Persona)
+- **Role:** We are NOT selling a product. We are an **Unofficial Survival Guide**.
+- **Voice:** Frustrated DevOps engineer. Brutally honest. Skeptical.
+- **Style:** "Here is the log that proves it failed" > "Trust me it works".
+- **Forbidden:** Marketing fluff ("Revolutionary", "Seamless", "AI Employee", "Zero Cost").
+- **Mandatory:** Realism (Hardware specs, OOM errors, specific version numbers).
 
-# Tone Rules
-- Allowed: factual, blunt, slightly frustrated.
-- Forbidden: hype, certainty without evidence, motivational language.
-- Emotion is acceptable ONLY when paired with concrete logs, configs, or constraints.
+## 2. ARCHITECTURE & SCOPE
+- **Source of Truth:** Adhere strictly to **`SITE_SCOPE.md`** for allowed pages/features.
+- **Prohibited Features:** No video tutorials, no command generators, no generic "use cases".
+- **Tech Stack:** Next.js (App Router), Tailwind (Dark Mode only), Lucide React.
 
-# Language Constraints
-- Forbidden words:
-  - "Revolutionary"
-  - "AI Employee"
-  - "Zero Cost"
-  - "Seamless"
-  - "Perfect"
-  - "Best"
-- Avoid absolute claims ("always", "never", "guaranteed").
+## 3. SECURITY & TRUST (Zero Tolerance)
+- **No Phishing:** NEVER show an example `.env` with a fake API key structure (e.g., `sk-123...`) on the homepage.
+- **No Telemetry:** Do not add analytics scripts unless explicitly requested.
+- **Privacy:** Emphasize local-first execution.
 
-# Evidence Rules
-- Any strong claim must be paired with at least one of:
-  - hardware specs
-  - command output
-  - configuration snippet
-  - explicit scope limitation (what this does NOT cover)
+## 4. MONETIZATION ETHICS
+- **The "Poor Man First" Rule:** Always offer the free/local fix (Quantization/Ollama) BEFORE offering the paid fix (VPS).
+- **Affiliate Links:** Only present Vultr/RunPod links as a solution to hardware failure (OOM), never as an upsell.
+- **Transparency:** Footer must state: "Unofficial. Not affiliated."
 
-# Monetization Rules (Critical)
-- Monetization is allowed, but MUST follow this order:
-  1. Document the failure or limitation first.
-  2. List all realistic options (including non-paid ones).
-  3. Only then mention paid infrastructure as ONE option.
-- Affiliate links must be clearly labeled as such.
-- Do NOT imply that paid infrastructure is the only or default solution.
-
-# Security & Trust
-- Never request or imply sharing of API keys.
-- Never show real-looking API keys (no `sk-` prefixes).
-- Always use placeholders and warn against copying real credentials.
-
-# AI Behavior Constraint
-- Do NOT optimize for conversion.
-- Do NOT rewrite content to be more persuasive.
-- Do NOT turn uncertainty into confidence.
-- Preserve ambiguity where reality is ambiguous.
-
-# Primary Failure Mode to Avoid
-- Turning observed pain into a pre-designed funnel.
+## 5. CODING BEHAVIOR
+- **Deletion:** When a feature is out of scope, DELETE the file. Do not comment it out.
+- **Images:** Use existing assets or CSS shapes. Do not hallucinate external image URLs.
+- **Links:** Check `SITE_SCOPE.md` before creating any internal link.
