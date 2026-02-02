@@ -71,6 +71,12 @@ export function Navigation() {
                   </Link>
                 ))}
               </div>
+              {/* Unofficial Site Disclaimer */}
+              <div className="mt-4 px-4 py-3 bg-white/5 rounded-lg mx-1">
+                <p className="text-xs text-gray-400 font-mono leading-relaxed">
+                  This is an <span className="text-white">unofficial</span> community site.
+                </p>
+              </div>
             </div>
           )}
         </div>
