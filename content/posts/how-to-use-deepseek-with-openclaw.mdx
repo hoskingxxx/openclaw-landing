@@ -1,191 +1,173 @@
 ---
-title: "How to Run OpenClaw with DeepSeek R1: The Zero-Cost Local Agent Guide"
+title: "Running OpenClaw with DeepSeek R1 (Local & API Guide)"
 date: "2026-02-01"
-description: "Claude API too expensive? Try the free DeepSeek R1. Step-by-step guide to configure DeepSeek with OpenClaw for zero-cost local AI agents."
-tags: ["DeepSeek", "OpenClaw", "Tutorial", "Local Deployment", "Cost Optimization"]
+description: "Technical guide for configuring DeepSeek R1 with OpenClaw. Covers API setup, local deployment via Ollama, and hardware requirements."
+tags: ["DeepSeek", "OpenClaw", "Tutorial", "Local Deployment", "Configuration"]
 category: "Tutorial"
 featured: true
-seoKeywords: ["DeepSeek R1", "OpenClaw tutorial", "Local LLM Agent", "DeepSeek API setup"]
+seoKeywords: ["DeepSeek R1", "OpenClaw configuration", "Local LLM setup", "DeepSeek API tutorial"]
 ---
 
-> **🇨🇳 中文用户请点这里阅读中文版指南** [中文版](/blog/deepseek-guide-cn)
+> **中文用户请点这里阅读中文版指南** [中文版](/blog/deepseek-guide-cn)
 
-> **Disclaimer**: This guide is based on the latest DeepSeek and OpenClaw API documentation. Technology evolves quickly—if you encounter any setup issues, leave a comment below.
+## Overview
 
-Claude API too expensive? OpenAI top-up a hassle? Give **DeepSeek R1** a try.
+DeepSeek R1 is a reasoning-focused model that outputs explicit chain-of-thought traces before generating responses. This guide covers configuring OpenClaw to use R1 via API or local execution.
 
-This guide walks you through setting up DeepSeek with OpenClaw—maintaining **GPT-4 level reasoning** while reducing your API costs to **near zero**.
+### Key Characteristics
 
----
+- Explicit reasoning traces visible in output
+- OpenAI API-compatible interface
+- Lower API costs compared to proprietary models
+- Available for local execution via Ollama
 
-## Why DeepSeek R1 is Perfect for OpenClaw
+### Trade-offs
 
-OpenClaw with Claude Opus or GPT-4 performs exceptionally well, but run it for a month and your credit card statement might shock you.
-
-Here's the key: **DeepSeek R1** delivers **GPT-4 tier performance** on Agent tasks and Chinese understanding—at **1/10th the cost** of Claude or less.
-
-**Why choose DeepSeek R1:**
-
-- ✅ **Full OpenAI API compatibility**: Drop-in replacement for OpenClaw
-- ✅ **Chain of Thought (CoT)**: More stable on complex code tasks, fewer infinite loops
-- ✅ **New user bonus**: **5 million tokens** on signup (enough for months of OpenClaw)
-- ✅ **Local deployment**: Pair with Ollama and skip the API entirely
+- **Slower than V3**: The reasoning step adds latency
+- **Prompt format**: Requires specific formatting for optimal results
+- **Hardware**: Local execution demands significant resources
+- **Tool stability**: Function calling may vary compared to Claude
 
 ---
 
-## Step 1: Get a DeepSeek API Key
+## Hardware Requirements
 
-1. **Visit the site**: [DeepSeek Platform](https://www.deepseek.com/)
-2. **Sign up**: Phone or email registration available
-3. **Create API Key**:
-   - Click "API Keys" in the left sidebar
-   - Click "Create API Key"
-   - *Copy and save your key (starts with `sk-`)—it only displays once*
+| Model Size | VRAM Required | RAM Required | Recommended Use Case |
+| :--- | :--- | :--- | :--- |
+| **1.5B** | N/A (CPU) | 8GB | Testing on older hardware |
+| **7B** | 8GB | 16GB | General development tasks |
+| **14B** | 16GB | 32GB | Complex reasoning tasks |
+| **32B** | 24GB | 48GB | Production workloads |
+| **70B** | 48GB | 96GB | Enterprise applications |
+
+**Note**: Quantized models (Q4_K_M) reduce memory requirements by approximately 40%.
+
+**API Mode**: No hardware requirement; introduces network latency.
 
 ---
 
-## Step 2: Configure OpenClaw (The Important Part)
+## Method 1: API Configuration
 
-We'll use **OpenAI compatibility mode** to integrate DeepSeek. Straightforward and reliable.
+### Step 1: Obtain API Key
 
-### Method A: Edit `.env` File (Recommended)
+1. Navigate to [DeepSeek Platform](https://www.deepseek.com/)
+2. Register using phone or email
+3. Access "API Keys" in the left sidebar
+4. Generate a new key
+5. Store the key securely—it is displayed only once
 
-If you're running OpenClaw in a project, editing the `.env` file is the quickest approach.
+### Step 2: Configure Environment Variables
 
-Update your `.env` file:
+OpenClaw uses OpenAI-compatible endpoints. Edit your `.env` file:
 
 ```bash
-# Set provider to OpenAI (DeepSeek is OpenAI-compatible)
+# Provider configuration
 LLM_PROVIDER="openai"
 
-# ⚠️ CRITICAL: Must include /v1 suffix or requests will fail!
+# Base URL must include /v1 suffix
 LLM_BASE_URL="https://api.deepseek.com/v1"
 
-# Your DeepSeek API Key
+# Your DeepSeek API key
 LLM_API_KEY="sk-your-key-here"
 
-# Use the reasoning model (R1)
+# Model selection
 LLM_MODEL="deepseek-reasoner"
-# For cheaper V3 model, use "deepseek-chat"
+# Alternative: "deepseek-chat" for V3 (faster, no reasoning)
 ```
 
-### Method B: One-time Environment Variables (Linux/Mac)
+> **Security Note**: Ensure `.env` is included in `.gitignore`. Do not commit API keys to version control.
 
-Prefer not to edit config files? Run directly from terminal:
-
-```bash
-export LLM_PROVIDER="openai"
-export LLM_BASE_URL="https://api.deepseek.com/v1"
-export LLM_API_KEY="sk-your-key-here"
-export LLM_MODEL="deepseek-reasoner"
-
-# Then start OpenClaw
-openclaw run "Analyze the codebase in this directory"
-```
-
-### Method C: Windows PowerShell
-
-```powershell
-$env:LLM_PROVIDER="openai"
-$env:LLM_BASE_URL="https://api.deepseek.com/v1"
-$env:LLM_API_KEY="sk-your-key-here"
-$env:LLM_MODEL="deepseek-reasoner"
-```
-
----
-
-## Step 3: Verify Setup
-
-Let's test your new AI agent's capabilities.
-
-Run in terminal:
+### Step 3: Verify Configuration
 
 ```bash
 openclaw run "Explain the difference between DeepSeek R1 reasoning mode and normal mode"
 ```
 
-**Watch the output**:
-
-If you see the response plus thinking tags like ``
-
-```, you've successfully enabled DeepSeek R1's reasoning engine.
+If configured correctly, the output will include thinking tags (``).
 
 ---
 
-> 💡 **Pro Tip**: Can't remember CLI flags? Use our [OpenClaw Command Generator](/command-generator)—visual builder, ready to copy-paste.
+## Method 2: Local Deployment (Ollama)
 
----
+Local execution provides zero API cost and offline operation.
 
-## Advanced: Run Locally (Completely Free)
+### Step 1: Install Ollama
 
-Have a powerful machine (Mac M1/M2/M3 or NVIDIA GPU)? Run the model locally for fully offline, zero-cost operation.
+Download from [ollama.com](https://ollama.com/) for macOS, Linux, or Windows.
 
-### 1. Install Ollama
-
-Download from [Ollama](https://ollama.com/).
-
-### 2. Pull DeepSeek R1 Model
-
-Run in terminal:
+### Step 2: Pull Model
 
 ```bash
-# Pull 7B version (for 8GB-16GB RAM)
-ollama run deepseek-r1:7b
+# 7B model (recommended for most systems)
+ollama pull deepseek-r1:7b
 
-# Or 1.5B version (for older hardware)
-ollama run deepseek-r1:1.5b
+# 1.5B model (for resource-constrained systems)
+ollama pull deepseek-r1:1.5b
 ```
 
-### 3. Point OpenClaw to Local Model
+### Step 3: Configure OpenClaw
 
-Edit your `.env`:
+Edit `.env`:
 
 ```bash
 LLM_PROVIDER="openai"
-
-# ⚠️ Note: Default Ollama port is 11434
 LLM_BASE_URL="http://localhost:11434/v1"
-
-LLM_API_KEY="ollama"  # Arbitrary value for local models
-
+LLM_API_KEY="ollama"
 LLM_MODEL="deepseek-r1:7b"
 ```
 
-**Note**: If running OpenClaw in Docker, use `host.docker.internal` instead of `localhost` or the container won't reach your host machine.
+**Docker users**: Replace `localhost` with `host.docker.internal` to allow the container to reach the host.
 
 ---
 
-## Performance & Cost Comparison
+## Model Comparison: R1 vs Claude 3.5 Sonnet
 
-| Method | Monthly Cost | Reasoning | Rating | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **DeepSeek API** | $0 - $10 | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | (Recommended, free credits for new users) |
-| **Local Ollama (7B)** | $0 | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | (Privacy-first, requires decent hardware) |
-| **Claude Opus** | $100+ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | (For those with unlimited budget) |
+| Factor | DeepSeek R1 | Claude 3.5 Sonnet |
+| :--- | :--- | :--- |
+| **Reasoning** | Explicit CoT traces | Implicit reasoning |
+| **Speed** | Slower (reasoning overhead) | Faster |
+| **Tool Use** | Stable, OpenAI-compatible | More robust for complex tools |
+| **Cost** | Lower ($0.55/M input tokens) | Higher ($3/M input tokens) |
+| **Context** | 64K tokens | 200K tokens |
+| **Local Option** | Yes (via Ollama) | No |
+
+**Recommendation**: Use R1 for cost-sensitive workloads or when offline operation is required. Use Claude for complex tool-calling scenarios or when context length is critical.
+
+---
+
+## Troubleshooting
+
+### 404 Not Found
+
+The `LLM_BASE_URL` must include the `/v1` suffix:
+```
+https://api.deepseek.com/v1  # Correct
+https://api.deepseek.com      # Incorrect
+```
+
+### Function Calling Issues
+
+DeepSeek supports OpenAI-compatible function calling. If you experience issues:
+
+1. Verify `LLM_PROVIDER="openai"` is set
+2. Check that the model supports tools (`deepseek-reasoner` does)
+3. Review OpenClaw logs for schema validation errors
+
+### Performance Degradation
+
+For local models:
+- Ensure you are using an appropriately sized model for your hardware
+- Consider using Q4_K_M quantization for lower VRAM usage
+- Close unnecessary applications to free resources
+
+For API mode:
+- Check network latency to DeepSeek servers
+- Consider switching to `deepseek-chat` (V3) for faster responses
 
 ---
 
-## FAQ
+## Additional Resources
 
-### Q: Why does OpenClaw throw "404 Not Found"?
-
-**A**: 99% of the time you forgot the `/v1` suffix in your Base URL. Verify it's set to `https://api.deepseek.com/v1`.
-
-### Q: What's the difference between `deepseek-reasoner` and `deepseek-chat`?
-
-**A**: `reasoner` is R1 (reasoning model)—best for coding, complex logic. `chat` is V3 (general model)—better for translation, copywriting. Faster and cheaper.
-
-### Q: Do I need to modify OpenClaw source code?
-
-**A**: Not at all. OpenAI compatibility mode handles everything.
-
-### Q: Does function calling work?
-
-**A**: Fully supported! DeepSeek is OpenAI-compatible, so all OpenClaw features work:
-
-- ✅ File read/write
-- ✅ Code execution
-- ✅ Tool calling
-- ✅ Multi-agent collaboration
-
----
+- [OpenClaw Command Generator](/command-generator) — visual configuration builder
+- [DeepSeek API Documentation](https://api-docs.deepseek.com/)
+- [Ollama Model Library](https://ollama.com/library)

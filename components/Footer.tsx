@@ -9,8 +9,8 @@ export function Footer() {
           <div>
             <h4 className="text-text-primary font-semibold mb-4">OpenClaw</h4>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Not just another chatbot. Your AI Employee.<br />
-              You set the goal, it breaks it down, executes, and reports back.
+              OpenClaw is an open-source AI agent framework.<br />
+              Automate development tasks with autonomous code execution.
             </p>
           </div>
 
@@ -98,23 +98,15 @@ export function Footer() {
               href="https://ko-fi.com/lazydev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-medium rounded-lg transition-all duration-200 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.2 3H5.8C4.2 3 3 4.2 3 5.8v12.4C3 19.8 4.2 21 5.8 21h12.4c1.6 0 2.8-1.2 2.8-2.8V5.8C21 4.2 19.8 3 18.2 3zM16 11h-2v2h2v-2zm-4 0h-2v2h2v-2zm6-2H6V6h12v3zm0 8h-4v-2h4v2z"/>
-              </svg>
-              Buy me a Coffee
+              className="text-sm text-text-tertiary hover:text-text-primary transition-colors"
+            >Buy me a coffee
             </a>
           </div>
 
           {/* Row 2: Legal Disclaimer */}
           <div className="mt-6 p-4 bg-background-tertiary/50 rounded-lg border border-white/5">
-            <p className="text-xs text-text-tertiary leading-relaxed mb-2">
-              <strong className="text-text-secondary">Disclaimer: </strong>
-              This is an <strong>independent educational resource</strong> and is <strong>NOT officially affiliated with, endorsed by, or connected to</strong> the OpenClaw project, DeepSeek, or any other entities mentioned.
-            </p>
             <p className="text-xs text-text-tertiary leading-relaxed">
-              OpenClaw software is open source under MIT License. DeepSeek is a trademark of its respective owners. This site is for educational purposes only. Use at your own risk. The site owner is not responsible for any damages from using the software or information provided.
+              OpenClaw is an open-source project licensed under MIT. This site is a community-maintained documentation hub and is not affiliated with the official OpenClaw team or DeepSeek.
             </p>
           </div>
         </div>

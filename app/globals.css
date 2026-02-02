@@ -80,6 +80,8 @@ a {
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
+  break-words: keep-all;
+  word-break: normal;
 }
 
 .prose pre code {
@@ -109,4 +111,13 @@ a {
 .prose a:hover {
   color: #93c5fd !important;
   text-decoration: underline;
+}
+
+/* Article body text readability */
+.prose p, .prose ul, .prose ol {
+  line-height: 1.75;
+}
+
+.prose {
+  font-size: 1.125rem;
 }
