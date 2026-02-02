@@ -121,3 +121,85 @@ a {
 .prose {
   font-size: 1.125rem;
 }
+
+/* Blockquote / Callout / Warning Boxes */
+.prose blockquote {
+  border-left: 4px solid #f97316;
+  background-color: rgba(249, 115, 22, 0.1);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prose blockquote p {
+  margin-bottom: 0;
+}
+
+.prose blockquote strong {
+  color: #f97316;
+  font-style: normal;
+}
+
+/* Markdown Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose thead {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.prose th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose th:last-child {
+  border-right: none;
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.prose td:last-child {
+  border-right: none;
+}
+
+.prose tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table wrapper for mobile overflow */
+.prose > table {
+  display: table;
+}
+
+.prose .table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}
+
+.prose .table-wrapper table {
+  margin: 0;
+}
