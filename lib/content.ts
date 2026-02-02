@@ -130,7 +130,7 @@ export const faqs = [
     questions: [
       {
         q: "Is OpenClaw safe? How to prevent Prompt Injection?",
-        a: "Security best practices:\n\n**Recommended isolation**:\n- Run in Docker container, limit file system access\n- Use dedicated device like Mac Mini\n- Set read-only permissions, specify writable directories\n- Block dangerous commands (rm, format, etc.)\n\n**Prevent Prompt Injection**:\n- Don't expose system commands in prompts\n- Use constraints to limit execution scope\n- Regularly review execution logs\n\n👉 Essentially, treat it like an autonomous process with system privileges.",
+        a: "**Think of OpenClaw as a junior engineer with sudo privileges.**\n\nIf you wouldn't trust a junior intern with root access to this folder, don't trust the agent.\n\n**Hard truth:** The agent can delete files. It can break production. It can deploy bad code.\n\n**Mitigation**:\n- Run in Docker container with read-only filesystem\n- Use dedicated device (Mac Mini, cheap server)\n- Block dangerous commands (rm, format, dd, etc.)\n- Review EVERY execution log\n\n👉 You're giving an AI the keys to your server. Act accordingly.",
       },
       {
         q: "Will it 'go rogue'?",
@@ -138,7 +138,7 @@ export const faqs = [
       },
       {
         q: "Suitable for production?",
-        a: "Yes, but only if: you know what it can do, have permission isolation, have logging/rollback mechanisms.\n\nBeginners should not start with production.",
+        a: "**Short answer:** Yes.\n\n**Honest answer:** Only if you have strict guardrails. Otherwise, expect to wake up at 3 AM.\n\n**Production requirements**:\n- You know exactly what the agent can and cannot do\n- You have tested EVERY workflow in staging\n- You have permission isolation (read-only by default)\n- You have logging AND rollback mechanisms\n- You have a human reviewing every action\n\nIf you're missing any of these, you're not ready for production.\n\n👉 Beginners should NOT start with production.",
       },
     ],
   },

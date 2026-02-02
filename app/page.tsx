@@ -36,8 +36,11 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl font-mono text-brand-primary mb-4">
               The Fix You Probably Needed
             </h2>
-            <p className="text-text-secondary text-sm md:text-base">
-              Stop trying to run the 671B model on your laptop. It won't happen.
+            <p className="text-text-secondary text-sm md:text-base mb-2">
+              Stop trying to run the 67B model on your laptop. It won't happen.
+            </p>
+            <p className="text-text-tertiary text-sm font-mono">
+              You're debugging physics. VRAM is not negotiable.
             </p>
           </div>
 
@@ -71,18 +74,21 @@ ollama run deepseek-r1:8b`}
           </div>
         </section>
 
-        {/* Final CTA */}
+        {/* Final CTA - Survivor Style */}
         <section className="max-w-4xl mx-auto px-6 py-20">
           <div className="glass-card p-8 text-center">
             <h2 className="text-2xl font-mono text-text-primary mb-4">
-              Ready to break things?
+              If you are here, you probably already broke things.
             </h2>
             <p className="text-text-secondary mb-6">
-              Deploy now or waste hours debugging hardware issues.
+              That's why this site exists. You're not alone.
             </p>
-            <Button href="/guides/how-to-use-deepseek-with-openclaw" className="font-mono text-sm">
-              Deploy Now →
+            <Button href="/docs" className="font-mono text-sm">
+              Start Setup (Survivor Mode) →
             </Button>
+            <p className="text-xs text-text-tertiary font-mono mt-6">
+              Bookmark this page. You will be back after your next OOM.
+            </p>
           </div>
         </section>
       </main>

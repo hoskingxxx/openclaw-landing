@@ -65,7 +65,7 @@ export default function ResourcesPage() {
         <section className="max-w-4xl mx-auto px-6 py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">☁️ Cloud GPU (VPS)</h2>
           <p className="text-text-secondary mb-6">
-            For users who need on-demand GPU power without hardware investment.
+            The only way to sleep at night if you don't have 24GB+ VRAM.
           </p>
 
           <div className="space-y-4">
@@ -74,19 +74,19 @@ export default function ResourcesPage() {
               <h3 className="text-xl font-semibold text-text-primary mb-4">Vultr High Frequency GPU</h3>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✓ Suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✓ The only way to sleep at night:</p>
                 <ul className="text-sm text-text-secondary ml-4">
-                  <li>• Testing and development</li>
-                  <li>• Short-term intensive tasks</li>
-                  <li>• Users who don't want to buy hardware</li>
+                  <li>• No local hardware drama</li>
+                  <li>• Turn it off when you're done</li>
+                  <li>• No worrying about electricity bills</li>
                 </ul>
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✗ Not suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✗ Works, but you will suffer:</p>
                 <ul className="text-sm text-text-secondary ml-4">
                   <li>• Long-term 24/7 operation (cost adds up: ~$360/mo)</li>
-                  <li>• Users with tight budgets</li>
+                  <li>• Need to transfer data to/from cloud</li>
                 </ul>
               </div>
 
@@ -108,11 +108,11 @@ export default function ResourcesPage() {
           </div>
         </section>
 
-        {/* Hardware Options - De-commercialized */}
+        {/* Hardware Options - Gritty Realism */}
         <section className="max-w-4xl mx-auto px-6 py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">💻 Local Hardware</h2>
           <p className="text-text-secondary mb-6">
-            For users who prefer one-time hardware cost and privacy.
+            Buy once, cry once. Or buy cheap, cry every day.
           </p>
 
           <div className="space-y-4">
@@ -121,19 +121,19 @@ export default function ResourcesPage() {
               <h3 className="text-xl font-semibold text-text-primary mb-4">Mac Mini (M4/M4 Pro, 16GB+)</h3>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✓ Suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✓ The only way to sleep at night:</p>
                 <ul className="text-sm text-text-secondary ml-4">
                   <li>• 24/7 operation (low power, silent)</li>
                   <li>• Running quantized models (7B-14B)</li>
-                  <li>• Users who want always-on availability</li>
+                  <li>• Fully offline, no API costs</li>
                 </ul>
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✗ Not suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✗ Works, but you will suffer:</p>
                 <ul className="text-sm text-text-secondary ml-4">
-                  <li>• Running full 32B+ models (requires more VRAM)</li>
-                  <li>• Users who need maximum speed</li>
+                  <li>• Running full 32B+ models (not enough VRAM)</li>
+                  <li>• 3.2 tokens/sec on 8B models (painfully slow)</li>
                 </ul>
               </div>
 
@@ -147,24 +147,25 @@ export default function ResourcesPage() {
               <h3 className="text-xl font-semibold text-text-primary mb-4">NVIDIA GPU (4060 Ti 16GB+ or used 3090 24GB)</h3>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✓ Suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✓ The only way to sleep at night:</p>
                 <ul className="text-sm text-text-secondary ml-4">
                   <li>• Windows/Linux users</li>
                   <li>• Running larger models (up to 32B with 24GB VRAM)</li>
-                  <li>• Users who need CUDA acceleration</li>
+                  <li>• CUDA acceleration (fastest option)</li>
                 </ul>
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✗ Not suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✗ Works, but you will suffer:</p>
                 <ul className="text-sm text-text-secondary ml-4">
                   <li>• Users with under 16GB VRAM (see <Link href="/troubleshooting" className="text-brand-primary hover:underline">crash logs</Link>)</li>
                   <li>• Mac users (no CUDA support)</li>
+                  <li>• Used 3090s are mined-out or have fan issues</li>
                 </ul>
               </div>
 
               <div className="text-sm text-text-secondary mt-4">
-                <span className="font-mono">From ~$320 new (16GB) | ~$700 used (3090 24GB)</span>
+                <span className="font-mono">From ~$320 new (16GB) | ~$700 used (3090 24GB - buyer beware)</span>
               </div>
             </div>
           </div>
@@ -174,7 +175,7 @@ export default function ResourcesPage() {
         <section className="max-w-4xl mx-auto px-6 py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">🔑 API Services</h2>
           <p className="text-text-secondary mb-6">
-            For users who prefer managed model access over local deployment.
+            The only way to sleep at night if you want zero hardware drama.
           </p>
 
           <div className="space-y-4">
@@ -183,24 +184,25 @@ export default function ResourcesPage() {
               <h3 className="text-xl font-semibold text-text-primary mb-4">DeepSeek API</h3>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✓ Suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✓ The only way to sleep at night:</p>
                 <ul className="text-sm text-text-secondary ml-4">
-                  <li>• Users wanting R1 reasoning without hardware</li>
+                  <li>• R1 reasoning without hardware drama</li>
                   <li>• Development and testing</li>
-                  <li>• Cost-conscious users (~$1-5/mo casual use)</li>
+                  <li>• Casual use (~$1-5/mo)</li>
                 </ul>
               </div>
 
               <div className="mb-4">
-                <p className="text-sm font-medium text-white mb-2">✗ Not suitable for:</p>
+                <p className="text-sm font-medium text-white mb-2">✗ Works, but you will suffer:</p>
                 <ul className="text-sm text-text-secondary ml-4">
-                  <li>• Users who require complete data privacy</li>
-                  <li>• High-volume production (API costs add up)</li>
+                  <li>• Data goes to their servers (privacy tradeoff)</li>
+                  <li>• Rate limits during peak hours (9-11AM Beijing)</li>
+                  <li>• High-volume production (API costs add up fast)</li>
                 </ul>
               </div>
 
               <div className="text-sm text-text-secondary mt-4">
-                <span className="font-mono">Pay-per-use (~$0.14/M input tokens, ~$0.28/M output)</span>
+                <span className="font-mono">Pay-per-use (~$0.14/M input, ~$0.28/M output)</span>
               </div>
             </div>
           </div>
