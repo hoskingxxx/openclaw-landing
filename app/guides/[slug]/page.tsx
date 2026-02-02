@@ -2,7 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { blogPosts } from "@/lib/blog";
-import { ArticleStructuredData } from "@/components/SEO/StructuredData";
+import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -28,14 +28,19 @@ export async function generateMetadata({
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return {};
 
+  const canonicalUrl = `https://openclaw-ai.org${post.canonicalPath}`;
+
   return {
     title: `${post.title} - OpenClaw Guides`,
     description: post.description,
     keywords: post.seoKeywords.join(", "),
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.description,
-      url: `https://openclaw-ai.org${post.canonicalPath}`,
+      url: canonicalUrl,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
@@ -155,6 +160,15 @@ export default async function BlogPostPage({
         datePublished={post.date}
         author={post.author}
         url={`https://openclaw-ai.org${post.canonicalPath}`}
+      />
+
+      {/* Breadcrumb Structured Data */}
+      <BreadcrumbStructuredData
+        items={[
+          { name: "Home", url: "https://openclaw-ai.org" },
+          { name: "Guides", url: "https://openclaw-ai.org/guides" },
+          { name: post.title, url: `https://openclaw-ai.org${post.canonicalPath}` },
+        ]}
       />
     </>
   );
