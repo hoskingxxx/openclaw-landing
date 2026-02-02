@@ -4,28 +4,28 @@ export function Footer() {
   return (
     <footer className="footer border-t border-white/10 mt-20">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About */}
           <div>
             <h4 className="text-text-primary font-semibold mb-4">OpenClaw</h4>
             <p className="text-sm text-text-secondary leading-relaxed">
-              OpenClaw is an open-source AI agent framework.<br />
-              Automate development tasks with autonomous code execution.
+              This is an <strong className="text-white">unofficial</strong> community documentation site.<br />
+              Not affiliated with the official OpenClaw project.
             </p>
           </div>
 
           {/* Docs */}
           <div>
-            <h4 className="text-text-primary font-semibold mb-4">Docs</h4>
+            <h4 className="text-text-primary font-semibold mb-4">Documentation</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/quick-start" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
-                  Quick Start
+                  Quick Start Guide
                 </Link>
               </li>
               <li>
-                <Link href="/use-cases" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
-                  Use Cases
+                <Link href="/blog" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
+                  Guides & Tutorials
                 </Link>
               </li>
               <li>
@@ -33,21 +33,9 @@ export function Footer() {
                   FAQ
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          {/* Tools */}
-          <div>
-            <h4 className="text-text-primary font-semibold mb-4">Tools</h4>
-            <ul className="space-y-2">
               <li>
-                <Link href="/command-builder" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
-                  Command Generator
-                </Link>
-              </li>
-              <li>
-                <Link href="/videos" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
-                  Video Tutorials
+                <Link href="/resources" className="block text-sm text-text-secondary hover:text-text-primary transition-colors py-2">
+                  VPS & Hardware
                 </Link>
               </li>
             </ul>
@@ -55,7 +43,7 @@ export function Footer() {
 
           {/* Official Links */}
           <div>
-            <h4 className="text-text-primary font-semibold mb-4">Official</h4>
+            <h4 className="text-text-primary font-semibold mb-4">Official Project</h4>
             <ul className="space-y-2">
               <li>
                 <a
@@ -89,24 +77,17 @@ export function Footer() {
 
         {/* Copyright & Legal */}
         <div className="mt-12 pt-8 border-t border-white/10">
-          {/* Row 1: Copyright & Support */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-text-tertiary">
-              © 2026 OpenClaw Resource Site. Built by <a href="https://github.com/lazydev" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:text-brand-hover transition-colors">LazyDev</a>.
+          {/* Legal Disclaimer */}
+          <div className="p-4 bg-background-tertiary/50 rounded-lg border border-white/5">
+            <p className="text-xs text-text-tertiary leading-relaxed">
+              <strong>Unofficial Site:</strong> This is a community documentation site and is not affiliated with, endorsed by, or connected to the official OpenClaw project. All trademarks belong to their respective owners.
             </p>
-            <a
-              href="https://ko-fi.com/lazydev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-text-tertiary hover:text-text-primary transition-colors"
-            >Buy me a coffee
-            </a>
           </div>
 
-          {/* Row 2: Legal Disclaimer */}
-          <div className="mt-6 p-4 bg-background-tertiary/50 rounded-lg border border-white/5">
-            <p className="text-xs text-text-tertiary leading-relaxed">
-              Not affiliated. Not sponsored. Just notes from someone who paid the bill.
+          {/* Copyright */}
+          <div className="mt-4 text-center">
+            <p className="text-sm text-text-tertiary">
+              © 2026 OpenClaw Community Documentation
             </p>
           </div>
         </div>

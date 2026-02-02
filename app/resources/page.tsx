@@ -208,10 +208,6 @@ export default function ResourcesPage() {
                   Sign Up Now
                 </a>
               </div>
-
-              <p className="text-xs text-text-tertiary mt-3">
-                🔥 Promo code: OPENCLAW100 (extra 1 million tokens)
-              </p>
             </div>
 
             {/* API Card 2 - REMOVED: APIFFFF (dead link) */}
@@ -281,7 +277,7 @@ export default function ResourcesPage() {
                 <li>✅ 16GB unified memory minimum</li>
                 <li>✅ Silent operation, 24/7 always-on</li>
                 <li>✅ Low power consumption, minimal electricity cost</li>
-                <li>✅ Perfect support for Ollama + DeepSeek</li>
+                <li>✅ Good compatibility with Ollama + DeepSeek</li>
               </ul>
 
               <div className="flex items-center justify-between">

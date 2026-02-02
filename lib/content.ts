@@ -104,7 +104,7 @@ export const faqs = [
       },
       {
         q: "Does it support DeepSeek?",
-        a: "✅ Perfect support! DeepSeek R1 is the best partner for OpenClaw local deployment.\n\n**Why recommend DeepSeek + OpenClaw**:\n- DeepSeek R1 runs locally, hardware dependent\n- Strong reasoning, suitable for complex task breakdown\n- Fully controllable privacy, data stays local\n- Perfect for 7×24 operation on Mac Mini or local servers\n\n**Config example**:\n```bash\n# Install Ollama\nollama run deepseek-r1\n\n# Configure OpenClaw to use local model\nagent.model = \"ollama/deepseek-r1```\n\n👉 Check the hardware requirements before running local models.",
+        a: "✅ Yes, it works well with DeepSeek R1 for local deployment.\n\n**Why DeepSeek + OpenClaw is a good combination**:\n- DeepSeek R1 runs locally, hardware dependent\n- Strong reasoning, suitable for complex task breakdown\n- Fully controllable privacy, data stays local\n- Suitable for 7×24 operation on Mac Mini or local servers\n\n**Config example**:\n```bash\n# Install Ollama\nollama run deepseek-r1\n\n# Configure OpenClaw to use local model\nagent.model = \"ollama/deepseek-r1```\n\n👉 Check the hardware requirements before running local models.",
       },
     ],
   },

@@ -38,7 +38,7 @@ export default function NotFoundPage() {
             </li>
             <li className="flex items-center gap-3">
               <span className="text-brand-primary">•</span>
-              <span>Try the <Link href="/command-builder" className="text-brand-primary hover:underline">Command Generator</Link></span>
+              <span>Check the <Link href="/blog" className="text-brand-primary hover:underline">Guides</Link> or <Link href="/faq" className="text-brand-primary hover:underline">FAQ</Link></span>
             </li>
           </ul>
         </div>
@@ -55,11 +55,11 @@ export default function NotFoundPage() {
             Back to Home
           </Link>
           <Link
-            href="/command-builder"
+            href="/blog"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-background-tertiary hover:bg-background-elevated text-text-primary font-medium rounded-lg border border-white/10 transition-colors"
           >
-            <span className="text-xl">🦞</span>
-            Try Command Generator
+            <span className="text-xl">📖</span>
+            View Guides
           </Link>
         </div>
       </div>

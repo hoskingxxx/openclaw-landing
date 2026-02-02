@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 首页 -->
+  <!-- Homepage -->
   <url>
     <loc>https://openclaw-ai.org/</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-02-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 快速开始 -->
+  <!-- Quick Start Guide -->
   <url>
     <loc>https://openclaw-ai.org/quick-start</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- 使用场景 -->
+  <!-- Blog / Guides -->
   <url>
-    <loc>https://openclaw-ai.org/use-cases</loc>
-    <lastmod>2026-02-01</lastmod>
+    <loc>https://openclaw-ai.org/blog</loc>
+    <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- 指令生成器 -->
-  <url>
-    <loc>https://openclaw-ai.org/command-builder</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 视频教程 -->
-  <url>
-    <loc>https://openclaw-ai.org/videos</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 常见问题 -->
+  <!-- FAQ -->
   <url>
     <loc>https://openclaw-ai.org/faq</loc>
-    <lastmod>2026-02-01</lastmod>
+    <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Resources -->
+  <url>
+    <loc>https://openclaw-ai.org/resources</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- OOM Error Solutions -->
+  <url>
+    <loc>https://openclaw-ai.org/oom</loc>
+    <lastmod>2026-02-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
