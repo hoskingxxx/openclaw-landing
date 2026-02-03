@@ -1,22 +1,19 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog";
 
-// Static routes with their SEO priorities
+// Static routes configuration (no dynamic values at module level)
 const staticRoutes: Array<{
   url: string;
-  lastModified?: string;
-  changeFrequency?: "daily" | "weekly" | "monthly" | "yearly";
+  changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
   priority: number;
 }> = [
   {
     url: "https://openclaw-ai.org",
-    lastModified: new Date().toISOString(),
     changeFrequency: "weekly",
     priority: 1.0,
   },
   {
     url: "https://openclaw-ai.org/guides",
-    lastModified: new Date().toISOString(),
     changeFrequency: "weekly",
     priority: 0.9,
   },
@@ -32,7 +29,6 @@ const staticRoutes: Array<{
   },
   {
     url: "https://openclaw-ai.org/troubleshooting",
-    lastModified: new Date().toISOString(),
     changeFrequency: "weekly",
     priority: 1.0,
   },
@@ -54,10 +50,12 @@ const staticRoutes: Array<{
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static routes
+  const now = new Date().toISOString();
+
+  // Static routes with lastModified
   const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: route.url,
-    lastModified: route.lastModified,
+    lastModified: now,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

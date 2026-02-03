@@ -6,6 +6,20 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://openclaw-ai.org"),
   title: "Running DeepSeek R1 Locally: The Unofficial OpenClaw Guide",
+
+  // Icons
+  icons: {
+    icon: [
+      { url: "/icon", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-icon", type: "image/png" },
+    ],
+  },
+
+  // Manifest
+  manifest: "/manifest.webmanifest",
   description: "Stop debugging DeepSeek R1 crashes. This battle-tested OpenClaw guide explains CUDA OOM errors, VRAM limits, and the fastest fixes that actually work.",
   keywords: [
     "OpenClaw",
