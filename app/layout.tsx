@@ -9,13 +9,8 @@ export const metadata: Metadata = {
 
   // Icons
   icons: {
-    icon: [
-      { url: "/icon", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon", sizes: "32x32" },
-    ],
-    apple: [
-      { url: "/apple-icon", type: "image/png" },
-    ],
+    icon: "/icon",
+    apple: "/apple-icon",
   },
 
   // Manifest
