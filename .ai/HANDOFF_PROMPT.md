@@ -1,51 +1,162 @@
-# AI Handoff Prompt
-
-**Copy and paste this when switching to Gemini, ChatGPT, or another AI:**
+# 🔴 AI Handoff Prompt - Copy & Paste This to ChatGPT/Gemini
 
 ---
 
-## Context: OpenClaw Project Handoff
+## 项目上下文：OpenClaw AI Survival Guide
 
-I'm working on the **OpenClaw AI Survival Guide** - a Next.js 14 website that helps developers run DeepSeek R1 locally without OOM errors.
+你正在接手一个 **Next.js 14** 网站，专注于帮助开发者运行 DeepSeek R1 本地部署。
 
-### Please Read These Files First:
-1. `.ai/PROTOCOL.md` - Rules for working on this project
-2. `.ai/PROJECT_STATE.md` - Current tech stack and pages
-3. `.ai/DECISIONS.md` - Strategic and technical decisions made
-4. `.ai/TASK_BOARD.md` - Current to-do list
+### 📁 先读这些文件（按顺序）：
 
-### Quick Overview:
-- **Framework:** Next.js 14 (App Router), Tailwind CSS, React 19
-- **Deployed:** https://openclaw-landing.vercel.app
-- **GitHub:** https://github.com/hoskingxxx/openclaw-landing
-- **Theme:** Dark mode, orange brand (#FF4500), "survivor/hacker" aesthetic
+1. `.ai/INDEX.md` - 项目总览和当前阶段
+2. `.ai/STATE.md` - 技术栈、路由、内容库
+3. `.ai/RULES.md` - 编码规范和约束
+4. `.ai/DECISIONS.md` - 已做的战略决策
+5. `lib/blog.ts` - 所有文章的元数据（SSOT）
 
-### Key Files:
-- `lib/blog.ts` - Blog post metadata (SSOT)
-- `app/guides/[slug]/page.tsx` - Dynamic guide pages
-- `content/posts/*.mdx` - Blog content
-- `app/robots.ts` - Robots.txt generator
-- `app/sitemap.ts` - Sitemap generator
+### 🎯 当前状态
 
-### Important Rules:
-1. **NEVER hallucinate files** - verify existence before referencing
-2. Blog posts use `/guides` route (not `/blog`)
-3. All new content must be added to `lib/blog.ts`
-4. Run `npm run validate` before deploying
+**项目阶段：** Profit-First（盈利优先）- 停止复杂系统建设，专注流量和变现
 
-### Current Task:
-[Describe what you need help with here]
+**最新重点：**
+- SEO 焦点：AEO（Answer Engine Optimization）+ Security（安全）
+- 当前流量策略：抓住"OpenClaw RCE 漏洞"搜索趋势
+- 变现路径：VPS 联盟链接（DigitalOcean 等）
+
+### 📊 内容现状
+
+**已发布文章：**
+1. `openclaw-security-rce-cve-2026-25253` - **Featured** - RCE 漏洞警告（带 VPS 推荐）
+2. `how-to-use-deepseek-with-openclaw` - DeepSeek R1 部署教程
+
+**内容位置：**
+- MDX 源文件：`content/posts/*.mdx`
+- 元数据配置：`lib/blog.ts`（添加新文章必须更新这里）
+
+### 🛠️ 技术栈
+
+```
+Next.js 16.1.6 (App Router)
+React 19.2.4
+Tailwind CSS 3.4.17
+MDX + gray-matter + remark
+```
+
+### 📁 关键目录结构
+
+```
+app/
+├── guides/[slug]/page.tsx    # 动态文章页
+├── layout.tsx                 # 根布局
+├── page.tsx                   # 首页（硬编码 featured post）
+├── globals.css                # 全局样式
+├── robots.ts                  # robots.txt 生成器
+├── sitemap.ts                 # sitemap.xml 生成器
+└── icon.tsx                   # favicon 生成器
+
+components/
+├── features/                  # 功能组件（Hero, Footer, Navigation）
+├── ui/                        # 基础组件（Button, Input）
+└── SEO/                       # Schema 组件
+
+lib/
+├── blog.ts                    # 文章元数据（SSOT）
+└── site-config.ts             # 站点配置（导航、页脚链接）
+
+content/posts/                 # MDX 文章源文件
+public/                        # 静态资源
+```
+
+### 🔴 重要规则（CRITICAL）
+
+1. **添加新文章的步骤：**
+   ```bash
+   1. 创建 content/posts/your-slug.mdx
+   2. 在 lib/blog.ts 添加元数据
+   3. 运行 npm run validate 验证
+   ```
+
+2. **URL 规则：**
+   - 文章路径前缀：`/guides`（不是 `/blog`）
+   - 使用 `canonicalPath` 不要硬编码路径
+
+3. **样式规范：**
+   - 只用语义化变量：`bg-background`, `text-primary`
+   - 图标用 Lucide React
+   - 深色主题，橙色品牌色 `#FF4500`
+
+4. **SEO 规则：**
+   - 所有文章页要有 Breadcrumb Schema
+   - 使用 `generateMetadata()` 设置元数据
+   - Canonical URL 必须正确
+
+### 📈 已完成的 SEO 基建
+
+✅ robots.txt（允许所有爬虫）
+✅ sitemap.xml（动态生成，包含所有文章）
+✅ Breadcrumb Schema（文章页面包屑导航）
+✅ Open Graph 图片
+✅ 结构化数据（FAQ, Article, WebSite, SoftwareApplication）
+
+### 🚨 已知问题
+
+1. **DNS 问题：** `openclaw-ai.org` 域名指向错误 IP
+   - Vercel URL 正常：https://openclaw-landing.vercel.app
+   - 需要在域名注册商更新 DNS 到 `cname.vercel-dns.com`
+
+### 🎯 当前任务（按优先级）
+
+**高优先级：**
+- 创建更多安全相关内容（利用搜索趋势）
+- 添加更多"如何修复"类教程
+- VPS 联盟链接测试
+
+**中优先级：**
+- 修复 DNS 问题
+- 添加文章目录（TOC）
+- 改善移动端体验
+
+### 📝 最近的重要决策
+
+1. **Profit-First 转向（2026-02-03）**
+   - 停止复杂系统建设
+   - 专注流量获取和变现
+   - 内容策略：抓住安全/漏洞类搜索趋势
+
+2. **AEO-First 策略（2026-02-03）**
+   - 针对谷歌 AI 摘要优化
+   - FAQ 结构化数据
+   - 直接回答式内容
+
+3. **/guides 路由（不是 /blog）**
+   - "Guides" 比 "blog" 更符合用户意图
+   - 匹配 "survival guide" 主题
+
+### 🤖 给 AI 的提示
+
+**当你被要求：**
+- ✅ 添加新文章 → 先读 `lib/blog.ts` 了解格式
+- ✅ 修复样式 → 检查 `app/globals.css` 和组件
+- ✅ SEO 优化 → 查看 `components/SEO/` 和 `app/sitemap.ts`
+- ✅ 修改路由 → 先确认 `app/` 下对应页面是否存在
+
+**不要：**
+- ❌ 假设文件存在而不检查
+- ❌ 硬编码文章路径
+- ❌ 使用任意颜色值（用语义变量）
+- ❌ 添加 "any" 类型
 
 ---
 
-## After Reading the .ai Files:
+## 当前需要你做什么？
 
-**Please confirm you understand:**
-1. The project structure and tech stack
-2. What task you're being asked to do
-3. Any questions before proceeding
+[在这里描述你的任务]
 
-**Do NOT:**
-- Suggest creating files that already exist
-- Assume routes work without checking
-- Ignore the coding standards in PROTOCOL.md
+---
+
+**最后确认：**
+1. 你已阅读 `.ai/STATE.md` 了解技术栈
+2. 你已阅读 `lib/blog.ts` 了解内容结构
+3. 你知道当前是 Profit-First 阶段，优先变现
+
+准备就绪后请回复："**已就绪**"，然后开始工作。

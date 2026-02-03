@@ -6,8 +6,20 @@
 
 ## STRATEGIC DECISIONS
 
-### AEO-First Approach
-**Date:** 2026-02-03
+### Profit-First Pivot (2026-02-03)
+**Decision:** Stop building complex systems, focus on traffic and monetization
+**Rationale:**
+- Previous focus on infrastructure over-delivered for current needs
+- Need to validate business model before further investment
+- VPS affiliate links offer immediate monetization path
+- Content marketing faster than building SaaS features
+
+**Actions Taken:**
+- Simplified context generation (static ai.json instead of script)
+- Published RCE vulnerability article to capture search trend
+- Added VPS affiliate recommendations to security content
+
+### AEO-First Approach (2026-02-03)
 **Decision:** Pivot to Answer Engine Optimization (AEO) instead of traditional SEO
 **Rationale:**
 - Google AI Overviews are becoming dominant

@@ -1,49 +1,101 @@
 # AICP-Lite Index
 
 **Project ID:** openclaw-ai-org
-**Current Phase:** AEO-first (Answer Engine Optimization)
+**Current Phase:** Profit-First (Traffic + Monetization)
 **Last Updated:** 2026-02-03
 
 ---
 
-## READ ME FIRST
+## 🚨 READ ME FIRST - Current Status
 
-Welcome to the **AI Collaboration Protocol - Lite**. This directory contains the internal "truth source" for the OpenClaw project.
+### Phase: Profit-First
+**目标：** 停止复杂系统建设，专注流量获取和变现
 
-### Quick Start for AI Assistants
+**当前策略：**
+1. 抓住搜索趋势（Security/RCE 漏洞类关键词）
+2. 通过 VPS 联盟链接变现
+3. 快速内容迭代，不求完美
 
-1. **Read this first:** `.ai/INDEX.md` (you are here)
-2. **Understand the current state:** `.ai/STATE.md` - tech stack, routes, content
-3. **Know the rules:** `.ai/RULES.md` - what we do and don't do
-4. **See what was decided:** `.ai/DECISIONS.md` - strategic and technical choices
+### 最新发布内容
+- **Featured:** `openclaw-security-rce-cve-2026-25253` - RCE 漏洞警告（含 VPS 推荐）
+- **Archive:** `how-to-use-deepseek-with-openclaw` - DeepSeek 部署教程
 
-### Project Summary
+---
 
-**OpenClaw AI Survival Guide** is a battle-tested documentation site for running DeepSeek R1 locally without OOM errors.
+## Quick Start for New AI Assistants
+
+### 第一步：读这 4 个文件
+
+1. **`.ai/STATE.md`** - 技术栈、路由、内容库
+2. **`.ai/RULES.md`** - 编码规范和约束
+3. **`.ai/DECISIONS.md`** - 已做的战略决策
+4. **`lib/blog.ts`** - 所有文章的元数据
+
+### 第二步：了解项目结构
+
+```
+Next.js 16 + React 19 + Tailwind CSS
+├── app/guides/[slug]/page.tsx  # 动态文章
+├── lib/blog.ts                 # 文章元数据（SSOT）
+├── content/posts/*.mdx         # 文章内容
+└── components/features/        # 功能组件
+```
+
+### 第三步：开始工作
+
+根据任务类型，查看对应的文件：
+- 添加文章 → 读 `lib/blog.ts` 和现有 MDX 文件
+- 修复样式 → 读 `app/globals.css`
+- SEO 问题 → 读 `app/robots.ts` 和 `app/sitemap.ts`
+
+---
+
+## Project Summary
+
+**OpenClaw AI Survival Guide** - 帮助开发者本地运行 DeepSeek R1 避免 OOM 错误。
 
 - **Stack:** Next.js 16, React 19, Tailwind CSS
-- **Hosting:** Vercel (auto-deploy)
-- **Content:** MDX-based guides
-- **Theme:** Dark mode, orange brand (#FF4500), "survivor/hacker" aesthetic
+- **Hosting:** Vercel (自动部署)
+- **Content:** MDX 格式
+- **Theme:** 深色主题，橙色品牌 (#FF4500)，"生存指南"风格
 
-### Current Focus: AEO-First
+---
 
-We're optimizing for **Answer Engine Optimization** (AI Overviews, Perplexity, ChatGPT Search) rather than traditional SEO.
+## Current Focus: Profit-First
 
-**Target Keywords:**
-- DeepSeek R1 crash fixes
-- OpenClaw configuration
+### SEO 关键词（当前目标）
+- OpenClaw RCE
+- CVE-2026-25253
+- OpenClaw security
+- DeepSeek R1 crash
 - CUDA OOM errors
-- Local LLM setup
 
-### Key Rules (Quick Reference)
+### 变现路径
+- VPS 联盟链接（DigitalOcean, Linode, Hetzner）
+- 在安全类文章中软性推荐
 
-- ✅ Static content only
-- ✅ No SaaS features (yet)
-- ✅ No hype content
-- ✅ "Survivor" tone - honest, technical, no BS
-- ❌ No affiliate links without clear disclosure
-- ❌ No hallucinated files or routes
+### 内容策略
+- 抓住突发搜索趋势（安全漏洞、错误修复）
+- 直接回答式内容（AEO 优化）
+- 问题 → 解决方案 → 产品推荐
+
+---
+
+## Key Rules (Quick Reference)
+
+**编码规范：**
+- ✅ 静态内容优先
+- ✅ 深色主题，橙色品牌
+- ✅ 移动端优先
+- ✅ 语义化 CSS 变量
+- ❌ 不用 "any" 类型
+- ❌ 不硬编码路径
+
+**内容工作流：**
+1. 创建 `content/posts/your-slug.mdx`
+2. 在 `lib/blog.ts` 添加元数据
+3. 运行 `npm run validate`
+4. 提交并推送（Vercel 自动部署）
 
 ---
 
@@ -51,23 +103,53 @@ We're optimizing for **Answer Engine Optimization** (AI Overviews, Perplexity, C
 
 | File | Purpose | Update When |
 |------|---------|-------------|
-| `STATE.md` | Technical facts | Architecture changes, new routes |
-| `RULES.md` | Core constraints | Strategy changes |
-| `DECISIONS.md` | Decision log | Any strategic choice |
+| `STATE.md` | 技术事实 | 架构变化、新路由 |
+| `RULES.md` | 核心约束 | 策略变化 |
+| `DECISIONS.md` | 决策日志 | 任何战略选择 |
+| `TASK_BOARD.md` | 任务列表 | 完成任务、添加新任务 |
 
 ---
 
 ## Public Context System
 
-The `scripts/generate-context.js` script automatically generates public-facing context files:
+`scripts/generate-context.js` 自动生成公开上下文：
 
-- `public/ai.json` - Machine-readable project metadata
-- `public/llms.txt` - Human/AI readable summary
+- `public/ai.json` - 机器可读的项目元数据
+- `public/llms.txt` - 人类/AI 可读摘要
 
-**These are auto-generated on every build** - do not edit manually.
+**每次构建时自动生成** - 不要手动编辑。
+
+---
+
+## Deployed URLs
+
+| URL | Status |
+|-----|--------|
+| https://openclaw-landing.vercel.app | ✅ Working |
+| https://openclaw-ai.org | ⚠️ DNS Issues |
+
+---
+
+## 给 ChatGPT/Gemini 的快速提示
+
+复制 `.ai/HANDOFF_PROMPT.md` 的内容粘贴给他们即可。
+
+那个文件包含了：
+- 项目完整上下文
+- 技术栈详情
+- 关键文件位置
+- 重要规则
+- 当前任务
+- 已知问题
 
 ---
 
 ## Need Help?
 
-For handoff to another AI, use `.ai/HANDOFF_PROMPT.md` (legacy format, still works).
+**遇到问题时：**
+1. 先检查 `.ai/STATE.md` 确认文件存在
+2. 参考 `.ai/RULES.md` 确认编码规范
+3. 查看 `lib/blog.ts` 了解内容格式
+
+**交接给另一个 AI：**
+使用 `.ai/HANDOFF_PROMPT.md` 作为交接文档。
