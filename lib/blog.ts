@@ -51,6 +51,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["DeepSeek R1", "OpenClaw configuration", "Local LLM setup", "Hardware requirements"],
   },
+  {
+    slug: "fix-openclaw-json-mode-errors",
+    canonicalPath: createCanonicalPath("fix-openclaw-json-mode-errors"),
+    title: "How to fix OpenClaw JSON Mode parsing errors with DeepSeek R1",
+    description: "OpenClaw fails to parse JSON responses from DeepSeek R1. Learn why the thinking tags break JSON mode and how to fix it with a simple system prompt adjustment.",
+    date: "2026-02-03",
+    author: "LazyDev",
+    tags: ["DeepSeek", "OpenClaw", "JSON", "Troubleshooting", "R1"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["OpenClaw JSON error", "DeepSeek R1 JSON mode", "OpenClaw parsing failed", "DeepSeek thinking tags"],
+  },
 ];
 
 // ============================================================================
