@@ -5,15 +5,7 @@
  * Simulates GoogleBot to ensure zero 404 errors before indexing
  */
 
-import { Linkinator } from 'linkinator';
-import { fileURLToPath } from 'url';
-import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Configuration
-const START_URL = process.env.START_URL || 'http://localhost:3000';
+import { check } from 'linkinator';
 
 // ANSI colors
 const colors = {
@@ -30,16 +22,20 @@ function log(color, ...args) {
 }
 
 async function crawl() {
+  const START_URL = process.env.START_URL || 'http://localhost:3000';
+
   log(colors.cyan, '🔍 OpenClaw SEO Link Crawler\n');
   log(colors.blue, `📡 Starting crawl from: ${START_URL}`);
   log(colors.blue, `🔄 Recursive mode: ENABLED`);
   log(colors.blue, `🌐 External links: SKIPPED (internal links only)\n`);
 
-  const results = await Linkinator.check({
+  const results = await check({
     path: START_URL,
     recurse: true,
     // Skip external links - only check our own site
-    skip: /^(?!http:\/\/localhost:3000)/,
+    linksToSkip: [
+      /^(?!http:\/\/localhost:3000)/,
+    ],
     concurrency: 10,
     timeout: 10000, // 10 second timeout per link
   });
