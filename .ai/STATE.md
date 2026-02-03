@@ -19,8 +19,8 @@
 
 | URL | Status | Notes |
 |-----|--------|-------|
+| https://openclaw-ai.org | ✅ Working | Main domain (Vercel) |
 | https://openclaw-landing.vercel.app | ✅ Working | Vercel deployment |
-| https://openclaw-ai.org | ⚠️ DNS Issues | Points to wrong IPs (Heroku) |
 | https://github.com/hoskingxxx/openclaw-landing | ✅ Active | Main branch |
 
 ---
@@ -137,13 +137,6 @@ npm run validate
 ---
 
 ## KNOWN ISSUES
-
-### DNS Configuration (BLOCKED)
-- **Issue:** Domain `openclaw-ai.org` points to wrong IPs
-- **Expected:** Should point to Vercel's `cname.vercel-dns.com`
-- **Current:** Points to `64.29.17.1`, `216.198.79.1` (Heroku IPs)
-- **Impact:** Main domain not accessible
-- **Workaround:** Use https://openclaw-landing.vercel.app
 
 ### VPS Affiliate Links (BLOCKED)
 - **Issue:** Placeholder links need actual affiliate codes
