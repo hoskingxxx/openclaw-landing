@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-02-03T05:16:07.297Z",
+  "project_info": {
+    "id": "openclaw-ai-org",
+    "name": "OpenClaw AI Survival Guide",
+    "description": "Battle-tested guide for running DeepSeek R1 locally without OOM errors",
+    "version": "0.1.0",
+    "stack": {
+      "framework": "Next.js",
+      "version": "16",
+      "ui": [
+        "React",
+        "Tailwind CSS"
+      ]
+    },
+    "hosting": "Vercel",
+    "repository": "https://github.com/hoskingxxx/openclaw-landing"
+  },
+  "focus": {
+    "phase": "** AEO-first (Answer Engine Optimization)",
+    "active_context": "DeepSeek R1 local deployment, OOM error fixes"
+  },
+  "routes": [
+    "/apple-icon",
+    "/guides/[slug]",
+    "/icon",
+    "/not-found",
+    "/"
+  ],
+  "content_count": 1,
+  "rules": [
+    "**Static content only** - No user accounts, no databases",
+    "**No SaaS features** - Focus on education/authority first",
+    "**No hype content** - Be honest, technical, no exaggerated claims",
+    "**\"Survivor\" tone** - Write for developers who crashed their systems",
+    "**Affiliate links OK** - Only if genuinely helpful and clearly disclosed",
+    "**Server Components by default** - Only use \"use client\" when necessary",
+    "**Semantic HTML** - Proper heading hierarchy, aria labels where needed",
+    "**Mobile-first** - Test on mobile viewport before desktop",
+    "**No \"any\" types** - Use proper TypeScript types"
+  ],
+  "recent_decisions": [
+    "# OpenClaw Project Decisions Log",
+    "STRATEGIC DECISIONS",
+    "TECHNICAL DECISIONS"
+  ],
+  "recommended_resources": [
+    {
+      "name": "OpenClaw GitHub",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "name": "DeepSeek R1",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+    }
+  ],
+  "public_metrics": {
+    "gsc_404_ratio": null
+  }
+}

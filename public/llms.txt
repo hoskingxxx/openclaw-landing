@@ -1,0 +1,52 @@
+# OpenClaw AI Survival Guide
+
+Contact for partnership: See GitHub repository
+
+---
+
+## Project
+Name: OpenClaw AI Survival Guide
+Phase: ** AEO-first (Answer Engine Optimization)
+Stack: Next.js 16, React, Tailwind CSS
+Hosting: Vercel
+
+---
+
+## Purpose
+Battle-tested documentation for running DeepSeek R1 locally.
+Focus: OOM error fixes, CUDA troubleshooting, VRAM optimization.
+
+---
+
+## Key Links
+- Home: /
+- Guides: /guides
+- FAQ: /faq
+- Troubleshooting: /troubleshooting
+- Docs: /docs
+- Quick Start: /quick-start
+
+---
+
+## Rules
+- **Static content only** - No user accounts, no databases
+- **No SaaS features** - Focus on education/authority first
+- **No hype content** - Be honest, technical, no exaggerated claims
+- **"Survivor" tone** - Write for developers who crashed their systems
+- **Affiliate links OK** - Only if genuinely helpful and clearly disclosed
+- **Server Components by default** - Only use "use client" when necessary
+- **Semantic HTML** - Proper heading hierarchy, aria labels where needed
+- **Mobile-first** - Test on mobile viewport before desktop
+- **No "any" types** - Use proper TypeScript types
+
+---
+
+## Recent Decisions
+- # OpenClaw Project Decisions Log
+- STRATEGIC DECISIONS
+- TECHNICAL DECISIONS
+
+---
+
+Generated: 2026-02-03T05:16:07.298Z
+Schema: 1.0
