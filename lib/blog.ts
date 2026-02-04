@@ -123,6 +123,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw einval", "spawn einval windows", "openclaw plugin install error", "openclaw windows permission", "openclaw invalid argument"],
   },
+  {
+    slug: "fix-openclaw-docker-eacces-permission-denied",
+    canonicalPath: createCanonicalPath("fix-openclaw-docker-eacces-permission-denied"),
+    title: "Fix 'Error: EACCES: permission denied' in OpenClaw Docker (openclaw.json)",
+    description: "Docker permission denied? Here is the chown fix and rootless solution.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Docker", "Linux", "Permissions"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw docker permission denied", "eacces openclaw.json", "docker volume permission", "openclaw docker eacces", "docker uid mismatch"],
+  },
 ];
 
 // ============================================================================

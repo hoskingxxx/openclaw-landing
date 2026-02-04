@@ -1,0 +1,412 @@
+---
+title: "Fix 'Error: EACCES: permission denied' in OpenClaw Docker (openclaw.json)"
+description: "Docker permission denied when writing to /home/node/.openclaw? It's a UID mismatch. Here is the chown fix and the rootless container solution."
+date: "2026-02-04"
+author: "LazyDev"
+tags: ["Troubleshooting", "Docker", "Linux", "Permissions"]
+category: "Troubleshooting"
+featured: false
+seoKeywords: [
+  "openclaw docker permission denied",
+  "eacces openclaw.json",
+  "docker volume permission",
+  "openclaw docker eacces",
+  "docker uid mismatch"
+]
+---
+
+> **TL;DR: The Instant Fix**
+>
+> **The Problem:** OpenClay running in Docker can't write to `openclaw.json` or volumes due to UID mismatch. The container runs as `node` (UID 1000) but files are owned by `root` (UID 0).
+>
+> **The Error:** `EACCES: permission denied` when accessing `/home/node/.openclaw`
+>
+> **The Solution:**
+> 1. **Quick Fix:** `chown` the directory to fix permissions
+> 2. **Real Fix:** Run container as your user (no root needed)
+>
+> **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
+
+---
+
+## The Log: What You're Seeing
+
+**The Error:**
+
+```bash
+[INFO] Starting OpenClaw...
+[ERROR] Failed to write config
+Error: EACCES: permission denied, mkdir '/home/node/.openclaw'
+    at Object.mkdirSync (node:fs:639:3)
+    at saveConfig (/app/dist/index.js:42:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[System] Config save failed
+[Agent] Unable to initialize
+```
+
+**Context:** This error occurs when OpenClay running in Docker tries to write configuration files or create directories but lacks permission.
+
+**Observed Behavior:** Container starts but crashes when trying to save state or configuration.
+
+---
+
+## Why This Happens (It's a UID Mismatch)
+
+This is a **Docker Permission Mismatch**.
+
+OpenClaw's Docker container assumes:
+- **Files are writable** by the container user
+- **Volume mounts** have correct ownership
+- **UID/GID matches** between host and container
+
+But your setup has:
+- **Container runs as `node`** (UID 1000) by default
+- **Files owned by `root`** (UID 0) from `docker exec` or previous runs
+- **Volume mount** with root permissions from host
+
+**The error `EACCES` means:** "Error ACcessES denied" — the filesystem rejected the write operation due to insufficient permissions.
+
+### Why Docker Containers Run as Root
+
+Most Docker images run as `root` by default because:
+- Root can do anything inside the container
+- Simplifies installation (no permission issues during build)
+- Traditional assumption: containers are isolated anyway
+
+**The Problem:** When you `docker exec` into a container as root, any files created become root-owned. When OpenClaw (running as `node`) tries to access them later — permission denied.
+
+### The UID Mismatch Explained
+
+```
+Container User: node (UID 1000)
+Config File Owner: root (UID 0)
+
+node tries to write → File is owned by root → EACCES: permission denied
+```
+
+---
+
+## Solution A: Fix Ownership with chown (Quick Fix)
+
+If you've already created files with wrong ownership, fix them manually.
+
+### Step 1: Check Current Ownership
+
+```bash
+# Enter the container
+docker exec -it openclaw-container sh
+
+# Check file ownership
+ls -la /home/node/.openclaw
+
+# Output might show:
+# -rw-r--r-- 1 root root  4096 Feb  4 10:23 openclaw.json
+#              ^^^^ ^^^^
+#              owned by root
+```
+
+### Step 2: Fix Ownership
+
+```bash
+# Option 1: chown the specific file
+chown node:node /home/node/.openclaw/openclaw.json
+
+# Option 2: chown the entire directory
+chown -R node:node /home/node/.openclaw
+
+# Option 3: chown everything in home
+chown -R node:node /home/node
+```
+
+### Step 3: Fix Volume Mount Permissions
+
+If using volume mounts, ensure correct ownership on the host:
+
+```bash
+# On your host machine
+# Find the volume path
+docker inspect openclaw-container | grep -A 10 Mounts
+
+# Navigate to the volume location on host
+cd /var/lib/docker/volumes/openclaw-data/_data
+
+# Fix ownership
+sudo chown -R 1000:1000 .
+
+# Or use your exact UID/GID
+id node
+# uid=1000(node) gid=1000(node) groups=1000(node)
+sudo chown -R 1000:1000 .
+```
+
+---
+
+## Solution B: Fix Dockerfile (Permanent Fix)
+
+The best solution is to ensure OpenClaw runs as a non-root user from the start.
+
+### Step 1: Update Dockerfile
+
+```dockerfile
+FROM node:18-alpine
+
+# Install OpenClaw
+RUN npm install -g openclaw
+
+# Create non-root user
+RUN addgroup -g 1000 node && \
+    adduser -D -u 1000 -G node -h /home/node node
+
+# Set working directory
+WORKDIR /home/node
+
+# Create .openclaw directory with correct ownership
+RUN mkdir -p /home/node/.openclaw && \
+    chown -R node:node /home/node/.openclaw
+
+# Switch to non-root user
+USER node
+
+# OpenClaw config goes here
+ENV OPENCLAW_CONFIG=/home/node/.openclaw/openclaw.json
+
+CMD ["openclaw"]
+```
+
+### Step 2: Rebuild Container
+
+```bash
+# Build new image
+docker build -t openclaw:fixed .
+
+# Stop old container
+docker stop openclaw-container
+docker rm openclaw-container
+
+# Run with correct user
+docker run -d \
+  --name openclaw-container \
+  -v openclaw-data:/home/node/.openclaw \
+  openclaw:fixed
+```
+
+---
+
+## Solution C: Run as Your Host User (Best for VPS)
+
+On a VPS or your Linux machine, run the container with your UID/GID to avoid permission issues entirely.
+
+### Step 1: Find Your UID/GID
+
+```bash
+# Check your user ID
+id
+# Output: uid=1000(youruser) gid=1000(youruser) groups=1000(youruser)
+```
+
+### Step 2: Run Container with Your User
+
+```bash
+# Run container with your UID/GID
+docker run -d \
+  --name openclaw-container \
+  --user $(id -u):$(id -g) \
+  -v $(pwd)/openclaw-data:/home/node/.openclaw \
+  node:18-alpine \
+  npx openclaw start
+```
+
+This ensures all files created inside the container are owned by your user, not root.
+
+---
+
+## Solution D: Rootless Docker (Most Secure)
+
+For maximum security, use rootless Docker. This runs containers without root privileges at all.
+
+### Install Rootless Docker
+
+```bash
+# Ubuntu/Debian
+curl -fsSL https://rootlesscontaine.rs/get.sh.sh | sh
+
+# Add to PATH
+export PATH=/rootless/rootlesskit/bin:$PATH
+```
+
+### Run Rootless
+
+```bash
+# Rootless docker is just `dockerd` instead of `docker`
+dockerd-rootless.sh install
+
+# Run containers without root
+docker run -d \
+  --name openclaw-container \
+  -v openclaw-data:/data \
+  openclaw:latest
+```
+
+**Benefit:** No root required, ever. All files are owned by your user automatically.
+
+---
+
+## The "Survival" Recommendation
+
+> **Stop debugging Docker permissions on your local machine.**
+>
+> Docker permissions on local Linux/Mac can be a nightmare. UIDs don't match, volume mounts are root-owned, `chown` feels hacky.
+>
+> **The smart choice:** Deploy on a fresh VPS where you control the environment from the start.
+
+### Local Docker vs Cloud VPS Comparison
+
+| Issue | Local Docker | Cloud VPS (Vultr) |
+|-------|--------------|-------------------|
+| **Permissions** | UID mismatch, chown needed | Clean slate, your user only |
+| **Volume mounts** | Root ownership issues | Properly configured |
+| **Debug time** | 1-2 hours (chown, rebuild) | 0 minutes (works immediately) |
+| **Security** | Need root for fixes | Isolated, no root needed |
+| **Setup Time** | Hours of debugging | 2 minutes |
+
+**[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
+
+---
+
+## Complete Working Example
+
+### Verified Docker Configuration
+
+```dockerfile
+FROM node:18-alpine
+
+# Install OpenClaw
+RUN npm install -g openclaw
+
+# Create non-root user with specific UID/GID
+RUN addgroup -g 1000 node && \
+    adduser -D -u 1000 -G node -h /home/node node
+
+# Set up directory structure
+WORKDIR /home/node
+RUN mkdir -p /home/node/.openclaw && \
+    chown -R node:node /home/node/.openclaw
+
+# Switch to non-root user early
+USER node
+
+# Set environment
+ENV OPENCLAW_CONFIG=/home/node/.openclaw/openclaw.json
+
+CMD ["openclaw"]
+```
+
+### docker-compose.yml
+
+```yaml
+version: '3.8'
+
+services:
+  openclaw:
+    build: .
+    user: "1000:1000"  # Run as UID 1000
+    volumes:
+      - ./data:/home/node/.openclaw
+    environment:
+      - OPENCLAW_CONFIG=/home/node/.openclaw/openclaw.json
+    restart: unless-stopped
+```
+
+### Verify Permissions Work
+
+```bash
+# Start container
+docker-compose up -d
+
+# Enter container
+docker-compose exec openclaw sh
+
+# Check user
+id
+# Should show: uid=1000(node) gid=1000(node)
+
+# Check directory
+ls -la /home/node/.openclaw
+# Should show: drwxr-xr-x node node ...
+
+# Try writing
+echo "test" > /home/node/.openclaw/test.txt
+# Should work without EACCES
+```
+
+---
+
+## FAQ
+
+<div itemScope itemType="https://schema.org/FAQPage">
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Why does Docker run as root by default?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Historical reasons. Root can do anything during build and runtime. Most Docker images still use root for simplicity. This causes permission issues when non-root processes (like Node running as `node`) try to write to root-owned files.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: I ran chown but still get EACCES?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Check the entire path. Each directory in the path must be writable. Use <code>namei -d /home/node/.openclaw/openclaw.json</code> to see permissions on each directory. Fix all of them with <code>chown -R node:node /home/node</code>.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Can I just run Docker with --privileged flag?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> You can, but it's a security risk. <code>--privileged</code> gives the container access to ALL host devices, which defeats Docker's isolation. Use non-root users instead — it's more secure and follows best practices.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: What's the difference between EACCES and EPERM?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> <code>EACCES</code> = "Permission denied" — you don't have rights to access the file. <code>EPERM</code> = "Operation not permitted" — the operation itself is not allowed (often due to file attributes like immutable bit). Both are permission errors, but EPERM is usually more severe.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Is rootless Docker worth the setup effort?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> For production, yes. Rootless Docker runs containers without root privileges, which is more secure. You never have to worry about containers escaping with root access. The setup is a one-time effort that pays off in security.
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Related Fixes
+
+- [Fix 'spawn npm ENOENT' in OpenClaw](/guides/fix-openclaw-spawn-npm-enoent) - Node/npm installation issues
+
+- [Fix 'spawn EINVAL' on Windows](/guides/fix-openclaw-spawn-einval-windows) - Windows permissions
+
+- [Fix OpenClaw CUDA OOM Errors](/guides/fix-openclaw-cuda-oom-errors) - VRAM optimization guide
+
+- **[Running OpenClaw with DeepSeek R1: Complete Guide](/guides/how-to-use-deepseek-with-openclaw)** - Setup and configuration
+
+---
+
+> **Bottom Line:** Docker permission issues are a common pain.
+>
+> Fix it with `chown` (temporary) or run as non-root user (permanent).
+>
+> **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
