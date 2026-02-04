@@ -13,7 +13,7 @@ This protocol establishes a "Shared Brain" for AI assistants (Claude, Gemini, Ch
 
 **Before answering ANY question, you MUST:**
 
-1. Read `.ai/PROJECT_STATE.md` - Understand the tech stack, deployed URL, and current goals
+1. Read `.ai/STATE.md` - Understand the tech stack, deployed URL, and current goals
 2. Read `.ai/DECISIONS.md` - Understand what decisions have already been made
 3. Read `.ai/TASK_BOARD.md` - Check if your task is already tracked
 4. **NEVER hallucinate files or routes** - Verify existence before referencing
@@ -70,7 +70,7 @@ lib/blog.ts                # Blog metadata (SSOT)
 1. Add entry to `lib/blog.ts`
 2. Create MDX file in `content/posts/{slug}.mdx`
 3. Run `npm run validate` to check for dead links
-4. Update `.ai/PROJECT_STATE.md` with new content
+4. Update `.ai/STATE.md` with new content
 
 ---
 
@@ -80,7 +80,7 @@ When switching between AI assistants:
 
 1. Update `TASK_BOARD.md` with current progress
 2. Update `DECISIONS.md` if new decisions were made
-3. Update `PROJECT_STATE.md` if architecture changed
+3. Update `.ai/STATE.md` if architecture changed
 4. Use the prompt in `HANDOFF_PROMPT.md` to brief the next AI
 
 ---
@@ -99,8 +99,8 @@ If you catch another AI violating these rules:
 
 | Action | File to Update |
 |--------|----------------|
-| Added new page | PROJECT_STATE.md |
+| Added new page | STATE.md |
 | Made strategic decision | DECISIONS.md |
 | Completed task | TASK_BOARD.md |
-| Changed tech stack | PROJECT_STATE.md |
-| Added content | PROJECT_STATE.md |
+| Changed tech stack | STATE.md |
+| Added content | STATE.md |

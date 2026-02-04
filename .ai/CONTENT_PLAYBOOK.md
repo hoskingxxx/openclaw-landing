@@ -184,10 +184,18 @@ Every article must end with:
 ### Cross-Link Rules
 - Link to troubleshooting guides when relevant
 - Link to security guides for production concerns
-- Use placeholder slugs if content doesn't exist yet:
-  - `/guides/openclaw-oom-fix`
-  - `/guides/deepseek-r1-optimization`
-  - `/guides/openclaw-production-setup`
+- **ZERO 404 POLICY:** If content does not exist yet, use Bold Text with *(Coming Soon)*
+- **NEVER create dead links or placeholder slugs** - Links are ONLY allowed if `lib/blog.ts` has the entry
+
+**Example - WRONG (dead link):**
+```markdown
+- [DeepSeek R1 Optimization](/guides/deepseek-r1-optimization) - Coming Soon
+```
+
+**Example - CORRECT (no dead link):**
+```markdown
+- **DeepSeek R1 Optimization** *(Coming Soon)*
+```
 
 ---
 

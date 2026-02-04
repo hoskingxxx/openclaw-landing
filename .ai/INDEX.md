@@ -29,7 +29,7 @@
 
 ### 第一步：读这 4 个文件
 
-1. **`.ai/STATE.md`** - 技术栈、路由、内容库
+1. **`.ai/STATE.md`** - 技术栈、路由、内容库（SSOT - 唯一状态文件）
 2. **`.ai/RULES.md`** - 编码规范和约束
 3. **`.ai/DECISIONS.md`** - 已做的战略决策
 4. **`lib/blog.ts`** - 所有文章的元数据
@@ -115,12 +115,12 @@ Next.js 16 + React 19 + Tailwind CSS
 
 ## Public Context System
 
-`scripts/generate-context.js` 自动生成公开上下文：
+`public/ai.json` 和 `public/llms.txt` 是静态文件，由手动维护：
 
 - `public/ai.json` - 机器可读的项目元数据
 - `public/llms.txt` - 人类/AI 可读摘要
 
-**每次构建时自动生成** - 不要手动编辑。
+**注意:** `scripts/generate-context.js` 存在但仅在架构重大变更时手动运行，不是自动构建流程。
 
 ---
 

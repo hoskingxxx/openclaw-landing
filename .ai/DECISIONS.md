@@ -27,6 +27,14 @@
 - FAQ structured data helps AI extract answers
 - "Survivor" tone matches the audience (people who broke things)
 
+### Context Generation: Static Manual Maintenance (2026-02-04)
+**Decision:** Context files are maintained manually, NOT auto-generated on build
+**Rationale:**
+- `public/ai.json` and `public/llms.txt` are static files
+- Updated manually when architecture changes significantly
+- Prevents drift between documentation and reality
+- `scripts/generate-context.js` exists but is run manually, not automatically
+
 ### DeepSeek R1 Long-tail Focus
 **Date:** 2026-02-03
 **Decision:** Focus content on DeepSeek R1 specific problems

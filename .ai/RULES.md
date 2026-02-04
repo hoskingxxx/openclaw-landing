@@ -143,6 +143,12 @@ When creating a new guide:
 
 ---
 
+## HARDCODE EXCEPTION
+
+⚠️ **Exception:** The featured post path in `app/page.tsx` MAY be hardcoded to avoid redirect loops. All other internal links MUST use dynamic `canonicalPath` from `lib/blog.ts`.
+
+---
+
 ## Deployment & Quality Assurance
 
 ### The "Green Check" Rule

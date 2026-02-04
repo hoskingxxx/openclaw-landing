@@ -10,7 +10,7 @@
 
 ### 📁 先读这些文件（按顺序）：
 
-1. `.ai/PROJECT_STATE.md` - 技术栈、路由、内容库（最新状态）
+1. `.ai/STATE.md` - 技术栈、路由、内容库（唯一状态文件 SSOT）
 2. `.ai/RULES.md` - 编码规范和约束
 3. `.ai/DECISIONS.md` - 已做的战略决策
 4. `.ai/CONTENT_PLAYBOOK.md` - 内容创作指南

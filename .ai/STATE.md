@@ -1,83 +1,66 @@
 # OpenClaw Project State
 
-**Last Updated:** 2026-02-03
-**Status:** Live on Vercel
-**Current Phase:** Profit-First (Traffic + Monetization)
+**Last Updated:** 2026-02-04
+**Status:** Live on Vercel (fixed build error)
 
 ---
 
-## PROJECT IDENTITY
+## PROJECT OVERVIEW
 
-- **Name:** OpenClaw AI Survival Guide
-- **Description:** Battle-tested guide for running DeepSeek R1 locally without OOM errors
-- **Goal:** Help developers avoid crashes AND monetize through VPS affiliates
-- **Tagline:** "Stop debugging crashes. Start shipping. Safely."
+**Name:** OpenClaw AI Survival Guide
+**Description:** Battle-tested guide for running DeepSeek R1 locally with OpenClaw
+**Goal:** Help developers avoid OOM errors and successfully run local LLMs
 
----
-
-## DEPLOYED URLS
-
-| URL | Status | Notes |
-|-----|--------|-------|
-| https://openclaw-ai.org | ✅ Working | Main domain (Vercel) |
-| https://openclaw-landing.vercel.app | ✅ Working | Vercel deployment |
-| https://github.com/hoskingxxx/openclaw-landing | ✅ Active | Main branch |
+**Deployed URLs:**
+- Production (DNS issues): https://openclaw-ai.org
+- Vercel URL (working): https://openclaw-landing.vercel.app
+- GitHub: https://github.com/hoskingxxx/openclaw-landing
 
 ---
 
 ## TECH STACK
 
-### Core
+### Frontend
 - **Framework:** Next.js 16.1.6 (App Router)
 - **UI:** React 19.2.4, Tailwind CSS 3.4.17
-- **Components:** Shadcn UI
+- **Components:** Shadcn UI (in `components/ui/`)
 - **Icons:** Lucide React
-- **TypeScript:** v5
+- **Theme:** Dark mode first, orange/red brand colors (#FF4500)
 
-### Content System
+### Content
 - **Format:** MDX for blog posts
 - **Processing:** gray-matter, remark, remark-html
 - **Location:** `content/posts/*.mdx`
-- **Metadata:** `lib/blog.ts` (single source of truth)
-
-### Styling
-- **Theme:** Dark mode first
-- **Brand Colors:** #FF4500 (orange/red)
-- **Aesthetic:** "Survivor/Hacker" - terminal vibes, glass cards
-- **CSS Variables:** `bg-background`, `text-primary`, etc.
 
 ### SEO Infrastructure
 - `app/robots.ts` - Robots.txt generator
-- `app/sitemap.ts` - Dynamic sitemap
-- `app/icon.tsx` - Favicon (32x32)
-- `app/apple-icon.tsx` - iOS icon (180x180)
+- `app/sitemap.ts` - Dynamic sitemap with blog posts
+- `app/icon.svg` - Lobster emoji favicon 🦞
+- `app/icon.tsx` - Favicon generator (PNG)
+- `app/apple-icon.tsx` - iOS icon
 - `app/manifest.ts` - PWA manifest
-- Schema: Breadcrumb, Article, FAQ, WebSite, SoftwareApplication
+- Breadcrumb schema on guide pages
+- `npm run check:links` - Linkinator crawler validation
 
 ### Analytics
-- **Umami:** ID: 5db90e55-9103-490f-8df0-9636a84942c8
-- **GSC:** Verified
+- Umami Analytics (ID: 5db90e55-9103-490f-8df0-9636a84942c8)
+- Google Search Console verified
 
 ---
 
-## ROUTES STRUCTURE
+## CURRENT PAGES/ROUTES
 
-### Static Pages
-| Route | File | Purpose |
-|-------|------|---------|
-| `/` | `app/page.tsx` | Home (Featured: RCE article) |
-| `/guides` | `app/guides/page.tsx` | Guide listing |
-| `/docs` | `app/docs/page.tsx` | Documentation |
-| `/faq` | `app/faq/page.tsx` | FAQ |
-| `/troubleshooting` | `app/troubleshooting/page.tsx` | Troubleshooting |
-| `/oom` | `app/oom/page.tsx` | OOM help |
-| `/quick-start` | `app/quick-start/page.tsx` | Quick start |
-| `/resources` | `app/resources/page.tsx` | Resources |
-
-### Dynamic Pages
-| Route Pattern | File | Purpose |
-|---------------|------|---------|
-| `/guides/[slug]` | `app/guides/[slug]/page.tsx` | Individual guides |
+| Route | File | Status |
+|-------|------|--------|
+| `/` | `app/page.tsx` | ✅ Home |
+| `/guides` | `app/guides/page.tsx` | ✅ Guide listing |
+| `/guides/[slug]` | `app/guides/[slug]/page.tsx` | ✅ Dynamic guides |
+| `/docs` | `app/docs/page.tsx` | ✅ Documentation |
+| `/faq` | `app/faq/page.tsx` | ✅ FAQ |
+| `/troubleshooting` | `app/troubleshooting/page.tsx` | ✅ Troubleshooting |
+| `/oom` | `app/oom/page.tsx` | ✅ OOM help |
+| `/quick-start` | `app/quick-start/page.tsx` | ✅ Quick start |
+| `/resources` | `app/resources/page.tsx` | ✅ Resources |
 
 ---
 
@@ -85,155 +68,90 @@
 
 ### Blog Posts (in `lib/blog.ts`)
 
-| Slug | Title | Date | Category | Featured |
-|------|-------|------|----------|----------|
-| `openclaw-security-rce-cve-2026-25253` | CVE-2026-25253: OpenClaw RCE Vulnerability - Critical Security Alert | 2026-02-03 | Security | **Yes** |
-| `how-to-use-deepseek-with-openclaw` | Running OpenClaw with DeepSeek R1: The Unofficial, Battle-Tested Guide | 2026-02-01 | Tutorial | No |
+| Slug | Title | Date | Category |
+|------|-------|------|----------|
+| `how-to-use-deepseek-with-openclaw` | Running OpenClaw with DeepSeek R1: The Unofficial, Battle-Tested Guide | 2026-02-01 | Tutorial |
+| `fix-openclaw-json-mode-errors` | How to fix OpenClaw JSON Mode parsing errors with DeepSeek R1 | 2026-02-03 | Troubleshooting |
+| `fix-openclaw-cuda-oom-errors` | Fix OpenClaw CUDA OOM: The $0.50 Solution vs. The 4-Hour Debug | 2026-02-03 | Troubleshooting |
+| `openclaw-security-rce-cve-2026-25253` | CVE-2026-25253: OpenClaw RCE Vulnerability - Critical Security Alert | 2026-02-03 | Security |
+| `fix-openclaw-slow-inference` | OpenClaw Slow Inference? Why 3.5s/token Is Normal (And How to Fix It) | 2026-02-04 | Troubleshooting |
 
-**Total Posts:** 2
+**Total Posts:** 5
 
 ### Content Files (in `content/posts/`)
-- `openclaw-security-rce-cve-2026-25253.mdx` - RCE vulnerability + VPS recommendations
-- `how-to-use-deepseek-with-openclaw.mdx` - DeepSeek deployment guide
+- `how-to-use-deepseek-with-openclaw.mdx`
+- `fix-openclaw-json-mode-errors.mdx`
+- `fix-openclaw-cuda-oom-errors.mdx`
+- `openclaw-security-rce-cve-2026-25253.mdx`
+- `fix-openclaw-slow-inference.mdx` (NEW)
 
 ---
 
-## KEY FILES
+## KEY FILES TO KNOW
 
 | File | Purpose |
 |------|---------|
-| `lib/blog.ts` | Blog post metadata (SSOT) - **ADD NEW POSTS HERE** |
-| `lib/site-config.ts` | Navigation, footer links, site config |
-| `lib/content.ts` | FAQ and content data |
+| `lib/blog.ts` | Blog post metadata (SSOT) |
+| `lib/content.ts` | FAQ and other content data |
 | `app/layout.tsx` | Root layout with global metadata |
-| `app/globals.css` | Global styles (mobile-first) |
-| `app/page.tsx` | Homepage (hardcoded FEATURED_POST_PATH) |
-| `next.config.mjs` | Next.js config (minimal) |
+| `app/globals.css` | Global styles with mobile-first rules |
+| `next.config.mjs` | Next.js config (minimal - no redirects) |
 | `components/SEO/StructuredData.tsx` | Schema.org components |
-
----
-
-## BUILD & DEPLOYMENT
-
-```bash
-# Development
-npm run dev
-
-# Build (with validation)
-npm run build
-
-# Production
-npm run start
-
-# Validate only
-npm run validate
-```
-
-- **Platform:** Vercel
-- **Auto-deploy:** On push to `main` branch
-- **Build Command:** `tsx scripts/validate-build.ts && next build`
-- **Prebuild:** `node scripts/generate-context.js` (generates public/ai.json)
 
 ---
 
 ## KNOWN ISSUES
 
-### VPS Affiliate Links (BLOCKED)
-- **Issue:** Placeholder links need actual affiliate codes
-- **Action:** Sign up for DigitalOcean, Linode, Hetzner affiliate programs
-- **Impact:** Cannot monetize traffic yet
+1. **DNS Configuration:** Domain `openclaw-ai.org` points to wrong IPs (Heroku instead of Vercel)
+   - Vercel URL works: https://openclaw-landing.vercel.app
+   - Need to update DNS to point to `cname.vercel-dns.com`
+
+2. **Redirect Loop (FIXED):** Previously had infinite redirect due to trailing slash rules
+   - Resolved by simplifying `next.config.mjs`
+   - Hardcoded `FEATURED_POST_PATH` in `app/page.tsx`
+
+3. **404 Error Rate (FIXED):** 31% 404 error rate in GSC due to broken internal links
+   - Fixed 12 internal links pointing to `/posts/` instead of `/guides/`
+   - All internal links now correctly point to `/guides/{slug}`
+
+4. **Build Error (FIXED):** Missing `lucide-react` dependency caused build failures
+   - Installed `lucide-react` package
+   - Build now succeeds on Vercel
 
 ---
 
-## SEO KEYWORDS
+## SEO KEYWORDS TARGETING
 
-### Primary (Current Focus)
-- OpenClaw RCE
-- CVE-2026-25253
-- OpenClaw security
-- OpenClaw vulnerability
-- DeepSeek R1 crash
+### Primary Focus
+- DeepSeek R1
+- OpenClaw configuration
+- Local LLM setup
+- CUDA OOM errors
+- VRAM requirements
+- torch.cuda.OutOfMemoryError
 
-### Long-tail
-- "OpenClaw RCE exploit"
-- "OpenClaw security fix"
-- "OpenClaw vs Ollama security"
-- "Secure local LLM setup"
-- "VPS for OpenClaw"
-
-### Money Keywords (High Intent)
-- "Best VPS for OpenClaw"
-- "OpenClaw hosting requirements"
-- "How to secure OpenClaw"
+### Long-tail Keywords
+- "DeepSeek R1 crash"
+- "OpenClaw OOM"
+- "Ollama crash"
+- "MPS out of memory"
+- "OpenClaw slow" (ranking #6 - now has dedicated page)
 
 ---
 
-## MONETIZATION
+## DEPLOYMENT
 
-### Current Strategy
-- **VPS Affiliate Links** in security-related articles
-- **Providers:** DigitalOcean, Linode, Hetzner
-- **Placement:** Within problem-solution content
-
-### Content Funnel
-1. User searches for OpenClaw problem/security
-2. Lands on our guide
-3. Reads about VPS isolation as solution
-4. Clicks affiliate link
-5. We earn commission
+- **Platform:** Vercel (auto-deploy on push to main)
+- **Build:** `npm run build`
+- **Validate:** `npm run validate`
+- **Branch:** main
 
 ---
 
-## AICP (AI Collaboration Protocol)
+## NEXT STEPS (from TASK_BOARD.md)
 
-### Internal Files (`.ai/`)
-- `INDEX.md` - This file, entry point
-- `STATE.md` - Technical facts (you are here)
-- `RULES.md` - Coding standards and constraints
-- `DECISIONS.md` - Strategic and technical decisions
-- `TASK_BOARD.md` - Current to-do list
-- `HANDOFF_PROMPT.md` - Ready-to-use prompt for other AIs
-
-### Public Files
-- `public/ai.json` - Machine-readable project metadata
-- `public/llms.txt` - Human/AI readable summary
-
----
-
-## HOW TO ADD NEW CONTENT
-
-### Step 1: Create MDX File
-```bash
-content/posts/your-slug.mdx
-```
-
-### Step 2: Add Metadata
-```typescript
-// lib/blog.ts
-{
-  slug: "your-slug",
-  canonicalPath: "/guides/your-slug",
-  title: "Your Title",
-  description: "Meta description",
-  date: "2026-02-03",
-  author: "LazyDev",
-  tags: ["tag1", "tag2"],
-  category: "Tutorial",
-  featured: false,
-  seoKeywords: ["keyword1", "keyword2"],
-}
-```
-
-### Step 3: Validate
-```bash
-npm run validate
-```
-
-### Step 4: Deploy
-```bash
-git add .
-git commit -m "feat: add new article"
-git push
-```
-
-Vercel will auto-deploy in ~1-2 minutes.
+1. Create more content targeting long-tail DeepSeek keywords
+2. Fix DNS for openclaw-ai.org domain
+3. Add "OpenClaw security" content (DONE - CVE article published)
+4. Create video content using scripts in `assets/video_scripts/`
+5. Set up affiliate links for VPS recommendations
