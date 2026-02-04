@@ -111,6 +111,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw windows error", "spawn npm enoent windows", "openclaw plugin install fail", "openclaw windows npm", "openclaw @m1heng openclaw"],
   },
+  {
+    slug: "fix-openclaw-spawn-einval-windows",
+    canonicalPath: createCanonicalPath("fix-openclaw-spawn-einval-windows"),
+    title: "Fix 'Failed to start CLI: Error: spawn EINVAL' in OpenClaw",
+    description: "OpenClaw plugin install fails with 'spawn EINVAL'? Here is the Admin PowerShell fix.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Windows", "Node.js", "Permissions"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw einval", "spawn einval windows", "openclaw plugin install error", "openclaw windows permission", "openclaw invalid argument"],
+  },
 ];
 
 // ============================================================================
