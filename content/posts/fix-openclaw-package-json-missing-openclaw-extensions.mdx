@@ -1,0 +1,358 @@
+---
+title: "Fix 'package.json missing openclaw.extensions' in OpenClaw"
+description: "Installing a plugin fails with 'package.json missing openclaw.extensions'? The package is outdated. Here is the unified fix."
+date: "2026-02-04"
+author: "LazyDev"
+tags: ["Plugins", "Install", "OpenClaw", "Troubleshooting"]
+category: "Troubleshooting"
+featured: false
+seoKeywords: [
+  "package.json missing openclaw.extensions",
+  "openclaw plugin install error",
+  "openclaw plugin metadata missing",
+  "openclaw extensions not found"
+]
+---
+
+> **TL;DR: The Instant Fix**
+>
+> **The Problem:** Installing an OpenClaw plugin fails with `package.json missing openclaw.extensions`. The plugin package is outdated and doesn't include the required metadata.
+>
+> **The Error:** `package.json is missing openclaw.extensions field`
+>
+> **The Solution:**
+> 1. **Quick Fix:** Use the unified `@openclaw-extensions/channels` package instead
+> 2. **Real Fix:** Contact plugin maintainer to add `openclaw.extensions` metadata
+>
+> **[Deploy on Vultr (High Availability & Free Credit)](https://www.vultr.com/?ref=9863490)** *(Plugin ecosystems break locally. A clean cloud environment + pinned versions reduces surprise breakage.)*
+
+---
+
+## The Log: What You're Seeing
+
+**The Error:**
+
+```bash
+[INFO] Installing plugin: @openclaw-extensions/my-plugin
+[ERROR] Plugin validation failed
+Error: package.json is missing openclaw.extensions field
+
+Package validation failed for: @openclaw-extensions/my-plugin
+Expected format:
+{
+  "openclaw": {
+    "extensions": {
+      "type": "provider",
+      "entry": "./dist/index.js"
+    }
+  }
+}
+
+[Agent] Unable to load plugin
+[CLI] Installation aborted
+```
+
+**Context:** This error occurs when installing OpenClaw plugins that were created before the unified extensions schema was standardized. The plugin package exists but lacks the required `openclaw.extensions` metadata in its `package.json`.
+
+**Observed Behavior:**
+- Plugin download succeeds
+- Validation immediately fails
+- OpenClaw refuses to load the plugin
+- No workaround in the UI
+
+---
+
+## Why This Happens (It's a Metadata Schema Mismatch)
+
+This is a **Plugin Metadata Schema Issue**.
+
+OpenClaw's plugin system assumes:
+- **All plugins include** `openclaw.extensions` metadata
+- **Metadata format matches** the current schema
+- **Plugin maintainers update** packages when schema changes
+
+But you're installing:
+- **An outdated plugin** created before schema standardization
+- **A third-party package** that doesn't follow OpenClaw conventions
+- **A deprecated plugin** that hasn't been updated
+
+### The Schema Evolution Problem
+
+| Era | Plugin Format | Metadata Required | Status |
+|-----|---------------|-------------------|--------|
+| **Early OpenClaw** | Ad-hoc, unstandardized | Optional or none | ❌ Deprecated |
+| **Transitional** | Mixed formats | Varied by plugin | ⚠️ May break |
+| **Current** | Unified schema | `openclaw.extensions` required | ✅ Standard |
+
+**The error means:** The plugin you're trying to install was created before OpenClaw standardized the `openclaw.extensions` metadata field. Current versions of OpenClaw require this field for all plugins.
+
+---
+
+## Solution A: Use Unified Extensions Package (Recommended)
+
+The easiest fix is to use the official `@openclaw-extensions/channels` package, which includes all common integrations with proper metadata.
+
+### Step 1: Uninstall the Broken Plugin
+
+```bash
+# Remove the problematic plugin
+openclaw plugin remove @openclaw-extensions/my-plugin
+
+# Or manually delete from node_modules
+rm -rf node_modules/@openclaw-extensions/my-plugin
+```
+
+### Step 2: Install the Unified Package
+
+```bash
+# Install the official extensions package
+npm install -g @openclaw-extensions/channels
+
+# Or using OpenClaw CLI
+openclaw plugin install @openclaw-extensions/channels
+```
+
+### Step 3: Verify Installation
+
+```bash
+# Check installed plugins
+openclaw plugin list
+
+# Should show:
+# @openclaw-extensions/channels (installed)
+```
+
+**Why This Works:** The unified package is maintained by the OpenClaw team and includes all standard integrations (Slack, Discord, Teams, etc.) with correct metadata.
+
+---
+
+## Solution B: Manually Add Metadata (For Custom Plugins)
+
+If you're developing your own plugin or need to use a specific third-party plugin, you can manually add the required metadata.
+
+### Step 1: Locate the Plugin's package.json
+
+```bash
+# Find the plugin directory
+cd node_modules/@openclaw-extensions/my-plugin
+
+# Or if globally installed
+cd /usr/local/lib/node_modules/@openclaw-extensions/my-plugin
+```
+
+### Step 2: Edit package.json
+
+Add the `openclaw.extensions` field:
+
+```json
+{
+  "name": "@openclaw-extensions/my-plugin",
+  "version": "1.0.0",
+  "openclaw": {
+    "extensions": {
+      "type": "provider",
+      "entry": "./dist/index.js",
+      "schema": "1.0"
+    }
+  }
+}
+```
+
+### Step 3: Reload OpenClaw
+
+```bash
+# Restart OpenClaw to pick up changes
+openclaw restart
+
+# Or if running as service
+systemctl restart openclaw
+```
+
+**⚠️ Warning:** This is a temporary fix. If you update the plugin, your changes will be overwritten. Contact the plugin maintainer to add the metadata permanently.
+
+---
+
+## Solution C: Pin OpenClaw Version (Last Resort)
+
+If you must use an outdated plugin, you can downgrade OpenClaw to a version that didn't require `openclaw.extensions` metadata.
+
+### Step 1: Check Plugin Requirements
+
+```bash
+# Check the plugin's documentation
+# Look for "Compatible with OpenClaw version X.Y.Z"
+```
+
+### Step 2: Downgrade OpenClaw
+
+```bash
+# Uninstall current version
+npm uninstall -g openclaw
+
+# Install specific version
+npm install -g openclaw@<compatible-version>
+
+# Example:
+# npm install -g openclaw@0.5.12
+```
+
+**⚠️ Warning:** Downgrading exposes you to security vulnerabilities and bugs that were fixed in newer versions. Only do this if absolutely necessary.
+
+---
+
+## The "Survival" Recommendation
+
+> **Stop debugging plugin metadata mismatches.**
+>
+> Every hour you spend editing package.json files, hunting for compatible versions, or manually adding metadata is an hour you're not shipping.
+>
+> **Plugin ecosystems break locally. A clean cloud environment + pinned versions reduces surprise breakage.**
+
+### Local Development vs Cloud VPS Comparison
+
+| Issue | Local Development | Cloud VPS (Vultr) |
+|-------|-------------------|-------------------|
+| **Plugin compatibility** | Mixed versions, breaks often | Fresh install, all current |
+| **Metadata schema** | Outdated plugins cause errors | Everything standardized |
+| **Debug time** | 2-4 hours (version hunting) | 0 minutes (works immediately) |
+| **Updates** | Manual, breaks things | Controlled, tested |
+| **Cost** | "Free" (but your time = $50-$150/hr) | $0.50-$3.00/hour |
+
+**[Deploy on Vultr (High Availability & Free Credit)](https://www.vultr.com/?ref=9863490)** *(Plugin ecosystems break locally. A clean cloud environment + pinned versions reduces surprise breakage.)*
+
+---
+
+## Complete Working Example
+
+### Verified Plugin Installation
+
+```bash
+# 1. Remove broken plugin (if installed)
+openclaw plugin remove @openclaw-extensions/my-plugin
+
+# 2. Clear npm cache
+npm cache clean --force
+
+# 3. Install unified extensions package
+npm install -g @openclaw-extensions/channels
+
+# 4. Verify installation
+openclaw plugin list
+
+# Output:
+# Installed plugins:
+# - @openclaw-extensions/channels (v2.1.0)
+#   - slack: Enabled
+#   - discord: Enabled
+#   - teams: Enabled
+
+# 5. Test plugin functionality
+openclaw test --plugin slack
+
+# Success: Plugin loaded and functional
+```
+
+### Docker Alternative (Bypasses Plugin Issues)
+
+```dockerfile
+FROM node:18-alpine
+
+# Install OpenClaw
+RUN npm install -g openclaw
+
+# Install unified extensions
+RUN npm install -g @openclaw-extensions/channels
+
+# Set working directory
+WORKDIR /app
+
+CMD ["openclaw"]
+```
+
+```bash
+# Build and run
+docker build -t openclaw-with-plugins .
+docker run -it --rm openclaw-with-plugins
+
+# Plugins work immediately in fresh container
+```
+
+---
+
+## FAQ
+
+<div itemScope itemType="https://schema.org/FAQPage">
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Why did this plugin work before but not now?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> OpenClaw updated its plugin schema to require <code>openclaw.extensions</code> metadata. Plugins created before this change don't have the required field. You either need to use a newer version of the plugin or manually add the metadata.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Can I contact the plugin author to fix this?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Yes, and you should. Open an issue on the plugin's GitHub repository or contact the maintainer. The fix is simple — they just need to add the <code>openclaw.extensions</code> field to their package.json.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: What if the plugin is abandoned?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Use the unified <code>@openclaw-extensions/channels</code> package instead. It includes all common integrations and is actively maintained. If you need custom functionality, consider forking the plugin and adding the metadata yourself.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Will manually editing package.json survive updates?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> No. When you update the plugin (<code>npm update</code>), your changes will be overwritten. This is a temporary workaround. The permanent fix is for the plugin maintainer to add the metadata.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Is downgrading OpenClaw worth it?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Usually not. Downgrading exposes you to security vulnerabilities and bugs that were fixed in newer versions. Use the unified extensions package or find an alternative plugin that's actively maintained.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: How do I prevent this in the future?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Pin your OpenClaw and plugin versions in package.json. Use <code>"openclaw": "1.2.3"</code> instead of <code>"openclaw": "latest"</code>. Test updates in a staging environment before deploying to production. Deploy on a VPS where you can snapshot and rollback easily.
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Related Fixes
+
+- **[Fix 'npm error code ENOENT' (install.ps1)](/guides/fix-openclaw-install-ps1-npm-enoent-windows)** - Installation PATH issues
+
+- **[Fix 'spawn EINVAL' on Windows](/guides/fix-openclaw-spawn-einval-windows)** - Permission errors
+
+- **[Fix Docker EACCES: Permission Denied](/guides/fix-openclaw-docker-eacces-permission-denied)** - Docker permission issues
+
+- **[Running OpenClaw with DeepSeek R1: Complete Guide](/guides/how-to-use-deepseek-with-openclaw)** - Setup and configuration
+
+---
+
+> **Bottom Line:** Plugin metadata errors are a schema mismatch problem.
+>
+> Use the unified `@openclaw-extensions/channels` package or pin your versions to avoid breakage.
+>
+> **[Deploy on Vultr (High Availability & Free Credit)](https://www.vultr.com/?ref=9863490)** *(Plugin ecosystems break locally. A clean cloud environment + pinned versions reduces surprise breakage.)*

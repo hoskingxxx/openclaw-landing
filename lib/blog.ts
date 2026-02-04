@@ -159,6 +159,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw install.ps1 error", "npm error code enoent windows", "openclaw install failed"],
   },
+  {
+    slug: "fix-openclaw-package-json-missing-openclaw-extensions",
+    canonicalPath: createCanonicalPath("fix-openclaw-package-json-missing-openclaw-extensions"),
+    title: "Fix 'package.json missing openclaw.extensions' error",
+    description: "Plugin install failed? Use the unified channels package instead.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Plugins"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["package.json missing openclaw.extensions", "openclaw plugin install error"],
+  },
 ];
 
 // ============================================================================
