@@ -135,6 +135,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw docker permission denied", "eacces openclaw.json", "docker volume permission", "openclaw docker eacces", "docker uid mismatch"],
   },
+  {
+    slug: "fix-openclaw-cannot-find-module-clipboard-linux-arm",
+    canonicalPath: createCanonicalPath("fix-openclaw-cannot-find-module-clipboard-linux-arm"),
+    title: "Fix 'Cannot find module @mariozechner/clipboard-linux-arm-gnueabihf' in OpenClaw",
+    description: "Fix OpenClaw crash on Linux ARM due to missing clipboard module.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Linux", "ARM", "Node.js"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw arm crash", "cannot find module clipboard-linux-arm", "openclaw raspberry pi error", "@mariozechner/clipboard-linux-arm-gnueabihf not found", "openclaw linux arm error"],
+  },
 ];
 
 // ============================================================================
