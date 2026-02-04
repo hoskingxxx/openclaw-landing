@@ -5,6 +5,64 @@
 
 ---
 
+## 0. The Core Narrative (The "Mother Motif")
+
+**"OpenClaw assumes you have infinite resources and infinite trust."**
+
+This is the lens through which ALL content should be written. Every article, every troubleshooting guide, every security warning must reinforce this core truth.
+
+### The Two Mismatches
+
+**1. Resource Mismatch**
+- OpenClaw + DeepSeek R1 assumes infinite VRAM, infinite bandwidth, infinite compute
+- Local hardware has hard limits: 24GB VRAM, 100-400 GB/s bandwidth, thermal throttling
+- **Every error (OOM, Slow, Crash) is a symptom of Resource Mismatch.**
+
+**2. Trust Mismatch**
+- OpenClaw assumes it runs in a trusted, isolated environment
+- Local machines expose: filesystem, network, personal data, banking passwords
+- **Every security issue is a symptom of Trust Mismatch.**
+
+### Our Position
+
+We don't just "fix bugs." We advocate for the **correct architecture**:
+
+| Problem | Local "Fix" (Band-aid) | Correct Architecture |
+|---------|----------------------|---------------------|
+| OOM Errors | Quantization, context trimming | More VRAM (Cloud H100) |
+| Slow Inference | CPU offloading, flags | Faster bandwidth (Cloud GPU) |
+| Security Risks | Docker, firewalls | Physical isolation (VPS) |
+
+### The Solution Pattern
+
+Every article must follow this arc:
+
+1. **The Problem:** "OpenClaw crashed/slow/insecure"
+2. **The Diagnosis:** "This is Resource/Trust Mismatch — not a bug"
+3. **The Proof:** Math, benchmarks, or technical explanation
+4. **The Pivot:** "Local fixes have limits. Here's the correct architecture."
+5. **The Solution:** [VPS Affiliate Link]
+
+### Tone Guidelines
+
+**We are the "Survivors/Recorders," not "Evangelists."**
+
+- ✅ "In our testing, the RTX 4090 crashed at 8k context..."
+- ✅ "Observed behavior: VRAM usage scales linearly with window size..."
+- ✅ "Unless you have a VLAN and air-gapped machine..."
+- ❌ "OpenClaw is the best!" (hype)
+- ❌ "You'll love this!" (marketing)
+- ❌ "100% success rate!" (fake data)
+
+### What This Means for Writers
+
+- **Never** present a "fix" that's actually a compromise (e.g., "just quantize more")
+- **Always** explain the underlying physics/trust model
+- **Always** pivot to the correct architecture (VPS/Isolation)
+- **Admit** when local is impossible — don't sell false hope
+
+---
+
 ## 1. The "Answer-First" Rule
 
 ### H1 Title Format
