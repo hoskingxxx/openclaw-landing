@@ -171,6 +171,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["package.json missing openclaw.extensions", "openclaw plugin install error"],
   },
+  {
+    slug: "openclaw-error-index",
+    canonicalPath: createCanonicalPath("openclaw-error-index"),
+    title: "OpenClaw Error Index (Master Dictionary)",
+    description: "A searchable dictionary of OpenClaw errors and fixes. Copy your error message and jump to the exact solution.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Index", "Errors"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw error codes", "openclaw error index", "openclaw troubleshooting", "openclaw crash logs"],
+  },
 ];
 
 // ============================================================================

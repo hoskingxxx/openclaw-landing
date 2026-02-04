@@ -1,0 +1,136 @@
+---
+title: "OpenClaw Error Index (Master Dictionary)"
+description: "A searchable dictionary of OpenClaw errors and fixes. Copy your error message and jump to the exact solution."
+date: "2026-02-04"
+author: "LazyDev"
+tags: ["Troubleshooting", "Index", "Errors"]
+category: "Troubleshooting"
+featured: false
+seoKeywords: [
+  "openclaw error codes",
+  "openclaw error index",
+  "openclaw troubleshooting",
+  "openclaw crash logs"
+]
+---
+
+> **TL;DR: The Instant Fix**
+>
+> **How to use:** Copy your red error text, press **Ctrl + F** on this page, and run the Quick Fix.
+>
+> **The Solution:** Find your error below → Try the Quick Fix command → Read the full guide if needed.
+
+---
+
+## ⏱️ 3-Second Triage
+
+| Your Situation | Go To |
+|---------------|-------|
+| **Windows / New Install?** (ENOENT, EINVAL) | [Group 1](#group-1-installation-cli) |
+| **Plugin / Metadata?** (package.json, missing module) | [Group 2](#group-2-plugins-ecosystem) |
+| **Docker / Permission?** (EACCES, mkdir fail) | [Group 3](#group-3-docker-permissions) |
+| **Hardware / Slow?** (CUDA, tokens/sec) | [Group 4](#group-4-performance-hardware) |
+
+---
+
+> **🔥 Engineering Rule of Thumb:**
+>
+> **If you hit 2+ environment errors in Group 1, stop debugging Windows.**
+>
+> Every hour you spend fighting PATH, permissions, or npm on Windows is an hour you're not shipping.
+>
+> **[Deploy on Vultr (Linux GPU, $100 Free Credit)](https://www.vultr.com/?ref=9863490)** — Switch to a clean Linux environment and start coding in minutes.
+
+---
+
+## 🧨 Group 1: Installation & CLI (The "Newbie Hell")
+
+**Platform:** Windows / macOS
+
+| Error String (Exact Match) | Quick Fix (Try this first) | Full Guide |
+|----------------------------|---------------------------|------------|
+| `npm error code ENOENT` (install.ps1) | Close PowerShell, reopen fresh window | [Fix install.ps1 ENOENT](/guides/fix-openclaw-install-ps1-npm-enoent-windows) |
+| `Failed to start CLI: Error: spawn npm ENOENT` | Reinstall Node.js 18+ LTS to default path | [Fix spawn npm ENOENT](/guides/fix-openclaw-spawn-npm-enoent) |
+| `Failed to start CLI: Error: spawn npm ENOENT` (Windows) | `where.exe npm` → if empty, reinstall Node LTS | [Fix Windows ENOENT](/guides/fix-openclaw-spawn-npm-enoent-windows) |
+| `Failed to start CLI: Error: spawn EINVAL` | Run PowerShell as Administrator | [Fix spawn EINVAL](/guides/fix-openclaw-spawn-einval-windows) |
+
+---
+
+## 🧩 Group 2: Plugins & Ecosystem
+
+**Platform:** Cross-platform
+
+| Error String (Exact Match) | Quick Fix (Command) | Full Guide |
+|----------------------------|---------------------|------------|
+| `package.json is missing openclaw.extensions field` | `npm install -g @openclaw-extensions/channels` | [Fix Plugin Metadata](/guides/fix-openclaw-package-json-missing-openclaw-extensions) |
+| `Cannot find module '@mariozechner/clipboard-linux-arm-gnueabihf'` | `npm install -g openclaw@latest` | [Fix ARM Clipboard](/guides/fix-openclaw-cannot-find-module-clipboard-linux-arm) |
+
+---
+
+## 🐳 Group 3: Docker & Permissions
+
+**Platform:** Docker / Linux
+
+| Error String (Exact Match) | Quick Fix (Command) | Full Guide |
+|----------------------------|---------------------|------------|
+| `Error: EACCES: permission denied, mkdir '/home/node/.openclaw'` | `chown -R 1000:1000 /home/node/.openclaw` | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
+| `Error: EACCES: permission denied` (openclaw.json) | `chown -R node:node /home/node/.openclaw` | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
+
+---
+
+## 🧠 Group 4: Performance & Hardware
+
+**Platform:** GPU / VRAM
+
+| Issue | Quick Fix | Full Guide |
+|-------|-----------|------------|
+| **CUDA Out of Memory** | Lower `num_ctx` to 2048 or switch to 8B model | [Fix CUDA OOM](/guides/fix-openclaw-cuda-oom-errors) |
+| **Slow Inference** (3+ seconds per token) | Switch to GGUF (Q4_K_M) or use Cloud GPU | [Fix Slow Inference](/guides/fix-openclaw-slow-inference) |
+| **JSON Parse Error** (DeepSeek R1) | Add thinking tags to system prompt | [Fix JSON Mode](/guides/fix-openclaw-json-mode-errors) |
+
+---
+
+## 🔐 Group 5: Security
+
+**Platform:** All
+
+| CVE ID | Severity | Quick Fix | Full Guide |
+|--------|----------|-----------|------------|
+| **CVE-2026-25253** | CRITICAL (RCE) | Upgrade OpenClaw immediately | [Security Advisory](/guides/openclaw-security-rce-cve-2026-25253) |
+
+---
+
+## How to Use This Index
+
+1. **Copy your error** — Select the red error text from your terminal
+2. **Search** — Press **Ctrl + F** (or Cmd + F on Mac) and paste
+3. **Try Quick Fix** — Run the command in the "Quick Fix" column
+4. **Read Full Guide** — If Quick Fix doesn't work, click the full guide link
+
+> **Pro Tip:** Most errors are caused by environment issues (Node version, PATH, permissions). If you hit 2+ errors in Group 1, **stop debugging local setup** and deploy on a clean Linux VPS.
+
+---
+
+## Not Finding Your Error?
+
+1. **Search the exact error message** in quotes on Google
+2. **Check OpenClaw GitHub Issues** — https://github.com/m1heng/openclaw/issues
+3. **Join the community** — Ask in discussions with your full error log
+
+---
+
+> **Disclosure:** This page contains affiliate links. It costs you nothing and helps support the community documentation.
+
+---
+
+## Related Resources
+
+- **[Running OpenClaw with DeepSeek R1: Complete Guide](/guides/how-to-use-deepseek-with-openclaw)** — Setup and configuration
+
+- **[Troubleshooting Page](/troubleshooting)** — Detailed crash logs and hardware limits
+
+---
+
+> **Bottom Line:** Copy your error, run the Quick Fix, stop debugging environment issues.
+>
+> **[Deploy on Vultr (Linux GPU, $100 Free Credit)](https://www.vultr.com/?ref=9863490)** — Skip the setup headaches entirely.
