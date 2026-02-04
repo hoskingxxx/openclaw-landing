@@ -99,6 +99,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw npm error", "spawn npm enoent", "openclaw nodejs missing", "openclaw cli failed to start"],
   },
+  {
+    slug: "fix-openclaw-spawn-npm-enoent-windows",
+    canonicalPath: createCanonicalPath("fix-openclaw-spawn-npm-enoent-windows"),
+    title: "Fix 'Failed to start CLI: Error: spawn npm ENOENT' on Windows",
+    description: "Can't install plugins on Windows? Here is the manual fix (xcopy) and the Node LTS solution.",
+    date: "2026-02-04",
+    author: "LazyDev",
+    tags: ["Troubleshooting", "Windows", "Node.js", "Environment"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw windows error", "spawn npm enoent windows", "openclaw plugin install fail", "openclaw windows npm", "openclaw @m1heng openclaw"],
+  },
 ];
 
 // ============================================================================

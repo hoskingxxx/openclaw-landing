@@ -1,0 +1,349 @@
+---
+title: "Fix 'Failed to start CLI: Error: spawn npm ENOENT' on Windows (OpenClaw Plugin Install)"
+description: "Can't install plugins on Windows? See 'spawn npm ENOENT'? Here is the manual fix (xcopy) and the Node LTS solution."
+date: "2026-02-04"
+author: "LazyDev"
+tags: ["Troubleshooting", "Windows", "Node.js", "Environment"]
+category: "Troubleshooting"
+featured: false
+seoKeywords: [
+  "openclaw windows error",
+  "spawn npm enoent windows",
+  "openclaw plugin install fail",
+  "openclaw windows npm",
+  "openclaw @m1heng openclaw"
+]
+---
+
+> **TL;DR: The Instant Fix**
+>
+> **The Problem:** OpenClaw can't find `npm` on Windows to install plugins. The path to npm isn't in OpenClaw's subprocess environment.
+>
+> **The Error:** `Error: spawn npm ENOENT` when installing plugins
+>
+> **The Solution:**
+> 1. **Manual Fix (5 minutes):** Copy files with `xcopy` (workaround)
+> 2. **Real Fix (Permanent):** Install Node.js 18+ LTS properly
+>
+> **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
+
+---
+
+## The Log: What You're Seeing
+
+**The Error:**
+
+```powershell
+[ERROR] Failed to install plugin: @m1heng/openclaw
+Error: spawn npm ENOENT
+    at Process.ChildProcess._handle.onexit (node:internal/child_process:283:19)
+    at onErrorNT (node:internal/child_process:477:11)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+[System] Plugin installation failed
+[Agent] Unable to load plugin
+```
+
+**Context:** This error occurs specifically on Windows when OpenClaw tries to install plugins via npm. OpenClaw can't find the npm executable.
+
+**Observed Behavior:** OpenClaw starts fine, but any plugin installation fails immediately.
+
+---
+
+## Why This Happens on Windows (It's a Path Issue)
+
+This is a **Windows Environment Configuration Issue**.
+
+OpenClaw's plugin system assumes:
+- **npm is accessible** via subprocess spawn
+- **Node.js binary path** is in system PATH
+- **Windows PATH** includes Node.js installation
+
+But on Windows, you're seeing:
+- **Node.js not installed** OR
+- **Node installed but PATH not updated** OR
+- **OpenClaw subprocess** doesn't inherit your PATH
+
+**The error `ENOENT` means "Error NO ENTry" — Windows can't find the npm executable.**
+
+### Windows-Specific Complications
+
+| Issue | Why It Happens on Windows |
+|-------|---------------------------|
+| **PATH not refreshed** | Windows doesn't update PATH for existing processes |
+| **Node installed per-user** | PATH only updates for that user, not system-wide |
+| **OpenClaw runs as different user** | Subprocess may not have same environment |
+| **Multiple Node versions** | Windows may have wrong version in PATH |
+| **PowerShell vs CMD** | Different environment variables in each shell |
+
+---
+
+## Solution A: The Manual "xcopy" Fix (Workaround)
+
+If you can't fix the PATH issue immediately, you can manually copy the plugin files.
+
+### Step 1: Download the Plugin Manually
+
+```powershell
+# Navigate to your OpenClaw directory
+cd C:\Users\YourUsername\openclaw
+
+# Create the plugin directory manually
+mkdir node_modules\@m1heng\openclaw
+```
+
+**⚠️ Important Note:** The original GitHub issue contains a typo in the path. The correct path uses a **backslash** (`\`), not a forward slash (`@`):
+- ❌ Wrong: `node_modules@m1heng\openclaw`
+- ✅ Correct: `node_modules\@m1heng\openclaw`
+
+### Step 2: Copy the Plugin Files
+
+**Option 1: Download from npm registry**
+
+```powershell
+# First, install the package to a temporary location using npm
+# (If you have npm working in PowerShell)
+npm install @m1heng/openclaw --prefix C:\temp-openclaw
+
+# Then copy to OpenClaw's node_modules
+xcopy /E /I /Y C:\temp-openclaw\node_modules\@m1heng\openclaw C:\Users\YourUsername\openclaw\node_modules\@m1heng\openclaw\
+```
+
+**Option 2: Manual download from GitHub**
+
+```powershell
+# Clone the repository to a temp location
+git clone https://github.com/m1heng/openclaw.git C:\temp-openclaw-repo
+
+# Copy the built files to OpenClaw plugins
+xcopy /E /I /Y C:\temp-openclaw-repo\dist C:\Users\YourUsername\openclaw\node_modules\@m1heng\openclaw\
+```
+
+### Step 3: Verify Installation
+
+```powershell
+# Check if files are in place
+dir node_modules\@m1heng\openclaw
+
+# Should show: index.js, package.json, and other files
+```
+
+**⚠️ Warning:** This is a workaround. You'll need to repeat this for every plugin update. The real fix is below.
+
+---
+
+## Solution B: The Node.js LTS Fix (Recommended)
+
+The permanent solution is to properly install Node.js on Windows so OpenClaw can find npm.
+
+### Step 1: Install Node.js 18+ LTS
+
+**Download from official source:**
+https://nodejs.org/en/download/
+
+**Choose:**
+- **Windows Installer (.msi)** - Recommended for most users
+- **Windows Binary (.zip)** - If you prefer manual setup
+
+**Important:** Install to the default path `C:\Program Files\nodejs\` — the installer will automatically add this to your system PATH.
+
+### Step 2: Verify Installation
+
+**Open a NEW PowerShell or Command Prompt** (existing shells won't see the updated PATH):
+
+```powershell
+# Check Node version
+node --version
+# Should output: v18.x.x or higher
+
+# Check npm version
+npm --version
+# Should output: 9.x.x or higher
+
+# Check where npm is located
+where npm
+# Should output: C:\Program Files\nodejs\npm.cmd
+```
+
+### Step 3: Restart OpenClaw
+
+```powershell
+# Completely restart OpenClaw (not just reload)
+# Close all terminals and restart the application
+```
+
+**If it still fails:** OpenClaw may be running with a cached environment. Restart your computer to refresh all environment variables.
+
+### Step 4: Install Plugin Properly
+
+```powershell
+# Now this should work
+openclaw plugin install @m1heng/openclaw
+
+# Or using npm directly in OpenClaw directory
+cd C:\Users\YourUsername\openclaw
+npm install @m1heng/openclaw
+```
+
+---
+
+## Solution C: The Windows PATH Fix (If Node is Installed)
+
+If Node.js is installed but OpenClaw still can't find npm:
+
+### Step 1: Find Your Node Installation
+
+```powershell
+# Check common Node.js locations
+dir "C:\Program Files\nodejs"
+dir "C:\Program Files (x86)\nodejs"
+dir "%APPDATA%\npm"
+```
+
+### Step 2: Add to PATH (System-Wide)
+
+1. **Open System Environment Variables:**
+   - Press `Win + R`
+   - Type: `sysdm.cpl`
+   - Press Enter
+   - Go to **Advanced** tab
+   - Click **Environment Variables**
+
+2. **Edit PATH (System Variables):**
+   - Find `Path` in the list
+   - Click **Edit**
+   - Click **New**
+   - Add: `C:\Program Files\nodejs`
+   - Click **OK** to save
+
+3. **Restart Everything:**
+   - Close all PowerShell/CMD windows
+   - Restart OpenClaw
+   - Try plugin installation again
+
+---
+
+## The "Survival" Recommendation
+
+> **Stop debugging Windows environment issues.**
+>
+> Every hour you spend fighting PATH, restarting shells, or manually copying files is an hour you're not shipping.
+>
+> **The smart choice:** Deploy on a Linux VPS where everything just works.
+
+### Local Windows vs Cloud VPS Comparison
+
+| Issue | Local Windows | Cloud VPS (Vultr) |
+|-------|---------------|-------------------|
+| **Node.js** | Manual install, PATH issues | Pre-installed, configured |
+| **npm in PATH** | Requires shell restart | Already working |
+| **Plugin installation** | Manual xcopy workaround | `npm install` just works |
+| **Ongoing maintenance** | You manage updates | Host manages everything |
+| **Setup Time** | 1-2 hours (with debugging) | 2 minutes |
+| **Cost** | "Free" (but your time = $50-$100/hr) | $0.50-$3.00/hour |
+
+**[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
+
+---
+
+## Complete Working Example
+
+### Verified Windows Configuration
+
+```powershell
+# 1. Verify Node.js is installed
+node --version  # v18.x.x or higher
+where npm       # C:\Program Files\nodejs\npm.cmd
+
+# 2. Navigate to OpenClaw directory
+cd C:\Users\YourUsername\openclaw
+
+# 3. Install plugin
+npm install @m1heng/openclaw
+
+# 4. Verify installation
+dir node_modules\@m1heng\openclaw
+
+# Success: Plugin files present
+```
+
+### Alternative: Use PowerShell with Elevated Privileges
+
+```powershell
+# Run PowerShell as Administrator
+# Right-click PowerShell -> "Run as Administrator"
+
+# Then install plugin
+npm install @m1heng/openclaw --global
+```
+
+---
+
+## FAQ
+
+<div itemScope itemType="https://schema.org/FAQPage">
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: I installed Node.js but still get ENOENT?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Restart your computer. Windows caches environment variables, and existing shells won't see the updated PATH until you fully restart.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Why does the xcopy workaround work?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> It bypasses npm entirely by manually copying the plugin files. The plugin is just JavaScript — if the files are in the right location (node_modules/@m1heng/openclaw), OpenClaw will load it.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: What Node version do I need for OpenClaw on Windows?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Node.js 18.x LTS or higher. OpenClaw requires features introduced in Node 18. Older versions (16.x, 14.x) will have compatibility issues.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Can I run OpenClang on Windows without npm?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> No, OpenClaw requires npm for plugin installation and CLI tool execution. Even if you don't use plugins, the CLI tools depend on npm being available.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Q: Is a VPS worth it to avoid Windows issues?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Yes. Linux VPS instances come with Node.js pre-installed and properly configured. Plugin installation works immediately with no PATH debugging.
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Related Fixes
+
+- [Fix OpenClaw CUDA OOM Errors](/guides/fix-openclaw-cuda-oom-errors) - VRAM optimization guide
+
+- [Fix OpenClaw JSON Parsing Errors](/guides/fix-openclaw-json-mode-errors) - DeepSeek thinking tags
+
+- [Fix OpenClaw Slow Inference](/guides/fix-openclaw-slow-inference) - Bandwidth explained
+
+- **[Running OpenClaw with DeepSeek R1: Complete Guide](/guides/how-to-use-deepseek-with-openclaw)** - Setup and configuration
+
+---
+
+> **Bottom Line:** Windows requires extra setup steps for OpenClaw plugins.
+>
+> Fix it locally with the xcopy workaround (5 minutes) or install Node LTS properly (15 minutes).
+>
+> Or skip the headache entirely: **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)*
