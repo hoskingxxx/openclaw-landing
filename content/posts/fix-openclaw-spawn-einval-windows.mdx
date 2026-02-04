@@ -79,7 +79,70 @@ But on Windows, you're seeing:
 
 ---
 
-## Solution A: Run as Administrator (Quick Fix)
+## Solution A: The Manual Bypass (Most Reliable)
+
+The `EINVAL` error often happens because OpenClaw's automated installer fails to spawn a subprocess. You can bypass this by installing dependencies yourself.
+
+### Step 1: Open PowerShell as Administrator
+
+**Method 1: Start Menu**
+1. Press `Win` key
+2. Type "PowerShell"
+3. Right-click "Windows PowerShell"
+4. Select "Run as administrator"
+5. Click "Yes" on UAC prompt
+
+**Method 2: Keyboard Shortcut**
+1. Press `Win + X`
+2. Select "Windows PowerShell (Admin)" or "Terminal (Admin)"
+
+### Step 2: Navigate to the Plugin Folder
+
+OpenClaw usually creates the extension folder before crashing. Navigate to it:
+
+```powershell
+# Navigate to the specific plugin folder
+cd C:\Users\YourUsername\.openclaw\extensions\feishu
+# Or whatever plugin you are installing
+
+# Check if the folder exists
+dir
+# Should show: node_modules, package.json, etc.
+```
+
+**If the folder doesn't exist:**
+
+```powershell
+# Create the extension directory manually
+mkdir C:\Users\YourUsername\.openclaw\extensions\feishu
+cd C:\Users\YourUsername\.openclaw\extensions\feishu
+
+# Initialize with package.json (if needed)
+echo '{"name":"feishu-extension","version":"1.0.0"}' > package.json
+```
+
+### Step 3: Install Dependencies Manually
+
+```powershell
+# Install dependencies directly in the plugin folder
+npm install --prod
+
+# Or if the plugin needs specific packages
+npm install
+```
+
+### Step 4: Restart OpenClaw
+
+```powershell
+# Close and restart OpenClaw
+# It will now find the plugin in the extensions folder
+```
+
+**Why This Works:** You're bypassing OpenClaw's buggy `spawn` call entirely. By running `npm install` directly in the plugin folder, you install the dependencies without going through OpenClaw's installer.
+
+---
+
+## Solution B: Run as Administrator (Quick Fix)
 
 The most common cause is insufficient permissions. Running PowerShell as Administrator usually fixes this immediately.
 
@@ -120,7 +183,7 @@ openclaw plugin install @m1heng/openclaw
 
 ---
 
-## Solution B: Fix PowerShell Execution Policy (Permanent Fix)
+## Solution C: Fix PowerShell Execution Policy (Permanent Fix)
 
 If running as Admin doesn't work, the issue may be PowerShell's execution policy blocking subprocess spawning.
 
@@ -246,7 +309,25 @@ xcopy /E /I "C:\Users\YourUsername\OneDrive\openclaw" "C:\openclaw-work"
 
 ## Complete Working Example
 
-### Verified Windows Configuration
+### Verified Configuration (Manual Bypass Method)
+
+```powershell
+# 1. Open PowerShell as Administrator
+# Right-click PowerShell -> "Run as administrator"
+
+# 2. Navigate to the plugin folder (example: feishu)
+cd C:\Users\YourUsername\.openclaw\extensions\feishu
+
+# 3. Install dependencies manually
+npm install --prod
+
+# 4. Restart OpenClaw
+# Plugin will be detected and loaded automatically
+
+# Success: Plugin installed without touching the buggy installer
+```
+
+### Alternative: Admin PowerShell + Execution Policy
 
 ```powershell
 # 1. Open PowerShell as Administrator
