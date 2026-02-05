@@ -231,35 +231,44 @@ export default function RealityCheck() {
         {/* Environment Select */}
         <div className="space-y-2">
           <label className="text-sm font-medium leading-none text-muted-foreground">Environment</label>
-          <select
-            value={env}
-            onChange={(e) => setEnv(e.target.value)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
-          >
-            {ENV_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={{ backgroundColor: '#1a1a1a', color: '#ffffff' }}>{opt.label}</option>)}
-          </select>
+          <div className="relative">
+            <select
+              value={env}
+              onChange={(e) => setEnv(e.target.value)}
+              className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+            >
+              {ENV_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+            </select>
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
+          </div>
         </div>
         {/* Model Select */}
         <div className="space-y-2">
           <label className="text-sm font-medium leading-none text-muted-foreground">Target Model</label>
-          <select
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
-          >
-            {MODEL_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={{ backgroundColor: '#1a1a1a', color: '#ffffff' }}>{opt.label}</option>)}
-          </select>
+          <div className="relative">
+            <select
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+            >
+              {MODEL_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+            </select>
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
+          </div>
         </div>
         {/* VRAM Select */}
         <div className="space-y-2">
           <label className="text-sm font-medium leading-none text-muted-foreground">Local VRAM</label>
-          <select
-            value={vram}
-            onChange={(e) => setVram(e.target.value)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
-          >
-            {VRAM_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={{ backgroundColor: '#1a1a1a', color: '#ffffff' }}>{opt.label}</option>)}
-          </select>
+          <div className="relative">
+            <select
+              value={vram}
+              onChange={(e) => setVram(e.target.value)}
+              className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+            >
+              {VRAM_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+            </select>
+            <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
+          </div>
         </div>
       </div>
 
