@@ -287,7 +287,10 @@ a {
 
 /* Table wrapper for mobile overflow */
 .prose > table {
-  display: table;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .prose .table-wrapper {
@@ -298,4 +301,12 @@ a {
 
 .prose .table-wrapper table {
   margin: 0;
+}
+
+/* Article table overflow - explicit selector as requested */
+article table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
 }

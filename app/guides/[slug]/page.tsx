@@ -19,7 +19,9 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeStringify from "rehype-stringify";
+import rehypeSlug from "rehype-slug";
 import { rehypeVultrEnrich } from "@/lib/rehype-vultr-enrich";
+import { rehypeGroupIds } from "@/lib/rehype-group-ids";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -73,6 +75,7 @@ async function getPostContent(slug: string) {
   const classAttribute = "class";
   const schema = {
     ...defaultSchema,
+    clobberPrefix: "",  // Preserve original IDs (e.g., group-1) without user-content- prefix
     attributes: {
       ...(defaultSchema.attributes || {}),
       // Preserve default table attributes and add class
@@ -109,6 +112,8 @@ async function getPostContent(slug: string) {
   const processedContent = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: false })
+    .use(rehypeGroupIds)  // Assign clean IDs to Group headings
+    .use(rehypeSlug)      // Generate slugs for other headings
     .use(rehypeVultrEnrich, { postSlug: slug, placementDefault: "mdx_auto" })
     .use(rehypeSanitize, schema)
     .use(rehypeExternalLinks, {
