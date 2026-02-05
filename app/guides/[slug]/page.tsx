@@ -63,7 +63,7 @@ async function getPostContent(slug: string) {
 
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml)
+    .use(remarkHtml, { sanitize: false })
     .process(content);
 
   return {
