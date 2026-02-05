@@ -19,6 +19,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeStringify from "rehype-stringify";
+import { rehypeVultrEnrich } from "@/lib/rehype-vultr-enrich";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -93,6 +94,7 @@ async function getPostContent(slug: string) {
         "title",
         "target",
         "rel",
+        "className",
         // Umami tracking attributes
         "data-umami-event",
         "data-umami-event-post",
@@ -113,6 +115,7 @@ async function getPostContent(slug: string) {
   const processedContent = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: false })
+    .use(rehypeVultrEnrich, { postSlug: slug, placementDefault: "mdx_auto" })
     .use(rehypeSanitize, schema)
     .use(rehypeExternalLinks, {
       target: "_blank",
