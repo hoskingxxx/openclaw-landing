@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
     author: "LazyDev",
     tags: ["Security", "CVE", "RCE", "OpenClaw", "Vulnerability"],
     category: "Security",
-    featured: true,
+    featured: false,
     seoKeywords: ["OpenClaw RCE", "CVE-2026-25253", "OpenClaw vulnerability", "OpenClaw security", "AI security"],
   },
   {
@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["Troubleshooting", "Index", "Errors"],
     category: "Troubleshooting",
     featured: false,
-    seoKeywords: ["openclaw error codes", "openclaw error index", "openclaw troubleshooting", "openclaw crash logs"],
+    seoKeywords: ["openclaw error codes", "openclaw error index", "openclaw troubleshooting", "openclash crash logs"],
   },
   {
     slug: "hardware-requirements-reality-check",
@@ -192,7 +192,7 @@ export const blogPosts: BlogPost[] = [
     author: "LazyDev",
     tags: ["Hardware", "Requirements", "Performance"],
     category: "Troubleshooting",
-    featured: false,
+    featured: true,
     seoKeywords: ["openclaw hardware requirements", "vram calculator", "deepseek r1 system requirements"],
   },
 
