@@ -63,6 +63,30 @@ Every article must follow this arc:
 
 ---
 
+## 0.5. Generated File Standards (STRICT)
+
+### NO AI Identity Disclosure
+
+**STRICT RULE:** Do NOT include any self-references, AI identity disclosures (e.g., "As an AI", "Google Gemini"), or conversational filler in the generated files. The output must be pure, production-ready code/content only.
+
+**严格规则：** 生成的文件中不得包含任何自我指涉、AI 身份披露（例如"作为 AI"、"Google Gemini"）或对话性填充内容。输出必须仅为纯净、可直接用于生产环境的代码/内容。
+
+### What This Means
+- ✅ Clean code comments: `// Validates user input`
+- ✅ Direct documentation: `This function handles...`
+- ❌ AI references: `As an AI language model...`
+- ❌ Conversational filler: `Let me explain...`, `Here's what I did...`
+- ❌ Identity disclosure: `I'm a large language model trained by...`
+
+### For AI Agents
+When generating content:
+1. Write as if a human engineer wrote it
+2. Skip all "here's the solution" preamble
+3. Output ONLY the final production code/content
+4. No meta-commentary about the generation process
+
+---
+
 ## 1. The "Answer-First" Rule
 
 ### H1 Title Format
