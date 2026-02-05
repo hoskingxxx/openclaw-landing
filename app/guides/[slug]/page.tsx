@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { Button } from "@/components/ui/Button";
+import { VramCalculator } from "@/components/tools/vram-calculator";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -137,6 +138,9 @@ export default async function BlogPostPage({
             className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:border prose-pre:border-border prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-muted-foreground prose-img:rounded-lg prose-hr:border-border break-words"
             dangerouslySetInnerHTML={{ __html: postContent.content }}
           />
+
+          {/* VRAM Calculator - Only for hardware requirements article */}
+          {post.slug === "hardware-requirements-reality-check" && <VramCalculator />}
 
           {/* Article Bottom CTA */}
           <div className="mt-12 p-6 bg-muted rounded-xl border border-border">
