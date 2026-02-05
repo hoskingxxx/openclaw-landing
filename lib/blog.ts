@@ -195,6 +195,20 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw hardware requirements", "vram calculator", "deepseek r1 system requirements"],
   },
+
+  {
+    slug: "openclaw-agent-api-cost-model",
+    canonicalPath: "/guides/openclaw-agent-api-cost-model",
+    title: "Why OpenClaw Agents Blow Up API Bills: The Loop Cost Model",
+    description: "Math model to estimate agent token burn, find API vs GPU breakpoint, and choose the correct architecture.",
+    date: "2026-02-05",
+    author: "LazyDev",
+    tags: ["openclaw","agents","api-cost","gpu","deepseek"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw agent cost","openclaw api cost","agent token usage","api vs gpu cost","deepseek agent tokens"],
+  },
+
 ];
 
 // ============================================================================
