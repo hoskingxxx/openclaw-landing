@@ -79,12 +79,16 @@ seoKeywords: [
 
 **Platform:** Windows / macOS
 
+<div className="overflow-x-auto w-full my-4">
+
 | Error String (Exact Match) | Quick Fix (Try this first) | Full Guide |
 |----------------------------|---------------------------|------------|
 | `npm error code ENOENT` (install.ps1) | Close PowerShell, reopen fresh window | [Fix install.ps1 ENOENT](/guides/fix-openclaw-install-ps1-npm-enoent-windows) |
 | `Failed to start CLI: Error: spawn npm ENOENT` | Reinstall Node.js 18+ LTS to default path | [Fix spawn npm ENOENT](/guides/fix-openclaw-spawn-npm-enoent) |
 | `Failed to start CLI: Error: spawn npm ENOENT` (Windows) | `where.exe npm` → if empty, reinstall Node LTS | [Fix Windows ENOENT](/guides/fix-openclaw-spawn-npm-enoent-windows) |
 | `Failed to start CLI: Error: spawn EINVAL` | Run PowerShell as Administrator | [Fix spawn EINVAL](/guides/fix-openclaw-spawn-einval-windows) |
+
+</div>
 
 ---
 
@@ -94,10 +98,14 @@ seoKeywords: [
 
 **Platform:** Cross-platform
 
+<div className="overflow-x-auto w-full my-4">
+
 | Error String (Exact Match) | Quick Fix (Command) | Full Guide |
 |----------------------------|---------------------|------------|
 | `package.json is missing openclaw.extensions field` | `openclaw plugins install @openclaw-extensions/channels` | [Fix Plugin Metadata](/guides/fix-openclaw-package-json-missing-openclaw-extensions) |
 | `Cannot find module '@mariozechner/clipboard-linux-arm-gnueabihf'` | `npm install -g openclaw@latest` | [Fix ARM Clipboard](/guides/fix-openclaw-cannot-find-module-clipboard-linux-arm) |
+
+</div>
 
 ---
 
@@ -107,12 +115,18 @@ seoKeywords: [
 
 **Platform:** Docker / Linux
 
+<div className="overflow-x-auto w-full my-4">
+
 | Error String (Exact Match) | Quick Fix (Command) | Full Guide |
 |----------------------------|---------------------|------------|
 | `Error: EACCES: permission denied, mkdir '/home/node/.openclaw'` | `chown -R 1000:1000 /home/node/.openclaw` | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
 | `Error: EACCES: permission denied` (openclaw.json) | `chown -R node:node /home/node/.openclaw` | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
 
+</div>
+
 ---
+
+<RealityCheck />
 
 <a id="group-4"></a>
 
@@ -120,11 +134,15 @@ seoKeywords: [
 
 **Platform:** GPU / VRAM
 
+<div className="overflow-x-auto w-full my-4">
+
 | Issue | Quick Fix | Full Guide |
 |-------|-----------|------------|
 | **CUDA Out of Memory** | Lower `num_ctx` to 2048 or switch to 8B model | [Fix CUDA OOM](/guides/fix-openclaw-cuda-oom-errors) |
 | **Slow Inference** (3+ seconds per token) | Switch to GGUF (Q4_K_M) or use Cloud GPU | [Fix Slow Inference](/guides/fix-openclaw-slow-inference) |
 | **JSON Parse Error** (DeepSeek R1) | Add thinking tags to system prompt | [Fix JSON Mode](/guides/fix-openclaw-json-mode-errors) |
+
+</div>
 
 ---
 
@@ -134,9 +152,13 @@ seoKeywords: [
 
 **Platform:** All
 
+<div className="overflow-x-auto w-full my-4">
+
 | CVE ID | Severity | Quick Fix | Full Guide |
 |--------|----------|-----------|------------|
 | **CVE-2026-25253** | CRITICAL (RCE) | Upgrade OpenClaw immediately | [Security Advisory](/guides/openclaw-security-rce-cve-2026-25253) |
+
+</div>
 
 ---
 
