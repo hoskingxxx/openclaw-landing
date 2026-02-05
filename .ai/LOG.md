@@ -21,3 +21,5 @@
 [NOTE] Trust Mismatch narrative — OpenClaw assumes trusted environment; local machines expose filesystem/data
 
 [NOTE] Authority chain is non-negotiable — CEO veto overrides all AI agents
+
+[NOTE] Fixed Umami race condition by switching RealityCheck tracking to JS API with retry (500ms x5) and 1s impression debounce
