@@ -115,7 +115,7 @@ export default function RealityCheck() {
           <select
             value={env}
             onChange={(e) => setEnv(e.target.value)}
-            className="w-full p-2 rounded-md border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring/30"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
           >
             {ENV_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
           </select>
@@ -126,7 +126,7 @@ export default function RealityCheck() {
           <select
             value={model}
             onChange={(e) => setModel(e.target.value)}
-            className="w-full p-2 rounded-md border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring/30"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
           >
             {MODEL_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
           </select>
@@ -137,7 +137,7 @@ export default function RealityCheck() {
           <select
             value={vram}
             onChange={(e) => setVram(e.target.value)}
-            className="w-full p-2 rounded-md border border-border bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring/30"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
           >
             {VRAM_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
           </select>
