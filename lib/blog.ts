@@ -183,6 +183,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw error codes", "openclaw error index", "openclaw troubleshooting", "openclaw crash logs"],
   },
+  {
+    slug: "hardware-requirements-reality-check",
+    canonicalPath: createCanonicalPath("hardware-requirements-reality-check"),
+    title: "Can Your PC Run OpenClaw? Hardware Reality Check",
+    description: "VRAM requirements and performance reality check for local vs cloud setups.",
+    date: "2026-02-05",
+    author: "LazyDev",
+    tags: ["Hardware", "Requirements", "Performance"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["openclaw hardware requirements", "vram calculator", "deepseek r1 system requirements"],
+  },
 ];
 
 // ============================================================================

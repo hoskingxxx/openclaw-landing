@@ -1,0 +1,213 @@
+---
+title: "Can Your PC Run OpenClaw? Hardware Reality Check (2026)"
+description: "A practical checklist for OpenClaw + modern LLMs: VRAM requirements, quantization trade-offs, and when to switch to a cloud environment."
+date: "2026-02-05"
+author: "LazyDev"
+tags: ["Hardware", "Performance", "OOM", "Troubleshooting"]
+category: "Troubleshooting"
+featured: false
+seoKeywords: [
+  "openclaw hardware requirements",
+  "vram calculator",
+  "deepseek r1 system requirements"
+]
+---
+
+> **TL;DR: The 30-Second Triage**
+>
+> Before you spend hours installing drivers, check your hardware against this matrix.
+>
+> **< 12GB VRAM:** You will likely hit OOM or run at single-digit tokens/sec. Solution: Cloud GPU
+>
+> **12GB - 24GB VRAM:** Usable for quantized 7B-14B models. Full-size reasoning models (30B+) will require heavy quantization.
+>
+> **> 24GB VRAM:** You are in the green zone for local development.
+
+---
+
+## 📉 The Reality of Local LLMs
+
+Running OpenClaw locally isn't just about CPU speed. The bottleneck is almost always **Memory Bandwidth** and **VRAM Capacity**.
+
+### 1. The VRAM Bottleneck
+
+Modern reasoning models (like the DeepSeek R1 family or Llama-3 variants) are memory-hungry.
+
+| Precision | VRAM per 1B Parameters |
+|----------|----------------------|
+| FP16 (Full) | ~2 GB |
+| 4-bit Quantized | ~0.7 GB |
+
+**Reality:** A consumer card with 8GB VRAM simply cannot load a 30B+ parameter model, no matter how fast your CPU is.
+
+### 2. The Speed Trade-off
+
+Even if you fit the model into system RAM (CPU offloading), inference speed drops drastically.
+
+| Offloading Method | Speed | Usability |
+|------------------|-------|-----------|
+| **GPU Offloading** | 30-100 t/s | Interactive, usable |
+| **CPU/System RAM** | 0.5-5 t/s | Painfully slow, often unusable |
+
+---
+
+## 🛠️ Hardware Tiers
+
+### Tier C: Consumer Laptops (Integrated Graphics)
+
+**Typical Specs:** 4-8GB unified memory, shared with CPU
+
+**Experience:**
+- High latency, low throughput
+- Suitable for testing API connectivity or very small models (TinyLlama, <1B params)
+- Not recommended for daily use with reasoning models
+
+**Verdict:** API or cloud only
+
+---
+
+### Tier B: Gaming Desktops (12GB - 16GB VRAM)
+
+**Typical Specs:** RTX 3060/3070/4060/4070, 8GB-12GB VRAM
+
+**Experience:**
+- Capable of running quantized 7B/8B models comfortably
+- Larger reasoning models (30B+) will OOM or require extreme quantization
+- May need to reduce context window (num_ctx < 4096)
+
+**Limitations:**
+- Multi-turn conversations may slow as context fills
+- Model switching requires VRAM management
+
+**Verdict:** Good for learning, limiting for production workflows
+
+---
+
+### Tier A: Workstation / Cloud (24GB+ VRAM)
+
+**Typical Specs:** RTX 3090/4090/5090, Apple Silicon (32GB+ Unified), or Cloud H100/A100
+
+**Experience:**
+- Full access to larger models (30B-70B ranges) with usable speeds
+- Can run multiple models simultaneously
+- Sufficient VRAM for full context windows (8k+ tokens)
+
+**Verdict:** Required for serious local development
+
+---
+
+## 💡 Decision: Upgrade or Rent?
+
+If your local hardware falls into Tier C or Tier B, you have a decision to make.
+
+### Option 1: The Cloud Route (Immediate)
+
+If you need to run large models now without buying new hardware.
+
+**Pros:**
+- Instant access to H100/A100 class GPUs
+- Pay only for uptime
+- No hardware management
+
+**Cons:**
+- Not offline
+- Recurring cost
+
+**[Deploy on Vultr (Cloud GPU)](https://www.vultr.com/?ref=9863490)**
+
+---
+
+### Option 2: The Local Route (Long-term)
+
+If you plan to run models 24/7 and value privacy above all.
+
+**Pros:**
+- Total data sovereignty
+- One-time cost
+
+**Cons:**
+- High upfront investment (GPU, Power Supply, Cooling)
+- Electricity costs
+
+**Hardware Recommendations:**
+- **NVIDIA RTX 4090** (24GB VRAM) - Best consumer option
+- **NVIDIA RTX 3090** (24GB VRAM) - Good value on used market
+- **Apple Mac Studio** (64GB+ Unified Memory) - Best Mac option
+
+---
+
+## 🙋 FAQ
+
+<div itemScope itemType="https://schema.org/FAQPage">
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Why is my inference so slow (0.5 t/s)?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> You are likely offloading layers to your CPU/System RAM because your GPU VRAM is full. Check your <code>num_gpu</code> or <code>n_gpu_layers</code> settings. Reduce model size, increase VRAM, or switch to GPU offloading.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Can I run DeepSeek R1 on my Mac?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Yes, if you have an M-series chip with sufficient Unified Memory (32GB+ recommended for decent quantization). Apple Silicon uses unified memory, so all available RAM can be used for model inference. However, memory bandwidth is still a bottleneck compared to discrete GPUs.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Does OpenClaw support multi-GPU?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> OpenClaw relies on the underlying inference engine (e.g., Ollama/Llama.cpp). Multi-GPU support depends on their specific configuration. Check the inference engine documentation for multi-GPU setup instructions.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">What if I have 8GB VRAM but want to run 30B models?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> You have two options: 1) Use extreme quantization (2-bit or less) which degrades model quality significantly, or 2) Offload to CPU/system RAM which will be painfully slow (0.5-2 t/s). For 30B+ models, the practical solution is cloud GPU with 24GB+ VRAM.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">Is unified memory (Mac) better than discrete VRAM?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> Unified memory (Apple Silicon) offers flexibility but has lower bandwidth than discrete GPU VRAM (100-400 GB/s vs 500-1000 GB/s). For large models, discrete GPUs with high-bandwidth memory (HBM) will significantly outperform unified memory systems.
+      </p>
+    </div>
+  </div>
+
+  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
+    <h3 itemProp="name">How much VRAM do I need for 70B models?</h3>
+    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+      <p itemProp="text">
+        <strong>A:</strong> At 4-bit quantization, ~49GB VRAM. At 8-bit, ~98GB VRAM. Current consumer cards top out at 24GB (RTX 3090/4090), so 70B models require cloud GPUs (H100/A100 with 80GB+ VRAM) or multi-GPU setups.
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Related Articles
+
+- **[Fix OpenClaw CUDA OOM Errors](/guides/fix-openclaw-cuda-oom-errors)** - VRAM optimization guide
+
+- **[Fix OpenClaw Slow Inference](/guides/fix-openclaw-slow-inference)** - Bandwidth explained
+
+- **[OpenClaw Error Index](/guides/openclaw-error-index)** - Master error dictionary
+
+---
+
+> **Bottom Line:** Hardware physics doesn't negotiate.
+>
+> Check your VRAM against model requirements before investing time in setup.
+>
+> **[Deploy on Vultr (Cloud GPU)](https://www.vultr.com/?ref=9863490)** — Skip the hardware limitations.
