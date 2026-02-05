@@ -242,3 +242,103 @@
 - Dead links hurt SEO and user experience
 - `**DeepSeek R1 Optimization** *(Coming Soon)*` is better than a 404
 - No "bridge pages" - convert placeholders to links when content exists
+
+---
+
+## 2026-02-05: Troubleshooting Cluster & Monetization Strategy
+
+### Vultr Affiliate Partnership
+**Decision:** Standardized on Vultr as primary VPS affiliate partner
+**Rationale:**
+- Single affiliate ID (9863490) across all content
+- Consistent CTA format: "Deploy on Vultr (Limited Time Offer)"
+- Removed hardcoded amounts to avoid compliance/expiration issues
+- Link format: `https://www.vultr.com/?ref=9863490`
+
+### "Engineering Rule of Thumb" Content Strategy
+**Decision:** Add "2+ errors = switch to VPS" rule to error index
+**Rationale:**
+- Users hitting multiple environment errors are in "debugging hell"
+- Windows PATH/permission issues waste hours
+- Clear decision rule: 2+ errors = stop debugging, use VPS
+- Positions VPS as "correct architecture" not "giving up"
+
+### Troubleshooting CTA at Footer
+**Decision:** Add high-converting CTA card to `/troubleshooting` page footer
+**Rationale:**
+- Users who scroll entire page are frustrated but didn't find solution
+- Orange border (#FF4500) design for visibility
+- Text: "Still broken?" → emotional resonance
+- Direct affiliate link without additional clicks
+
+### Error Index as "Master Dictionary"
+**Decision:** Create searchable error index with copy-paste fixes
+**Rationale:**
+- Users want Ctrl+F solution, not narrative
+- Standard Markdown tables (not complex JSX)
+- Quick Fix commands are copy-pasteable
+- Links to full guides for complex issues
+
+### Content Cluster Architecture
+**Decision:** Organize troubleshooting content into interconnected clusters
+**Rationale:**
+- Windows cluster: install.ps1 → ENOENT → EINVAL (progressive failure)
+- Docker/Linux cluster: EACCES → ARM Clipboard (platform issues)
+- Performance cluster: OOM → Slow → JSON (hardware limits)
+- Plugin cluster: metadata → install errors (ecosystem issues)
+- Cross-link all articles within clusters
+- Error index serves as cluster hub
+
+### Git Dependency in Install Verification
+**Decision:** Add `git --version` check to install.ps1 troubleshooting
+**Rationale:**
+- User feedback revealed Git often missing on Windows
+- npm tries to spawn git for GitHub packages
+- "syscall spawn git" ENOENT errors were common
+- Git for Windows download link provided in fix
+
+### Offline Install Method for Windows Plugins
+**Decision:** Add manual .tgz installation method to Windows ENOENT article
+**Rationale:**
+- Some Windows environments have npm/git path issues that can't be fixed
+- Manual .tgz download + `openclaw plugins install ./file.tgz` bypasses spawn issues
+- Manual `npm install --production` in extension folder completes setup
+- Provides nuclear option for stubborn environments
+
+### ARM Clipboard Fix: Upgrade OpenClaw (Not npm)
+**Decision:** Corrected ARM article to recommend upgrading OpenClaw package
+**Rationale:**
+- Original draft suggested upgrading npm (incorrect)
+- Real fix: OpenClaw made clipboard dependency optional in newer versions
+- `npm install -g openclaw@latest` is the correct solution
+- User feedback from Issue #4596 confirmed this fix
+
+---
+
+## CONTENT FORMAT STANDARDS (2026-02-05)
+
+### Affiliate Link Format
+**Standard:** `[Deploy on Vultr (Limited Time Offer)](https://www.vultr.com/?ref=9863490)`
+**Rules:**
+- No hardcoded amounts ($100, $50, etc.)
+- Use "Limited Time Offer" or "High Availability & Free Credit"
+- Never use placeholders like [INSERT_AFFILIATE_LINK_HERE]
+- Place AFTER technical solution, not before
+
+### Error Index Table Format
+**Standard Markdown Tables:**
+```markdown
+| Error String | Quick Fix | Full Guide |
+|--------------|-----------|------------|
+| `error text` | `command` | [Link](/guides/slug) |
+```
+
+### CLI Command Standards
+- Use official CLI: `openclaw plugins install` (not `npm install`)
+- Show full command with flags when needed
+- Explain what the command does
+
+### GitHub Link Format
+- Use search queries: `https://github.com/search?q=repo%3Am1heng%2Fopenclaw+issues`
+- Avoid direct issue links (can become stale)
+- Search queries are more resilient to repository changes

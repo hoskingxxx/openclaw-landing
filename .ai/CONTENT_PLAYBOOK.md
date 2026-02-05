@@ -369,4 +369,124 @@ Content to display on screen
 
 ---
 
+## 14. Affiliate Link Standards (2026-02-05)
+
+### Vultr Partnership (Primary)
+- **Affiliate ID:** 9863490
+- **Link:** `https://www.vultr.com/?ref=9863490`
+- **Status:** ✅ ACTIVE
+
+### CTA Text Options
+- "Deploy on Vultr (Limited Time Offer)"
+- "Deploy on Vultr (High Availability & Free Credit)"
+- "Deploy on Vultr (Linux GPU, Limited Time Offer)"
+
+### ❌ Never Use
+- Hardcoded amounts: "$100 Free Credit", "$50 Free"
+- Placeholders: `[INSERT_AFFILIATE_LINK_HERE]`
+- Expired offers: old promotional amounts
+
+### ✅ Always Use
+- Current generic text (won't expire)
+- Proper affiliate ID in URL
+- Descriptive anchor text
+
+### Placement Rules
+1. **After** technical solution (never before)
+2. In "Reality Check" or "Survival Recommendation" sections
+3. In TL;DR if appropriate (quick context)
+4. In Bottom Line summary
+
+### Link Format
+```markdown
+[Deploy on Vultr (Limited Time Offer)](https://www.vultr.com/?ref=9863490)
+```
+
+### Context Framing
+- Position as "correct architecture" not "giving up"
+- Explain why local has limits (physics/trust)
+- Present VPS as production-ready solution
+- Never push before showing technical fix
+
+---
+
+## 15. Content Format: "Trust Trio" (2026-02-05)
+
+### The Three Elements
+1. **The Log** - Real error output (what users see)
+2. **The Physics** - Why it happens (root cause)
+3. **The Fix** - Step-by-step solution
+4. **The Sell** - VPS as correct architecture
+
+### Article Structure
+```markdown
+> TL;DR
+> - Problem: What broke
+> - Error: The error message
+> - Solution: Quick summary
+> - Affiliate link
+
+## The Log: What You're Seeing
+**The Error:** [code block]
+
+**Context:** When it happens
+
+**Observed Behavior:** What users experience
+
+## Why This Happens (It's a Physics Issue)
+Technical explanation
+
+## Solution A: [Name]
+Step-by-step fix
+
+## The "Survival" Recommendation
+> Stop debugging...
+> Comparison table
+> Affiliate link
+
+## Related Fixes
+- [Link](/guides/slug)
+```
+
+### "Engineering Rule of Thumb"
+> If you hit 2+ environment errors in Group 1, stop debugging Windows.
+>
+> Every hour you spend fighting PATH, permissions, or npm is an hour you're not shipping.
+>
+> [Deploy on Vultr...] — Switch to a clean Linux environment.
+
+### Tone: "Survivor/Recorder"
+- We observed this, not "we recommend"
+- Tested on X hardware
+- Real crash logs, not theory
+- Admit when local is impossible
+
+---
+
+## 16. CLI Command Standards (2026-02-05)
+
+### Use Official CLI When Available
+- ✅ `openclaw plugins install @package/name`
+- ❌ `npm install -g @package/name` (unless CLI doesn't exist)
+
+### Command Format
+```bash
+# Comment explaining what this does
+command arguments
+
+# Output example
+# expected output
+```
+
+### Verification Steps
+Always include verification after commands:
+```bash
+# Verify installation
+command --version
+# Should output: version X.Y.Z
+```
+
+---
+
 **Remember:** We help developers who broke things. Be direct, be honest, be useful.
+

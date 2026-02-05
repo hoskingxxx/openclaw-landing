@@ -1,55 +1,69 @@
 # OpenClaw Task Board
 
-**Last Updated:** 2026-02-03
-**Current Phase:** Profit-First (Traffic + Monetization)
+**Last Updated:** 2026-02-05
+**Current Phase:** Content Expansion + Monetization
 
 ---
 
-## 🔴 HIGH PRIORITY
+## ✅ COMPLETED (2026-02-04 to 2026-02-05)
 
-### Create More Security/Trending Content
-- **Type:** New guides targeting search trends
-- **Topics:**
-  - "OpenClow vs Ollama security comparison"
-  - "Common OpenClaw errors and fixes"
-  - "OpenClaw data privacy guide"
-  - "How to secure your local LLM setup"
-- **Status:** TODO
-- **Why:** Capture search traffic, funnel to VPS affiliates
+### Troubleshooting Cluster Creation (8 Articles)
+- Created comprehensive Windows error fix series
+- Created Docker/Linux error fixes
+- Created plugin/metadata troubleshooting
+- Created error index master dictionary
+- **Status:** ✅ DONE - 13 articles total published
 
-### Test VPS Affiliate Links
-- **Action:** Replace PLACEHOLDER with actual affiliate codes
-- **Providers:** DigitalOcean, Linode, Hetzner
-- **Status:** BLOCKED - Need affiliate accounts
-- **File:** `content/posts/openclaw-security-rce-cve-2026-25253.mdx`
+### Articles Created:
+1. `fix-openclaw-spawn-npm-enoent` - General ENOENT fix
+2. `fix-openclaw-spawn-npm-enoent-windows` - Windows-specific ENOENT
+3. `fix-openclaw-spawn-einval-windows` - Windows permissions (EINVAL)
+4. `fix-openclaw-docker-eacces-permission-denied` - Docker permissions
+5. `fix-openclaw-cannot-find-module-clipboard-linux-arm` - ARM clipboard fix
+6. `fix-openclaw-install-ps1-npm-enoent-windows` - install.ps1 errors
+7. `fix-openclaw-package-json-missing-openclaw-extensions` - Plugin metadata
+8. `openclaw-error-index` - Master error dictionary
 
-### Create "Model Comparison" Content
-- **Type:** Comparison articles
-- **Topics:**
-  - "DeepSeek R1 vs Llama 3 vs Mistral"
-  - "Which model fits your VRAM?"
-  - "Cost analysis: local vs API LLMs"
-- **Status:** TODO
-- **Why:** High-intent comparison keywords convert well
+### UI Enhancement: Troubleshooting CTA
+- Added conversion-focused CTA card to `/troubleshooting` footer
+- Orange border design with affiliate link
+- **Status:** ✅ DONE
+
+### Content Refinements:
+- Fixed Linux ARM article (upgrade OpenClaw, not npm)
+- Added offline install method to Windows ENOENT article
+- Added Git dependency check to install.ps1 article
+- **Status:** ✅ DONE
+
+### Affiliate Link Standardization:
+- Vultr affiliate ID: 9863490
+- Removed hardcoded amounts ($100 → "Limited Time Offer")
+- Fixed plugin command (use official CLI)
+- Fixed GitHub links (use search queries)
+- **Status:** ✅ DONE
+
+### Link Health Verification:
+- All 13 articles deployed (200 status)
+- All internal links validated
+- Zero 404 errors site-wide
+- **Status:** ✅ DONE
 
 ---
 
 ## 🟡 NEXT UP
 
-### Add Table of Contents to Guides
-- **Action:** Auto-generate TOC from headings
-- **File:** `app/guides/[slug]/page.tsx`
-- **Status:** TODO
-- **Priority:** Improves user experience, SEO
+### Monitor GSC for New Opportunities
+- Check Google Search Console for emerging error queries
+- Create content for high-volume error messages
+- **Priority:** High - follow search demand
 
-### Create "OpenClaw Error Codes" Guide
-- **Type:** Reference/fix guide
-- **Content:** List common error codes with solutions
-- **Keywords:** "OpenClaw error codes", "fix OpenClaw errors"
+### Create Model Comparison Content
+- DeepSeek R1 vs Llama 3 vs Mistral
+- VRAM requirements by model size
 - **Status:** TODO
 
 ### Add Reading Time to Articles
-- **Action:** Calculate and display reading time
+- Calculate and display reading time
 - **File:** `app/guides/[slug]/page.tsx`
 - **Status:** TODO
 
@@ -57,126 +71,103 @@
 
 ## 🟢 BACKLOG
 
-### Add Internal Linking
-- **Action:** Add "Related Posts" section to guide pages
-- **File:** `app/guides/[slug]/page.tsx`
+### Add Table of Contents to Guides
+- Auto-generate TOC from headings
 - **Status:** BACKLOG
 
-### Fix DNS Configuration
-- **Issue:** Domain `openclaw-ai.org` points to wrong IPs
-- **Action:** Update DNS to `cname.vercel-dns.com`
-- **Status:** BLOCKED - User needs to update at registrar
-- **Impact:** Main domain not accessible, Vercel URL works
-
 ### Add Search Functionality
-- **Type:** Feature
-- **Options:** Algolia, Pagefind, or custom
+- Options: Algolia, Pagefind, or custom
 - **Status:** BACKLOG
 
 ### Add Comments
-- **Type:** Feature
-- **Options:** giscus, Disqus, or custom
+- Options: giscus, Disqus, or custom
 - **Status:** BACKLOG
 
 ### Create Newsletter
-- **Type:** Feature
-- **Action:** Decide on provider (Resend, ConvertKit, etc.)
+- Decide on provider (Resend, ConvertKit, etc.)
 - **Status:** BACKLOG
-
----
-
-## ✅ COMPLETED (2026-02-03)
-
-### Profit-First Pivot
-- Simplified project context system
-- Created static ai.json for easy handoff
-- Published RCE vulnerability article
-- Added VPS affiliate links to content
-- **Status:** ✅ DONE
-
-### AICP Handoff System
-- Created .ai/ directory with context files
-- INDEX.md, STATE.md, RULES.md, DECISIONS.md
-- HANDOFF_PROMPT.md for ChatGPT/Gemini
-- **Status:** ✅ DONE
-
-### SEO Infrastructure
-- robots.ts, sitemap.ts
-- icon.tsx, apple-icon.tsx
-- manifest.ts (PWA)
-- Breadcrumb, Article, FAQ schemas
-- **Status:** ✅ DONE
-
-### RCE Security Article
-- Created CVE-2026-25253 vulnerability guide
-- VPS affiliate recommendations
-- Set as featured post
-- **Status:** ✅ DONE
-
-### Crawler Infrastructure
-- Fixed 404s for favicon, robots.txt
-- Verified all nav/footer links
-- **Status:** ✅ DONE
-
-### Mobile Overflow Fix
-- Added global CSS overflow rules
-- Code blocks scroll on mobile
-- **Status:** ✅ DONE
 
 ---
 
 ## 🚫 BLOCKED
 
-### Fix openclaw-ai.org DNS
-- **Blocker:** User needs to update DNS at domain registrar
-- **Impact:** Main domain not accessible
-- **Workaround:** Use https://openclaw-landing.vercel.app
-
-### VPS Affiliate Links
-- **Blocker:** Need to sign up for affiliate programs
-- **Impact:** Can't monetize traffic yet
-- **Action:** Sign up for DigitalOcean, Linode, Hetzner affiliates
+### None Currently
+- All previous blockers resolved
+- Vultr affiliate is active
+- DNS is working
 
 ---
 
-## 📊 CONTENT IDEAS
+## 📊 CONTENT IDEAS (Future)
 
-### High-Intent Keywords (Money Pages)
-- "Best VPS for OpenClaw" → VPS affiliate
-- "OpenClaw hosting requirements" → VPS affiliate
-- "Secure OpenClaw setup" → VPS affiliate
-- "OpenClaw vs competitors" → Comparison + affiliate
+### High-Intent Keywords
+- "OpenClaw won't start"
+- "OpenClaw uses too much RAM"
+- "OpenClaw can't find models"
+- "OpenClaw connection refused"
 
-### Problem-Solution Articles
-- "OpenClaw won't start" → Fix guide
-- "OpenClaw uses too much RAM" → Optimization guide
-- "OpenClaw can't find models" → Troubleshooting
-- "OpenClaw connection refused" → Network fix guide
+### Platform-Specific Content
+- macOS-specific issues (Homebrew, permissions)
+- Linux distribution-specific fixes (Ubuntu, Debian, Alpine)
+- WSL2-specific problems
 
-### Trend-Jacking (When opportunities arise)
-- Security vulnerabilities
-- New model releases
-- Major bug discoveries
-- Industry news
+### Advanced Topics
+- OpenClaw production deployment
+- OpenClaw + Docker Compose setups
+- OpenClaw monitoring and logging
 
 ---
 
 ## 💡 MONETIZATION STRATEGY
 
-### Current: VPS Affiliates
-- DigitalOcean: $200 credit, potential commission
-- Linode: Competitive for Linux users
-- Hetzner: Budget option for EU users
-
-### Future Options
-- OpenClaw consulting/services
-- Premium guides/courses
-- Hosting referrals
-- Tool recommendations
+### Current: Vultr Affiliate
+- **Affiliate ID:** 9863490
+- **Link:** https://www.vultr.com/?ref=9863490
+- **CTA Format:** "Deploy on Vultr (Limited Time Offer)"
+- **Status:** ✅ ACTIVE across all articles
 
 ### Content-to-Money Flow
-1. User searches "OpenClaw RCE vulnerability"
-2. Lands on our security article
-3. Reads about VPS isolation as solution
-4. Clicks VPS affiliate link
-5. We earn commission
+1. User searches "OpenClaw [error message]"
+2. Lands on our troubleshooting guide
+3. Reads about local environment issues
+4. Sees VPS recommendation as "correct architecture"
+5. Clicks Vultr affiliate link
+6. We earn commission
+
+---
+
+## 📈 PROGRESS TRACKING
+
+### Content Velocity (Feb 4-5, 2026)
+- **Articles Published:** 8 new troubleshooting guides
+- **Total Articles:** 13
+- **Error Coverage:** Windows, Docker, Linux, Plugins, Performance
+
+### SEO Metrics to Watch
+- "openclaw error codes" - New index page targets this
+- "openclaw [specific error]" - Individual articles target these
+- US CTR - Monitor for title optimization opportunities
+
+### Conversion Optimization
+- CTA added to troubleshooting page footer
+- Targets frustrated users who scrolled entire page
+- Metric to watch: CTR on Vultr affiliate links
+
+---
+
+## 🎯 SUCCESS METRICS
+
+### Short-term (1-2 weeks)
+- [ ] All 13 articles indexed in Google
+- [ ] Error index page ranks for "openclaw error codes"
+- [ ] Affiliate links generating clicks
+
+### Medium-term (1 month)
+- [ ] 20+ total articles published
+- [ ] Covering all major OpenClaw error scenarios
+- [ ] Consistent affiliate conversions
+
+### Long-term (3 months)
+- [ ] Authority in OpenClaw troubleshooting niche
+- [ ] Sustainable affiliate income
+- [ ] Community engagement (comments, feedback)
