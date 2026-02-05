@@ -68,33 +68,26 @@ async function getPostContent(slug: string) {
   const { data, content } = matter(fileContents);
 
   // Sanitize schema - allow Vultr affiliate links with security
+  // Merge with defaultSchema to preserve table support
+  // NOTE: rehype-sanitize uses HTML attribute names (class), not React (className)
+  const classAttribute = "class";
   const schema = {
     ...defaultSchema,
-    tagNames: [
-      ...(defaultSchema.tagNames || []),
-      "a",
-      "strong",
-      "em",
-      "code",
-      "blockquote",
-      "p",
-      "ul", "ol", "li",
-      "h1", "h2", "h3", "h4", "h5", "h6",
-      "hr",
-      "br",
-      "div",
-      "span",
-      "table", "thead", "tbody", "tr", "td", "th",
-      "pre",
-    ],
     attributes: {
       ...(defaultSchema.attributes || {}),
+      // Preserve default table attributes and add class
+      table: [...((defaultSchema.attributes || {}).table || []), classAttribute],
+      thead: [...((defaultSchema.attributes || {}).thead || []), classAttribute],
+      tbody: [...((defaultSchema.attributes || {}).tbody || []), classAttribute],
+      tr: [...((defaultSchema.attributes || {}).tr || []), classAttribute],
+      td: [...((defaultSchema.attributes || {}).td || []), classAttribute, "rowSpan", "colSpan"],
+      th: [...((defaultSchema.attributes || {}).th || []), classAttribute, "rowSpan", "colSpan", "scope"],
       a: [
         "href",
         "title",
         "target",
         "rel",
-        "className",
+        classAttribute,
         // Umami tracking attributes
         "data-umami-event",
         "data-umami-event-post",
@@ -104,7 +97,8 @@ async function getPostContent(slug: string) {
         "data-umami-event-utm_content",
         "data-umami-event-verdict",
       ],
-      "*": ["className", "id"],
+      // Add class to all elements
+      "*": [...((defaultSchema.attributes || {})["*"] || []), classAttribute, "id"],
     },
     protocols: {
       ...(defaultSchema.protocols || {}),

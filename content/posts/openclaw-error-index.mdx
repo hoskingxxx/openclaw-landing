@@ -24,160 +24,62 @@ import RealityCheck from "@/components/RealityCheck"
 
 ---
 
-<div id="group-1" className="scroll-mt-20"></div>
+<a id="group-1"></a>
 
 ## 🧨 Group 1: Installation & CLI (The "Newbie Hell")
+
 **Platform:** Windows / macOS / Linux
 
-<div className="overflow-x-auto w-full my-4 border rounded-lg">
-  <table className="min-w-full text-sm">
-    <thead className="bg-muted/50">
-      <tr className="border-b">
-        <th className="text-left p-3 font-medium">Error String (Exact Match)</th>
-        <th className="text-left p-3 font-medium">Quick Fix</th>
-        <th className="text-left p-3 font-medium">Full Guide</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">\`npm error code ENOENT\` (install.ps1)</td>
-        <td className="p-3">Refresh PATH (new terminal) or reinstall Node LTS</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-install-ps1-npm-enoent-windows" className="text-primary hover:underline font-medium">Fix install.ps1 ENOENT (Windows)</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">\`Failed to start CLI: Error: spawn npm ENOENT\`</td>
-        <td className="p-3">Verify Node/NPM is installed and in PATH</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-spawn-npm-enoent" className="text-primary hover:underline font-medium">Fix spawn npm ENOENT (All)</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">\`Failed to start CLI: Error: spawn npm ENOENT\` (Windows)</td>
-        <td className="p-3">Reinstall Node 18+ LTS to default path</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-spawn-npm-enoent-windows" className="text-primary hover:underline font-medium">Fix spawn ENOENT (Windows)</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">\`Failed to start CLI: Error: spawn EINVAL\`</td>
-        <td className="p-3">Run PowerShell as Administrator</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-spawn-einval-windows" className="text-primary hover:underline font-medium">Fix spawn EINVAL (Windows)</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Error String (Exact Match) | Quick Fix | Full Guide |
+|----------------------------|-----------|------------|
+| `npm error code ENOENT` (install.ps1) | Refresh PATH (new terminal) or reinstall Node LTS | [Fix install.ps1 ENOENT (Windows)](/guides/fix-openclaw-install-ps1-npm-enoent-windows) |
+| `Failed to start CLI: Error: spawn npm ENOENT` | Verify Node/NPM is installed and in PATH | [Fix spawn npm ENOENT (All)](/guides/fix-openclaw-spawn-npm-enoent) |
+| `Failed to start CLI: Error: spawn npm ENOENT` (Windows) | Reinstall Node 18+ LTS to default path | [Fix spawn ENOENT (Windows)](/guides/fix-openclaw-spawn-npm-enoent-windows) |
+| `Failed to start CLI: Error: spawn EINVAL` | Run PowerShell as Administrator | [Fix spawn EINVAL (Windows)](/guides/fix-openclaw-spawn-einval-windows) |
 
-<div id="group-2" className="scroll-mt-20"></div>
+<a id="group-2"></a>
 
 ## 🧩 Group 2: Plugins & Ecosystem
+
 **Platform:** Cross-platform
 
-<div className="overflow-x-auto w-full my-4 border rounded-lg">
-  <table className="min-w-full text-sm">
-    <thead className="bg-muted/50">
-      <tr className="border-b">
-        <th className="text-left p-3 font-medium">Error String</th>
-        <th className="text-left p-3 font-medium">Quick Fix</th>
-        <th className="text-left p-3 font-medium">Full Guide</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">package.json missing openclaw.extensions</td>
-        <td className="p-3">Reinstall plugin via official OpenClaw plugin command</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-package-json-missing-openclaw-extensions" className="text-primary hover:underline font-medium">Fix plugin metadata</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">Cannot find module @mariozechner/clipboard-linux-arm-gnueabihf</td>
-        <td className="p-3">Upgrade OpenClaw / use compatible build for ARM</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-cannot-find-module-clipboard-linux-arm" className="text-primary hover:underline font-medium">Fix ARM clipboard module</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Error String | Quick Fix | Full Guide |
+|--------------|-----------|------------|
+| package.json missing openclaw.extensions | Reinstall plugin via official OpenClaw plugin command | [Fix plugin metadata](/guides/fix-openclaw-package-json-missing-openclaw-extensions) |
+| Cannot find module @mariozechner/clipboard-linux-arm-gnueabihf | Upgrade OpenClaw / use compatible build for ARM | [Fix ARM clipboard module](/guides/fix-openclaw-cannot-find-module-clipboard-linux-arm) |
 
-<div id="group-3" className="scroll-mt-20"></div>
+<a id="group-3"></a>
 
 ## 🐳 Group 3: Docker & Permissions
+
 **Platform:** Docker / Linux
 
-<div className="overflow-x-auto w-full my-4 border rounded-lg">
-  <table className="min-w-full text-sm">
-    <thead className="bg-muted/50">
-      <tr className="border-b">
-        <th className="text-left p-3 font-medium">Error String</th>
-        <th className="text-left p-3 font-medium">Quick Fix</th>
-        <th className="text-left p-3 font-medium">Full Guide</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">EACCES: permission denied (openclaw.json)</td>
-        <td className="p-3">Fix UID/GID mismatch (chown the mounted folder)</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-docker-eacces-permission-denied" className="text-primary hover:underline font-medium">Fix Docker EACCES</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Error String | Quick Fix | Full Guide |
+|--------------|-----------|------------|
+| EACCES: permission denied (openclaw.json) | Fix UID/GID mismatch (chown the mounted folder) | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
 
-<div id="group-4" className="scroll-mt-20"></div>
+<a id="group-4"></a>
 
 ## 🧠 Group 4: Performance / OOM / Hardware
+
 **Platform:** GPU / VRAM / Bandwidth
 
-<div className="overflow-x-auto w-full my-4 border rounded-lg">
-  <table className="min-w-full text-sm">
-    <thead className="bg-muted/50">
-      <tr className="border-b">
-        <th className="text-left p-3 font-medium">Issue</th>
-        <th className="text-left p-3 font-medium">Quick Fix</th>
-        <th className="text-left p-3 font-medium">Full Guide</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">CUDA Out of Memory</td>
-        <td className="p-3">Reduce context / switch to bigger VRAM</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-cuda-oom-errors" className="text-primary hover:underline font-medium">Fix CUDA OOM</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">Slow inference (seconds/token)</td>
-        <td className="p-3">Bandwidth/VRAM bottleneck; cloud GPU is the practical escape</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-slow-inference" className="text-primary hover:underline font-medium">Fix slow inference</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">Hardware requirements / VRAM calculator</td>
-        <td className="p-3">Check VRAM + model size before debugging</td>
-        <td className="p-3"><a href="/guides/hardware-requirements-reality-check" className="text-primary hover:underline font-medium">Hardware reality check</a></td>
-      </tr>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">JSON Mode parsing errors</td>
-        <td className="p-3">Remove thinking tags / tighten system prompt</td>
-        <td className="p-3"><a href="/guides/fix-openclaw-json-mode-errors" className="text-primary hover:underline font-medium">Fix JSON mode</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Issue | Quick Fix | Full Guide |
+|-------|-----------|------------|
+| CUDA Out of Memory | Reduce context / switch to bigger VRAM | [Fix CUDA OOM](/guides/fix-openclaw-cuda-oom-errors) |
+| Slow inference (seconds/token) | Bandwidth/VRAM bottleneck; cloud GPU is the practical escape | [Fix slow inference](/guides/fix-openclaw-slow-inference) |
+| Hardware requirements / VRAM calculator | Check VRAM + model size before debugging | [Hardware reality check](/guides/hardware-requirements-reality-check) |
+| JSON Mode parsing errors | Remove thinking tags / tighten system prompt | [Fix JSON mode](/guides/fix-openclaw-json-mode-errors) |
 
-<div id="group-5" className="scroll-mt-20"></div>
+<a id="group-5"></a>
 
 ## 🔒 Group 5: Security
+
 **Platform:** All
 
-<div className="overflow-x-auto w-full my-4 border rounded-lg">
-  <table className="min-w-full text-sm">
-    <thead className="bg-muted/50">
-      <tr className="border-b">
-        <th className="text-left p-3 font-medium">Topic</th>
-        <th className="text-left p-3 font-medium">Impact</th>
-        <th className="text-left p-3 font-medium">Full Guide</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr className="border-b hover:bg-muted/20 transition-colors">
-        <td className="p-3 font-mono text-red-500 whitespace-nowrap">CVE-2026-25253 (RCE)</td>
-        <td className="p-3 font-bold text-destructive">CRITICAL</td>
-        <td className="p-3"><a href="/guides/openclaw-security-rce-cve-2026-25253" className="text-primary hover:underline font-medium">Security advisory</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Topic | Impact | Full Guide |
+|-------|--------|------------|
+| CVE-2026-25253 (RCE) | **CRITICAL** | [Security advisory](/guides/openclaw-security-rce-cve-2026-25253) |
 
 ---
 
