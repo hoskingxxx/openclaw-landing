@@ -9,7 +9,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Background colors - dark gray
+        // Standard semantic tokens (shadcn-compatible)
+        border: "rgba(255, 255, 255, 0.1)",
+        input: "rgba(255, 255, 255, 0.08)",
+        ring: "#FF4500",
+        bgBase: "#1a1a1a",
+        foreground: "#ffffff",
+        primary: {
+          DEFAULT: "#FF4500",
+          foreground: "#ffffff",
+        },
+        secondary: {
+          DEFAULT: "#242424",
+          foreground: "rgba(255, 255, 255, 0.7)",
+        },
+        muted: {
+          DEFAULT: "rgba(255, 255, 255, 0.05)",
+          foreground: "rgba(255, 255, 255, 0.5)",
+        },
+        accent: {
+          DEFAULT: "#242424",
+          foreground: "#ffffff",
+        },
+        // Legacy project colors - dark gray
         background: {
           primary: "#1a1a1a",
           secondary: "#242424",

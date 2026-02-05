@@ -44,14 +44,22 @@ seoKeywords: [
 
 ---
 
-## ⏱️ 3-Second Triage
+### 🧭 Quick Navigation
 
-| Your Situation | Go To |
-|---------------|-------|
-| **Windows / New Install?** (ENOENT, EINVAL) | [Group 1](#group-1-installation-cli) |
-| **Plugin / Metadata?** (package.json, missing module) | [Group 2](#group-2-plugins-ecosystem) |
-| **Docker / Permission?** (EACCES, mkdir fail) | [Group 3](#group-3-docker-permissions) |
-| **Hardware / Slow?** (CUDA, tokens/sec) | [Group 4](#group-4-performance-hardware) |
+* **🪟 Windows / New Install** (ENOENT, EINVAL)
+    👉 [Go to Group 1](#group-1)
+
+* **🔌 Plugin / Ecosystem** (Missing module)
+    👉 [Go to Group 2](#group-2)
+
+* **🐳 Docker / Permissions** (EACCES)
+    👉 [Go to Group 3](#group-3)
+
+* **🐌 Slow / OOM / Hardware** (CUDA)
+    👉 [Go to Group 4](#group-4)
+
+* **🔒 Security / Network** (CVE, Exposure)
+    👉 [Go to Group 5](#group-5)
 
 ---
 
@@ -64,6 +72,8 @@ seoKeywords: [
 > **[Deploy on Vultr (Linux GPU, Limited Time Offer)](https://www.vultr.com/?ref=9863490)** — Switch to a clean Linux environment and start coding in minutes.
 
 ---
+
+<a id="group-1"></a>
 
 ## 🧨 Group 1: Installation & CLI (The "Newbie Hell")
 
@@ -78,6 +88,8 @@ seoKeywords: [
 
 ---
 
+<a id="group-2"></a>
+
 ## 🧩 Group 2: Plugins & Ecosystem
 
 **Platform:** Cross-platform
@@ -88,6 +100,8 @@ seoKeywords: [
 | `Cannot find module '@mariozechner/clipboard-linux-arm-gnueabihf'` | `npm install -g openclaw@latest` | [Fix ARM Clipboard](/guides/fix-openclaw-cannot-find-module-clipboard-linux-arm) |
 
 ---
+
+<a id="group-3"></a>
 
 ## 🐳 Group 3: Docker & Permissions
 
@@ -100,6 +114,8 @@ seoKeywords: [
 
 ---
 
+<a id="group-4"></a>
+
 ## 🧠 Group 4: Performance & Hardware
 
 **Platform:** GPU / VRAM
@@ -111,6 +127,8 @@ seoKeywords: [
 | **JSON Parse Error** (DeepSeek R1) | Add thinking tags to system prompt | [Fix JSON Mode](/guides/fix-openclaw-json-mode-errors) |
 
 ---
+
+<a id="group-5"></a>
 
 ## 🔐 Group 5: Security
 

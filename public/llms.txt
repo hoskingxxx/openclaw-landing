@@ -6,7 +6,7 @@ Contact for partnership: See GitHub repository
 
 ## Project
 Name: OpenClaw AI Survival Guide
-Phase: ** Profit-First (Traffic + Monetization)
+Phase: AEO-first
 Stack: Next.js 16, React, Tailwind CSS
 Hosting: Vercel
 
@@ -29,24 +29,25 @@ Focus: OOM error fixes, CUDA troubleshooting, VRAM optimization.
 ---
 
 ## Rules
-- **Static content only** - No user accounts, no databases
-- **No SaaS features** - Focus on education/authority first
-- **No hype content** - Be honest, technical, no exaggerated claims
-- **"Survivor" tone** - Write for developers who crashed their systems
-- **Affiliate links OK** - Only if genuinely helpful and clearly disclosed
-- **Server Components by default** - Only use "use client" when necessary
-- **Semantic HTML** - Proper heading hierarchy, aria labels where needed
-- **Mobile-first** - Test on mobile viewport before desktop
-- **No "any" types** - Use proper TypeScript types
+- Static content only (no user accounts, no databases)
+- No SaaS features (focus on education/authority)
+- "Survivor" tone (write for developers who crashed systems)
+- Honest, technical, no exaggerated claims
+- Vultr affiliate: `https://www.vultr.com/?ref=9863490`
+- CTA: "Deploy on Vultr (Limited Time Offer)"
+- Server Components by default
+- Semantic HTML, mobile-first
+- No "any" types in TypeScript
+- Semantic CSS variables only (`bg-background`, `text-primary`)
 
 ---
 
 ## Recent Decisions
 - # OpenClaw Project Decisions Log
 - STRATEGIC DECISIONS
-- TECHNICAL DECISIONS
+- CONTENT DECISIONS
 
 ---
 
-Generated: 2026-02-04T06:54:04.897Z
+Generated: 2026-02-05T04:48:07.890Z
 Schema: 1.0

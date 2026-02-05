@@ -12,6 +12,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import remarkGfm from "remark-gfm";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -60,6 +61,7 @@ async function getPostContent(slug: string) {
   const { data, content } = matter(fileContents);
 
   const processedContent = await remark()
+    .use(remarkGfm)
     .use(remarkHtml)
     .process(content);
 
@@ -132,21 +134,24 @@ export default async function BlogPostPage({
 
           {/* Article Body */}
           <div
-            className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base max-w-none prose-headings:text-text-primary prose-p:text-text-secondary prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary prose-code:text-blue-300 prose-code:bg-background-tertiary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700 prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-text-secondary prose-img:rounded-lg prose-hr:border-white/10 break-words"
+            className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:border prose-pre:border-border prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-muted-foreground prose-img:rounded-lg prose-hr:border-border break-words"
             dangerouslySetInnerHTML={{ __html: postContent.content }}
           />
 
           {/* Article Bottom CTA */}
-          <div className="mt-12 p-6 bg-brand-muted/20 rounded-xl border border-brand-primary/30">
-            <h3 className="text-xl font-semibold text-text-primary mb-2">
-              Want More Practical Tutorials?
+          <div className="mt-12 p-6 bg-muted rounded-xl border border-border">
+            <h3 className="text-xl font-semibold text-foreground mb-2">
+              Bookmark this site
             </h3>
-            <p className="text-text-secondary mb-4">
-              Subscribe to our blog for the latest OpenClaw tutorials and tips.
+            <p className="text-muted-foreground mb-4">
+              New fixes are added as soon as they appear on GitHub Issues.
             </p>
-            <Button href="/resources">
-              View Recommended Resources
-            </Button>
+            <Link
+              href="/guides/openclaw-error-index"
+              className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
+            >
+              Browse Error Index &rarr;
+            </Link>
           </div>
         </article>
       </main>

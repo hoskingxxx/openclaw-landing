@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-02-04T06:54:04.897Z",
+  "generated_at": "2026-02-05T04:48:07.890Z",
   "project_info": {
     "id": "openclaw-ai-org",
     "name": "OpenClaw AI Survival Guide",
@@ -18,7 +18,7 @@
     "repository": "https://github.com/hoskingxxx/openclaw-landing"
   },
   "focus": {
-    "phase": "** Profit-First (Traffic + Monetization)",
+    "phase": "AEO-first",
     "active_context": "DeepSeek R1 local deployment, OOM error fixes"
   },
   "routes": [
@@ -28,22 +28,23 @@
     "/not-found",
     "/"
   ],
-  "content_count": 5,
+  "content_count": 14,
   "rules": [
-    "**Static content only** - No user accounts, no databases",
-    "**No SaaS features** - Focus on education/authority first",
-    "**No hype content** - Be honest, technical, no exaggerated claims",
-    "**\"Survivor\" tone** - Write for developers who crashed their systems",
-    "**Affiliate links OK** - Only if genuinely helpful and clearly disclosed",
-    "**Server Components by default** - Only use \"use client\" when necessary",
-    "**Semantic HTML** - Proper heading hierarchy, aria labels where needed",
-    "**Mobile-first** - Test on mobile viewport before desktop",
-    "**No \"any\" types** - Use proper TypeScript types"
+    "Static content only (no user accounts, no databases)",
+    "No SaaS features (focus on education/authority)",
+    "\"Survivor\" tone (write for developers who crashed systems)",
+    "Honest, technical, no exaggerated claims",
+    "Vultr affiliate: `https://www.vultr.com/?ref=9863490`",
+    "CTA: \"Deploy on Vultr (Limited Time Offer)\"",
+    "Server Components by default",
+    "Semantic HTML, mobile-first",
+    "No \"any\" types in TypeScript",
+    "Semantic CSS variables only (`bg-background`, `text-primary`)"
   ],
   "recent_decisions": [
     "# OpenClaw Project Decisions Log",
     "STRATEGIC DECISIONS",
-    "TECHNICAL DECISIONS"
+    "CONTENT DECISIONS"
   ],
   "recommended_resources": [
     {
