@@ -12,10 +12,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import remarkHtml from "remark-html";
 import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import remarkRehype from "remark-rehype";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import rehypeExternalLinks from "rehype-external-links";
+import rehypeStringify from "rehype-stringify";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -63,34 +64,28 @@ async function getPostContent(slug: string) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  // Sanitize schema - allow safe tags and attributes for Vultr affiliate links
+  // Sanitize schema - allow Vultr affiliate links with security
   const schema = {
     ...defaultSchema,
     tagNames: [
       ...(defaultSchema.tagNames || []),
-      // Basic markdown tags
-      "p", "br", "strong", "em", "code", "pre", "blockquote",
-      "h1", "h2", "h3", "h4", "h5", "h6",
+      "a",
+      "strong",
+      "em",
+      "code",
+      "blockquote",
+      "p",
       "ul", "ol", "li",
-      "a", "hr",
-      "div", "span",
+      "h1", "h2", "h3", "h4", "h5", "h6",
+      "hr",
+      "br",
+      "div",
+      "span",
       "table", "thead", "tbody", "tr", "td", "th",
+      "pre",
     ],
     attributes: {
       ...(defaultSchema.attributes || {}),
-      // Allow className on common elements
-      p: ["className"],
-      div: ["className", "itemScope", "itemType", "itemProp", "itemscope"],
-      span: ["className", "itemScope", "itemType", "itemProp", "itemscope"],
-      code: ["className"],
-      pre: ["className"],
-      table: ["className"],
-      thead: ["className"],
-      tbody: ["className"],
-      tr: ["className"],
-      td: ["className"],
-      th: ["className"],
-      // Vultr affiliate link attributes
       a: [
         "href",
         "title",
@@ -105,6 +100,7 @@ async function getPostContent(slug: string) {
         "data-umami-event-utm_content",
         "data-umami-event-verdict",
       ],
+      "*": ["className"],
     },
     protocols: {
       ...(defaultSchema.protocols || {}),
@@ -114,7 +110,13 @@ async function getPostContent(slug: string) {
 
   const processedContent = await remark()
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
+    .use(remarkRehype, { allowDangerousHtml: false })
+    .use(rehypeSanitize, schema)
+    .use(rehypeExternalLinks, {
+      target: "_blank",
+      rel: ["nofollow", "noopener", "noopener noreferrer"],
+    })
+    .use(rehypeStringify)
     .process(content);
 
   return {
