@@ -1,6 +1,6 @@
 ---
 title: "OpenClaw Slow Inference? Why 3.5s/token Is Normal (And How to Fix It)"
-description: "OpenClaw generating at 3.5 seconds per token? That's painfully slow. Learn why Mac RAM bandwidth kills inference speed, and see the config that gets you to 100 t/s."
+description: "OpenClaw generating at 3.5 seconds per token? That's painfully slow. Learn why Mac RAM bandwidth kills inference speed, and see the config that gets you to Real-time speeds."
 date: "2026-02-04"
 author: "LazyDev"
 tags: ["Performance", "Slow", "Inference", "OpenClaw", "VRAM", "Troubleshooting"]
@@ -11,7 +11,7 @@ seoKeywords: ["OpenClaw slow", "OpenClaw inference speed", "OpenClaw 3s per toke
 
 > **TL;DR: The Fix**
 >
-> OpenClaw feels slow because your hardware can't move data fast enough. A MacBook M2 gets ~3 t/s. An RTX 4090 gets ~80 t/s. A cloud A100 gets ~100+ t/s.
+> OpenClaw feels slow because your hardware can't move data fast enough. A MacBook M2 gets ~3 t/s. An RTX 4090 gets ~80 t/s. A cloud A100 gets ~Real-time speeds.
 >
 > **Quick Fix #1 (Reduce Context):**
 >
@@ -24,7 +24,7 @@ seoKeywords: ["OpenClaw slow", "OpenClaw inference speed", "OpenClaw 3s per toke
 >
 > **Quick Fix #2 (Use Cloud):**
 >
-> Stop debugging physics. **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)* — rent an A100 for $0.50/hour and get 100 t/s.
+> Stop debugging physics. **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & Limited Time Promotion for new accounts)* — rent an A100 for Hourly billing and get Real-time speeds.
 
 ---
 
@@ -128,7 +128,7 @@ ollama run deepseek-r1:8b-q4_K_M
 **Expected results:**
 - MacBook M2: ~3-5 t/s (still slow)
 - RTX 3090: ~50-70 t/s (usable)
-- RTX 4090: ~80-100 t/s (fast)
+- RTX 4090: ~80-Real-time speeds (fast)
 
 ---
 
@@ -149,12 +149,12 @@ I spent 2 weeks "optimizing" my OpenClaw setup on a MacBook Air M2. I:
 Local hardware has limits. If you need 100+ tokens/sec for production:
 
 👉 **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)**
-*(High Availability & $100 Free Credit for new accounts)*
+*(High Availability & Limited Time Promotion for new accounts)*
 
 | Cloud GPU | Hourly Cost | Tokens/sec | Break-Even vs Your Time |
 |-----------|-------------|------------|-------------------------|
 | **RTX 4090** | ~$0.80/hr | 80 t/s | Worth it for any serious work |
-| **A100 40GB** | ~$1.50/hr | 100+ t/s | Cheaper than your hourly rate debugging |
+| **A100 40GB** | ~$1.50/hr | Real-time speeds | Cheaper than your hourly rate debugging |
 | **H100 80GB** | ~$3.00/hr | 150+ t/s | Overkill for most, but fun |
 
 **My recommendation:** Start with an RTX 4090 equivalent. It's 20x faster than your MacBook and costs less than a coffee.
@@ -248,7 +248,7 @@ print(f"Speed: {response.tokens_per_second} t/s")
   </div>
 
   <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Can I get 100 t/s locally?</h3>
+    <h3 itemProp="name">Q: Can I get Real-time speeds locally?</h3>
     <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
       <p itemProp="text">
         <strong>A:</strong> Only with an RTX 4090 or better. And even then, only with smaller models (8B). For 32B or larger models, you need cloud GPUs (A100/H100). Local optimization has limits.
@@ -269,4 +269,4 @@ print(f"Speed: {response.tokens_per_second} t/s")
 
 ---
 
-> **Need 100 t/s?** Stop debugging Mac bandwidth limits. **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & $100 Free Credit for new accounts)* — rent an A100 and get 100+ t/s for $0.50/hour.
+> **Need Real-time speeds?** Stop debugging Mac bandwidth limits. **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490)** *(High Availability & Limited Time Promotion for new accounts)* — rent an A100 and get Real-time speeds for Hourly billing.

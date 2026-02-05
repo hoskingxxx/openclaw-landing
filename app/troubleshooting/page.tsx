@@ -316,7 +316,7 @@ export default function TroubleshootingPage() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-mono text-sm font-bold rounded-lg transition-colors"
                         >
-                          Rent a GPU (~$0.50/hr) →
+                          Rent a GPU (~billable hourly rates) →
                         </a>
                       </div>
                     )}
@@ -361,7 +361,7 @@ export default function TroubleshootingPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 text-base font-medium transition-all rounded-lg bg-[#FF4500] text-white hover:bg-[#FF4500]/90 hover:scale-105 shadow-lg shadow-orange-500/20"
               >
-                Deploy on Vultr ($100 Free Credit) →
+                Deploy on Vultr (Limited Time Promotion) →
               </a>
               <p className="mt-4 text-xs text-text-tertiary">
                 *Save 4+ hours of debugging for less than $0.10/hour.

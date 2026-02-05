@@ -46,7 +46,7 @@ Even if you fit the model into system RAM (CPU offloading), inference speed drop
 
 | Offloading Method | Speed | Usability |
 |------------------|-------|-----------|
-| **GPU Offloading** | 30-100 t/s | Interactive, usable |
+| **GPU Offloading** | Real-time interaction | Interactive, usable |
 | **CPU/System RAM** | 0.5-5 t/s | Painfully slow, often unusable |
 
 ---
@@ -140,7 +140,7 @@ If you plan to run models 24/7 and value privacy above all.
 
 <div itemScope itemType="https://schema.org/FAQPage">
   <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Why is my inference so slow (0.5 t/s)?</h3>
+    <h3 itemProp="name">Why is my inference so slow (Painfully slow (seconds per word))?</h3>
     <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
       <p itemProp="text">
         <strong>A:</strong> You are likely offloading layers to your CPU/System RAM because your GPU VRAM is full. Check your <code>num_gpu</code> or <code>n_gpu_layers</code> settings. Reduce model size, increase VRAM, or switch to GPU offloading.

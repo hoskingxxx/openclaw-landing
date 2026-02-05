@@ -110,7 +110,7 @@ export default function OOMPage() {
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="text-text-tertiary font-mono mb-1">Who is this for:</p>
-                    <p className="text-text-secondary">You value your time at more than $0.50/hour.</p>
+                    <p className="text-text-secondary">You value your time at more than minimum hourly rates.</p>
                   </div>
                   <div>
                     <p className="text-text-tertiary font-mono mb-1">The Reality:</p>
@@ -377,7 +377,7 @@ PID    COMMAND        %CPU  %MEM
               <div className="bg-terminal-bg rounded p-6 mb-6 max-w-2xl mx-auto">
                 <pre className="text-sm text-green-400 font-mono">
                   <code>If you spend 4 hours fixing a CUDA driver to save $2 on hosting,
-you are valuing your time at $0.50/hour.</code>
+you are valuing your time at minimum hourly rates.</code>
                 </pre>
               </div>
               <p className="text-lg text-text-secondary mb-6 max-w-2xl mx-auto">

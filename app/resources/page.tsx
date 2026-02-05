@@ -49,7 +49,7 @@ export default function ResourcesPage() {
                 <p>→ <strong className="text-red-400">No:</strong> Go to Question 2</p>
               </div>
 
-              <p className="mt-4"><strong className="text-white">Question 2:</strong> Can you spend ~$0.50/hour for cloud GPU?</p>
+              <p className="mt-4"><strong className="text-white">Question 2:</strong> Can you spend billable hourly rates for cloud GPU?</p>
               <div className="ml-4 space-y-2">
                 <p>→ <strong className="text-green-400">Yes:</strong> Rent a GPU (see VPS section below)</p>
                 <p>→ <strong className="text-red-400">No:</strong> Use API services (cheaper upfront)</p>
@@ -94,7 +94,7 @@ export default function ResourcesPage() {
               </div>
 
               <div className="text-sm text-text-secondary mt-4">
-                <span className="font-mono">From ~$0.50-0.80/hr (A100/A6000)</span>
+                <span className="font-mono">From billable hourly rates (A100/A6000)</span>
               </div>
             </div>
 

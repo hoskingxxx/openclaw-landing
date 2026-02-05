@@ -113,7 +113,7 @@ export default function QuickStartPage() {
             {/* Value Proposition */}
             <div className="mb-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
               <p className="text-sm text-green-200">
-                <strong>💡 Why I switched:</strong> I tried Path B first and wasted a whole weekend fighting drivers. This costs ~$0.50/hour, which is cheaper than my hourly rate for debugging CUDA errors.
+                <strong>💡 Why I switched:</strong> I tried Path B first and wasted a whole weekend fighting drivers. This costs billable hourly rates, which is cheaper than my hourly rate for debugging CUDA errors.
               </p>
             </div>
 
