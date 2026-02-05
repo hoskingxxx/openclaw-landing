@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { Button } from "@/components/ui/Button";
-import { VramCalculator } from "@/components/tools/vram-calculator";
+import RealityCheck from "@/components/RealityCheck";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -140,7 +140,7 @@ export default async function BlogPostPage({
           />
 
           {/* VRAM Calculator - Only for hardware requirements article */}
-          {post.slug === "hardware-requirements-reality-check" && <VramCalculator />}
+          {post.slug === "hardware-requirements-reality-check" && <RealityCheck />}
 
           {/* Article Bottom CTA */}
           <div className="mt-12 p-6 bg-muted rounded-xl border border-border">
