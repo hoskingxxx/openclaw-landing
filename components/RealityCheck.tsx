@@ -108,7 +108,7 @@ export default function RealityCheck() {
         title: "Reality: Security Risk",
         badge: "UNSAFE",
         badgeColor: "bg-orange-500/20 text-orange-500 border-orange-500/30",
-        reason: "Running AI agents on a personal OS exposes your files to RCE risks. Mainstream media warns against local execution without sandboxing.",
+        reason: "If your agent runtime can reach your filesystem and localhost services, a single malicious plugin or prompt can turn into data exposure. Isolation is the lowest-effort mitigation.",
         btn: baseBtn,
         btnText: "Switch to Secure Cloud Sandbox",
         bg: "bg-orange-500/5 border-orange-500/20",
