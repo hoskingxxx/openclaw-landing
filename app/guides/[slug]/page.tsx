@@ -102,7 +102,7 @@ async function getPostContent(slug: string) {
         "data-umami-event-utm_content",
         "data-umami-event-verdict",
       ],
-      "*": ["className"],
+      "*": ["className", "id"],
     },
     protocols: {
       ...(defaultSchema.protocols || {}),
