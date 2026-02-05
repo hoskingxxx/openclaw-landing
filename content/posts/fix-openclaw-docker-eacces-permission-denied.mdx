@@ -228,11 +228,11 @@ For maximum security, use rootless Docker. This runs containers without root pri
 ### Install Rootless Docker
 
 ```bash
-# Ubuntu/Debian
-curl -fsSL https://rootlesscontaine.rs/get.sh.sh | sh
+# Ubuntu/Debian - Install docker-ce-rootless-extras package
+sudo apt-get install -y docker-ce-rootless-extras
 
-# Add to PATH
-export PATH=/rootless/rootlesskit/bin:$PATH
+# Or use dockerd-rootless-setuptool.sh (included with modern Docker)
+dockerd-rootless-setuptool.sh install
 ```
 
 ### Run Rootless
