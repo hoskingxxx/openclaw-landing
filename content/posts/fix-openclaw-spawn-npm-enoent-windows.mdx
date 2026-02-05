@@ -223,6 +223,67 @@ dir "%APPDATA%\npm"
 
 ---
 
+## 🛠️ Advanced: The "Offline Install" Workaround (Windows)
+
+If you confirmed `npm` is installed but the CLI still fails to spawn it (common on some Windows environments due to `npm` vs `npm.cmd` path issues), you can bypass the automated installer entirely.
+
+### Step 1: Download the Plugin Package
+
+Download the `.tgz` file for the plugin you need (e.g., from the npm registry).
+
+```powershell
+# Example: Download Feishu plugin
+curl -O https://registry.npmjs.org/@m1heng-clawd/feishu/-/feishu-0.1.7.tgz
+```
+
+### Step 2: Install via Local File
+
+Tell OpenClaw CLI to register the local file instead of fetching from the registry.
+
+```powershell
+openclaw plugins install ./feishu-0.1.7.tgz
+```
+
+### Step 3: Manually Install Dependencies (Crucial Step)
+
+The automated process usually fails here. You must do it manually:
+
+```powershell
+# Navigate to the extension folder
+cd C:\Users\YourName\.openclaw\extensions\node_modules\feishu
+
+# Note: Path may vary based on plugin name
+
+# Run the install command
+npm install --production
+```
+
+### Step 4: Restart OpenClaw
+
+Restart the main application to load the manually installed plugin.
+
+```powershell
+# Stop and restart OpenClaw
+```
+
+---
+
+## 🔍 Why does OpenClaw run but npm is missing?
+
+**"I can run `openclaw start`, so I must have Node, right?"**
+
+Not necessarily.
+
+| Scenario | Why OpenClaw Works | Why npm is Missing |
+|----------|-------------------|-------------------|
+| **Standalone Installer** | Bundles minimal Node runtime just for OpenClaw | Does NOT include npm |
+| **PATH Isolation** | OpenClaw uses bundled runtime | System npm not in subprocess PATH |
+| **Global Install Missing** | OpenClaw installed via .exe | Standard Node.js not installed system-wide |
+
+**The Fix:** Always install the standard Node.js LTS system-wide to ensure a complete toolchain (Node + npm + npx).
+
+---
+
 ## The "Survival" Recommendation
 
 > **Stop debugging Windows environment issues.**
