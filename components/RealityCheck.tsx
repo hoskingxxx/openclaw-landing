@@ -99,6 +99,17 @@ export default function RealityCheck() {
   const isLocal = env.includes("local");
   const securityRisk = isLocal;
 
+  // Inline styles to override macOS Chrome UA stylesheet for select/options
+  const selectStyle: React.CSSProperties = {
+    backgroundColor: "#0f172a", // slate-900
+    color: "#e5e7eb",
+  };
+
+  const optionStyle: React.CSSProperties = {
+    backgroundColor: "#0f172a",
+    color: "#e5e7eb",
+  };
+
   const getContent = () => {
     const baseBtn = "bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20";
 
@@ -248,8 +259,9 @@ export default function RealityCheck() {
               value={env}
               onChange={(e) => setEnv(e.target.value)}
               className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+              style={selectStyle}
             >
-              {ENV_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+              {ENV_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={optionStyle}>{opt.label}</option>)}
             </select>
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
           </div>
@@ -262,8 +274,9 @@ export default function RealityCheck() {
               value={model}
               onChange={(e) => setModel(e.target.value)}
               className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+              style={selectStyle}
             >
-              {MODEL_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+              {MODEL_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={optionStyle}>{opt.label}</option>)}
             </select>
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
           </div>
@@ -276,8 +289,9 @@ export default function RealityCheck() {
               value={vram}
               onChange={(e) => setVram(e.target.value)}
               className="w-full h-10 appearance-none rounded-md border border-input bg-card px-3 pr-10 text-foreground shadow-sm focus:outline-none focus:ring-2 focus:ring-ring/30"
+              style={selectStyle}
             >
-              {VRAM_OPTIONS.map(opt => <option key={opt.id} value={opt.id}>{opt.label}</option>)}
+              {VRAM_OPTIONS.map(opt => <option key={opt.id} value={opt.id} style={optionStyle}>{opt.label}</option>)}
             </select>
             <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">▾</span>
           </div>
