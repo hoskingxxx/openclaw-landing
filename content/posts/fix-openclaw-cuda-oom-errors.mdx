@@ -241,20 +241,16 @@ Cloud GPUs provide the VRAM needed for larger models. This is not a "workaround"
 
 When local VRAM is exhausted, the remaining option is a cloud GPU with dedicated VRAM. Start with a clean Linux environment and NVIDIA GPU (H100, A100, or L40S are recommended for DeepSeek R1 32B/70B).
 
-<a
+import SecondaryExitButton from "@/components/SecondaryExitButton";
+
+<SecondaryExitButton
   href="https://www.vultr.com/?ref=9863490&utm_source=openclaw&utm_medium=decision-gate&utm_content=cuda-oom-secondary-exit"
-  target="_blank"
-  rel="nofollow noopener noreferrer"
-  class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded transition-colors"
-  data-umami-event="secondary_exit_click"
+  umamiEventPlacement="decision-gate"
+  umamiEventContent="cuda-oom-secondary-exit"
+  umamiEventPost=""
 >
   View Cloud GPU Options
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-    <polyline points="15 3 21 3 21 9"></polyline>
-  </svg>
-  <span>Opens in new tab</span>
-</a>
+</SecondaryExitButton>
 
 </div>
 
