@@ -20,7 +20,7 @@ export default function DocsPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-background-primary">
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
 
           {/* Survivor Warning Banner */}
           <div className="mb-8 p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">

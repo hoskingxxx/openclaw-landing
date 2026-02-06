@@ -23,14 +23,14 @@ export default function BlogPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "Guides", href: "/guides" }]} />
           </div>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               OpenClaw Survival Guides
@@ -43,7 +43,7 @@ export default function BlogPage() {
 
         {/* Featured Posts */}
         {blogPosts.filter((post) => post.featured).length > 0 && (
-          <ContentRail>
+          <ContentRail className="px-4 sm:px-6">
             <section className="pb-12">
               <h2 className="text-2xl font-bold text-text-primary mb-6">Featured Posts</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -83,7 +83,7 @@ export default function BlogPage() {
         )}
 
         {/* All Posts */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-12">
             <h2 className="text-2xl font-bold text-text-primary mb-6">All Posts</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

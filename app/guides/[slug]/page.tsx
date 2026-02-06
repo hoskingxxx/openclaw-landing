@@ -213,13 +213,11 @@ export default async function BlogPostPage({
               {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && <RealityCheck />}
             </div>
 
-            {/* Article Body - glass-card outer edge now aligns to 960px rail */}
-            <div className="px-4 sm:px-6">
-              <div
-                className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
-                dangerouslySetInnerHTML={{ __html: postContent.content }}
-              />
-            </div>
+            {/* Article Body - glass-card outer edge aligns to 960px rail */}
+            <div
+              className="glass-card w-full mx-4 sm:mx-6 md:mx-0 p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
+              dangerouslySetInnerHTML={{ __html: postContent.content }}
+            />
 
             {/* Article Bottom CTA - Skip on error index page - with padding */}
             {post.slug !== "openclaw-error-index" && (

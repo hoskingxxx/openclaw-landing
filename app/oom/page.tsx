@@ -21,7 +21,7 @@ export default function OOMPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="py-16">
             {/* Breadcrumb */}
             <div className="mb-8">

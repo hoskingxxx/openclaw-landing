@@ -10,9 +10,8 @@ export function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Main Content */}
-      <div className="hero-content relative z-10 mx-auto w-full">
-        <ContentRail>
+      {/* Main Content - ContentRail is the ONLY width authority */}
+      <ContentRail className="px-4 sm:px-6">
         {/* Badge: Unofficial Community Docs */}
         <div className="flex justify-center mb-6">
           <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-text-tertiary font-mono break-words">
@@ -81,8 +80,7 @@ export function Hero() {
             Stuck on <code className="text-brand-primary bg-transparent px-0">spawn EINVAL</code>? <Link href="/guides/fix-openclaw-spawn-einval?from=3060-banner-einval" className="text-brand-primary hover:text-brand-hover underline" data-umami-event="banner_einval_click" data-umami-event-post="homepage" data-umami-event-placement="hero_crash_log">Don't waste another hour fighting a broken environment.</Link>
           </p>
         </div>
-        </ContentRail>
-      </div>
+      </ContentRail>
     </section>
   );
 }

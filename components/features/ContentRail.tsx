@@ -1,17 +1,17 @@
 /**
- * ContentRail - Single source of truth for content width across the site
+ * ContentRail - Single source of truth for content WIDTH across the site
  *
- * HARD RULE: This is the ONLY place that defines content max-width.
- * All page content must flow through this component.
+ * HARD RULE: This component defines ONLY max-width (960px).
+ * It does NOT apply padding. Padding must be applied explicitly by sections.
  *
  * Rail specification:
  * - Desktop: 960px max-width (single visual rail)
- * - Mobile: full-width with standard padding
- * - No nested max-w-* containers inside content
+ * - Mobile: full-width
+ * - No padding baked into rail (prevents true edge alignment)
  *
  * Usage:
  *   <ContentRail>
- *     <YourContent />
+ *     <YourContent /> // Add px-4 sm:px-6 to sections as needed
  *   </ContentRail>
  */
 
@@ -24,7 +24,7 @@ interface ContentRailProps {
 
 export function ContentRail({ children, className = "" }: ContentRailProps) {
   return (
-    <div className={`mx-auto w-full max-w-[960px] px-4 sm:px-6 ${className}`}>
+    <div className={`mx-auto w-full max-w-[960px] ${className}`}>
       {children}
     </div>
   );

@@ -22,14 +22,14 @@ export default function ResourcesPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "Resources", href: "/resources" }]} />
           </div>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 font-mono">
               Hardware Reality Check
@@ -44,7 +44,7 @@ export default function ResourcesPage() {
         </ContentRail>
 
         {/* Decision Tree */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
           <div className="glass-card p-8">
             <h2 className="text-2xl font-bold text-text-primary mb-6 font-mono">Decision Tree</h2>
@@ -72,7 +72,7 @@ export default function ResourcesPage() {
         </ContentRail>
 
         {/* VPS Options - De-commercialized */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">☁️ Cloud GPU (VPS)</h2>
           <p className="text-text-secondary mb-6">
@@ -121,7 +121,7 @@ export default function ResourcesPage() {
         </ContentRail>
 
         {/* Hardware Options - Gritty Realism */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">💻 Local Hardware</h2>
           <p className="text-text-secondary mb-6">
@@ -186,7 +186,7 @@ export default function ResourcesPage() {
         </ContentRail>
 
         {/* API Services */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">🔑 API Services</h2>
           <p className="text-text-secondary mb-6">
@@ -225,7 +225,7 @@ export default function ResourcesPage() {
         </ContentRail>
 
         {/* OOM Error Link */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
             <div className="glass-card p-8 text-center border border-red-500/30">
               <h3 className="text-xl font-bold text-text-primary mb-4">

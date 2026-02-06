@@ -17,7 +17,7 @@ export default function QuickStartPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-background-primary">
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
 
           {/* Header */}
           <div className="mb-12 border-b border-white/10 pb-8">

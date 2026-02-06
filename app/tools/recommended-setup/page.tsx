@@ -57,7 +57,7 @@ export default function RecommendedSetupPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[
               { label: "Tools", href: "/tools" },
@@ -67,7 +67,7 @@ export default function RecommendedSetupPage() {
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               Recommended VPS Setup
@@ -79,7 +79,7 @@ export default function RecommendedSetupPage() {
         </ContentRail>
 
         {/* Coming Soon Banner */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-8">
           <div className="glass-card border-l-4 border-orange-500 p-6">
             <div className="flex items-start gap-4">
@@ -103,7 +103,7 @@ export default function RecommendedSetupPage() {
         </ContentRail>
 
         {/* Provider Cards */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-12">
           <div className="space-y-6">
             {providers.map((provider) => {
@@ -154,7 +154,7 @@ export default function RecommendedSetupPage() {
         </ContentRail>
 
         {/* Quick Recommendations */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">Quick Recommendations</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -175,7 +175,7 @@ export default function RecommendedSetupPage() {
         </ContentRail>
 
         {/* Hardware Requirements Reference */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-12">
             <div className="glass-card p-6">
               <h2 className="text-xl font-bold text-text-primary mb-4">

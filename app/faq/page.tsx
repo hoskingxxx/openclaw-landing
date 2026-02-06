@@ -29,14 +29,14 @@ export default function FAQPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
           </div>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               Frequently Asked Questions
@@ -51,7 +51,7 @@ export default function FAQPage() {
         </ContentRail>
 
         {/* FAQ List */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="pb-12">
           <div className="space-y-8">
             {faqs.map((category) => (

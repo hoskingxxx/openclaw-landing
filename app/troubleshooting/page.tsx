@@ -101,7 +101,7 @@ export default function TroubleshootingPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <div className="py-16">
 
           {/* Breadcrumb */}

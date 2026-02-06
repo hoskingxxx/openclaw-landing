@@ -18,10 +18,12 @@ function PromoBanner() {
     >
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDAgTSAwIDIwIEwgNDAgMjAgTSAyMCAwIEwgMjAgNDAgTSAwIDMwIEwgNDAgMzAgTSAzMCAwIEwgMzAgNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20" />
-      <div className="relative max-w-7xl mx-auto px-3 md:px-6 py-3 md:py-4">
-        <div className="flex items-center justify-center gap-2 md:gap-3">
-          <span className="text-white font-mono text-sm md:text-base">⚠️ READ THIS BEFORE YOU BREAK ANYTHING</span>
-        </div>
+      <div className="relative">
+        <ContentRail className="px-3 md:px-6 py-3 md:py-4">
+          <div className="flex items-center justify-center gap-2 md:gap-3">
+            <span className="text-white font-mono text-sm md:text-base">⚠️ READ THIS BEFORE YOU BREAK ANYTHING</span>
+          </div>
+        </ContentRail>
       </div>
     </Link>
   );
@@ -37,7 +39,7 @@ export default function HomePage() {
         <Hero />
 
         {/* Triage CTA */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-12">
             <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
             {/* Action A: Diagnosis */}
@@ -70,7 +72,7 @@ export default function HomePage() {
         </ContentRail>
 
         {/* The Fix You Probably Needed */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section id="quick-fix" className="py-16">
             <div className="text-center mb-8">
               <h2 className="text-xl md:text-2xl lg:text-3xl font-mono text-brand-primary mb-4 break-words">
@@ -119,7 +121,7 @@ ollama run deepseek-r1:8b`}
         </ContentRail>
 
         {/* Final CTA - Survivor Style */}
-        <ContentRail>
+        <ContentRail className="px-4 sm:px-6">
           <section className="py-20">
             <div className="glass-card p-6 sm:p-8 text-center">
             <h2 className="text-xl md:text-2xl font-mono text-text-primary mb-4 break-words">
