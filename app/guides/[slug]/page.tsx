@@ -188,7 +188,7 @@ export default async function BlogPostPage({
           {/* Two-column grid: article + TOC */}
           <div className="grid grid-cols-1 lg:grid-cols-[max-content_256px] gap-12">
             {/* Left: Article */}
-            <article className="max-w-[880px]">
+            <article className="mx-auto w-full max-w-[960px]">
               {/* Article Header */}
               <header className="mb-8">
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">

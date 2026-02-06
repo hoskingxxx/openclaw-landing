@@ -75,6 +75,7 @@ ollama run deepseek-r1:latest --system "You are a JSON API. Output ONLY JSON." '
 ## Decision Gate
 
 :::decision-gate
+### Stop fighting VRAM physics.
 ### Should you keep debugging JSON parsing locally?
 
 **Continue local debugging only if:**
@@ -264,6 +265,10 @@ ollama run deepseek-r1:latest \
 **For hardware limitations:** See [CUDA OOM Fix Guide](/guides/fix-openclaw-cuda-oom-errors).
 
 </div>
+
+---
+
+**VRAM Warning:** If your VRAM is already near the limit, fixing JSON only delays the next OOM.
 
 ---
 
