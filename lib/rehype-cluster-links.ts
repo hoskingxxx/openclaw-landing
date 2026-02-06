@@ -84,6 +84,27 @@ export function rehypeClusterLinks() {
           }
         }
       }
+
+      // Also scan h3 elements for "Still Stuck" pattern
+      if (node.tagName === "h3" && isStuckHeading(node)) {
+        // Find next sibling p/div with links
+        if (parent && typeof index === "number") {
+          const siblings = (parent as Element).children || [];
+          for (let j = index + 1; j < siblings.length; j++) {
+            const sibling = siblings[j];
+            if (sibling.type === "element") {
+              // Mark links in p, div, ul, ol elements
+              if (["p", "div", "ul", "ol"].includes((sibling as Element).tagName)) {
+                markClusterLinks(sibling as Element);
+              }
+              // Stop at next heading
+              if (/^h[1-6]$/.test((sibling as Element).tagName)) {
+                break;
+              }
+            }
+          }
+        }
+      }
     });
   };
 }
@@ -91,6 +112,11 @@ export function rehypeClusterLinks() {
 function isRelatedHeading(node: Element): boolean {
   const textContent = getTextContent(node);
   return /^Related\s+(Articles|Fixes|Guides|Issues)$/i.test(textContent.trim());
+}
+
+function isStuckHeading(node: Element): boolean {
+  const textContent = getTextContent(node);
+  return /^Still Stuck\?|仍然卡住/i.test(textContent.trim());
 }
 
 function getTextContent(node: Element): string {
