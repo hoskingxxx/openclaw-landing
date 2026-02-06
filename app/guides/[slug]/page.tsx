@@ -27,6 +27,7 @@ import { rehypeDecisionGate, preprocessDecisionGates } from "@/lib/rehype-decisi
 import { rehypeWrapRelatedSections } from "@/lib/rehype-wrap-related-sections";
 import { rehypeWrapStuckSections } from "@/lib/rehype-wrap-stuck-sections";
 import { rehypeClusterLinks } from "@/lib/rehype-cluster-links";
+import rehypeRaw from "rehype-raw";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -112,6 +113,28 @@ async function getPostContent(slug: string): Promise<{
         "data-link",
         "data-cta",
       ],
+      // Schema.org attributes for FAQ structured data - explicit div/h3 support
+      div: [
+        classAttribute,
+        "id",
+        "data-block",
+        "itemscope",
+        "itemtype",
+        "itemprop",
+      ],
+      h3: [
+        classAttribute,
+        "id",
+        "itemscope",
+        "itemtype",
+        "itemprop",
+      ],
+      p: [
+        classAttribute,
+        "itemscope",
+        "itemtype",
+        "itemprop",
+      ],
       "*": [
         ...((defaultSchema.attributes || {})["*"] || []),
         classAttribute,
@@ -126,12 +149,14 @@ async function getPostContent(slug: string): Promise<{
     protocols: {
       ...(defaultSchema.protocols || {}),
       href: ["http", "https"],
+      itemtype: ["https"],
     },
   };
 
   const processedContent = await remark()
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeGroupIds)
     .use(rehypeSlug)
     .use(rehypeCollectHeadings, { collector: tocItems })
