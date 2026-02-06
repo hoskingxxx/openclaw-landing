@@ -4,14 +4,14 @@ import { ContentRail } from "./ContentRail";
 
 export function Hero() {
   return (
-    <section className="hero-container relative min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
+    <section className="hero-container relative min-h-screen flex items-center justify-center py-20">
       {/* Background Decorations */}
       <div className="absolute inset-0 bg-gradient-to-b from-brand-muted/20 to-transparent pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-primary/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Content */}
-      <div className="hero-content relative z-10 mx-auto w-full px-4">
+      <div className="hero-content relative z-10 mx-auto w-full">
         <ContentRail>
         {/* Badge: Unofficial Community Docs */}
         <div className="flex justify-center mb-6">
