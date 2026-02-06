@@ -13,7 +13,7 @@ export function Hero() {
 
       {/* UI CONSTITUTION: Rail + Edge pattern */}
       <ContentRail>
-        <ContentEdge>
+        <ContentEdge className="text-center">
           {/* Badge: Unofficial Community Docs */}
           <div className="flex justify-center mb-6">
             <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-text-tertiary font-mono break-words">
@@ -27,7 +27,7 @@ export function Hero() {
           </h1>
 
           {/* Viral Slogan */}
-          <div className="mb-8 p-4 bg-brand-primary/10 border border-brand-primary/30 rounded-lg">
+          <div className="mb-8 p-4 bg-brand-primary/10 border border-brand-primary/30 rounded-lg inline-block text-left">
             <p className="text-base md:text-lg lg:text-xl font-mono text-brand-primary font-bold break-words">
               "If your model crashes silently, it's not a bug. It's physics."
             </p>
@@ -55,7 +55,7 @@ export function Hero() {
           </div>
 
           {/* Crash Log Preview */}
-          <div className="mt-8">
+          <div className="mt-8 text-left">
             <div className="bg-terminal-bg rounded-lg overflow-hidden border border-red-500/30 shadow-xl opacity-60 hover:opacity-100 transition-opacity">
               <div className="flex items-center gap-2 px-4 py-3 bg-terminal-header border-b border-white/10">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
