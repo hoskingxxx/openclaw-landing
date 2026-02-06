@@ -169,80 +169,78 @@ export default async function BlogPostPage({
         <HashScrollFix />
       </Suspense>
       <main className="min-h-screen">
-        {/* UI CONSTITUTION: Rail + Edge pattern */}
-        {/* Rail defines width (960px), Edge defines visible boundary (padding) */}
+        {/* Rail defines width (960px) - NO padding on rail */}
         <ContentRail className="py-4">
-          {/* ONE ContentEdge wrapper - shared boundary for ALL content */}
-          <ContentEdge className="py-8 pb-4">
-            {/* Breadcrumbs */}
+          {/* Breadcrumbs - with padding for edge spacing */}
+          <div className="px-4 sm:px-6 py-8 pb-4">
             <Breadcrumbs
               items={[
                 { label: "Guides", href: "/guides" },
                 { label: post.title, href: post.canonicalPath },
               ]}
             />
+          </div>
 
-            {/* Article - all content shares same boundary */}
-            <article className="mt-8">
-              {/* Article Header */}
-              <header className="mb-8">
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-                  <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
-                    {post.category}
-                  </span>
-                  <span className="text-xs sm:text-sm text-text-tertiary break-words">{post.date}</span>
+          {/* Article - NO wrapper that would shrink glass-card */}
+          <article>
+            {/* Article Header - with padding */}
+            <div className="px-4 sm:px-6 mb-8">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
+                <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
+                  {post.category}
+                </span>
+                <span className="text-xs sm:text-sm text-text-tertiary break-words">{post.date}</span>
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4 break-words leading-tight">
+                {post.title}
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 break-words">
+                {post.description}
+              </p>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
+                <span>By: {post.author}</span>
+                <span>•</span>
+                <div className="flex flex-wrap gap-1 sm:gap-2">
+                  {post.tags.map((tag) => (
+                    <span key={tag} className="text-brand-primary break-words">
+                      #{tag}
+                    </span>
+                  ))}
                 </div>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4 break-words leading-tight">
-                  {post.title}
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 break-words">
-                  {post.description}
+              </div>
+            </div>
+
+            {/* RealityCheck Calculator - with padding */}
+            {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && (
+              <div className="px-4 sm:px-6 mb-8">
+                <RealityCheck />
+              </div>
+            )}
+
+            {/* Article Body - glass-card FLUSH with rail, no px/mx wrapper */}
+            <div
+              className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words [max-width:unset]"
+              dangerouslySetInnerHTML={{ __html: postContent.content }}
+            />
+
+            {/* Article Bottom CTA - with padding, skip on error index page */}
+            {post.slug !== "openclaw-error-index" && (
+              <div className="px-4 sm:px-6 mt-12 pt-8 border-t border-white/10">
+                <h3 className="text-xl font-semibold text-text-primary mb-2">
+                  Bookmark this site
+                </h3>
+                <p className="text-text-secondary mb-4">
+                  New fixes are added as soon as they appear on GitHub Issues.
                 </p>
-                <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
-                  <span>By: {post.author}</span>
-                  <span>•</span>
-                  <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {post.tags.map((tag) => (
-                      <span key={tag} className="text-brand-primary break-words">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </header>
-
-              {/* RealityCheck Calculator */}
-              {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && (
-                <div className="mb-8">
-                  <RealityCheck />
-                </div>
-              )}
-
-              {/* Article Body - glass-card w-full, direct child of Edge */}
-              <div
-                className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words [max-width:unset]"
-                dangerouslySetInnerHTML={{ __html: postContent.content }}
-              />
-
-              {/* Article Bottom CTA - skip on error index page */}
-              {post.slug !== "openclaw-error-index" && (
-                <div className="mt-12 pt-8 border-t border-white/10">
-                  <h3 className="text-xl font-semibold text-text-primary mb-2">
-                    Bookmark this site
-                  </h3>
-                  <p className="text-text-secondary mb-4">
-                    New fixes are added as soon as they appear on GitHub Issues.
-                  </p>
-                  <Link
-                    href="/guides/openclaw-error-index"
-                    className="text-sm font-medium text-brand-primary hover:underline inline-flex items-center gap-1"
-                  >
-                    Browse Error Index &rarr;
-                  </Link>
-                </div>
-              )}
-            </article>
-          </ContentEdge>
+                <Link
+                  href="/guides/openclaw-error-index"
+                  className="text-sm font-medium text-brand-primary hover:underline inline-flex items-center gap-1"
+                >
+                  Browse Error Index &rarr;
+                </Link>
+              </div>
+            )}
+          </article>
         </ContentRail>
       </main>
 
