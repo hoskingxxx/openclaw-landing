@@ -236,6 +236,7 @@ export default async function BlogPostPage({
               <Link
                 href="/guides/openclaw-error-index"
                 className="text-sm font-medium text-brand-primary hover:underline inline-flex items-center gap-1"
+                data-link="brand"
               >
                 Browse Error Index &rarr;
               </Link>

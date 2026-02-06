@@ -186,27 +186,39 @@ body {
   font-size: 0.875em;
 }
 
-/* Article Link Style - scoped to /guides pages only, excludes CTA buttons */
-main[data-section="guides"] .prose a:not([data-cta="true"]) {
+/* Article Link Style - scoped to /guides pages only, excludes CTA and brand links */
+main[data-section="guides"] .prose a:not([data-cta="true"]):not([data-link="brand"]) {
   color: #60a5fa !important;
   text-decoration: none;
   transition: color 0.2s;
 }
 
-main[data-section="guides"] .prose a:not([data-cta="true"]):hover {
+main[data-section="guides"] .prose a:not([data-cta="true"]):not([data-link="brand"]):hover {
   color: #93c5fd !important;
   text-decoration: underline;
 }
 
-/* IMPORTANT: Prevent color inheritance in styled containers (scoped to guides, excludes CTA) */
-main[data-section="guides"] .glass-card a:not([data-cta="true"]),
-main[data-section="guides"] .prose blockquote a:not([data-cta="true"]) {
+/* IMPORTANT: Prevent color inheritance in styled containers (scoped to guides, excludes CTA and brand) */
+main[data-section="guides"] .glass-card a:not([data-cta="true"]):not([data-link="brand"]),
+main[data-section="guides"] .prose blockquote a:not([data-cta="true"]):not([data-link="brand"]) {
   color: #60a5fa !important;
 }
 
-main[data-section="guides"] .glass-card a:not([data-cta="true"]):hover,
-main[data-section="guides"] .prose blockquote a:not([data-cta="true"]):hover {
+main[data-section="guides"] .glass-card a:not([data-cta="true"]):not([data-link="brand"]):hover,
+main[data-section="guides"] .prose blockquote a:not([data-cta="true"]):not([data-link="brand"]):hover {
   color: #93c5fd !important;
+  text-decoration: underline;
+}
+
+/* Brand links in guides - preserve original color, no override */
+main[data-section="guides"] a[data-link="brand"],
+main[data-section="guides"] .prose a[data-link="brand"] {
+  color: inherit !important; /* Allow Tailwind text-brand-primary to apply */
+  text-decoration: none;
+}
+
+main[data-section="guides"] a[data-link="brand"]:hover,
+main[data-section="guides"] .prose a[data-link="brand"]:hover {
   text-decoration: underline;
 }
 
