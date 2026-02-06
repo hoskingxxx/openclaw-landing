@@ -170,76 +170,81 @@ export default async function BlogPostPage({
       <main className="min-h-screen">
         {/* ContentRail is the ONLY width authority */}
         <ContentRail>
-          {/* Breadcrumbs - with padding */}
-          <div className="px-4 sm:px-6 py-8 pb-4 pt-4">
-            <Breadcrumbs
-              items={[
-                { label: "Guides", href: "/guides" },
-                { label: post.title, href: post.canonicalPath },
-              ]}
-            />
-          </div>
-
-          {/* Article */}
-          <article>
-            {/* Article Header - with padding */}
-            <header className="px-4 sm:px-6 mb-8">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
-                <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
-                  {post.category}
-                </span>
-                <span className="text-xs sm:text-sm text-text-tertiary break-words">{post.date}</span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4 break-words leading-tight">
-                {post.title}
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 break-words">
-                {post.description}
-              </p>
-              <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
-                <span>By: {post.author}</span>
-                <span>•</span>
-                <div className="flex flex-wrap gap-1 sm:gap-2">
-                  {post.tags.map((tag) => (
-                    <span key={tag} className="text-brand-primary break-words">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </header>
-
-            {/* RealityCheck Calculator - For specific articles - with padding */}
-            <div className="px-4 sm:px-6">
-              {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && <RealityCheck />}
+          {/* ONE shared edge wrapper - defines visible left/right boundary for ALL content */}
+          <div className="mx-4 sm:mx-6 md:mx-0">
+            {/* Breadcrumbs */}
+            <div className="py-8 pb-4 pt-4">
+              <Breadcrumbs
+                items={[
+                  { label: "Guides", href: "/guides" },
+                  { label: post.title, href: post.canonicalPath },
+                ]}
+              />
             </div>
 
-            {/* Article Body - glass-card outer edge aligns to 960px rail */}
-            <div
-              className="glass-card w-full mx-4 sm:mx-6 md:mx-0 p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
-              dangerouslySetInnerHTML={{ __html: postContent.content }}
-            />
-
-            {/* Article Bottom CTA - Skip on error index page - with padding */}
-            {post.slug !== "openclaw-error-index" && (
-              <div className="px-4 sm:px-6 mt-12">
-                <div className="p-6 bg-muted rounded-xl border border-border">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    Bookmark this site
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    New fixes are added as soon as they appear on GitHub Issues.
-                  </p>
-                  <Link
-                    href="/guides/openclaw-error-index"
-                    className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
-                  >
-                    Browse Error Index &rarr;
-                  </Link>
+            {/* Article */}
+            <article>
+              {/* Article Header */}
+              <header className="mb-8">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
+                  <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
+                    {post.category}
+                  </span>
+                  <span className="text-xs sm:text-sm text-text-tertiary break-words">{post.date}</span>
                 </div>
-              </div>
-            )}
-          </article>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4 break-words leading-tight">
+                  {post.title}
+                </h1>
+                <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-6 break-words">
+                  {post.description}
+                </p>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
+                  <span>By: {post.author}</span>
+                  <span>•</span>
+                  <div className="flex flex-wrap gap-1 sm:gap-2">
+                    {post.tags.map((tag) => (
+                      <span key={tag} className="text-brand-primary break-words">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </header>
+
+              {/* RealityCheck Calculator - For specific articles */}
+              {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && (
+                <div className="mb-8">
+                  <RealityCheck />
+                </div>
+              )}
+
+              {/* Article Body - glass-card outer edge aligns to shared edge wrapper */}
+              <div
+                className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
+                dangerouslySetInnerHTML={{ __html: postContent.content }}
+              />
+
+              {/* Article Bottom CTA - Skip on error index page */}
+              {post.slug !== "openclaw-error-index" && (
+                <div className="mt-12">
+                  <div className="p-6 bg-muted rounded-xl border border-border">
+                    <h3 className="text-xl font-semibold text-foreground mb-2">
+                      Bookmark this site
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      New fixes are added as soon as they appear on GitHub Issues.
+                    </p>
+                    <Link
+                      href="/guides/openclaw-error-index"
+                      className="text-sm font-medium text-primary hover:underline inline-flex items-center gap-1"
+                    >
+                      Browse Error Index &rarr;
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </article>
+          </div>
         </ContentRail>
       </main>
 
