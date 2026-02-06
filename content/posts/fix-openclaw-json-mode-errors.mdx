@@ -1,3 +1,5 @@
+import { FAQ } from "@/components/FAQ";
+
 # Fix OpenClaw JSON Mode Parsing Errors with DeepSeek R1
 
 <div class="glass-card p-6 border-l-4 border-red-500 mb-8">
@@ -13,12 +15,14 @@ Expecting value: line 1 column 1 (char 0)
 
 **Full Response (The Problem):**
 
-```
+The model returns thinking tags before the JSON:
+
+```text
 Okay, the user wants a JSON response. I should format it properly...
 ```
-json
+
+```json
 {"result": "actual data here"}
-```
 ```
 
 **Scope:** OpenClaw's JSON parser fails at position 0 because `<` is not an opening brace. DeepSeek R1 wraps responses in `think` tags before the actual JSON. OpenClaw receives the full response including thinking tags, and `JSON.parse()` fails.
@@ -305,31 +309,19 @@ ollama run deepseek-r1:latest \
 
 ## FAQ
 
-<div itemScope itemType="https://schema.org/FAQPage">
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Will this fix work with all DeepSeek R1 versions?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Yes. The thinking tags behavior is consistent across DeepSeek R1 variants (8b, 32b, 70b, distilled versions). The system prompt override works for all of them.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Do I need to reinstall DeepSeek R1?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> No. This is a configuration issue, not a model issue. The fix is applied at runtime through the system prompt. Your DeepSeek R1 installation is working as designed.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Can I use this with other models like Llama 3?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Yes. The system prompt override works with any model. However, the thinking tags issue is specific to DeepSeek R1. Other models (Llama, Mistral, etc.) don't use thinking tags by default.
-      </p>
-    </div>
-  </div>
-</div>
+<FAQ
+  items={[
+    {
+      question: "Will this fix work with all DeepSeek R1 versions?",
+      answer: "Yes. The thinking tags behavior is consistent across DeepSeek R1 variants (8b, 32b, 70b, distilled versions). The system prompt override works for all of them."
+    },
+    {
+      question: "Do I need to reinstall DeepSeek R1?",
+      answer: "No. This is a configuration issue, not a model issue. The fix is applied at runtime through the system prompt. Your DeepSeek R1 installation is working as designed."
+    },
+    {
+      question: "Can I use this with other models like Llama 3?",
+      answer: "Yes. The system prompt override works with any model. However, the thinking tags issue is specific to DeepSeek R1. Other models (Llama, Mistral, etc.) don't use thinking tags by default."
+    }
+  ]}
+/>

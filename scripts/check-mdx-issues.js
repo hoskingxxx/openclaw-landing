@@ -7,9 +7,10 @@
  * DETECTS:
  * - Unclosed code fences (```)
  * - className usage (should be class in MDX)
- * - Import statements outside frontmatter
+ * - Import statements after content (must be at top)
  * - Naked <a> tags (with analysis)
  * - Empty FAQ sections
+ * - Raw HTML FAQ (<div itemScope...FAQPage)
  *
  * Usage: node scripts/check-mdx-issues.js
  * Exit code: 0 = pass, 1 = issues found
@@ -88,6 +89,7 @@ function checkImportStatements(content, fileName) {
   const lines = content.split('\n');
   let frontmatterEnd = -1;
   let inCodeBlock = false;
+  let firstContentLine = -1; // First line with actual content (not comments, not imports)
 
   // Find end of frontmatter
   for (let i = 1; i < lines.length; i++) {
@@ -95,6 +97,23 @@ function checkImportStatements(content, fileName) {
       frontmatterEnd = i;
       break;
     }
+  }
+
+  // Find first non-import, non-empty line
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    // Skip frontmatter
+    if (i === 0 && trimmed === '---') continue;
+    if (i > 0 && i <= frontmatterEnd) continue;
+
+    // Skip empty lines and imports
+    if (trimmed === '' || trimmed.startsWith('import ') || trimmed.startsWith('export ')) {
+      continue;
+    }
+
+    // Found first content line
+    firstContentLine = i;
+    break;
   }
 
   lines.forEach((line, index) => {
@@ -108,18 +127,15 @@ function checkImportStatements(content, fileName) {
     // Skip if in code block (Python/TypeScript examples)
     if (inCodeBlock) return;
 
-    // Check for MDX component imports (not code examples)
-    // MDX imports use: import Component from "@/components/..."
-    // Code examples use: import library_name (no from)
+    // Check for MDX component imports
+    // Must be at top: before any content like # headings or text
     if (trimmed.startsWith('import ') && trimmed.includes('from "@/')) {
-      // Allow imports within 5 lines after frontmatter, or if no frontmatter exists
-      const importZone = frontmatterEnd === -1 ? 5 : frontmatterEnd + 5;
-      if (frontmatterEnd !== -1 && index > importZone) {
-        // Flag imports deep in content (not near the top)
+      // Import must come before any content
+      if (firstContentLine !== -1 && index > firstContentLine) {
         issues.push({
-          type: 'import_after_frontmatter',
+          type: 'import_after_content',
           line: index + 1,
-          message: `MDX component import at line ${index + 1} should be at top of file (after frontmatter)`,
+          message: `MDX import at line ${index + 1} appears AFTER content (line ${firstContentLine + 1}). Imports must be at the very top of the file.`,
           content: trimmed.substring(0, 60),
         });
       }
@@ -180,8 +196,10 @@ function checkEmptyFAQ(content) {
       const nextLines = lines.slice(index + 1, Math.min(index + 101, lines.length));
       const nextLinesText = nextLines.join('\n');
 
-      // Check for various FAQ content patterns
+      // Check for various FAQ content patterns including FAQ component
       const hasContent =
+        nextLinesText.includes('<FAQ') ||
+        nextLinesText.includes('<FAQ ') ||
         nextLinesText.includes('Q:') ||
         nextLinesText.includes('itemScope') ||
         nextLinesText.includes('itemProp') ||
@@ -206,6 +224,25 @@ function checkEmptyFAQ(content) {
   return issues;
 }
 
+function checkRawHTMLFAQ(content) {
+  const issues = [];
+  const lines = content.split('\n');
+
+  lines.forEach((line, index) => {
+    // Detect raw HTML FAQ: <div itemScope...FAQPage>
+    if (line.includes('itemScope') && line.includes('FAQPage') && line.includes('<div')) {
+      issues.push({
+        type: 'raw_html_faq',
+        line: index + 1,
+        message: `Raw HTML FAQ found at line ${index + 1}. Use <FAQ items={...} /> component instead.`,
+        content: line.trim().substring(0, 80),
+      });
+    }
+  });
+
+  return issues;
+}
+
 function checkFile(filePath) {
   const content = fs.readFileSync(filePath, 'utf8');
   const fileName = path.basename(filePath);
@@ -216,6 +253,7 @@ function checkFile(filePath) {
   allIssues.push(...checkImportStatements(content, fileName));
   allIssues.push(...checkNakedATags(content));
   allIssues.push(...checkEmptyFAQ(content));
+  allIssues.push(...checkRawHTMLFAQ(content));
 
   return allIssues;
 }
@@ -239,9 +277,10 @@ function main() {
         const icon = {
           unclosed_fence: '🚨',
           className_usage: '⚠️ ',
-          import_after_frontmatter: '📦',
+          import_after_content: '📦',
           naked_a_tag: '🔗',
           empty_faq: '❓',
+          raw_html_faq: '🏗️ ',
         }[issue.type] || '⚠️ ';
 
         report.push(`  ${icon} [${issue.type}] Line ${issue.line}: ${issue.message}`);
@@ -259,9 +298,10 @@ function main() {
     console.error('\nFix guidelines:');
     console.error('1. Close all code fences with ```');
     console.error('2. Use class= instead of className= in MDX (HTML, not JSX)');
-    console.error('3. Keep imports at top of file (after frontmatter)');
+    console.error('3. All import/export statements must be at the TOP of the file (before any # headings or content)');
     console.error('4. Use components or [markdown](url) instead of <a href=>');
-    console.error('5. Ensure FAQ sections have schema.org content or Q&A items\n');
+    console.error('5. Ensure FAQ sections have schema.org content or Q&A items');
+    console.error('6. Use <FAQ items={...} /> component instead of raw HTML <div itemScope...>\n');
     process.exit(1);
   } else {
     console.log('✅ MDX Issues Check Passed');

@@ -1,6 +1,7 @@
-# Fix OpenClaw CUDA Out of Memory Errors
-
 import SecondaryExitButton from "@/components/SecondaryExitButton";
+import { FAQ } from "@/components/FAQ";
+
+# Fix OpenClaw CUDA Out of Memory Errors
 
 <div class="glass-card p-6 border-l-4 border-red-500 mb-8">
 
@@ -316,40 +317,23 @@ When local VRAM is exhausted, the remaining option is a cloud GPU with dedicated
 
 ## FAQ
 
-<div itemScope itemType="https://schema.org/FAQPage">
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Will adding more system RAM fix CUDA OOM?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> No. CUDA errors are about GPU VRAM, not system RAM. Adding 64GB of system RAM won't help if your GPU has 8GB VRAM. The model must fit in GPU memory to run. You can offload some layers to CPU, but performance drops significantly.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Can I run DeepSeek R1 32B on an RTX 3060 (12GB)?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Not practically. The Q4 quantized version requires ~20GB VRAM. You could try extreme quantization (Q2), but output quality degrades significantly. Better option: use DeepSeek R1 8B, or use a cloud GPU with 24GB+ VRAM.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Why does it work for 10 messages then crash?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> That's Agent Loop OOM. OpenClaw accumulates conversation history in the KV cache, which grows with each message. After 10-15 messages, the cache fills your VRAM. Fix: reduce context window (--num_ctx 4096) or enable history pruning (client.max_history_messages = 10).
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Is cloud GPU worth it for OpenClaw?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> If your local GPU is insufficient, yes. Cloud GPUs provide VRAM that no consumer GPU has (80GB on H100). You pay for what you use, and you get production reliability. For occasional testing, local is fine. For production or heavy usage, cloud GPU is the correct technical choice.
-      </p>
-    </div>
-  </div>
-</div>
+<FAQ
+  items={[
+    {
+      question: "Will adding more system RAM fix CUDA OOM?",
+      answer: "No. CUDA errors are about GPU VRAM, not system RAM. Adding 64GB of system RAM won't help if your GPU has 8GB VRAM. The model must fit in GPU memory to run. You can offload some layers to CPU, but performance drops significantly."
+    },
+    {
+      question: "Can I run DeepSeek R1 32B on an RTX 3060 (12GB)?",
+      answer: "Not practically. The Q4 quantized version requires ~20GB VRAM. You could try extreme quantization (Q2), but output quality degrades significantly. Better option: use DeepSeek R1 8B, or use a cloud GPU with 24GB+ VRAM."
+    },
+    {
+      question: "Why does it work for 10 messages then crash?",
+      answer: "That's Agent Loop OOM. OpenClaw accumulates conversation history in the KV cache, which grows with each message. After 10-15 messages, the cache fills your VRAM. Fix: reduce context window (--num_ctx 4096) or enable history pruning (client.max_history_messages = 10)."
+    },
+    {
+      question: "Is cloud GPU worth it for OpenClaw?",
+      answer: "If your local GPU is insufficient, yes. Cloud GPUs provide VRAM that no consumer GPU has (80GB on H100). You pay for what you use, and you get production reliability. For occasional testing, local is fine. For production or heavy usage, cloud GPU is the correct technical choice."
+    }
+  ]}
+/>

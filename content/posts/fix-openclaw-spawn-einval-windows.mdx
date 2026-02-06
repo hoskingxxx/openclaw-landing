@@ -1,6 +1,7 @@
-# Fix OpenClaw "spawn EINVAL" Error on Windows
-
 import CoffeeButton from "@/components/CoffeeButton";
+import { FAQ } from "@/components/FAQ";
+
+# Fix OpenClaw "spawn EINVAL" Error on Windows
 
 <div class="glass-card p-6 border-l-4 border-red-500 mb-8">
 
@@ -263,49 +264,27 @@ The rational move is to leave this environment.
 
 ## FAQ
 
-<div itemScope itemType="https://schema.org/FAQPage">
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: What's the difference between ENOENT and EINVAL?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> ENOENT means "file not found" — npm isn't installed or not in PATH. EINVAL means "invalid argument" — the system refuses to create the process due to permissions or security restrictions.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Why does running as Administrator not fix it?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Administrator privileges bypass UAC restrictions, but EINVAL can also be caused by execution policy, compressed folders, antivirus blocking, or corporate security policies. Running as Admin only fixes the UAC issue.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Is this an OpenClaw bug?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> No. OpenClaw correctly attempts to spawn subprocesses. Windows security features block the spawn call. This is expected behavior on locked-down or rot-prone Windows installations.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: Can I use WSL2 instead of a VPS?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Yes. WSL2 provides a Linux environment on Windows, bypassing Windows security restrictions. However, WSL2 can still be blocked by corporate policy or antivirus. A VPS is completely isolated.
-      </p>
-    </div>
-  </div>
-
-  <div itemScope itemType="https://schema.org/Question" itemProp="mainEntity">
-    <h3 itemProp="name">Q: What is "environment rot"?</h3>
-    <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
-      <p itemProp="text">
-        <strong>A:</strong> Environment rot is the accumulation of conflicting security settings, partial installs, permission issues, and software interactions that prevent normal operation. Windows environments are prone to rot due to registry bloat, antivirus changes, and UAC policies.
-      </p>
-    </div>
-  </div>
-</div>
+<FAQ
+  items={[
+    {
+      question: "What's the difference between ENOENT and EINVAL?",
+      answer: "ENOENT means \"file not found\" — npm isn't installed or not in PATH. EINVAL means \"invalid argument\" — the system refuses to create the process due to permissions or security restrictions."
+    },
+    {
+      question: "Why does running as Administrator not fix it?",
+      answer: "Administrator privileges bypass UAC restrictions, but EINVAL can also be caused by execution policy, compressed folders, antivirus blocking, or corporate security policies. Running as Admin only fixes the UAC issue."
+    },
+    {
+      question: "Is this an OpenClaw bug?",
+      answer: "No. OpenClaw correctly attempts to spawn subprocesses. Windows security features block the spawn call. This is expected behavior on locked-down or rot-prone Windows installations."
+    },
+    {
+      question: "Can I use WSL2 instead of a VPS?",
+      answer: "Yes. WSL2 provides a Linux environment on Windows, bypassing Windows security restrictions. However, WSL2 can still be blocked by corporate policy or antivirus. A VPS is completely isolated."
+    },
+    {
+      question: "What is \"environment rot\"?",
+      answer: "Environment rot is the accumulation of conflicting security settings, partial installs, permission issues, and software interactions that prevent normal operation. Windows environments are prone to rot due to registry bloat, antivirus changes, and UAC policies."
+    }
+  ]}
+/>
