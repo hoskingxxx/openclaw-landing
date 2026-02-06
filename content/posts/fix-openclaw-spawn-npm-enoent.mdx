@@ -79,6 +79,13 @@ But your setup has:
 
 ---
 
+> **⚠️ Critical Crash Warning**
+>
+> If this step fails not with an error message, but with a sudden crash or `spawn EINVAL`, do not keep retrying. Your environment may be corrupted.
+> [Go to the Spawn EINVAL Decision System →](/guides/fix-openclaw-spawn-einval-windows)
+
+---
+
 ## Solution A: Verify Node Installation
 
 **Step 1: Check if Node is installed**
@@ -314,3 +321,9 @@ services:
 > Fix it locally in 30 minutes, or deploy on a VPS in 30 seconds.
 >
 > **[Deploy on Vultr (H100/A100 Ready)](https://www.vultr.com/?ref=9863490&utm_source=openclaw&utm_medium=content&utm_campaign=fix-openclaw-spawn-npm-enoent&utm_content=article_link)** *(High Availability & Limited Time Promotion for new accounts)*
+
+---
+
+### Still Stuck? Check Your Hardware
+
+Sometimes the code is fine, but the GPU is simply refusing to cooperate. Before you waste another hour debugging, compare your specs against the **[Hardware Reality Table](/guides/hardware-requirements-reality-check)** to see if you are fighting impossible physics.

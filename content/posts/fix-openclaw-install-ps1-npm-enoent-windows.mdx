@@ -104,6 +104,13 @@ The issue is that PowerShell caches the PATH environment variable. When you inst
 
 ---
 
+> **⚠️ Critical Crash Warning**
+>
+> If this step fails not with an error message, but with a sudden crash or `spawn EINVAL`, do not keep retrying. Your environment may be corrupted.
+> [Go to the Spawn EINVAL Decision System →](/guides/fix-openclaw-spawn-einval-windows)
+
+---
+
 ## Solution A: Close and Reopen PowerShell (Most Likely Fix)
 
 **This is the fix that works 90% of the time.** You just installed Node.js, but your PowerShell session doesn't know about it yet.
@@ -394,3 +401,9 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 > Close and reopen PowerShell for the quick fix. Restart your computer if that doesn't work.
 >
 > **[Deploy on Vultr (High Availability & Free Credit)](https://www.vultr.com/?ref=9863490&utm_source=openclaw&utm_medium=content&utm_campaign=fix-openclaw-install-ps1-npm-enoent-windows&utm_content=article_link)** *(Windows PATH issues are a headache. Linux just works.)*
+
+---
+
+### Still Stuck? Check Your Hardware
+
+Sometimes the code is fine, but the GPU is simply refusing to cooperate. Before you waste another hour debugging, compare your specs against the **[Hardware Reality Table](/guides/hardware-requirements-reality-check)** to see if you are fighting impossible physics.

@@ -88,6 +88,13 @@ But you're installing:
 
 ---
 
+> **⚠️ Critical Crash Warning**
+>
+> If this step fails not with an error message, but with a sudden crash or `spawn EINVAL`, do not keep retrying. Your environment may be corrupted.
+> [Go to the Spawn EINVAL Decision System →](/guides/fix-openclaw-spawn-einval-windows)
+
+---
+
 ## Solution A: Use Unified Extensions Package (Recommended)
 
 The easiest fix is to use the official `@openclaw-extensions/channels` package, which includes all common integrations with proper metadata.
@@ -356,3 +363,9 @@ docker run -it --rm openclaw-with-plugins
 > Use the unified `@openclaw-extensions/channels` package or pin your versions to avoid breakage.
 >
 > **[Deploy on Vultr (High Availability & Free Credit)](https://www.vultr.com/?ref=9863490&utm_source=openclaw&utm_medium=content&utm_campaign=fix-openclaw-package-json-missing-openclaw-extensions&utm_content=article_link)** *(Plugin ecosystems break locally. A clean cloud environment + pinned versions reduces surprise breakage.)*
+
+---
+
+### Still Stuck? Check Your Hardware
+
+Sometimes the code is fine, but the GPU is simply refusing to cooperate. Before you waste another hour debugging, compare your specs against the **[Hardware Reality Table](/guides/hardware-requirements-reality-check)** to see if you are fighting impossible physics.
