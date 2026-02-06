@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { NextStepCard } from "@/components/features/NextSteps";
 import { blogPosts } from "@/lib/blog";
 import Link from "next/link";
@@ -23,14 +24,17 @@ export default function BlogPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "Guides", href: "/guides" }]} />
           </div>
+          </ContentEdge>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               OpenClaw Survival Guides
@@ -39,11 +43,13 @@ export default function BlogPage() {
               Battle-Tested Tutorials & Fixes
             </p>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Featured Posts */}
         {blogPosts.filter((post) => post.featured).length > 0 && (
-          <ContentRail className="px-4 sm:px-6">
+          <ContentRail>
+          <ContentEdge>
             <section className="pb-12">
               <h2 className="text-2xl font-bold text-text-primary mb-6">Featured Posts</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -79,11 +85,13 @@ export default function BlogPage() {
               ))}
             </div>
           </section>
-          </ContentRail>
+            </ContentEdge>
+        </ContentRail>
         )}
 
         {/* All Posts */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-12">
             <h2 className="text-2xl font-bold text-text-primary mb-6">All Posts</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -119,6 +127,7 @@ export default function BlogPage() {
             ))}
           </div>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Next Step */}

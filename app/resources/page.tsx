@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -22,14 +23,17 @@ export default function ResourcesPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "Resources", href: "/resources" }]} />
           </div>
+          </ContentEdge>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4 font-mono">
               Hardware Reality Check
@@ -41,10 +45,12 @@ export default function ResourcesPage() {
               This site exists because the official docs didn't warn us about the hardware reality.
             </p>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Decision Tree */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-12">
           <div className="glass-card p-8">
             <h2 className="text-2xl font-bold text-text-primary mb-6 font-mono">Decision Tree</h2>
@@ -69,10 +75,12 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* VPS Options - De-commercialized */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">☁️ Cloud GPU (VPS)</h2>
           <p className="text-text-secondary mb-6">
@@ -118,10 +126,12 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Hardware Options - Gritty Realism */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">💻 Local Hardware</h2>
           <p className="text-text-secondary mb-6">
@@ -183,10 +193,12 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* API Services */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">🔑 API Services</h2>
           <p className="text-text-secondary mb-6">
@@ -222,10 +234,12 @@ export default function ResourcesPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* OOM Error Link */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-12">
             <div className="glass-card p-8 text-center border border-red-500/30">
               <h3 className="text-xl font-bold text-text-primary mb-4">
@@ -239,6 +253,7 @@ export default function ResourcesPage() {
               </Button>
             </div>
           </section>
+          </ContentEdge>
         </ContentRail>
       </main>
       <Footer />

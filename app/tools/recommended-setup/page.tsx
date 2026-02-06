@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { FEATURED_POST_PATH } from "@/lib/blog";
 import type { Metadata } from "next";
 import { Cpu, Server, Zap } from "lucide-react";
@@ -57,17 +58,20 @@ export default function RecommendedSetupPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[
               { label: "Tools", href: "/tools" },
               { label: "Recommended Setup", href: "/tools/recommended-setup" }
             ]} />
           </div>
+          </ContentEdge>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               Recommended VPS Setup
@@ -76,10 +80,12 @@ export default function RecommendedSetupPage() {
               GPU cloud providers tested with OpenClaw + DeepSeek R1
             </p>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Coming Soon Banner */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-8">
           <div className="glass-card border-l-4 border-orange-500 p-6">
             <div className="flex items-start gap-4">
@@ -100,10 +106,12 @@ export default function RecommendedSetupPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Provider Cards */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-12">
           <div className="space-y-6">
             {providers.map((provider) => {
@@ -151,10 +159,12 @@ export default function RecommendedSetupPage() {
             })}
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Quick Recommendations */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-12">
           <h2 className="text-2xl font-bold text-text-primary mb-6">Quick Recommendations</h2>
           <div className="grid md:grid-cols-2 gap-4">
@@ -172,10 +182,12 @@ export default function RecommendedSetupPage() {
             </div>
           </div>
         </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Hardware Requirements Reference */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-12">
             <div className="glass-card p-6">
               <h2 className="text-xl font-bold text-text-primary mb-4">
@@ -215,6 +227,7 @@ export default function RecommendedSetupPage() {
               </div>
             </div>
           </section>
+          </ContentEdge>
         </ContentRail>
       </main>
       <Footer />

@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { Button } from "@/components/ui/Button";
@@ -168,24 +169,24 @@ export default async function BlogPostPage({
         <HashScrollFix />
       </Suspense>
       <main className="min-h-screen">
-        {/* ContentRail is the ONLY width authority */}
-        <ContentRail>
-          {/* ONE shared edge wrapper - defines visible left/right boundary for ALL content */}
-          <div className="mx-4 sm:mx-6 md:mx-0">
-            {/* Breadcrumbs - outside content frame (navigation context) */}
-            <div className="py-8 pb-4 pt-4">
-              <Breadcrumbs
-                items={[
-                  { label: "Guides", href: "/guides" },
-                  { label: post.title, href: post.canonicalPath },
-                ]}
-              />
-            </div>
+        {/* UI CONSTITUTION: Rail + Edge pattern */}
+        {/* Rail defines width (960px), Edge defines visible boundary (padding) */}
+        <ContentRail className="py-4">
+          <ContentEdge className="py-8 pb-4">
+            {/* Breadcrumbs - inside Edge (shares alignment with all content) */}
+            <Breadcrumbs
+              items={[
+                { label: "Guides", href: "/guides" },
+                { label: post.title, href: post.canonicalPath },
+              ]}
+            />
+          </ContentEdge>
 
-            {/* Content Frame - ONE page-wide visual frame for ALL article content */}
+          {/* Article Content Frame - ONE glass-card for all content */}
+          <ContentEdge>
             <div className="glass-card p-6 md:p-8">
               <article>
-                {/* Article Header - inside content frame */}
+                {/* Article Header */}
                 <header className="mb-8">
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-4">
                     <span className="px-3 py-1 text-sm font-medium bg-brand-primary/20 text-brand-primary rounded flex-shrink-0">
@@ -212,20 +213,20 @@ export default async function BlogPostPage({
                   </div>
                 </header>
 
-                {/* RealityCheck Calculator - inside content frame */}
+                {/* RealityCheck Calculator */}
                 {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && (
                   <div className="mb-8">
                     <RealityCheck />
                   </div>
                 )}
 
-                {/* Article Body - prose inside content frame, no separate glass-card */}
+                {/* Article Body - prose inside glass-card, w-full */}
                 <div
                   className="prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
                   dangerouslySetInnerHTML={{ __html: postContent.content }}
                 />
 
-                {/* Article Bottom CTA - inside content frame, skip on error index page */}
+                {/* Article Bottom CTA - skip on error index page */}
                 {post.slug !== "openclaw-error-index" && (
                   <div className="mt-12 pt-8 border-t border-white/10">
                     <h3 className="text-xl font-semibold text-text-primary mb-2">
@@ -244,7 +245,7 @@ export default async function BlogPostPage({
                 )}
               </article>
             </div>
-          </div>
+          </ContentEdge>
         </ContentRail>
       </main>
 

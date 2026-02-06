@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -101,7 +102,8 @@ export default function TroubleshootingPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="py-16">
 
           {/* Breadcrumb */}
@@ -382,6 +384,7 @@ export default function TroubleshootingPage() {
           </div>
 
         </div>
+          </ContentEdge>
         </ContentRail>
       </main>
       <Footer />

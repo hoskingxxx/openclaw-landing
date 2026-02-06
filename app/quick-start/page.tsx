@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
@@ -17,7 +18,8 @@ export default function QuickStartPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-background-primary">
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
 
           {/* Header */}
           <div className="mb-12 border-b border-white/10 pb-8">
@@ -403,6 +405,7 @@ openclaw start        ← .env is read from HERE`}
              </Button>
           </div>
 
+          </ContentEdge>
         </ContentRail>
       </main>
       <Footer />

@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 import { FEATURED_POST_PATH } from "@/lib/blog";
@@ -21,7 +22,8 @@ export default function OOMPage() {
     <>
       <Navigation />
       <main className="min-h-screen">
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="py-16">
             {/* Breadcrumb */}
             <div className="mb-8">
@@ -419,6 +421,7 @@ you are valuing your time at minimum hourly rates.</code>
             </div>
           </div>
           </div>
+          </ContentEdge>
         </ContentRail>
       </main>
       <Footer />

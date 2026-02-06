@@ -2,6 +2,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
 import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 import { NextStepCard } from "@/components/features/NextSteps";
 import { faqs } from "@/lib/content";
 import { FEATURED_POST_PATH } from "@/lib/blog";
@@ -29,14 +30,17 @@ export default function FAQPage() {
       <Navigation />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <div className="pt-8 pb-4">
             <Breadcrumbs items={[{ label: "FAQ", href: "/faq" }]} />
           </div>
+          </ContentEdge>
         </ContentRail>
 
         {/* Page Title */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="py-8">
             <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
               Frequently Asked Questions
@@ -48,10 +52,12 @@ export default function FAQPage() {
               Formerly known as Clawdbot / Moltbot —— you may have seen these names elsewhere
             </p>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* FAQ List */}
-        <ContentRail className="px-4 sm:px-6">
+        <ContentRail>
+          <ContentEdge>
           <section className="pb-12">
           <div className="space-y-8">
             {faqs.map((category) => (
@@ -99,6 +105,7 @@ export default function FAQPage() {
             ))}
           </div>
           </section>
+          </ContentEdge>
         </ContentRail>
 
         {/* Next Step */}
