@@ -225,12 +225,14 @@ main[data-section="guides"] .prose a[data-link="brand"]:hover {
 }
 
 /* IMPORTANT: Cluster links - whitelist approach (BLUE) */
-main[data-section="guides"] a[data-link="cluster"] {
+main[data-section="guides"] a[data-link="cluster"],
+main[data-section="guides"] .prose a[data-link="cluster"] {
   color: #60a5fa !important;
   text-decoration: none;
 }
 
-main[data-section="guides"] a[data-link="cluster"]:hover {
+main[data-section="guides"] a[data-link="cluster"]:hover,
+main[data-section="guides"] .prose a[data-link="cluster"]:hover {
   color: #93c5fd !important;
   text-decoration: underline;
 }
