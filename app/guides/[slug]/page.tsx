@@ -220,7 +220,7 @@ export default async function BlogPostPage({
 
               {/* Article Body - glass-card w-full, direct child of Edge */}
               <div
-                className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
+                className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words [max-width:unset]"
                 dangerouslySetInnerHTML={{ __html: postContent.content }}
               />
 
