@@ -25,6 +25,7 @@ import { rehypeGroupIds } from "@/lib/rehype-group-ids";
 import { rehypeCollectHeadings, type TocItem } from "@/lib/rehype-collect-headings";
 import { rehypeDecisionGate, preprocessDecisionGates } from "@/lib/rehype-decision-gate";
 import { rehypeWrapRelatedSections } from "@/lib/rehype-wrap-related-sections";
+import { rehypeWrapStuckSections } from "@/lib/rehype-wrap-stuck-sections";
 import { rehypeClusterLinks } from "@/lib/rehype-cluster-links";
 
 export async function generateStaticParams() {
@@ -136,6 +137,7 @@ async function getPostContent(slug: string): Promise<{
     .use(rehypeCollectHeadings, { collector: tocItems })
     .use(rehypeVultrEnrich, { postSlug: slug, placementDefault: "mdx_auto" })
     .use(rehypeWrapRelatedSections)
+    .use(rehypeWrapStuckSections)
     .use(rehypeClusterLinks)
     .use(rehypeSanitize, schema)
     .use(rehypeExternalLinks, {

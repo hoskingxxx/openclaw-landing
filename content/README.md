@@ -39,7 +39,9 @@ The `rehypeVultrEnrich` plugin AUTOMATICALLY adds:
 
 ### How Cluster Links Work (AUTOMATIC)
 
-You write plain Markdown in "Related Articles" sections:
+Cluster links are internal guide navigation links that display as blue. Three contexts are automatically marked:
+
+**1. Related Articles sections:**
 ```mdx
 ## Related Articles
 
@@ -47,9 +49,26 @@ You write plain Markdown in "Related Articles" sections:
 - [Fix Slow Inference](/guides/fix-openclaw-slow-inference) - Bandwidth tips
 ```
 
-The `rehypeWrapRelatedSections` + `rehypeClusterLinks` plugins AUTOMATICALLY:
-1. Wrap the section in `<div data-block="related">`
-2. Add `data-link="cluster"` to `/guides/` links
+**2. Navigation/index tables:**
+```mdx
+| Error | Fix | Full Guide |
+|-------|-----|------------|
+| CUDA OOM | Reduce context | [Fix CUDA OOM](/guides/fix-openclaw-cuda-oom-errors) |
+```
+
+**3. "Still Stuck?" diagnostic sections (bottom of all guides):**
+```mdx
+### Still Stuck? Check Your Hardware
+
+Sometimes the code is fine, but the GPU is simply refusing to cooperate.
+Compare your specs against the [Hardware Reality Table](/guides/hardware-requirements-reality-check).
+```
+
+The rehype plugins AUTOMATICALLY:
+1. Wrap Related sections in `<div data-block="related">`
+2. Wrap Stuck sections in `<div data-block="stuck">`
+3. Detect `<table>` elements (navigation tables)
+4. Add `data-link="cluster"` to `/guides/` links in these contexts
 
 ### What About Other Links?
 
@@ -59,7 +78,7 @@ See [Node.js documentation](https://nodejs.org) for details.
 ```
 → Rendered as default color (no `data-link` attribute)
 
-**Internal links (not in Related sections)**:
+**Internal links in body text (not tables/Related sections)**:
 ```mdx
 Check the [hardware requirements](/guides/hardware-requirements-reality-check).
 ```
