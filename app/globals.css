@@ -238,7 +238,13 @@ main[data-section="guides"] .prose blockquote a[data-link="affiliate"] {
   color: #60a5fa !important;
 }
 
-main[data-section="guides"] .prose blockquote a[data-link="affiliate"]:hover {
+/* CRITICAL: Ensure strong elements inside affiliate links also use blue color */
+main[data-section="guides"] .prose blockquote a[data-link="affiliate"] strong {
+  color: #60a5fa !important;
+}
+
+main[data-section="guides"] .prose blockquote a[data-link="affiliate"]:hover,
+main[data-section="guides"] .prose blockquote a[data-link="affiliate"]:hover strong {
   color: #93c5fd !important;
   text-decoration: underline;
 }
