@@ -47,6 +47,9 @@ const EXEMPT_PATTERNS = [
   /className=/,           // JSX className (component usage)
   /glass-card/,           // Styled content divs (pass through rehype-sanitize)
   /border-l-4/,           // Border utility classes (styled divs)
+  /overflow-x-auto/,      // Table overflow containers (valid MDX HTML)
+  /rounded-lg/,           // Border radius utilities (valid MDX HTML)
+  /min-w-full/,           // Table width utilities (valid MDX HTML)
 ];
 
 // Skip patterns that are actually MDX components

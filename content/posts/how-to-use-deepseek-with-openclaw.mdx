@@ -151,45 +151,45 @@ openclaw start
 
 I didn't trust the official specs, so I ran specific tests. Here is exactly where my hardware died.
 
-<div className="overflow-x-auto my-6 rounded-lg border border-white/10">
-  <table className="min-w-full text-left text-sm">
+<div class="overflow-x-auto my-6 rounded-lg border border-white/10">
+  <table class="min-w-full text-left text-sm">
     <thead>
-      <tr className="bg-white/5 border-b border-white/10">
-        <th className="px-4 py-3 text-left font-semibold text-white">Setup</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Model Config</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Context</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Result</th>
-        <th className="px-4 py-3 text-left font-semibold text-white">Notes</th>
+      <tr class="bg-white/5 border-b border-white/10">
+        <th class="px-4 py-3 text-left font-semibold text-white">Setup</th>
+        <th class="px-4 py-3 text-left font-semibold text-white">Model Config</th>
+        <th class="px-4 py-3 text-left font-semibold text-white">Context</th>
+        <th class="px-4 py-3 text-left font-semibold text-white">Result</th>
+        <th class="px-4 py-3 text-left font-semibold text-white">Notes</th>
       </tr>
     </thead>
-    <tbody className="divide-y divide-white/5">
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90"><strong>MacBook Air M2 (16GB)</strong></td>
-        <td className="px-4 py-3 text-white/90">R1-Distill-Llama-8B (Q4_K_M)</td>
-        <td className="px-4 py-3 text-white/90">4k</td>
-        <td className="px-4 py-3 text-yellow-400">⚠️ Crawl (3 t/s)</td>
-        <td className="px-4 py-3 text-white/90">Usable for chat, impossible for Agent loops. Throttled after 15 mins.</td>
+    <tbody class="divide-y divide-white/5">
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3 text-white/90"><strong>MacBook Air M2 (16GB)</strong></td>
+        <td class="px-4 py-3 text-white/90">R1-Distill-Llama-8B (Q4_K_M)</td>
+        <td class="px-4 py-3 text-white/90">4k</td>
+        <td class="px-4 py-3 text-yellow-400">⚠️ Crawl (3 t/s)</td>
+        <td class="px-4 py-3 text-white/90">Usable for chat, impossible for Agent loops. Throttled after 15 mins.</td>
       </tr>
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90"><strong>RTX 3070 Ti (8GB)</strong></td>
-        <td className="px-4 py-3 text-white/90">R1-Distill-Qwen-7B (FP16)</td>
-        <td className="px-4 py-3 text-white/90">8k</td>
-        <td className="px-4 py-3 text-red-400">❌ OOM Crash</td>
-        <td className="px-4 py-3 text-white/90">Hit 8.1GB VRAM immediately. System froze.</td>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3 text-white/90"><strong>RTX 3070 Ti (8GB)</strong></td>
+        <td class="px-4 py-3 text-white/90">R1-Distill-Qwen-7B (FP16)</td>
+        <td class="px-4 py-3 text-white/90">8k</td>
+        <td class="px-4 py-3 text-red-400">❌ OOM Crash</td>
+        <td class="px-4 py-3 text-white/90">Hit 8.1GB VRAM immediately. System froze.</td>
       </tr>
-      <tr className="border-b border-white/5">
-        <td className="px-4 py-3 text-white/90"><strong>RTX 4090 (24GB)</strong></td>
-        <td className="px-4 py-3 text-white/90">DeepSeek-R1-Distill-Llama-70B (IQ2_XS)</td>
-        <td className="px-4 py-3 text-white/90">16k</td>
-        <td className="px-4 py-3 text-green-400">✅ Stable (35 t/s)</td>
-        <td className="px-4 py-3 text-white/90">The "IQ2" quant makes it dumb, but it fits.</td>
+      <tr class="border-b border-white/5">
+        <td class="px-4 py-3 text-white/90"><strong>RTX 4090 (24GB)</strong></td>
+        <td class="px-4 py-3 text-white/90">DeepSeek-R1-Distill-Llama-70B (IQ2_XS)</td>
+        <td class="px-4 py-3 text-white/90">16k</td>
+        <td class="px-4 py-3 text-green-400">✅ Stable (35 t/s)</td>
+        <td class="px-4 py-3 text-white/90">The "IQ2" quant makes it dumb, but it fits.</td>
       </tr>
       <tr>
-        <td className="px-4 py-3 text-white/90"><strong>Vultr A100 (80GB)</strong></td>
-        <td className="px-4 py-3 text-white/90">DeepSeek-R1 (Full 671B - API)</td>
-        <td className="px-4 py-3 text-white/90">128k</td>
-        <td className="px-4 py-3 text-green-400">⚡ Fly (Real-time speeds)</td>
-        <td className="px-4 py-3 text-white/90">This is cheating, but it's the only way to run the full model.</td>
+        <td class="px-4 py-3 text-white/90"><strong>Vultr A100 (80GB)</strong></td>
+        <td class="px-4 py-3 text-white/90">DeepSeek-R1 (Full 671B - API)</td>
+        <td class="px-4 py-3 text-white/90">128k</td>
+        <td class="px-4 py-3 text-green-400">⚡ Fly (Real-time speeds)</td>
+        <td class="px-4 py-3 text-white/90">This is cheating, but it's the only way to run the full model.</td>
       </tr>
     </tbody>
   </table>

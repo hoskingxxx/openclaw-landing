@@ -158,9 +158,15 @@ body {
   border-radius: var(--radius-lg);
 }
 
+/* Global links: do NOT inherit color (causes yellow/orange links in colored containers) */
 a {
-  color: inherit;
+  color: #60a5fa;  /* Default blue for all links */
   text-decoration: none;
+}
+
+a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
 }
 
 /* Optimize Article Code Block Styles */
@@ -191,7 +197,7 @@ a {
   font-size: 0.875em;
 }
 
-/* Article Link Style */
+/* Article Link Style - enforce blue even in colored containers */
 .prose a {
   color: #60a5fa !important;
   text-decoration: none;
@@ -199,6 +205,16 @@ a {
 }
 
 .prose a:hover {
+  color: #93c5fd !important;
+  text-decoration: underline;
+}
+
+/* IMPORTANT: Prevent color inheritance in styled containers (glass-card, callouts) */
+.glass-card a, .prose blockquote a, [class*="border-"] a {
+  color: #60a5fa !important;
+}
+
+.glass-card a:hover, .prose blockquote a:hover, [class*="border-"] a:hover {
   color: #93c5fd !important;
   text-decoration: underline;
 }

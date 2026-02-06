@@ -1,5 +1,7 @@
 # Fix OpenClaw CUDA Out of Memory Errors
 
+import SecondaryExitButton from "@/components/SecondaryExitButton";
+
 <div class="glass-card p-6 border-l-4 border-red-500 mb-8">
 
 **Error Confirmation**
@@ -240,8 +242,6 @@ Cloud GPUs provide the VRAM needed for larger models. This is not a "workaround"
 **Approved Next Action:**
 
 When local VRAM is exhausted, the remaining option is a cloud GPU with dedicated VRAM. Start with a clean Linux environment and NVIDIA GPU (H100, A100, or L40S are recommended for DeepSeek R1 32B/70B).
-
-import SecondaryExitButton from "@/components/SecondaryExitButton";
 
 <SecondaryExitButton
   href="https://www.vultr.com/?ref=9863490&utm_source=openclaw&utm_medium=decision-gate&utm_content=cuda-oom-secondary-exit"
