@@ -75,6 +75,9 @@ export function Hero() {
           <p className="text-xs text-text-tertiary mt-2 font-mono break-words italic">
             <strong className="text-brand-primary">My Benchmarking Rig:</strong> I wasted a whole night thinking this was a config bug on my <strong>RTX 3090 (24GB)</strong>. It wasn't. The log above is exactly where I stopped arguing with physics. Even 32B models are brutal; don't assume your hardware is immune.
           </p>
+          <p className="text-xs text-text-tertiary mt-4 font-mono break-words">
+            Stuck on <code className="text-brand-primary bg-transparent px-0">spawn EINVAL</code>? <Link href="/guides/fix-openclaw-spawn-einval?from=3060-banner-einval" className="text-brand-primary hover:text-brand-hover underline" data-umami-event="banner_einval_click" data-umami-event-post="homepage" data-umami-event-placement="hero_crash_log">Don't waste another hour fighting a broken environment.</Link>
+          </p>
         </div>
       </div>
     </section>
