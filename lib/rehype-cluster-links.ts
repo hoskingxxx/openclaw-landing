@@ -1,48 +1,52 @@
 import { visit } from "unist-util-visit";
-import type { Root, Element, Text } from "hast";
+import type { Root, Element } from "hast";
 
 /**
  * rehype plugin to mark internal guide links in "Related" sections as cluster links
  *
- * Finds links within sections headed by "Related Articles", "Related Fixes", "Related Issues", etc.
- * and adds data-link="cluster" attribute to internal guide links (href starting with "/guides/")
+ * Uses structural anchor approach: only targets links inside [data-block="related"]
+ * containers (wrapped by rehypeWrapRelatedSections plugin).
  *
- * This enables CSS styling of cluster links without using href-based selectors.
+ * Adds data-link="cluster" attribute to internal guide links (href starting with "/guides/")
+ * within these sections. This enables CSS styling without using href-based selectors.
  */
 export function rehypeClusterLinks() {
   return (tree: Root) => {
     let inRelatedSection = false;
 
-    visit(tree, "element", (node: Element, index, parent) => {
-      // Track if we're in a "Related" section (h2 heading starting with "Related")
-      if (node.tagName === "h2") {
-        const textContent = getTextContent(node);
-        inRelatedSection = /^Related\s+(Articles|Fixes|Guides|Issues)/i.test(textContent);
-        return;
-      }
-
-      // Add data-link="cluster" to internal guide links within Related sections
-      if (inRelatedSection && node.tagName === "a") {
-        const href = node.properties?.href;
-        if (typeof href === "string" && href.startsWith("/guides/")) {
-          node.properties = node.properties || {};
-          node.properties["dataLink"] = "cluster";
+    visit(tree, "element", (node: Element) => {
+      // Track if we're inside a [data-block="related"] container
+      if (node.tagName === "div" && node.properties?.["data-block"] === "related") {
+        inRelatedSection = true;
+        // Visit children inside this container
+        if (node.children) {
+          for (const child of node.children) {
+            if (child.type === "element") {
+              markClusterLinks(child as Element);
+            }
+          }
         }
+        inRelatedSection = false;
       }
     });
   };
 }
 
-function getTextContent(node: Element): string {
-  let text = "";
+function markClusterLinks(node: Element) {
+  if (node.tagName === "a") {
+    const href = node.properties?.href;
+    if (typeof href === "string" && href.startsWith("/guides/")) {
+      node.properties = node.properties || {};
+      node.properties["data-link"] = "cluster";
+    }
+  }
+
+  // Recursively process children
   if (node.children) {
     for (const child of node.children) {
-      if (child.type === "text") {
-        text += (child as Text).value;
-      } else if (child.type === "element") {
-        text += getTextContent(child as Element);
+      if (child.type === "element") {
+        markClusterLinks(child as Element);
       }
     }
   }
-  return text;
 }

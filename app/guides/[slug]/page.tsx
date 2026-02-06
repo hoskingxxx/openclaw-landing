@@ -24,6 +24,7 @@ import { rehypeVultrEnrich } from "@/lib/rehype-vultr-enrich";
 import { rehypeGroupIds } from "@/lib/rehype-group-ids";
 import { rehypeCollectHeadings, type TocItem } from "@/lib/rehype-collect-headings";
 import { rehypeDecisionGate, preprocessDecisionGates } from "@/lib/rehype-decision-gate";
+import { rehypeWrapRelatedSections } from "@/lib/rehype-wrap-related-sections";
 import { rehypeClusterLinks } from "@/lib/rehype-cluster-links";
 
 export async function generateStaticParams() {
@@ -114,6 +115,7 @@ async function getPostContent(slug: string): Promise<{
         ...((defaultSchema.attributes || {})["*"] || []),
         classAttribute,
         "id",
+        "data-block",
         // Schema.org attributes for FAQ structured data
         "itemscope",
         "itemtype",
@@ -133,6 +135,7 @@ async function getPostContent(slug: string): Promise<{
     .use(rehypeSlug)
     .use(rehypeCollectHeadings, { collector: tocItems })
     .use(rehypeVultrEnrich, { postSlug: slug, placementDefault: "mdx_auto" })
+    .use(rehypeWrapRelatedSections)
     .use(rehypeClusterLinks)
     .use(rehypeSanitize, schema)
     .use(rehypeExternalLinks, {
