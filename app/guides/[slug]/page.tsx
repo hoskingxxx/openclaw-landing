@@ -221,7 +221,7 @@ export default async function BlogPostPage({
 
               {/* Article Body */}
               <div
-                className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:border prose-pre:border-border prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-muted-foreground prose-img:rounded-lg prose-hr:border-border break-words"
+                className="glass-card p-4 sm:p-6 md:p-8 prose prose-invert prose-sm md:prose-base prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-foreground prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-secondary prose-pre:border prose-pre:border-border prose-blockquote:border-brand-primary prose-blockquote:bg-brand-muted/20 prose-blockquote:text-muted-foreground prose-img:rounded-lg prose-hr:border-border break-words"
                 dangerouslySetInnerHTML={{ __html: postContent.content }}
               />
 

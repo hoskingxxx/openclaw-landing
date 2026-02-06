@@ -19,8 +19,39 @@ Umami script **only loads in production** (`NODE_ENV === "production"`).
 
 ---
 
-### ✅ Layer 2: Browser Opt-Out
-**Location:** `components/UmamiAnalytics.tsx:29-35`
+### ✅ Layer 2: URL Query Parameter (NEW)
+**Location:** `components/UmamiAnalytics.tsx:31-35`
+
+**Testing Mode:** Add `?umami_ignore=1` to any page URL to disable analytics for that session.
+
+```bash
+# Example URLs
+https://openclaw-ai.org/guides/fix-openclaw-cuda-oom-errors?umami_ignore=1
+https://openclaw-ai.org/?umami_ignore=1
+https://openclaw-ai.org/troubleshooting?umami_ignore=1
+```
+
+**How to use:**
+1. Browse to any page on the site
+2. Add `?umami_ignore=1` to the URL (or `&umami_ignore=1` if URL already has parameters)
+3. Reload page — analytics will be disabled for that session
+4. Remove the parameter to re-enable analytics
+
+**Advantages:**
+- No browser console needed
+- Works in Incognito/Private windows
+- Temporary (doesn't persist like localStorage)
+- Ideal for testing CTAs, layouts, or content without polluting analytics
+
+**Console output when active:**
+```
+[Umami] Analytics disabled by URL parameter (?umami_ignore=1)
+```
+
+---
+
+### ✅ Layer 3: Browser Opt-Out
+**Location:** `components/UmamiAnalytics.tsx:40-46`
 
 Maintainers can exclude themselves via browser console:
 
@@ -41,7 +72,7 @@ When set, the script shows: `[Umami] Analytics disabled by user opt-out`
 
 ---
 
-## Layer 3: IP Exclusion (Backend Config)
+### ✅ Layer 4: IP Exclusion (Backend Config)
 
 **Action Required:** Configure in Umami Dashboard
 
@@ -91,14 +122,16 @@ curl -s ifconfig.me
 
 ### Pre-Deployment
 - [ ] `NODE_ENV` check is in place
+- [ ] `umami_ignore` query parameter logic works
 - [ ] `localStorage.umami_ignore` logic works
 - [ ] Dev environment doesn't load Umami script
 
 ### Post-Deployment
 - [ ] Visit site in development → No Umami script in DevTools
 - [ ] Visit production → Umami script is present
+- [ ] Add `?umami_ignore=1` to URL → Console shows disabled message
 - [ ] Set `localStorage.umami_ignore = "1"` → Console shows opt-out message
-- [ ] Configure IP exclusions in Umami backend
+- [ ] Configure IP exclusions in Umami backend (optional)
 
 ### Ongoing Monitoring
 - [ ] Compare `vultr_click` events before/after filtering
@@ -119,6 +152,12 @@ curl -s ifconfig.me
 ```javascript
 // Should return "1" if opted out
 localStorage.getItem('umami_ignore')
+```
+
+### Check URL parameter status
+```javascript
+// Should return "1" if parameter is set
+new URLSearchParams(window.location.search).get('umami_ignore')
 ```
 
 ### Simulate external user

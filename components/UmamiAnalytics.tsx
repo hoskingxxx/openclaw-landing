@@ -5,13 +5,14 @@
  *
  * FILTERING LAYERS (in order):
  * 1. Environment: Only loads in production (NODE_ENV === "production")
- * 2. Browser Opt-out: Respects localStorage.umami_ignore = "1"
+ * 2. URL Query Parameter: ?umami_ignore=1 or &umami_ignore=1
+ * 3. Browser Opt-out: Respects localStorage.umami_ignore = "1"
  *
- * MAINTAINER OPT-OUT:
- * Run in browser console to exclude your own traffic:
- *   localStorage.setItem('umami_ignore', '1')
+ * MAINTAINER OPT-OUT OPTIONS:
+ * 1. URL: Add ?umami_ignore=1 to any page URL
+ * 2. Console: localStorage.setItem('umami_ignore', '1')
  *
- * To re-enable:
+ * To re-enable from console:
  *   localStorage.removeItem('umami_ignore')
  */
 
@@ -27,14 +28,24 @@ export function UmamiAnalytics() {
       return;
     }
 
-    // LAYER 2: Browser opt-out check
+    // LAYER 2: URL query parameter check
+    // Maintainers can add ?umami_ignore=1 to URL to disable analytics
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("umami_ignore") === "1") {
+        console.log("[Umami] Analytics disabled by URL parameter (?umami_ignore=1)");
+        return;
+      }
+    }
+
+    // LAYER 3: Browser opt-out check
     // Maintainers can set localStorage.umami_ignore = "1" to exclude themselves
     if (typeof window !== "undefined" && localStorage.getItem("umami_ignore") === "1") {
       console.log("[Umami] Analytics disabled by user opt-out (localStorage.umami_ignore)");
       return;
     }
 
-    // Load Umami script only if both checks pass
+    // Load Umami script only if all checks pass
     const script = document.createElement("script");
     script.async = true;
     script.defer = true;
