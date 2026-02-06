@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import RealityCheck from '@/components/RealityCheck'
 import { FAQ } from '@/components/FAQ'
+import { AffiliateLink } from '@/components/AffiliateLink'
 
 // Force MDX <a> to render as real clickable links
 const A = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
@@ -26,6 +27,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ...components,
     RealityCheck,
     FAQ,
+    AffiliateLink,
     a: A, // CRITICAL: Force MDX <a> to render as real clickable links
   }
 }
