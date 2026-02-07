@@ -1,7 +1,7 @@
 "use client"
 
 import { usePathname } from 'next/navigation';
-import { trackVultrClick } from "@/lib/tracking";
+import { trackAffiliateClick } from "@/lib/tracking";
 import { Button } from "@/components/ui/Button";
 
 export function StopDebuggingCTA() {
@@ -31,13 +31,10 @@ export function StopDebuggingCTA() {
             size="md"
             href={affLink}
             external
-            onClick={() => trackVultrClick({ placement: "stop_debugging_box", ctaId: "stop_debugging_button", postSlug, utmContent })}
-            data-umami-event="vultr_click"
-            data-umami-event-post={postSlug}
-            data-umami-event-placement="stop_debugging_box"
-            data-umami-event-cta-id="stop_debugging_button"
-            data-umami-event-ref="9864821-9J"
-            data-umami-event-utm_content={utmContent}
+            onClick={() => trackAffiliateClick({ source: "vultr_stop_debugging_box", postSlug })}
+            data-umami-event="affiliate_click"
+            data-umami-partner="vultr"
+            data-umami-location="stop_debugging_box"
           >
             Deploy on Vultr (Cloud GPU) →
           </Button>

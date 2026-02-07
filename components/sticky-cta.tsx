@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { trackVultrClick } from "@/lib/tracking"
+import { trackAffiliateClick } from "@/lib/tracking"
 import { Button } from "@/components/ui/Button"
 
 export function StickyCTA() {
@@ -53,14 +53,11 @@ export function StickyCTA() {
           size="sm"
           href={affLink}
           external
-          onClick={() => trackVultrClick({ placement: "sticky_banner", ctaId: "sticky_deploy_button", postSlug, utmContent })}
+          onClick={() => trackAffiliateClick({ source: "vultr_sticky_banner", postSlug })}
           data-cta="true"
-          data-umami-event="vultr_click"
-          data-umami-event-post={postSlug}
-          data-umami-event-placement="sticky_banner"
-          data-umami-event-cta-id="sticky_deploy_button"
-          data-umami-event-ref="9864821-9J"
-          data-umami-event-utm_content={utmContent}
+          data-umami-event="affiliate_click"
+          data-umami-partner="vultr"
+          data-umami-location="sticky_banner"
         >
           Deploy Now →
         </Button>

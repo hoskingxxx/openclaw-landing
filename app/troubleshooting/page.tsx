@@ -318,12 +318,9 @@ export default function TroubleshootingPage() {
                           href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=troubleshooting&utm_content=low_vram_trap"
                           target="_blank"
                           rel="noopener noreferrer"
-                          data-umami-event="vultr_click"
-                          data-umami-event-post="troubleshooting"
-                          data-umami-event-placement="low_vram_trap"
-                          data-umami-event-cta-id="trap_rent_gpu_button"
-                          data-umami-event-ref="9864821-9J"
-                          data-umami-event-utm_content="low_vram_trap"
+                          data-umami-event="affiliate_click"
+                          data-umami-partner="vultr"
+                          data-umami-location="low_vram_trap"
                           className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-mono text-sm font-bold rounded-lg transition-colors"
                         >
                           Rent a GPU (~billable hourly rates) →
@@ -369,12 +366,9 @@ export default function TroubleshootingPage() {
                 size="md"
                 href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=troubleshooting&utm_content=page_cta"
                 external
-                data-umami-event="vultr_click"
-                data-umami-event-post="troubleshooting"
-                data-umami-event-placement="page_cta"
-                data-umami-event-cta-id="page_deploy_button"
-                data-umami-event-ref="9864821-9J"
-                data-umami-event-utm_content="page_cta"
+                data-umami-event="affiliate_click"
+                data-umami-partner="vultr"
+                data-umami-location="page_cta"
               >
                 Deploy on Vultr (Limited Time Promotion) →
               </Button>

@@ -57,16 +57,11 @@ export function rehypeVultrEnrich(options: Options) {
 
       node.properties.className = classes;
 
-      // Umami
-      node.properties["data-umami-event"] = "vultr_click";
-      node.properties["data-umami-event-ref"] = "9864821-9J";
-      node.properties["data-umami-event-post"] = postSlug;
-
-      const placement =
+      // Umami tracking - unified affiliate schema
+      node.properties["data-umami-event"] = "affiliate_click";
+      node.properties["data-umami-partner"] = "vultr";
+      node.properties["data-umami-location"] =
         getQueryParam(href, "utm_content") ?? placementDefault;
-      node.properties["data-umami-event-placement"] = placement;
-
-      node.properties["data-umami-event-cta-id"] = "mdx_auto_link";
 
       // Affiliate link styling
       node.properties["data-link"] = "affiliate";
