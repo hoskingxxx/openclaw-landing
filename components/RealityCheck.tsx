@@ -577,10 +577,18 @@ export default function RealityCheck() {
               </div>
               <div className="flex-1">
                 <div className="font-bold text-white flex items-center gap-2 text-lg">
-                  🚀 Download 1-Click Survival Kit ($9.90)
+                  {environment === "local_win" ? (
+                    <>🪟 Windows Safe Config - 1-Click Kit ($9.90)</>
+                  ) : (
+                    <>🚀 Download 1-Click Survival Kit ($9.90)</>
+                  )}
                 </div>
                 <p className="text-sm text-white/90 mt-2 leading-relaxed">
-                  Ready-to-use templates, monitoring, and prompts.
+                  {environment === "local_win" ? (
+                    <>Secure local setup with tested templates.</>
+                  ) : (
+                    <>Ready-to-use templates, monitoring, and prompts.</>
+                  )}
                 </p>
                 <div className="flex items-center gap-2 mt-4 text-base font-bold text-white">
                   <ExternalLink className="w-5 h-5" />
