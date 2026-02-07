@@ -101,33 +101,13 @@ function calculateStatus(requiredVRAM: number, userVRAM: number): Status {
   return "green"
 }
 
-/**
- * Find the next smaller model that can fit in user's VRAM
- * Returns null if current model is already the smallest or no smaller model fits
- */
-function findNextSmallerFittingModel(currentModel: ModelId, userVRAM: number): ModelId | null {
-  const currentIndex = MODEL_IDS.indexOf(currentModel)
-  if (currentIndex <= 0) return null // Already at smallest
-
-  // Check smaller models in reverse order
-  for (let i = currentIndex - 1; i >= 0; i--) {
-    const modelId = MODEL_IDS[i]
-    if (MODELS[modelId].requiredVRAM <= userVRAM) {
-      return modelId
-    }
-  }
-
-  // No smaller model fits, return the absolute smallest
-  return SMALLEST_MODEL
-}
-
 // ============================================================================
 // TRACKING HANDLERS (Strict Schema)
 // ============================================================================
 
 interface AffiliateTrackParams {
   partner: 'gumroad' | 'deepinfra' | 'vultr'
-  location: 'red_card' | 'yellow_card' | 'green_card' | 'mobile_override'
+  location: 'red_card' | 'yellow_card' | 'green_card' | 'mobile_override' | 'security_banner'
   model: ModelId
   vram: VRAMId
   status: Status
@@ -168,9 +148,8 @@ export default function RealityCheck() {
   const requiredVRAM = MODELS[model].requiredVRAM
   const status = calculateStatus(requiredVRAM, userVRAM)
 
-  // Find next smaller model for downgrade button
-  const nextSmallerModel = findNextSmallerFittingModel(model, userVRAM)
-  const canDowngrade = nextSmallerModel !== null
+  // Try Smaller Model always goes to 8B (ENTRY_MODEL), unless already at 8B or smaller
+  const canDowngradeTo8B = model !== "8b" && model !== "1.5b"
 
   // Show security banner? (Independent layer, does NOT affect status)
   const showSecurityBanner = environment === "local_win" || environment === "local_mac"
@@ -189,9 +168,9 @@ export default function RealityCheck() {
   }
 
   const handleDowngrade = () => {
-    const targetModel = nextSmallerModel || SMALLEST_MODEL
-    trackToolDowngrade({ fromModel: model, toModel: targetModel, postSlug })
-    setModel(targetModel)
+    // Always downgrade to 8B as the entry point
+    trackToolDowngrade({ fromModel: model, toModel: ENTRY_MODEL, postSlug })
+    setModel(ENTRY_MODEL)
   }
 
   return (
@@ -213,12 +192,22 @@ export default function RealityCheck() {
               </div>
               <p className="text-sm text-amber-800 dark:text-amber-200 mt-1">
                 Local environments have limited isolation.
-                {" "}For long-term safety, use our <strong>Safe Config</strong> or a{" "}
+                {" "}For long-term safety, use our{" "}
+                <a
+                  href={LINK_KIT}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackGumroad('security_banner')}
+                  className="underline hover:text-amber-950 dark:hover:text-amber-100 font-medium"
+                >
+                  Safe Config
+                </a>
+                {" "}or a{" "}
                 <a
                   href={LINK_CLOUD}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackVultr('red_card')}
+                  onClick={() => trackVultr('security_banner')}
                   className="underline hover:text-amber-950 dark:hover:text-amber-100 font-medium"
                 >
                   Cloud VPS
@@ -418,13 +407,13 @@ export default function RealityCheck() {
             </div>
           </a>
 
-          {/* Fallback: Try Smaller Model */}
-          {canDowngrade && nextSmallerModel && (
+          {/* Fallback: Try Smaller Model (8B) */}
+          {canDowngradeTo8B && (
             <button
               onClick={handleDowngrade}
               data-umami-event="tool_downgrade_click"
               data-umami-from={model}
-              data-umami-to={nextSmallerModel}
+              data-umami-to={ENTRY_MODEL}
               className="w-full p-4 rounded-lg border border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-950/20 hover:border-orange-400 hover:shadow-sm transition-all text-left"
             >
               <div className="flex items-start gap-3">
@@ -433,10 +422,10 @@ export default function RealityCheck() {
                 </div>
                 <div className="flex-1">
                   <div className="font-bold text-orange-900 dark:text-orange-100">
-                    Try Smaller Model ({MODELS[nextSmallerModel].label})
+                    Try Smaller Model (8B)
                   </div>
                   <p className="text-sm text-orange-700 dark:text-orange-300 mt-1">
-                    Your GPU cannot handle {MODELS[model].label}. Try {MODELS[nextSmallerModel].label}.
+                    Your GPU cannot handle {MODELS[model].label}. Try {MODELS[ENTRY_MODEL].label}.
                   </p>
                 </div>
               </div>
@@ -511,19 +500,19 @@ export default function RealityCheck() {
             </a>
           </div>
 
-          {/* Fallback: Try Smaller Model */}
-          {canDowngrade && nextSmallerModel && (
+          {/* Fallback: Try Smaller Model (8B) */}
+          {canDowngradeTo8B && (
             <button
               onClick={handleDowngrade}
               data-umami-event="tool_downgrade_click"
               data-umami-from={model}
-              data-umami-to={nextSmallerModel}
+              data-umami-to={ENTRY_MODEL}
               className="w-full p-3 rounded-lg border border-orange-200 dark:border-orange-800 bg-orange-50 dark:bg-orange-950/20 hover:border-orange-400 hover:shadow-sm transition-all text-left"
             >
               <div className="flex items-center gap-2 text-sm">
                 <Zap className="w-4 h-4 text-orange-600 dark:text-orange-400" />
                 <span className="text-orange-900 dark:text-amber-100 font-medium">
-                  Try Smaller Model ({MODELS[nextSmallerModel].label})
+                  Try Smaller Model (8B)
                 </span>
               </div>
             </button>
