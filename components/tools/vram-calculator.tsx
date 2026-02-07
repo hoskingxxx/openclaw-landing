@@ -7,6 +7,14 @@ import { ConversionButton } from "@/components/monetization/ConversionButton"
 import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Shield, Cpu, Zap } from "lucide-react"
 
 // ============================================================================
+// GLOBAL AFFILIATE LINKS (HARDCODED)
+// ============================================================================
+
+const LINK_KIT = "https://hoskington6.gumroad.com/l/ymwwgm"
+const LINK_API = "https://deepinfra.com/"
+const LINK_CLOUD = "https://www.vultr.com/?ref=9864821-9J"
+
+// ============================================================================
 // TYPES & DATA STRUCTURES
 // ============================================================================
 
@@ -93,15 +101,14 @@ function calculateStatus(requiredVRAM: number, userVRAM: number): Status {
 interface TrackParams {
   partner: 'deepinfra' | 'vultr' | 'gumroad'
   location: 'red_card' | 'yellow_card' | 'green_card' | 'mobile_override'
-  model: ModelId
-  vram: VRAMId
+  targetUrl: string
   postSlug: string
 }
 
 function trackAffiliate(params: TrackParams) {
   trackAffiliateClick({
     source: `tool_${params.partner}_${params.location}`,
-    verdict: undefined, // Status is separate from verdict
+    verdict: undefined,
     postSlug: params.postSlug,
   })
 }
@@ -139,22 +146,22 @@ export function VramCalculator() {
   const showSecurityBanner = environment === "windows" || environment === "macos"
 
   // Handlers
-  const handleDeepInfraClick = () => {
+  const handleApiClick = () => {
     const location = isMobile ? "mobile_override" :
                       status === "red" ? "red_card" :
                       status === "yellow" ? "yellow_card" : "green_card"
-    trackAffiliate({ partner: "deepinfra", location, model, vram, postSlug })
+    trackAffiliate({ partner: "deepinfra", location, targetUrl: LINK_API, postSlug })
   }
 
-  const handleVultrClick = () => {
-    trackAffiliate({ partner: "vultr", location: "red_card", model, vram, postSlug })
+  const handleCloudClick = () => {
+    trackAffiliate({ partner: "vultr", location: "red_card", targetUrl: LINK_CLOUD, postSlug })
   }
 
-  const handleGumroadClick = () => {
+  const handleKitClick = () => {
     const location = isMobile ? "mobile_override" :
                       status === "red" ? "red_card" :
                       status === "yellow" ? "yellow_card" : "green_card"
-    trackAffiliate({ partner: "gumroad", location, model, vram, postSlug })
+    trackAffiliate({ partner: "gumroad", location, targetUrl: LINK_KIT, postSlug })
   }
 
   const handleDowngrade = () => {
@@ -179,13 +186,26 @@ export function VramCalculator() {
         <div className="mb-6 p-4 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/20">
           <div className="flex items-start gap-3">
             <Shield className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
-            <div>
+            <div className="flex-1">
               <div className="font-semibold text-amber-900 dark:text-amber-100 text-sm">
                 Security Note
               </div>
               <p className="text-sm text-amber-800 dark:text-amber-200 mt-1">
                 Local isolation on {environment === "windows" ? "Windows" : "macOS"} is limited for AI workloads.
-                {" "}Consider using our <strong>Safe Config (Gumroad)</strong> or <strong>Cloud VPS</strong> for isolated environments.
+                {" "}Consider using our <strong>Safe Config (Gumroad)</strong> or{" "}
+                <a
+                  href={LINK_CLOUD}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={handleCloudClick}
+                  data-umami-event="affiliate_click"
+                  data-umami-partner="vultr"
+                  data-umami-location="security_banner"
+                  className="underline hover:text-amber-950 dark:hover:text-amber-100 font-medium"
+                >
+                  Cloud VPS
+                </a>
+                {" "}for isolated environments.
               </p>
             </div>
           </div>
@@ -250,13 +270,14 @@ export function VramCalculator() {
 
           {/* Primary: DeepInfra API */}
           <a
-            href="https://deepinfra.com/?ref=openclaw"
+            href={LINK_API}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleDeepInfraClick}
+            onClick={handleApiClick}
             data-umami-event="affiliate_click"
             data-umami-partner="deepinfra"
             data-umami-location="mobile_override"
+            data-umami-target_url={LINK_API}
             className="block p-4 rounded-lg border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-all"
           >
             <div className="flex items-center gap-3">
@@ -275,13 +296,14 @@ export function VramCalculator() {
 
           {/* Secondary: Gumroad */}
           <a
-            href="https://hoskington6.gumroad.com/l/ymwwgm?ref=openclaw_tool"
+            href={LINK_KIT}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleGumroadClick}
+            onClick={handleKitClick}
             data-umami-event="affiliate_click"
             data-umami-partner="gumroad"
             data-umami-location="mobile_override"
+            data-umami-target_url={LINK_KIT}
             className="block p-3 rounded-lg border border-amber-200 dark:border-amber-800 hover:border-amber-400 transition-all"
           >
             <div className="flex items-center gap-2 text-sm">
@@ -310,13 +332,14 @@ export function VramCalculator() {
 
           {/* Primary: DeepInfra API */}
           <a
-            href="https://deepinfra.com/?ref=openclaw"
+            href={LINK_API}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleDeepInfraClick}
+            onClick={handleApiClick}
             data-umami-event="affiliate_click"
             data-umami-partner="deepinfra"
             data-umami-location="red_card"
+            data-umami-target_url={LINK_API}
             className="block p-4 rounded-lg border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-all"
           >
             <div className="flex items-start gap-3">
@@ -340,13 +363,14 @@ export function VramCalculator() {
 
           {/* Secondary: Vultr */}
           <a
-            href={`https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=${postSlug}&utm_content=vram_calc_red`}
+            href={LINK_CLOUD}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleVultrClick}
+            onClick={handleCloudClick}
             data-umami-event="affiliate_click"
             data-umami-partner="vultr"
             data-umami-location="red_card"
+            data-umami-target_url={LINK_CLOUD}
             className="block p-4 rounded-lg border border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/20 hover:border-purple-400 hover:shadow-sm transition-all"
           >
             <div className="flex items-start gap-3">
@@ -415,13 +439,14 @@ export function VramCalculator() {
 
           {/* Primary: Gumroad Kit (Sell the Skill) */}
           <a
-            href="https://hoskington6.gumroad.com/l/ymwwgm?ref=openclaw_tool"
+            href={LINK_KIT}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleGumroadClick}
+            onClick={handleKitClick}
             data-umami-event="affiliate_click"
             data-umami-partner="gumroad"
             data-umami-location="yellow_card"
+            data-umami-target_url={LINK_KIT}
             className="block p-5 rounded-lg border-2 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/40 dark:to-amber-900/20 hover:border-amber-600 hover:shadow-lg hover:shadow-amber-500/20 transition-all"
           >
             <div className="flex items-start gap-4">
@@ -445,13 +470,14 @@ export function VramCalculator() {
 
           {/* Secondary: DeepInfra API */}
           <a
-            href="https://deepinfra.com/?ref=openclaw"
+            href={LINK_API}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleDeepInfraClick}
+            onClick={handleApiClick}
             data-umami-event="affiliate_click"
             data-umami-partner="deepinfra"
             data-umami-location="yellow_card"
+            data-umami-target_url={LINK_API}
             className="block p-4 rounded-lg border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/20 hover:border-blue-400 hover:shadow-sm transition-all"
           >
             <div className="flex items-center gap-3">
@@ -526,31 +552,32 @@ export function VramCalculator() {
             </p>
           </div>
 
-          {/* Primary: Gumroad Kit (DOMINANT) */}
+          {/* Primary: Gumroad Kit (DOMINANT - Gold/Green Gradient) */}
           <a
-            href="https://hoskington6.gumroad.com/l/ymwwgm?ref=openclaw_tool"
+            href={LINK_KIT}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={handleGumroadClick}
+            onClick={handleKitClick}
             data-umami-event="affiliate_click"
             data-umami-partner="gumroad"
             data-umami-location="green_card"
-            className="block p-6 rounded-lg border-2 border-amber-500 bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/40 dark:to-amber-900/20 hover:border-amber-600 hover:shadow-xl hover:shadow-amber-500/30 hover:scale-[1.02] transition-all"
+            data-umami-target_url={LINK_KIT}
+            className="block p-6 rounded-lg border-2 bg-gradient-to-br from-emerald-500 via-green-500 to-amber-500 hover:from-emerald-600 hover:via-green-600 hover:to-amber-600 text-white shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all"
           >
             <div className="flex items-start gap-4">
-              <div className="p-4 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl shadow-lg">
+              <div className="p-4 bg-white/20 backdrop-blur-sm rounded-xl shadow-lg">
                 <Package className="w-7 h-7 text-white" />
               </div>
               <div className="flex-1">
-                <div className="font-bold text-amber-900 dark:text-amber-100 flex items-center gap-2 text-lg">
+                <div className="font-bold text-white flex items-center gap-2 text-lg">
                   🚀 Download 1-Click Survival Kit
-                  <span className="text-sm bg-amber-500 text-white px-3 py-1 rounded-full font-bold">$9.90</span>
+                  <span className="text-sm bg-white text-green-600 px-3 py-1 rounded-full font-bold shadow-lg">$9.90</span>
                 </div>
-                <p className="text-sm text-amber-800 dark:text-amber-200 mt-2 leading-relaxed">
+                <p className="text-sm text-white/90 mt-2 leading-relaxed">
                   Get ready-to-use Docker templates, monitoring dashboards, and optimized prompts.
-                                   {" "}Stop configuring, start running.
+                  {" "}Stop configuring, start running.
                 </p>
-                <div className="flex items-center gap-2 mt-4 text-base font-bold text-amber-700 dark:text-amber-300">
+                <div className="flex items-center gap-2 mt-4 text-base font-bold text-white">
                   <ExternalLink className="w-5 h-5" />
                   Get Instant Access
                 </div>
@@ -561,13 +588,14 @@ export function VramCalculator() {
           {/* Secondary: DeepInfra API (Small Link) */}
           <div className="text-center">
             <a
-              href="https://deepinfra.com/?ref=openclaw"
+              href={LINK_API}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleDeepInfraClick}
+              onClick={handleApiClick}
               data-umami-event="affiliate_click"
               data-umami-partner="deepinfra"
               data-umami-location="green_card"
+              data-umami-target_url={LINK_API}
               className="inline-flex items-center gap-1 text-sm text-text-secondary hover:text-brand-primary transition-colors"
             >
               Just want to test? Try Cloud API <ExternalLink className="w-3 h-3" />
