@@ -194,8 +194,7 @@ export function VramCalculator() {
                   href={LINK_KIT}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackGumroad('security_banner')}
-                  data-umami-event="affiliate_click"
+                  data-umami-event="marketing_affiliate_click"
                   data-umami-partner="gumroad"
                   data-umami-placement="security_banner"
                   className="underline hover:text-amber-950 dark:hover:text-amber-100 font-medium"
@@ -207,8 +206,7 @@ export function VramCalculator() {
                   href={LINK_CLOUD}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackVultr('security_banner')}
-                  data-umami-event="affiliate_click"
+                  data-umami-event="marketing_affiliate_click"
                   data-umami-partner="vultr"
                   data-umami-placement="security_banner"
                   className="underline hover:text-amber-950 dark:hover:text-amber-100 font-medium"
@@ -332,7 +330,7 @@ export function VramCalculator() {
               </a>
             </>
           ) : (
-        <div className="space-y-3">
+            <>
           {/* Status Header */}
           <div className="p-4 rounded-lg bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800">
             <div className="flex items-center gap-2 text-red-900 dark:text-red-100 font-semibold">
@@ -431,6 +429,8 @@ export function VramCalculator() {
                 </div>
               </div>
             </button>
+          )}
+            </>
           )}
         </div>
       )}
