@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { siteConfig, navLinks, disclaimers } from "@/lib/site-config";
 import { MenuIcon, XIcon } from "@/components/icons";
+import { NavbarSupportButton } from "@/components/monetization/NavbarSupportButton";
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -45,6 +46,9 @@ export function Navigation() {
                 </Link>
               ))}
             </div>
+
+            {/* Support Button */}
+            <NavbarSupportButton />
 
             {/* Mobile Menu Button */}
             <button
