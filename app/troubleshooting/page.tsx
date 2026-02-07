@@ -320,7 +320,7 @@ export default function TroubleshootingPage() {
                           rel="noopener noreferrer"
                           data-umami-event="affiliate_click"
                           data-umami-partner="vultr"
-                          data-umami-location="low_vram_trap"
+                          data-umami-placement="low_vram_trap"
                           className="inline-flex items-center gap-2 px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-mono text-sm font-bold rounded-lg transition-colors"
                         >
                           Rent a GPU (~billable hourly rates) →
@@ -368,7 +368,7 @@ export default function TroubleshootingPage() {
                 external
                 data-umami-event="affiliate_click"
                 data-umami-partner="vultr"
-                data-umami-location="page_cta"
+                data-umami-placement="page_cta"
               >
                 Deploy on Vultr (Limited Time Promotion) →
               </Button>

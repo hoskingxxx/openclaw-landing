@@ -62,7 +62,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 data-umami-event="affiliate_click"
                 data-umami-partner="vultr"
-                data-umami-location="hero_section"
+                data-umami-placement="hero_section"
                 className="px-8 py-4 text-lg font-bold text-[#FF4500] bg-orange-50 dark:bg-orange-900/20 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 border border-orange-200 dark:border-orange-800 transition-all flex items-center gap-2"
               >
                 🚀 Rent Cloud GPU

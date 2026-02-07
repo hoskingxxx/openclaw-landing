@@ -60,7 +60,7 @@ export function rehypeVultrEnrich(options: Options) {
       // Umami tracking - unified affiliate schema
       node.properties["data-umami-event"] = "affiliate_click";
       node.properties["data-umami-partner"] = "vultr";
-      node.properties["data-umami-location"] =
+      node.properties["data-umami-placement"] =
         getQueryParam(href, "utm_content") ?? placementDefault;
 
       // Affiliate link styling

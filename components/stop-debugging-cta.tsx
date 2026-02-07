@@ -34,7 +34,7 @@ export function StopDebuggingCTA() {
             onClick={() => trackAffiliateClick({ source: "vultr_stop_debugging_box", postSlug })}
             data-umami-event="affiliate_click"
             data-umami-partner="vultr"
-            data-umami-location="stop_debugging_box"
+            data-umami-placement="stop_debugging_box"
           >
             Deploy on Vultr (Cloud GPU) →
           </Button>

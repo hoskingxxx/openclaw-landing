@@ -57,7 +57,7 @@ export function StickyCTA() {
           data-cta="true"
           data-umami-event="affiliate_click"
           data-umami-partner="vultr"
-          data-umami-location="sticky_banner"
+          data-umami-placement="sticky_banner"
         >
           Deploy Now →
         </Button>
