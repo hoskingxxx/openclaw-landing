@@ -15,6 +15,19 @@ const LINK_API = "https://deepinfra.com/"
 const LINK_CLOUD = "https://www.vultr.com/?ref=9864821-9J"
 
 // ============================================================================
+// SELECT STYLES (Hardcoded for dark mode dropdown options)
+// ============================================================================
+const selectStyle: React.CSSProperties = {
+  backgroundColor: "#0f172a",
+  color: "#e5e7eb",
+};
+
+const optionStyle: React.CSSProperties = {
+  backgroundColor: "#0f172a",
+  color: "#e5e7eb",
+};
+
+// ============================================================================
 // TYPES & DATA STRUCTURES (Strict Enum - Do Not Modify)
 // ============================================================================
 
@@ -199,10 +212,11 @@ export default function RealityCheck() {
           <select
             value={environment}
             onChange={(e) => setEnvironment(e.target.value as Environment)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
+            className="w-full h-10 rounded-md border border-input px-3 appearance-none cursor-pointer"
+            style={selectStyle}
           >
             {ENVIRONMENT_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} style={optionStyle}>{opt.label}</option>
             ))}
           </select>
         </div>
@@ -212,10 +226,11 @@ export default function RealityCheck() {
           <select
             value={vram}
             onChange={(e) => setVram(e.target.value as VRAMId)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
+            className="w-full h-10 rounded-md border border-input px-3 appearance-none cursor-pointer"
+            style={selectStyle}
           >
             {VRAM_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} style={optionStyle}>{opt.label}</option>
             ))}
           </select>
         </div>
@@ -225,10 +240,11 @@ export default function RealityCheck() {
           <select
             value={model}
             onChange={(e) => setModel(e.target.value as ModelId)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
+            className="w-full h-10 rounded-md border border-input px-3 appearance-none cursor-pointer"
+            style={selectStyle}
           >
             {MODEL_IDS.map(id => (
-              <option key={id} value={id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{MODELS[id].label}</option>
+              <option key={id} value={id} style={optionStyle}>{MODELS[id].label}</option>
             ))}
           </select>
         </div>
