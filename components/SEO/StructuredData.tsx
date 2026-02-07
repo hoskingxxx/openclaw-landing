@@ -46,11 +46,7 @@ export function SoftwareStructuredData() {
       url: "https://github.com/openclaw/openclaw",
     },
     license: "https://opensource.org/licenses/MIT",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1250",
-    },
+    // Removed aggregateRating to avoid "self-serving reviews" spam penalty
   };
 
   return (
@@ -113,7 +109,8 @@ export function BreadcrumbStructuredData({ items }: { items: BreadcrumbItem[] })
   );
 }
 
-// Article Structured Data (Blog Posts)
+// TechArticle Structured Data (Technical Guides)
+// Using TechArticle instead of Article for better SEO in technical content
 interface ArticleStructuredDataProps {
   title: string;
   description: string;
@@ -133,7 +130,7 @@ export function ArticleStructuredData({
 }: ArticleStructuredDataProps) {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "TechArticle",
     headline: title,
     description: description,
     image: imageUrl || `${siteConfig.url}/og-image.png`,
@@ -145,15 +142,22 @@ export function ArticleStructuredData({
     },
     publisher: {
       "@type": "Organization",
-      name: "OpenClaw Community",
+      name: "OpenClaw Survival Guide",
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/og-image.png`,
+        url: `${siteConfig.url}/icon`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
+    },
+    // TechArticle-specific fields for technical content
+    proficiencyLevel: "Beginner to Expert",
+    dependencies: "OpenClaw AI Agent Framework",
+    audience: {
+      "@type": "Audience",
+      audienceType: "Developers",
     },
   };
 
