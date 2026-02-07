@@ -143,6 +143,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Scroll offset for sticky header - prevents anchors from being hidden */
+html {
+  scroll-padding-top: 5rem;
+}
+
 body {
   color: var(--color-text-primary);
   background: var(--color-bg-primary);
