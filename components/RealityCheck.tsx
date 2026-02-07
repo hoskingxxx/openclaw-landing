@@ -202,7 +202,7 @@ export default function RealityCheck() {
             className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {ENVIRONMENT_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{opt.label}</option>
             ))}
           </select>
         </div>
@@ -215,7 +215,7 @@ export default function RealityCheck() {
             className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {VRAM_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{opt.label}</option>
             ))}
           </select>
         </div>
@@ -228,7 +228,7 @@ export default function RealityCheck() {
             className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {MODEL_IDS.map(id => (
-              <option key={id} value={id}>{MODELS[id].label}</option>
+              <option key={id} value={id} style={{ backgroundColor: 'hsl(var(--card))', color: 'hsl(var(--foreground))' }}>{MODELS[id].label}</option>
             ))}
           </select>
         </div>
