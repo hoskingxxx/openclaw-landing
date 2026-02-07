@@ -19,7 +19,7 @@ export function Navigation() {
         />
       )}
 
-      <nav className="sticky top-0 z-50 border-b border-white/5 bg-background-primary/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background-primary/70">
+      <nav className="md:sticky md:top-0 z-50 w-full border-b border-white/5 bg-background-primary/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background-primary/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
