@@ -199,7 +199,7 @@ export default function RealityCheck() {
           <select
             value={environment}
             onChange={(e) => setEnvironment(e.target.value as Environment)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {ENVIRONMENT_OPTIONS.map(opt => (
               <option key={opt.id} value={opt.id}>{opt.label}</option>
@@ -212,7 +212,7 @@ export default function RealityCheck() {
           <select
             value={vram}
             onChange={(e) => setVram(e.target.value as VRAMId)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {VRAM_OPTIONS.map(opt => (
               <option key={opt.id} value={opt.id}>{opt.label}</option>
@@ -225,7 +225,7 @@ export default function RealityCheck() {
           <select
             value={model}
             onChange={(e) => setModel(e.target.value as ModelId)}
-            className="w-full h-10 rounded-md border border-input bg-background px-3"
+            className="w-full h-10 rounded-md border border-input bg-background px-3 appearance-none cursor-pointer [&>option]:bg-card [&>option]:text-foreground"
           >
             {MODEL_IDS.map(id => (
               <option key={id} value={id}>{MODELS[id].label}</option>
