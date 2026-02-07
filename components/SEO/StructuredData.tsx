@@ -138,26 +138,20 @@ export function ArticleStructuredData({
     dateModified: datePublished,
     author: {
       "@type": "Person",
-      name: author,
+      name: "OpenClaw Maintainer",
     },
     publisher: {
       "@type": "Organization",
       name: "OpenClaw Survival Guide",
+      url: "https://openclaw-ai.org",
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/icon`,
+        url: `${siteConfig.url}/icon.png`,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": url,
-    },
-    // TechArticle-specific fields for technical content
-    proficiencyLevel: "Beginner to Expert",
-    dependencies: "OpenClaw AI Agent Framework",
-    audience: {
-      "@type": "Audience",
-      audienceType: "Developers",
     },
   };
 

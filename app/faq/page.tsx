@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 import { NextStepCard } from "@/components/features/NextSteps";
+import { FAQStructuredData } from "@/components/SEO/StructuredData";
 import { faqs } from "@/lib/content";
 import { FEATURED_POST_PATH } from "@/lib/blog";
 import type { Metadata } from "next";
@@ -28,6 +29,8 @@ export default function FAQPage() {
   return (
     <>
       <Navigation />
+      {/* FAQ Schema only on FAQ page */}
+      <FAQStructuredData />
       <main className="min-h-screen">
         {/* Breadcrumbs */}
         <ContentRail>

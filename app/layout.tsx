@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FAQStructuredData, SoftwareStructuredData, WebSiteStructuredData } from "@/components/SEO/StructuredData";
+import { SoftwareStructuredData, WebSiteStructuredData } from "@/components/SEO/StructuredData";
 import { SiteSchema } from "@/components/SEO/SiteSchema";
 import NextTopLoader from "nextjs-toploader";
 import { UmamiAnalytics } from "@/components/UmamiAnalytics";
@@ -107,7 +107,6 @@ export default function RootLayout({
         <SiteSchema />
         <WebSiteStructuredData />
         <SoftwareStructuredData />
-        <FAQStructuredData />
 
         {/* Umami Analytics - with internal traffic filtering */}
         <UmamiAnalytics />

@@ -15,14 +15,14 @@ export function SiteSchema() {
     url: "https://openclaw-ai.org",
     logo: {
       "@type": "ImageObject",
-      url: "https://openclaw-ai.org/icon",
+      url: "https://openclaw-ai.org/icon.png",
       caption: "OpenClaw Survival Guide Logo",
     },
     description:
       "Community documentation and survival guides for OpenClaw AI agent framework. Battle-tested fixes for DeepSeek R1, CUDA OOM errors, and local AI inference.",
     sameAs: [
-      "https://github.com/hoskingxxx/openclaw-landing",
-      "https://buymeacoffee.com/openclaw",
+      "https://github.com/openclaw/openclaw", // Official OpenClaw Project
+      "https://buymeacoffee.com/openclaw",    // Our Monetization
     ],
     foundingDate: "2025",
     keywords:
