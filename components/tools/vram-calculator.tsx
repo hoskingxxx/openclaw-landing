@@ -576,7 +576,7 @@ export function VramCalculator() {
                   {environment === "windows" ? (
                     <>🪟 Windows Safe Config - 1-Click Kit ($9.90)</>
                   ) : (
-                    <>1-Click Survival Kit ($9.90)</>
+                    <>🚀 Download 1-Click Survival Kit ($9.90)</>
                   )}
                 </div>
                 <p className="text-sm text-white/90 mt-2 leading-relaxed">
@@ -586,9 +586,11 @@ export function VramCalculator() {
                     <>Ready-to-use templates, monitoring, and prompts.</>
                   )}
                 </p>
+                <div className="flex items-center gap-2 mt-4 text-base font-bold text-white">
+                  <ExternalLink className="w-5 h-5" />
+                  Get Instant Access
+                </div>
               </div>
-            </div>
-          </a>
             </div>
           </a>
 
