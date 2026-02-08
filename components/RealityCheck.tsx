@@ -314,7 +314,7 @@ export default function RealityCheck() {
           </div>
 
           {/* Survival Kit Promo - 唯一 CTA */}
-          <SurvivalKitPromo context="reality_check" status="yellow" />
+          <SurvivalKitPromo variant="full" placement="reality_check_yellow" />
         </div>
       )}
 
@@ -344,7 +344,7 @@ export default function RealityCheck() {
               </div>
 
               {/* Survival Kit Promo - 唯一 CTA */}
-              <SurvivalKitPromo context="reality_check" status="green" />
+              <SurvivalKitPromo variant="full" placement="reality_check_green" />
             </>
           ) : (
             <>
@@ -378,7 +378,7 @@ export default function RealityCheck() {
               </div>
 
               {/* Survival Kit Promo - 唯一 CTA */}
-              <SurvivalKitPromo context="reality_check" status="green" />
+              <SurvivalKitPromo variant="full" placement="reality_check_green" />
             </>
           )}
         </div>

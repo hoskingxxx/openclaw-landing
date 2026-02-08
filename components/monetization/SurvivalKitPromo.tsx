@@ -5,9 +5,11 @@ import { Package, Zap, ExternalLink } from "lucide-react"
 // Gumroad 产品链接
 const GUMROAD_LINK = "https://hilda666888.gumroad.com/l/ymwwgm"
 
+type Placement = "top" | "bottom" | "reality_check_yellow" | "reality_check_green"
+
 interface SurvivalKitPromoProps {
   variant?: "full" | "compact"
-  placement?: "top" | "bottom"
+  placement?: Placement
 }
 
 export function SurvivalKitPromo({ variant = "full", placement = "top" }: SurvivalKitPromoProps) {
