@@ -11,8 +11,8 @@ export function Navigation() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Disable donate button on Guide pages (only Survival Kit allowed)
-  const isGuidePage = pathname?.startsWith("/guides");
+  // Hide donate button on guide detail pages (only show on /guides list page)
+  const isGuideDetailPage = pathname?.startsWith("/guides/");
 
   return (
     <>
@@ -44,8 +44,8 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Support Button */}
-            <NavbarSupportButton />
+            {/* Support Button - hidden on guide detail pages */}
+            {!isGuideDetailPage && <NavbarSupportButton />}
 
             {/* Mobile Menu Button */}
             <button
