@@ -31,6 +31,23 @@ const nextConfig = {
         destination: '/guides/fix-openclaw-slow-inference',
         permanent: true,
       },
+      // GSC 404 fixes: favicon 和 OG image 别名
+      {
+        source: '/favicon.ico',
+        destination: '/icon',
+        permanent: true,
+      },
+      {
+        source: '/og-image.png',
+        destination: '/opengraph-image',
+        permanent: true,
+      },
+      // 404 页面本身不应作为 URL 访问
+      {
+        source: '/404',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
 };

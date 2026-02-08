@@ -1,0 +1,11 @@
+# robots.txt for openclaw-ai.org
+
+User-agent: *
+Allow: /
+
+# Block internal paths that should not be indexed
+Disallow: /home/
+Disallow: /404
+
+# Sitemap
+Sitemap: https://openclaw-ai.org/sitemap.xml

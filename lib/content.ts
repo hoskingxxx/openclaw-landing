@@ -8,7 +8,7 @@ export const siteConfig = {
   title: "OpenClaw Hub",
   description: "Community documentation for OpenClaw AI agent framework. Local setup guides with DeepSeek R1 and Ollama.",
   url: "https://openclaw-ai.org",
-  ogImage: "/og-image.png",
+  ogImage: "/opengraph-image",
 }
 
 // ============================================================================

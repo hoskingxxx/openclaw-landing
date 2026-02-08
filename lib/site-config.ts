@@ -9,7 +9,7 @@ export const siteConfig = {
   title: "OpenClaw Hub - The Survival Guide",
   description: "Battle-tested guides for running DeepSeek R1 locally. Real crash logs. Real fixes. No hype.",
   url: "https://openclaw-ai.org",
-  ogImage: "/og-image.png",
+  ogImage: "/opengraph-image",
   logo: {
     emoji: "🦞",
     alt: "OpenClaw Lobster Logo",
