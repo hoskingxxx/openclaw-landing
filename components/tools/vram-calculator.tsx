@@ -718,7 +718,7 @@ export function VramCalculator() {
           ) : (
             <>
               {/* Trust Element: Recommended Settings (Gray background) */}
-              <div className="p-4 rounded-lg border border-border bg-slate-900/70">
+              <div className="p-4 rounded-lg border border-border" style={{backgroundColor: '#313131'}}>
                 <div className="flex items-center gap-2 font-bold text-text-primary mb-3">
                   <Settings className="w-4 h-4" />
                   Recommended Settings
