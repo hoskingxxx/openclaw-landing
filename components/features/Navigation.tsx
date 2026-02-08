@@ -44,8 +44,8 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Support Button - hidden on Guide pages */}
-            {!isGuidePage && <NavbarSupportButton />}
+            {/* Support Button */}
+            <NavbarSupportButton />
 
             {/* Mobile Menu Button */}
             <button
