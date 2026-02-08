@@ -56,26 +56,27 @@ export function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Bottom Line */}
-        <div className="mt-12 pt-8 border-t border-white/10 text-center space-y-2">
-          <p className="text-xs text-text-tertiary font-mono">
-            {siteConfig.tagline}
-          </p>
-          <p className="text-sm text-text-tertiary">
-            {siteConfig.copyright}
-          </p>
-          <a
-            href={getBMCLink("footer")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs text-text-tertiary hover:text-brand-primary transition-colors"
-            data-cta="bmc-footer"
-          >
-            <Coffee className="w-3 h-3" />
-            Buy me a coffee
-          </a>
-        </div>
+      </div>
+      {/* Full width divider */}
+      <div className="border-t border-white/10"></div>
+      {/* Bottom Line - full width container */}
+      <div className="max-w-7xl mx-auto px-6 py-8 text-center space-y-2">
+        <p className="text-xs text-text-tertiary font-mono">
+          {siteConfig.tagline}
+        </p>
+        <p className="text-sm text-text-tertiary">
+          {siteConfig.copyright}
+        </p>
+        <a
+          href={getBMCLink("footer")}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-xs text-text-tertiary hover:text-brand-primary transition-colors"
+          data-cta="bmc-footer"
+        >
+          <Coffee className="w-3 h-3" />
+          Buy me a coffee
+        </a>
       </div>
     </footer>
   );
