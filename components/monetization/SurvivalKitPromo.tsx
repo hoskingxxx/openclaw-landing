@@ -6,10 +6,33 @@ import { Package, Zap, ExternalLink } from "lucide-react"
 const GUMROAD_LINK = "https://hilda666888.gumroad.com/l/ymwwgm"
 
 interface SurvivalKitPromoProps {
+  variant?: "full" | "compact"
   placement?: "top" | "bottom"
 }
 
-export function SurvivalKitPromo({ placement = "top" }: SurvivalKitPromoProps) {
+export function SurvivalKitPromo({ variant = "full", placement = "top" }: SurvivalKitPromoProps) {
+  // Compact variant: Notice bar style (for article top)
+  if (variant === "compact") {
+    return (
+      <div className="my-4 border border-border rounded-lg bg-card h-[60px] sm:h-[70px] flex items-center justify-between px-4 gap-3">
+        <h4 className="text-sm sm:text-base font-bold text-text-primary font-mono flex-1">
+          System Prescription: Pre-configured DeepSeek R1 setup
+        </h4>
+        <a
+          href={GUMROAD_LINK}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-umami-event="gumroad_kit_click"
+          data-umami-placement={placement}
+          className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded transition-colors text-xs sm:text-sm flex-shrink-0"
+        >
+          Download Kit
+        </a>
+      </div>
+    );
+  }
+
+  // Full variant: Complete promo (for article bottom)
   return (
     <div className="my-8 border-2 border-amber-500/50 rounded-xl bg-gradient-to-br from-amber-50/10 to-orange-50/5 dark:from-amber-950/30 dark:to-orange-950/20 relative overflow-hidden">
       {/* 左侧强调条 */}
@@ -42,9 +65,8 @@ export function SurvivalKitPromo({ placement = "top" }: SurvivalKitPromoProps) {
           href={GUMROAD_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          data-umami-event="marketing_affiliate_click"
-          data-umami-partner="gumroad"
-          data-umami-placement={`survival_kit_promo_${placement}`}
+          data-umami-event="gumroad_kit_click"
+          data-umami-placement={placement}
           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
         >
           <span>Download Survival Kit ($9.90)</span>

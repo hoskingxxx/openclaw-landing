@@ -266,9 +266,9 @@ export default async function BlogPostPage({
             ) : null;
           })()}
 
-          {/* Gumroad 推广 - 顶部 */}
+          {/* Gumroad 推广 - 顶部 (compact) */}
           <section className="px-4 sm:px-6 mb-8">
-            <SurvivalKitPromo placement="top" />
+            <SurvivalKitPromo variant="compact" placement="top" />
           </section>
 
           <section>
@@ -279,13 +279,13 @@ export default async function BlogPostPage({
             />
           </section>
 
-          {/* Gratitude Card - Primary conversion point */}
-          <GratitudeCard />
-
-          {/* Gumroad 推广 - 底部 */}
+          {/* Gumroad 推广 - 底部 (full) */}
           <section className="px-4 sm:px-6 mb-8">
-            <SurvivalKitPromo placement="bottom" />
+            <SurvivalKitPromo variant="full" placement="bottom" />
           </section>
+
+          {/* Gratitude Card - 移到最后 */}
+          <GratitudeCard />
 
           {post.slug !== "openclaw-error-index" && (
             <section className="px-4 sm:px-6 mt-12 pt-8 border-t border-white/10">

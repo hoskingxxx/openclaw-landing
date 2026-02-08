@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { AlertTriangle, ExternalLink, Settings, Shield, Zap } from "lucide-react"
 import { trackAffiliateClick, trackToolDowngrade } from "@/lib/tracking"
-import { SurvivalKitPromo } from "@/components/SurvivalKitPromo"
+import { SurvivalKitPromo } from "@/components/monetization/SurvivalKitPromo"
 
 // ============================================================================
 // GLOBAL AFFILIATE LINKS (HARDCODED)
