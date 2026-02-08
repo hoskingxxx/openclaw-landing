@@ -98,7 +98,10 @@ export default function FAQPage() {
                       </summary>
                       <div className="px-6 pb-6">
                         <div className="pt-4 border-t border-white/10">
-                          <p className="text-text-secondary whitespace-pre-line">{item.a}</p>
+                          <p
+                            className="text-text-secondary prose prose-invert prose-sm prose-a:text-brand-primary prose-a:no-underline hover:prose-a:underline max-w-none"
+                            dangerouslySetInnerHTML={{ __html: item.a.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" className="text-brand-primary hover:underline">$1</a>') }}
+                          />
                         </div>
                       </div>
                     </details>
