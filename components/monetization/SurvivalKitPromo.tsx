@@ -2,7 +2,7 @@
 
 import { Package, Zap, ExternalLink } from "lucide-react"
 
-// Gumroad 产品链接（占位符，后续更新）
+// Gumroad 产品链接
 const GUMROAD_LINK = "https://hilda666888.gumroad.com/l/ymwwgm"
 
 interface SurvivalKitPromoProps {
