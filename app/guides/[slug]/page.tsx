@@ -264,11 +264,6 @@ export default async function BlogPostPage({
             ) : null;
           })()}
 
-          {/* Gumroad 推广 - 顶部 (compact) */}
-          <section className="px-4 sm:px-6 mb-8">
-            <SurvivalKitPromo variant="compact" placement="top" />
-          </section>
-
           <section>
             <article
               className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
