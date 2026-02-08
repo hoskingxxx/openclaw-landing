@@ -264,7 +264,7 @@ export default async function BlogPostPage({
             ) : null;
           })()}
 
-          <section>
+          <section className="px-4 sm:px-6">
             <article
               className="glass-card w-full p-6 prose prose-invert prose-sm md:prose-base prose-max-w-none break-words"
               style={{ maxWidth: 'unset' }}
