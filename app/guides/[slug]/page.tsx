@@ -243,7 +243,7 @@ export default async function BlogPostPage({
             </div>
           </header>
 
-          {(post.slug === "hardware-requirements-reality-check" || post.slug === "fix-openclaw-install-ps1-npm-enoent-windows") && (
+          {post.slug === "hardware-requirements-reality-check" && (
             <section className="px-4 sm:px-6 mb-8">
               <RealityCheck />
             </section>
