@@ -92,15 +92,15 @@ export const faqs = [
     questions: [
       {
         q: "What is OpenClaw?",
-        a: "Not an App. OpenClaw is an open-source AI Agent framework / execution AI assistant that runs on your computer or server to execute real tasks, not chat.\n\n**Real Talk:** It's basically a junior engineer with sudo privileges.",
+        a: "**Short answer:** OpenClaw is an open-source AI Agent framework that executes real tasks on your computer, not just chat.\n\nNot an App. OpenClaw is an open-source AI Agent framework / execution AI assistant that runs on your computer or server to execute real tasks, not chat.\n\n**Real Talk:** It's basically a junior engineer with sudo privileges.",
       },
       {
         q: "What's the essential difference from ChatGPT / Claude?",
-        a: "In short: ChatGPT 'thinks', OpenClaw 'does'.\n\nChatGPT: Answers questions, gives advice\nOpenClaw: Reads files, runs commands, modifies code, executes workflows\n\n**Real Talk:** ChatGPT is a consultant. OpenClaw is an intern who actually does the work.",
+        a: "**Short answer:** ChatGPT answers questions; OpenClaw executes tasks (reads files, runs commands, modifies code).\n\nIn short: ChatGPT 'thinks', OpenClaw 'does'.\n\nChatGPT: Answers questions, gives advice\nOpenClaw: Reads files, runs commands, modifies code, executes workflows\n\n**Real Talk:** ChatGPT is a consultant. OpenClaw is an intern who actually does the work.",
       },
       {
         q: "Does OpenClaw have its own LLM?",
-        a: "No. It's a 'scheduler' that needs you to connect: OpenAI, Claude or local models.\n\n👉 It doesn't sell models, just makes models 'work'.\n\n**Real Talk:** You're the DJ. OpenClaw is just the mixer.",
+        a: "**Short answer:** No. OpenClaw is a scheduler that connects to external LLM providers (OpenAI, Claude, Ollama, etc.).\n\nNo. It's a 'scheduler' that needs you to connect: OpenAI, Claude or local models.\n\n👉 It doesn't sell models, just makes models 'work'.\n\n**Real Talk:** You're the DJ. OpenClaw is just the mixer.",
       },
       {
         q: "Is my data private with local models?",
@@ -108,7 +108,7 @@ export const faqs = [
       },
       {
         q: "Does it support DeepSeek API?",
-        a: "✅ Yes. Set `LLM_PROVIDER=openai` and `BASE_URL=https://api.deepseek.com`.\n\n**Config example (.env)**:\n```bash\nLLM_PROVIDER=\"openai\"\nLLM_BASE_URL=\"https://api.deepseek.com\"\nLLM_API_KEY=\"sk-your-key-here\"\nLLM_MODEL=\"deepseek-reasoner\"\n```\n\n👉 See our **[DeepSeek Config Guide](/guides/how-to-use-deepseek-with-openclaw)** for full setup.",
+        a: "✅ Yes. Set `LLM_PROVIDER=openai` and `BASE_URL=https://api.deepseek.com`.\n\n**Config example (.env)**:\n```bash\nLLM_PROVIDER=\"openai\"\nLLM_BASE_URL=\"https://api.deepseek.com\"\nLLM_API_KEY=\"sk-your-key-here\"\nLLM_MODEL=\"deepseek-reasoner\"\n```\n\n👉 See our **[DeepSeek Config Guide for OpenClaw](/guides/how-to-use-deepseek-with-openclaw)** for full setup.",
       },
       {
         q: "Does it support local DeepSeek (Ollama)?",
@@ -137,7 +137,7 @@ export const faqs = [
       },
       {
         q: "Why am I getting JSON parsing errors?",
-        a: "DeepSeek R1 wraps responses in `` tags before the actual JSON. OpenClaw's JSON parser fails.\n\n**Symptom:** `SyntaxError: Unexpected token <` (The model is 'thinking' out loud)\n\n👉 **Fix it here:** **[JSON Parsing Fix](/guides/fix-openclaw-json-mode-errors)**.",
+        a: "DeepSeek R1 wraps responses in `` tags before the actual JSON. OpenClaw's JSON parser fails.\n\n**Symptom:** `SyntaxError: Unexpected token <` (The model is 'thinking' out loud)\n\n👉 **Fix it here:** **[JSON Parsing Fix Guide](/guides/fix-openclaw-json-mode-errors)**.",
       },
     ],
   },
@@ -146,7 +146,7 @@ export const faqs = [
     questions: [
       {
         q: "Is OpenClaw safe? How to prevent Prompt Injection?",
-        a: "**Think of OpenClaw as a junior engineer with sudo privileges.**\n\nIf you wouldn't trust a junior intern with root access to this folder, don't trust the agent.\n\n**Real incidents I've stopped:**\n- Agent tried to `rm -rf .` to \"clean build artifacts\"\n- Agent attempted `curl unknown.sh | bash` because it needed a tool\n\n**Mitigation**:\n- Run in Docker container with read-only filesystem\n- Use dedicated device (Mac Mini, cheap server)\n- Block dangerous commands (rm, format, dd, etc.)\n- Review EVERY execution log\n\n👉 **Read the full autopsy:** **[CVE-2026-25253 Analysis](/guides/openclaw-security-rce-cve-2026-25253)**.",
+        a: "**Short answer:** OpenClaw has powerful capabilities but requires strict guardrails (containerization, permission limits, command blocking) to be safe.\n\n**Think of OpenClaw as a junior engineer with sudo privileges.**\n\nIf you wouldn't trust a junior intern with root access to this folder, don't trust the agent.\n\n**Real incidents I've stopped:**\n- Agent tried to `rm -rf .` to \"clean build artifacts\"\n- Agent attempted `curl unknown.sh | bash` because it needed a tool\n\n**Mitigation**:\n- Run in Docker container with read-only filesystem\n- Use dedicated device (Mac Mini, cheap server)\n- Block dangerous commands (rm, format, dd, etc.)\n- Review EVERY execution log\n\n👉 **Read the full autopsy:** **[CVE-2026-25253 Analysis](/guides/openclaw-security-rce-cve-2026-25253)**.",
       },
       {
         q: "Will it 'go rogue'?",
