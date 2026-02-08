@@ -133,7 +133,7 @@ export function ArticleStructuredData({
     "@type": "TechArticle",
     headline: title,
     description: description,
-    image: imageUrl || `${siteConfig.url}/og-image.png`,
+    image: imageUrl || `${siteConfig.url}/opengraph-image`,
     datePublished: datePublished,
     dateModified: datePublished,
     author: {
@@ -146,7 +146,7 @@ export function ArticleStructuredData({
       url: "https://openclaw-ai.org",
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/icon.png`,
+        url: `${siteConfig.url}/icon`,
       },
     },
     mainEntityOfPage: {

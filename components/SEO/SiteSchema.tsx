@@ -15,7 +15,7 @@ export function SiteSchema() {
     url: "https://openclaw-ai.org",
     logo: {
       "@type": "ImageObject",
-      url: "https://openclaw-ai.org/icon.png",
+      url: "https://openclaw-ai.org/icon",
       caption: "OpenClaw Survival Guide Logo",
     },
     description:
