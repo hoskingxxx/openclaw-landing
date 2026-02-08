@@ -55,25 +55,27 @@ interface NextStepCardProps {
 
 export function NextStepCard({ title, description, href, linkText = "Get Started", icon = "👉" }: NextStepCardProps) {
   return (
-    <section className="py-12 border-t border-white/10">
-      <Link
-        href={href}
-        className="group glass-card p-8 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 block"
-      >
-        <div className="flex items-start gap-6">
-          <div className="text-4xl flex-shrink-0">{icon}</div>
-          <div className="flex-1">
-            <h2 className="text-xl font-bold text-text-primary mb-2 group-hover:text-brand-primary transition-colors">
-              {title}
-            </h2>
-            <p className="text-text-secondary mb-4">{description}</p>
-            <div className="flex items-center gap-2 text-brand-primary font-medium">
-              <span>{linkText}</span>
-              <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+    <section className="py-12">
+      <div className="border-t border-white/10 pt-12">
+        <Link
+          href={href}
+          className="group glass-card p-8 hover:bg-white/12 transition-all duration-300 hover:-translate-y-1 block"
+        >
+          <div className="flex items-start gap-6">
+            <div className="text-4xl flex-shrink-0">{icon}</div>
+            <div className="flex-1">
+              <h2 className="text-xl font-bold text-text-primary mb-2 group-hover:text-brand-primary transition-colors">
+                {title}
+              </h2>
+              <p className="text-text-secondary mb-4">{description}</p>
+              <div className="flex items-center gap-2 text-brand-primary font-medium">
+                <span>{linkText}</span>
+                <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </div>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </section>
   );
 }
