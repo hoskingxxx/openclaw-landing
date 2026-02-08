@@ -354,8 +354,13 @@ export default function TroubleshootingPage() {
             </p>
           </section>
 
+          {/* Survival Kit - Primary CTA */}
+          <div className="mt-16 mb-8">
+            <SurvivalKitPromo variant="full" placement="troubleshooting_bottom" />
+          </div>
+
           {/* Bottom CTA for Frustrated Debuggers - Downgraded */}
-          <div className="mt-16 mb-8 text-center">
+          <div className="mb-8 text-center">
             <h3 className="text-xl font-semibold text-text-primary mb-2">
               Still broken?
             </h3>
@@ -379,13 +384,6 @@ export default function TroubleshootingPage() {
           </div>
 
         </div>
-          </ContentEdge>
-        </ContentRail>
-
-        {/* Survival Kit - Primary CTA */}
-        <ContentRail>
-          <ContentEdge>
-            <SurvivalKitPromo variant="full" placement="troubleshooting_bottom" />
           </ContentEdge>
         </ContentRail>
       </main>
