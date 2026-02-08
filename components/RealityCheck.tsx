@@ -10,7 +10,7 @@ import { ConversionButton } from "@/components/monetization/ConversionButton"
 // GLOBAL AFFILIATE LINKS (HARDCODED)
 // ============================================================================
 
-const LINK_KIT = "https://hoskington6.gumroad.com/l/ymwwgm"
+const LINK_KIT = "https://hilda666888.gumroad.com/l/ymwwgm"
 const LINK_API = "https://deepinfra.com/"
 const LINK_CLOUD = "https://www.vultr.com/?ref=9864821-9J"
 
