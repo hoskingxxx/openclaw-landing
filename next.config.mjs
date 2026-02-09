@@ -37,6 +37,12 @@ const nextConfig = {
         destination: '/opengraph-image',
         permanent: true,
       },
+      // Favicon alias
+      {
+        source: '/favicon.ico',
+        destination: '/icon',
+        permanent: true,
+      },
       // 404 页面 → 错误索引
       {
         source: '/404',
