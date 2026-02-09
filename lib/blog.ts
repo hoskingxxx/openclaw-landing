@@ -102,8 +102,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "fix-openclaw-spawn-npm-enoent-windows",
     canonicalPath: createCanonicalPath("fix-openclaw-spawn-npm-enoent-windows"),
-    title: "Fix 'spawn npm ENOENT' on Windows (OpenClaw CLI Failed to Start)",
-    description: "See 'spawn npm ENOENT' on Windows? It means Node.js isn't in your PATH. Here's the fix for Windows.",
+    title: "spawn npm ENOENT on Windows (OpenClaw CLI Failed to Start)",
+    description: "Command line crashing with \"spawn npm ENOENT\"? This guide shows the exact Node.js PATH fix. Stop reinstalling—it's not worth your time.",
     date: "2026-02-04",
     author: "LazyDev",
     tags: ["Troubleshooting", "Windows", "Node.js"],
