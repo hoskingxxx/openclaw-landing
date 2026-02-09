@@ -52,10 +52,23 @@ export function UmamiAnalytics() {
     script.src = UMAMI_SCRIPT_URL;
     script.setAttribute("data-website-id", UMAMI_WEBSITE_ID);
 
+    // Error handling - prevent blocking if script fails to load
+    script.onerror = () => {
+      console.warn("[Umami] Script failed to load - analytics disabled");
+    };
+
+    // Timeout fallback - prevent indefinite waiting
+    const timeoutId = setTimeout(() => {
+      if (!document.querySelector(`script[data-website-id="${UMAMI_WEBSITE_ID}"][src*="umami"]`)) {
+        console.warn("[Umami] Script load timeout - analytics disabled");
+      }
+    }, 5000); // 5 second timeout
+
     document.head.appendChild(script);
 
     return () => {
-      // Cleanup: remove script on unmount
+      // Cleanup: remove script and timeout on unmount
+      clearTimeout(timeoutId);
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }

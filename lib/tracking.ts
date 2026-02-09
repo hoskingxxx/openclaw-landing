@@ -119,6 +119,19 @@ export interface CtaImpressionEvent extends Record<string, unknown> {
   verdict?: Verdict;
 }
 
+/**
+ * reality_check_impression event data
+ * Triggered when Reality Check component is mounted/visible
+ * Fires once per pageview
+ */
+export interface RealityCheckImpressionEvent extends Record<string, unknown> {
+  page_type: PageType;
+  slug?: string;
+  initial_model: string; // "1.5b" | "8b" | "14b" | "32b" | "70b" | "671b"
+  initial_vram: string; // "4-6gb" | "8gb" | "12gb" | "16gb" | "24gb" | "48gb"
+  initial_status: Verdict;
+}
+
 // ============================================================================
 // Canonical Tracking Functions (v1.0)
 // ============================================================================
@@ -193,6 +206,39 @@ export function resetCtaImpressions(): void {
   Object.keys(sessionStorage)
     .filter(key => key.startsWith("cta_impression_"))
     .forEach(key => sessionStorage.removeItem(key));
+}
+
+/**
+ * Track Reality Check impression (canonical event)
+ * Fires once per pageview when Reality Check component is mounted
+ */
+export function trackRealityCheckImpression(params: {
+  pageType: PageType;
+  slug?: string;
+  initialModel: string; // "1.5b" | "8b" | "14b" | "32b" | "70b" | "671b"
+  initialVram: string; // "4-6gb" | "8gb" | "12gb" | "16gb" | "24gb" | "48gb"
+  initialStatus: Verdict;
+}): void {
+  if (typeof window === "undefined") return;
+
+  // Check if already fired for this pageview
+  const sessionKey = "reality_check_impression";
+  if (sessionStorage.getItem(sessionKey) === "1") {
+    return;
+  }
+
+  // Mark as fired
+  sessionStorage.setItem(sessionKey, "1");
+
+  const eventData: RealityCheckImpressionEvent = {
+    page_type: params.pageType,
+    ...(params.slug && { slug: params.slug }),
+    initial_model: params.initialModel,
+    initial_vram: params.initialVram,
+    initial_status: params.initialStatus,
+  };
+
+  trackEvent("reality_check_impression", eventData);
 }
 
 // ============================================================================

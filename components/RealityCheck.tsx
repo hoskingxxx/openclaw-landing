@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { AlertTriangle, ExternalLink, Settings, Shield, Zap } from "lucide-react"
-import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, getPageType } from "@/lib/tracking"
+import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, trackRealityCheckImpression, getPageType } from "@/lib/tracking"
 import { SurvivalKitPromo } from "@/components/monetization/SurvivalKitPromo"
 
 // ============================================================================
@@ -147,6 +147,15 @@ export default function RealityCheck() {
   // CTA impression tracking for text links
   useEffect(() => {
     const pageType = getPageType(pathname || "")
+
+    // Reality Check impression - fire once per pageview
+    trackRealityCheckImpression({
+      pageType,
+      slug: postSlug,
+      initialModel: model,
+      initialVram: vram,
+      initialStatus: status,
+    })
 
     // Security banner Gumroad link impression
     if (showSecurityBanner && gumroadSecurityRef.current) {
