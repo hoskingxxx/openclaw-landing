@@ -102,8 +102,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "fix-openclaw-spawn-npm-enoent-windows",
     canonicalPath: createCanonicalPath("fix-openclaw-spawn-npm-enoent-windows"),
-    title: "Fix 'spawn npm ENOENT' Error on Windows (OpenClaw Guide)",
-    description: "The definitive fix for npm error code enoent on Windows. Stop fighting your PATH. Includes a strict Stop Rule for when to switch to Cloud.",
+    title: "spawn npm ENOENT on Windows (OpenClaw CLI Failed to Start)",
+    description: "Command line crashing with \"spawn npm ENOENT\"? This guide shows the exact Node.js PATH fix. Further reinstalling is not worth your time.",
     date: "2026-02-04",
     author: "LazyDev",
     tags: ["Troubleshooting", "Windows", "Node.js", "Environment"],
@@ -150,8 +150,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "fix-openclaw-install-ps1-npm-enoent-windows",
     canonicalPath: createCanonicalPath("fix-openclaw-install-ps1-npm-enoent-windows"),
-    title: "Fix 'npm error code ENOENT' in install.ps1 on Windows",
-    description: "Installer crashes with ENOENT? Refresh your PATH or reinstall Node.",
+    title: "install.ps1 npm ENOENT on Windows (OpenClaw Fix)",
+    description: "Getting \"install.ps1 cannot be loaded\"? This guide shows the exact execution policy fix blocking you. Further debugging is not worth your time.",
     date: "2026-02-04",
     author: "LazyDev",
     tags: ["Troubleshooting", "Windows"],
@@ -186,8 +186,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "hardware-requirements-reality-check",
     canonicalPath: createCanonicalPath("hardware-requirements-reality-check"),
-    title: "Can Your PC Run OpenClaw? Hardware Reality Check",
-    description: "VRAM requirements and performance reality check for local vs cloud setups.",
+    title: "Can I Run OpenClaw? VRAM Calculator & GPU Reality Check",
+    description: "Don't guess. Use this VRAM calculator to check if your GPU can run DeepSeek R1/V3 on OpenClaw. Avoid OOM crashes before you deploy.",
     date: "2026-02-05",
     author: "LazyDev",
     tags: ["Hardware", "Requirements", "Performance"],
