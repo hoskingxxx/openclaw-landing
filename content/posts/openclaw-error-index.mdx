@@ -5,6 +5,8 @@ description: "The complete dictionary of every known OpenClaw error code, with 1
 category: "Troubleshooting"
 ---
 
+This index covers the most common OpenClaw errors, including ENOENT, EACCES, CUDA out of memory, JSON parsing failures, hardware compatibility issues, and security vulnerabilities. Copy the exact error message you see and jump directly to the verified fix.
+
 ## 🧭 Quick Navigation
 
 * 🧨 **[Group 1: Installation & CLI](#group-1)**
@@ -21,11 +23,12 @@ category: "Troubleshooting"
 
 **Platform:** Windows / macOS / Linux
 
+**Most common:** spawn npm ENOENT · install.ps1 ENOENT · spawn EINVAL
+
 | Error String (Exact Match) | Quick Fix | Full Guide |
 |----------------------------|-----------|------------|
 | `npm error code ENOENT` (install.ps1) | Refresh PATH (new terminal) or reinstall Node LTS | [Fix install.ps1 ENOENT (Windows)](/guides/fix-openclaw-install-ps1-npm-enoent-windows) |
-| `Failed to start CLI: Error: spawn npm ENOENT` | Verify Node/NPM is installed and in PATH | [Fix spawn npm ENOENT (All)](/guides/fix-openclaw-spawn-npm-enoent) |
-| `Failed to start CLI: Error: spawn npm ENOENT` (Windows) | Reinstall Node 18+ LTS to default path | [Fix spawn ENOENT (Windows)](/guides/fix-openclaw-spawn-npm-enoent-windows) |
+| `Failed to start CLI: Error: spawn npm ENOENT`<br>(also appears on Windows as `spawn npm ENOENT`) | Verify Node/NPM is installed and in PATH | [Fix spawn npm ENOENT (All)](/guides/fix-openclaw-spawn-npm-enoent) |
 | `Failed to start CLI: Error: spawn EINVAL` | Run PowerShell as Administrator | [Fix spawn EINVAL (Windows)](/guides/fix-openclaw-spawn-einval-windows) |
 
 <a id="group-2"></a>
@@ -45,6 +48,8 @@ category: "Troubleshooting"
 
 **Platform:** Docker / Linux
 
+**Most common:** EACCES permission denied · Docker volume permission issues
+
 | Error String | Quick Fix | Full Guide |
 |--------------|-----------|------------|
 | EACCES: permission denied (openclaw.json) | Fix UID/GID mismatch (chown the mounted folder) | [Fix Docker EACCES](/guides/fix-openclaw-docker-eacces-permission-denied) |
@@ -54,6 +59,8 @@ category: "Troubleshooting"
 ## 🧠 Group 4: Performance / OOM / Hardware
 
 **Platform:** GPU / VRAM / Bandwidth
+
+**Most common:** CUDA out of memory · VRAM not enough · slow inference
 
 | Issue | Quick Fix | Full Guide |
 |-------|-----------|------------|
@@ -67,6 +74,8 @@ category: "Troubleshooting"
 ## 🔒 Group 5: Security
 
 **Platform:** All
+
+**Most common:** RCE · CVE · remote code execution
 
 | Topic | Impact | Full Guide |
 |-------|--------|------------|
