@@ -155,6 +155,7 @@ export default function RealityCheck() {
       initialModel: model,
       initialVram: vram,
       initialStatus: status,
+      path: pathname,
     })
 
     // Security banner Gumroad link impression
@@ -162,10 +163,11 @@ export default function RealityCheck() {
       trackCtaImpression({
         dest: "gumroad",
         offer: "survival_kit",
-        placement: "reality_check_green",
+        placement: "green_card",
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
 
@@ -178,6 +180,7 @@ export default function RealityCheck() {
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
 
@@ -190,6 +193,7 @@ export default function RealityCheck() {
         pageType,
         slug: postSlug,
         verdict: "red",
+        path: pathname,
       })
     }
   }, [pathname, postSlug, showSecurityBanner, status])
@@ -200,10 +204,11 @@ export default function RealityCheck() {
     trackRevenueOutbound({
       dest: "gumroad",
       offer: "survival_kit",
-      placement: `reality_check_${status === "yellow" ? "yellow" : "green"}`,
+      placement: status === "yellow" ? "yellow_card" : "green_card",
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
   }, [pathname, postSlug, status])
 
@@ -216,6 +221,7 @@ export default function RealityCheck() {
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
   }, [pathname, postSlug, status])
 
@@ -230,6 +236,7 @@ export default function RealityCheck() {
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
 
     trackAffiliateClick({
@@ -238,7 +245,8 @@ export default function RealityCheck() {
       model,
       vram,
       location: location as AffiliateLocation,
-      postSlug
+      postSlug,
+      path: pathname,
     })
   }, [status, model, vram, postSlug, pathname])
 
@@ -403,7 +411,7 @@ export default function RealityCheck() {
           </div>
 
           {/* Survival Kit Promo - 唯一 CTA */}
-          <SurvivalKitPromo variant="full" placement="reality_check_yellow" />
+          <SurvivalKitPromo variant="full" placement="yellow_card" />
         </div>
       )}
 
@@ -433,7 +441,7 @@ export default function RealityCheck() {
               </div>
 
               {/* Survival Kit Promo - 唯一 CTA */}
-              <SurvivalKitPromo variant="full" placement="reality_check_green" />
+              <SurvivalKitPromo variant="full" placement="green_card" />
             </>
           ) : (
             <>
@@ -467,7 +475,7 @@ export default function RealityCheck() {
               </div>
 
               {/* Survival Kit Promo - 唯一 CTA */}
-              <SurvivalKitPromo variant="full" placement="reality_check_green" />
+              <SurvivalKitPromo variant="full" placement="green_card" />
             </>
           )}
         </div>

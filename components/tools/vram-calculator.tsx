@@ -151,10 +151,11 @@ export function VramCalculator() {
       trackCtaImpression({
         dest: "gumroad",
         offer: "survival_kit",
-        placement: "reality_check_green",
+        placement: "green_card",
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
 
@@ -167,6 +168,7 @@ export function VramCalculator() {
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
 
@@ -179,6 +181,7 @@ export function VramCalculator() {
         pageType,
         slug: postSlug,
         verdict: "red",
+        path: pathname,
       })
     }
 
@@ -191,6 +194,7 @@ export function VramCalculator() {
         pageType,
         slug: postSlug,
         verdict: "red",
+        path: pathname,
       })
     }
 
@@ -199,10 +203,11 @@ export function VramCalculator() {
       trackCtaImpression({
         dest: "gumroad",
         offer: "survival_kit",
-        placement: "reality_check_yellow",
+        placement: "yellow_card",
         pageType,
         slug: postSlug,
         verdict: "yellow",
+        path: pathname,
       })
     }
 
@@ -215,6 +220,7 @@ export function VramCalculator() {
         pageType,
         slug: postSlug,
         verdict: "yellow",
+        path: pathname,
       })
     }
 
@@ -223,10 +229,11 @@ export function VramCalculator() {
       trackCtaImpression({
         dest: "gumroad",
         offer: "survival_kit",
-        placement: "reality_check_green",
+        placement: "green_card",
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
 
@@ -239,6 +246,7 @@ export function VramCalculator() {
         pageType,
         slug: postSlug,
         verdict: "green",
+        path: pathname,
       })
     }
   }, [pathname, postSlug, showSecurityBanner, status])
@@ -249,10 +257,11 @@ export function VramCalculator() {
     trackRevenueOutbound({
       dest: "gumroad",
       offer: "survival_kit",
-      placement: `reality_check_${status}`,
+      placement: status === "yellow" ? "yellow_card" : "green_card",
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
   }, [pathname, postSlug, status])
 
@@ -265,6 +274,7 @@ export function VramCalculator() {
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
   }, [pathname, postSlug, status])
 
@@ -279,6 +289,7 @@ export function VramCalculator() {
       pageType,
       slug: postSlug,
       verdict: status,
+      path: pathname,
     })
 
     trackAffiliateClick({
@@ -287,7 +298,8 @@ export function VramCalculator() {
       model,
       vram,
       location,
-      postSlug
+      postSlug,
+      path: pathname,
     })
   }, [status, model, vram, postSlug, pathname])
 

@@ -47,7 +47,7 @@ export type Verdict = "green" | "yellow" | "red" | "unsafe";
 /**
  * Placement values (Frozen Dictionary v1.0)
  *
- * Gumroad / Survival Kit: top, bottom, troubleshooting_bottom, sticky, stop_debugging_box, reality_check_red, reality_check_yellow, reality_check_green
+ * Gumroad / Survival Kit: top, bottom, troubleshooting_bottom
  * Buy Me a Coffee: navbar, footer, floating, article
  * Vultr: hero, low_vram_trap, page_cta, mdx_auto, security_banner
  * DeepInfra: red_card, yellow_card, green_card, mobile_override
@@ -57,11 +57,6 @@ export type Placement =
   | "top"
   | "bottom"
   | "troubleshooting_bottom"
-  | "sticky"
-  | "stop_debugging_box"
-  | "reality_check_red"
-  | "reality_check_yellow"
-  | "reality_check_green"
 
   // Buy Me a Coffee
   | "navbar"
@@ -103,6 +98,7 @@ export interface RevenueOutboundEvent extends Record<string, unknown> {
   page_type: PageType;
   slug?: string;
   verdict?: Verdict;
+  path?: string;
 }
 
 /**
@@ -117,6 +113,7 @@ export interface CtaImpressionEvent extends Record<string, unknown> {
   page_type: PageType;
   slug?: string;
   verdict?: Verdict;
+  path?: string;
 }
 
 /**
@@ -130,6 +127,7 @@ export interface RealityCheckImpressionEvent extends Record<string, unknown> {
   initial_model: string; // "1.5b" | "8b" | "14b" | "32b" | "70b" | "671b"
   initial_vram: string; // "4-6gb" | "8gb" | "12gb" | "16gb" | "24gb" | "48gb"
   initial_status: Verdict;
+  path?: string;
 }
 
 // ============================================================================
@@ -147,6 +145,7 @@ export function trackRevenueOutbound(params: {
   pageType: PageType;
   slug?: string;
   verdict?: Verdict;
+  path?: string;
 }): void {
   if (typeof window === "undefined") return;
 
@@ -157,6 +156,7 @@ export function trackRevenueOutbound(params: {
     page_type: params.pageType,
     ...(params.slug && { slug: params.slug }),
     ...(params.verdict && { verdict: params.verdict }),
+    path: params.path,
   };
 
   trackEvent("revenue_outbound", eventData);
@@ -173,6 +173,7 @@ export function trackCtaImpression(params: {
   pageType: PageType;
   slug?: string;
   verdict?: Verdict;
+  path?: string;
 }): void {
   if (typeof window === "undefined") return;
 
@@ -192,6 +193,7 @@ export function trackCtaImpression(params: {
     page_type: params.pageType,
     ...(params.slug && { slug: params.slug }),
     ...(params.verdict && { verdict: params.verdict }),
+    path: params.path,
   };
 
   trackEvent("cta_impression", eventData);
@@ -218,6 +220,7 @@ export function trackRealityCheckImpression(params: {
   initialModel: string; // "1.5b" | "8b" | "14b" | "32b" | "70b" | "671b"
   initialVram: string; // "4-6gb" | "8gb" | "12gb" | "16gb" | "24gb" | "48gb"
   initialStatus: Verdict;
+  path?: string;
 }): void {
   if (typeof window === "undefined") return;
 
@@ -236,6 +239,7 @@ export function trackRealityCheckImpression(params: {
     initial_model: params.initialModel,
     initial_vram: params.initialVram,
     initial_status: params.initialStatus,
+    path: params.path,
   };
 
   trackEvent("reality_check_impression", eventData);
@@ -292,6 +296,7 @@ export interface AffiliateClickEvent extends Record<string, unknown> {
   model: string;
   vram: string;
   location: "red_card" | "yellow_card" | "green_card" | "mobile_override";
+  path?: string;
 }
 
 /**
@@ -306,10 +311,11 @@ export function trackAffiliateClick(params: {
   vram: string;
   location: "red_card" | "yellow_card" | "green_card" | "mobile_override";
   postSlug?: string;
+  path?: string;
 }): void {
   if (typeof window === "undefined") return;
 
-  const { partner, status, model, vram, location, postSlug } = params;
+  const { partner, status, model, vram, location, postSlug, path } = params;
   const page_path = window.location.pathname;
 
   const eventData: AffiliateClickEvent = {
@@ -320,6 +326,7 @@ export function trackAffiliateClick(params: {
     model,
     vram,
     location,
+    ...(path && { path }),
   };
 
   trackEvent("affiliate_click", eventData);

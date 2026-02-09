@@ -34,9 +34,10 @@ export function StickyCTA() {
     trackRevenueOutbound({
       dest: "vultr",
       offer: "cloud_gpu",
-      placement: "sticky",
+      placement: "top",
       pageType,
       slug: postSlug,
+      path: pathname,
     })
   }, [pathname, postSlug])
 

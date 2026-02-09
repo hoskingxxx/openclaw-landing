@@ -3,13 +3,15 @@
 import Link from "next/link";
 import { Coffee } from "lucide-react";
 import { useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { siteConfig, footerLinks, socialIcons } from "@/lib/site-config";
 import { getBMCLink } from "@/lib/bmc";
 import { useRevenueOutbound } from "@/lib/use-tracking";
-import { trackCtaImpression } from "@/lib/tracking";
+import { trackCtaImpression, getPageType } from "@/lib/tracking";
 
 function FooterCoffeeLink() {
   const elementRef = useRef<HTMLAnchorElement>(null);
+  const pathname = usePathname();
 
   // Track clicks
   const handleClick = useRevenueOutbound({
@@ -21,14 +23,16 @@ function FooterCoffeeLink() {
   // Track impressions - footer is always visible
   useEffect(() => {
     if (elementRef.current) {
+      const pageType = getPageType(pathname || "");
       trackCtaImpression({
         dest: "bmac",
         offer: "coffee",
         placement: "footer",
-        pageType: "homepage", // Footer appears on all pages, using homepage as default
+        pageType,
+        path: pathname,
       });
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <a

@@ -7,7 +7,7 @@ import { useRevenueOutbound, useCtaImpression } from "@/lib/use-tracking"
 // Gumroad 产品链接
 const GUMROAD_LINK = "https://hilda666888.gumroad.com/l/ymwwgm"
 
-type Placement = "top" | "bottom" | "reality_check_yellow" | "reality_check_green" | "troubleshooting_bottom"
+type Placement = "top" | "bottom" | "yellow_card" | "green_card" | "troubleshooting_bottom"
 
 interface SurvivalKitPromoProps {
   variant?: "full" | "compact"

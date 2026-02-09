@@ -16,9 +16,10 @@ export function StopDebuggingCTA() {
     trackRevenueOutbound({
       dest: "vultr",
       offer: "cloud_gpu",
-      placement: "stop_debugging_box",
+      placement: "red_card",
       pageType,
       slug: postSlug,
+      path: pathname,
     })
   }, [pathname, postSlug])
 

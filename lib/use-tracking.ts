@@ -42,6 +42,7 @@ export function useRevenueOutbound(params: {
       pageType,
       slug,
       verdict: params.verdict,
+      path: pathname,
     });
   };
 }
@@ -92,6 +93,7 @@ export function useCtaImpression<T extends HTMLElement>(
               pageType,
               slug,
               verdict: params.verdict,
+              path: pathname,
             });
 
             // Disconnect after firing
