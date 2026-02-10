@@ -628,10 +628,10 @@ export function VramCalculator() {
                       Buy Clarity — $9.90
                     </div>
                     <p className="text-sm text-amber-800 dark:text-amber-200 mt-1 leading-relaxed">
-                      Decision boundaries for tight VRAM scenarios.
+                      Red lines + exit paths for tight VRAM.
                     </p>
                     <div className="flex items-center gap-2 mt-3 text-sm font-bold text-amber-700 dark:text-amber-300">
-                      Buy Now <ExternalLink className="w-4 h-4" />
+                      See Red Lines → <ExternalLink className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -772,8 +772,7 @@ export function VramCalculator() {
                       Stop rules, red lines, and decision boundaries.
                     </p>
                     <div className="flex items-center gap-2 mt-4 text-base font-bold text-white">
-                      <ExternalLink className="w-5 h-5" />
-                      Buy Now
+                      See Red Lines → <ExternalLink className="w-5 h-5" />
                     </div>
                   </div>
                 </div>
