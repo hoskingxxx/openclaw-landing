@@ -367,10 +367,10 @@ export function R1PreflightCheck() {
           <select
             value={environment}
             onChange={(e) => setEnvironment(e.target.value as Environment)}
-            className="w-full p-2 rounded border border-input bg-background text-sm"
+            className="w-full p-2 rounded border border-input bg-white dark:bg-gray-900 text-sm"
           >
             {ENVIRONMENT_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">{opt.label}</option>
             ))}
           </select>
         </div>
@@ -380,10 +380,10 @@ export function R1PreflightCheck() {
           <select
             value={vram}
             onChange={(e) => setVram(e.target.value as VRAMId)}
-            className="w-full p-2 rounded border border-input bg-background text-sm"
+            className="w-full p-2 rounded border border-input bg-white dark:bg-gray-900 text-sm"
           >
             {VRAM_OPTIONS.map(opt => (
-              <option key={opt.id} value={opt.id}>{opt.label}</option>
+              <option key={opt.id} value={opt.id} className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">{opt.label}</option>
             ))}
           </select>
         </div>
@@ -393,10 +393,10 @@ export function R1PreflightCheck() {
           <select
             value={model}
             onChange={(e) => setModel(e.target.value as ModelId)}
-            className="w-full p-2 rounded border border-input bg-background text-sm"
+            className="w-full p-2 rounded border border-input bg-white dark:bg-gray-900 text-sm"
           >
             {MODEL_IDS.map(id => (
-              <option key={id} value={id}>{MODELS[id].label}</option>
+              <option key={id} value={id} className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">{MODELS[id].label}</option>
             ))}
           </select>
         </div>
