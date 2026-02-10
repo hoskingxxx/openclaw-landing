@@ -152,6 +152,13 @@ ollama run deepseek-r1:8b`}
         </ContentRail>
       </main>
 
+      {/* Trust Signal */}
+      <div className="text-center py-6">
+        <p className="text-xs text-text-tertiary">
+          Based on recurring R1 crash patterns discussed on GitHub and r/LocalLLaMA.
+        </p>
+      </div>
+
       <Footer />
     </>
   );
