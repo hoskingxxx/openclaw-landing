@@ -709,8 +709,7 @@ export function R1PreflightCheck() {
                 </div>
               </a>
             </>
-          {/* Mobile CTA Override or Desktop GREEN CTA */}
-          {isMobile ? (
+          ) : (
             <>
               {/* Primary: DeepInfra API - ALWAYS priority in MOBILE */}
               <a
@@ -750,9 +749,7 @@ export function R1PreflightCheck() {
                   Bookmark This Page
                 </span>
               </button>
-            </>
-          ) : (
-            <>
+
               {/* Trust Element: Recommended Settings (Gray background) */}
               <div className="p-4 rounded-lg border border-border" style={{backgroundColor: '#313131'}}>
                 <div className="flex items-center gap-2 font-bold text-text-primary mb-3">
