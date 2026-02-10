@@ -804,6 +804,51 @@ export function VramCalculator() {
         </div>
       )}
 
+      {/* ====================================================================
+          DECISION BOUNDARY
+          This block exists to prevent the calculator from replacing the paid Survival Kit.
+          The calculator = possibility. The kit = decision.
+          ==================================================================== */}
+      <div className="mt-6 pt-6 border-t border-border">
+        <div className="p-4 rounded-lg border border-border bg-muted/30">
+          <h4 className="text-sm font-semibold text-text-primary mb-3">
+            What this tool does — and what it doesn't
+          </h4>
+          <p className="text-sm text-text-secondary mb-3">
+            This calculator measures <strong>possibility</strong>.
+          </p>
+          <p className="text-sm text-text-secondary mb-3">
+            It tells you what <em>might</em> work based on VRAM and model size.
+          </p>
+          <p className="text-sm text-text-secondary mb-4">
+            It does <strong>not</strong> tell you:
+          </p>
+          <ul className="text-sm text-text-secondary mb-4 ml-4 list-disc space-y-1">
+            <li>When to stop</li>
+            <li>Whether continuing is rational</li>
+            <li>How much time you're about to waste</li>
+          </ul>
+          <p className="text-sm text-text-secondary mb-2">
+            If you're still guessing after seeing this result:
+          </p>
+          <p className="text-sm text-text-secondary mb-3">
+            👉 <strong>The Survival Kit exists for what comes next.</strong>
+          </p>
+          <p className="text-sm text-text-secondary mb-4">
+            It doesn't optimize.<br />
+            It decides.
+          </p>
+          <a
+            href={LINK_KIT}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-text-secondary hover:text-text-primary underline underline-offset-4 transition-colors"
+          >
+            Download the OpenClaw Survival Kit ($9.90)
+          </a>
+        </div>
+      </div>
+
       {/* Footer Note */}
       <p className="text-[10px] text-muted-foreground/60 mt-4 text-center">
         *Results are estimates based on common setups. Actual requirements may vary.
