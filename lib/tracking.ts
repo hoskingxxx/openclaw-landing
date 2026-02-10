@@ -56,6 +56,7 @@ export type Verdict = "green" | "yellow" | "red" | "unsafe";
 export type Placement =
   // Gumroad / Survival Kit
   | "top"
+  | "mid"
   | "bottom"
   | "troubleshooting_bottom"
 
@@ -105,7 +106,7 @@ export type Intent = "stuck" | "evaluate" | "escape";
 /**
  * Context - what problem domain they're in
  */
-export type Context = "windows" | "hardware" | "json" | "docker" | "security";
+export type Context = "windows" | "hardware" | "json" | "docker" | "security" | "ide";
 
 /**
  * CTA verdict - simplified for CTA events (no yellow/unsafe)
