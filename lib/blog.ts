@@ -220,6 +220,18 @@ export const blogPosts: BlogPost[] = [
     featured: false,
     seoKeywords: ["openclaw einval", "spawn einval", "environment rot", "windows subprocess", "node spawn error"],
   },
+  {
+    slug: "fix-jetbrains-continue-plugin-error",
+    canonicalPath: createCanonicalPath("fix-jetbrains-continue-plugin-error"),
+    title: "Fix DeepSeek R1 <think> Tag Error in JetBrains / Continue Plugin",
+    description: "Continue plugin shows 'JSON parsing failed' when using DeepSeek R1 in JetBrains IDEs. This is a known thinking tag issue. Here's the fix that works in IntelliJ, PyCharm, and other JetBrains IDEs.",
+    date: "2026-02-09",
+    author: "LazyDev",
+    tags: ["JetBrains", "Continue", "DeepSeek", "IDE", "JSON", "Troubleshooting"],
+    category: "Troubleshooting",
+    featured: false,
+    seoKeywords: ["DeepSeek R1 JetBrains", "Continue plugin JSON error", "JetBrains DeepSeek", "Continue plugin DeepSeek", "DeepSeek thinking tags JetBrains"],
+  },
 
 ];
 
