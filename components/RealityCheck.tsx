@@ -1,3 +1,21 @@
+/**
+ * LEGACY: DO NOT USE - Kept for backward compatibility only
+ * ========================================================
+ * This component is DEPRECATED. Use R1PreflightCheck from @/components/tools/vram-calculator instead.
+ *
+ * Single Source of Truth: components/tools/vram-calculator.tsx
+ * - Import: import { R1PreflightCheck } from "@/components/tools/vram-calculator"
+ *
+ * This file is kept only for:
+ * - app/guides/[slug]/page.tsx (whitelist: hardware-requirements-reality-check, openclaw-error-index)
+ * - Will be replaced once those guides are migrated to the SSOT component
+ *
+ * DO NOT:
+ * - Import this in new pages
+ * - Add new features to this file
+ * - Copy logic from this file
+ */
+
 "use client"
 
 import { useState, useCallback, useEffect, useRef } from "react"

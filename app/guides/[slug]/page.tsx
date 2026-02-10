@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
 import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
-import RealityCheck from "@/components/RealityCheck";
+import { R1PreflightCheck } from "@/components/tools/vram-calculator";
 import { HashScrollFix } from "@/components/HashScrollFix";
 import { SurvivalKitPromo } from "@/components/monetization/SurvivalKitPromo";
 import Link from "next/link";
@@ -259,7 +259,7 @@ export default async function BlogPostPage({
 
             return shouldShow ? (
               <section className="px-4 sm:px-6 mb-8">
-                <RealityCheck />
+                <R1PreflightCheck />
               </section>
             ) : null;
           })()}

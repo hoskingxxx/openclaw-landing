@@ -1,3 +1,19 @@
+/**
+ * SSOT: R1 Pre-flight Check Calculator
+ * ======================================
+ * DO NOT DUPLICATE logic in other tools/pages.
+ * Import and reuse this component: import { R1PreflightCheck } from "@/components/tools/vram-calculator"
+ *
+ * This is the Single Source of Truth for:
+ * - Status calculation (red/yellow/green based on VRAM headroom)
+ * - CTA rendering (Vultr, Gumroad, Copy Link, 8B downgrade)
+ * - All tracking events (revenue_outbound, cta_click, affiliate_click, etc.)
+ *
+ * To add this calculator to a new page:
+ *   import { R1PreflightCheck } from "@/components/tools/vram-calculator"
+ *   <R1PreflightCheck />
+ */
+
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
