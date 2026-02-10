@@ -110,9 +110,9 @@ export type Intent = "stuck" | "evaluate" | "escape";
 export type Context = "windows" | "hardware" | "json" | "docker" | "security" | "ide";
 
 /**
- * CTA verdict - simplified for CTA events (no yellow/unsafe)
+ * CTA verdict - simplified for CTA events (includes yellow)
  */
-export type CtaVerdict = "red" | "green" | "unknown";
+export type CtaVerdict = "red" | "yellow" | "green";
 
 /**
  * Destination type - platform classification

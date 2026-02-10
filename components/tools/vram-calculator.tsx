@@ -301,8 +301,6 @@ export function R1PreflightCheck() {
   // Save/Share tracking - copies link only (no navigator.share to avoid AbortError)
   const handleBookmarkClick = useCallback((location: AffiliateLocation) => {
     const pageType = getPageType(pathname || "")
-    // Map Status to CtaVerdict (yellow -> unknown for non-revenue CTAs)
-    const verdictForCta: "red" | "green" | "unknown" = status === "yellow" ? "unknown" : status
 
     // Copy link to clipboard with fallback
     const copyToClipboard = () => {
@@ -336,7 +334,7 @@ export function R1PreflightCheck() {
       cta_position: location === "mobile_override" ? "inline" : "bottom",
       intent: "evaluate",
       context: "hardware",
-      verdict: verdictForCta,
+      verdict: status, // Use status directly (red/yellow/green)
       pageType,
       slug: postSlug,
       dest_id: "copy_link",
@@ -580,7 +578,7 @@ export function R1PreflightCheck() {
               </div>
 
               {/* Fallback: Check if 8B is viable (only shown if currently RED) */}
-              {canDowngradeTo8B ? (
+              {canDowngradeTo8B && (
                 <button
                   onClick={handleDowngrade}
                   data-umami-event="tool_downgrade_click"
@@ -602,12 +600,6 @@ export function R1PreflightCheck() {
                     </div>
                   </div>
                 </button>
-              ) : (
-                <p className="text-xs text-text-tertiary text-center py-2">
-                  {model === "8b" || model === "1.5b"
-                    ? "Already using the smallest recommended model"
-                    : `Your VRAM is sufficient for ${MODELS[model].label}`}
-                </p>
               )}
             </>
           )}
@@ -714,8 +706,8 @@ export function R1PreflightCheck() {
                 </a>
               </div>
 
-              {/* Fallback: Check if 8B is viable (only shown if currently RED) */}
-              {canDowngradeTo8B ? (
+              {/* Fallback: Check if 8B is viable (only shown if RED and not already on 8B/1.5B) */}
+              {canDowngradeTo8B && (
                 <button
                   onClick={handleDowngrade}
                   data-umami-event="tool_downgrade_click"
@@ -730,12 +722,6 @@ export function R1PreflightCheck() {
                     </span>
                   </div>
                 </button>
-              ) : (
-                <p className="text-xs text-text-tertiary text-center py-2">
-                  {model === "8b" || model === "1.5b"
-                    ? "Already using the smallest recommended model"
-                    : `Your VRAM is sufficient for ${MODELS[model].label}`}
-                </p>
               )}
             </>
           )}
