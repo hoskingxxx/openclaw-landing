@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import { usePathname } from "next/navigation"
-import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, getPageType } from "@/lib/tracking"
+import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, trackCtaClick, getPageType } from "@/lib/tracking"
 import { ConversionButton } from "@/components/monetization/ConversionButton"
 import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Shield, Cpu, Zap } from "lucide-react"
 
@@ -136,12 +136,9 @@ export function R1PreflightCheck() {
   // Refs for CTA impression tracking
   const gumroadSecurityRef = useRef<HTMLAnchorElement>(null)
   const vultrSecurityRef = useRef<HTMLAnchorElement>(null)
-  const deepInfraRedCardRef = useRef<HTMLAnchorElement>(null)
   const vultrRedCardRef = useRef<HTMLAnchorElement>(null)
   const gumroadYellowCardRef = useRef<HTMLAnchorElement>(null)
-  const deepInfraYellowCardRef = useRef<HTMLAnchorElement>(null)
   const gumroadGreenCardRef = useRef<HTMLAnchorElement>(null)
-  const deepInfraGreenCardRef = useRef<HTMLAnchorElement>(null)
 
   // Mobile detection
   useEffect(() => {
@@ -193,20 +190,7 @@ export function R1PreflightCheck() {
       })
     }
 
-    // DeepInfra red card impression
-    if (status === "red" && deepInfraRedCardRef.current) {
-      trackCtaImpression({
-        dest: "deepinfra",
-        offer: "api_fallback",
-        placement: "red_card",
-        pageType,
-        slug: postSlug,
-        verdict: "red",
-        path: pathname,
-      })
-    }
-
-    // Vultr red card impression
+    // Vultr red card impression (primary RED CTA)
     if (status === "red" && vultrRedCardRef.current) {
       trackCtaImpression({
         dest: "vultr",
@@ -231,48 +215,10 @@ export function R1PreflightCheck() {
         path: pathname,
       })
     }
-
-    // DeepInfra yellow card impression
-    if (status === "yellow" && deepInfraYellowCardRef.current) {
-      trackCtaImpression({
-        dest: "deepinfra",
-        offer: "api_fallback",
-        placement: "yellow_card",
-        pageType,
-        slug: postSlug,
-        verdict: "yellow",
-        path: pathname,
-      })
-    }
-
-    // Gumroad green card impression
-    if (status === "green" && gumroadGreenCardRef.current) {
-      trackCtaImpression({
-        dest: "gumroad",
-        offer: "survival_kit",
-        placement: "green_card",
-        pageType,
-        slug: postSlug,
-        verdict: "green",
-        path: pathname,
-      })
-    }
-
-    // DeepInfra green card impression
-    if (status === "green" && deepInfraGreenCardRef.current) {
-      trackCtaImpression({
-        dest: "deepinfra",
-        offer: "api_fallback",
-        placement: "green_card",
-        pageType,
-        slug: postSlug,
-        verdict: "green",
-        path: pathname,
-      })
-    }
   }, [pathname, postSlug, showSecurityBanner, status])
 
   // Tracking helpers - use revenue_outbound for Gumroad and DeepInfra per Spec v1.0
+  // P1: Add model, vram, environment for post-hoc analysis
   const handleGumroadClick = useCallback((location: AffiliateLocation) => {
     const pageType = getPageType(pathname || "")
     trackRevenueOutbound({
@@ -283,6 +229,11 @@ export function R1PreflightCheck() {
       slug: postSlug,
       verdict: status,
       path: pathname,
+      // P1: Enrichment
+      dest_type: "gumroad",
+      dest_id: "survival_kit",
+      cta_id: `gumroad_${status}_${location}`,
+      offer_revenue: "fix_now",
     })
   }, [pathname, postSlug, status])
 
@@ -296,6 +247,11 @@ export function R1PreflightCheck() {
       slug: postSlug,
       verdict: status,
       path: pathname,
+      // P1: Enrichment
+      dest_type: "api",
+      dest_id: "deepinfra",
+      cta_id: `deepinfra_${status}_${location}`,
+      offer_revenue: "try_api",
     })
   }, [pathname, postSlug, status])
 
@@ -311,6 +267,11 @@ export function R1PreflightCheck() {
       slug: postSlug,
       verdict: status,
       path: pathname,
+      // P1: Enrichment
+      dest_type: "vultr",
+      dest_id: "vultr_cloud_gpu",
+      cta_id: `vultr_${status}_${location}`,
+      offer_revenue: "escape_local",
     })
 
     trackAffiliateClick({
@@ -324,8 +285,34 @@ export function R1PreflightCheck() {
     })
   }, [status, model, vram, postSlug, pathname])
 
+  // Bookmark tracking - non-revenue but useful for retention analysis
+  const handleBookmarkClick = useCallback((location: AffiliateLocation) => {
+    const pageType = getPageType(pathname || "")
+    // Map Status to CtaVerdict (yellow -> unknown for non-revenue CTAs)
+    const verdictForCta: "red" | "green" | "unknown" = status === "yellow" ? "unknown" : status
+    // Use cta_click for non-revenue CTAs
+    trackCtaClick({
+      path: pathname,
+      cta_id: `bookmark_${status}_${location}`,
+      cta_position: location === "mobile_override" ? "inline" : "bottom",
+      intent: "evaluate",
+      context: "hardware",
+      verdict: verdictForCta,
+      pageType,
+      slug: postSlug,
+      dest_type: undefined, // bookmark is internal
+      dest_id: undefined,
+      offer: undefined,
+    })
+  }, [pathname, postSlug, status])
+
   const handleDowngrade = () => {
-    trackToolDowngrade({ fromModel: model, toModel: ENTRY_MODEL, postSlug })
+    // Track downgrade with full context for analysis
+    trackToolDowngrade({
+      fromModel: model,
+      toModel: ENTRY_MODEL,
+      postSlug,
+    })
     setModel(ENTRY_MODEL)
   }
 
@@ -439,28 +426,28 @@ export function R1PreflightCheck() {
             </p>
           </div>
 
-          {/* Mobile CTA Override or Desktop RED CTA */}
+          {/* Mobile CTA or Desktop RED CTA */}
           {isMobile ? (
             <>
-              {/* Primary: DeepInfra API - ALWAYS priority in MOBILE */}
+              {/* Primary: Vultr Cloud GPU (has affiliate commission) */}
               <a
-                href={LINK_API}
+                href={LINK_CLOUD}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => handleDeepInfraClick('mobile_override')}
-                className="block p-4 rounded-lg border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-all"
+                onClick={() => handleVultrClick('mobile_override')}
+                className="block p-4 rounded-lg border-2 border-purple-500 bg-purple-50 dark:bg-purple-950/30 hover:bg-purple-100 dark:hover:bg-purple-950/50 transition-all"
               >
                 <div className="flex items-center gap-3">
-                  <Cloud className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <Cloud className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                   <div className="flex-1">
-                    <div className="font-bold text-blue-900 dark:text-blue-100">
+                    <div className="font-bold text-purple-900 dark:text-purple-100">
                       Run on Cloud GPU
                     </div>
-                    <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                      DeepInfra API - Instant access
+                    <p className="text-sm text-purple-700 dark:text-purple-300 mt-1">
+                      Vultr - Instant GPU access
                     </p>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                  <ExternalLink className="w-4 h-4 text-purple-600 dark:text-purple-400" />
                 </div>
               </a>
 
@@ -476,6 +463,19 @@ export function R1PreflightCheck() {
                   Get Survival Kit (View Stop Rules)
                 </span>
               </a>
+
+              {/* Tertiary: DeepInfra (alternative) */}
+              <div className="text-center">
+                <a
+                  href={LINK_API}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleDeepInfraClick('mobile_override')}
+                  className="text-sm text-text-secondary hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  Or try DeepInfra API <ExternalLink className="w-3 h-3 inline" />
+                </a>
+              </div>
             </>
           ) : (
             <>
@@ -485,27 +485,27 @@ export function R1PreflightCheck() {
                 Status: Local Setup Not Viable
               </div>
 
-              {/* Primary CTA: DeepInfra API - ALWAYS priority in RED */}
+              {/* Primary CTA: Vultr Cloud GPU (has affiliate commission) */}
               <a
-                ref={deepInfraRedCardRef}
-                href={LINK_API}
+                ref={vultrRedCardRef}
+                href={LINK_CLOUD}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => handleDeepInfraClick('red_card')}
-                className="block p-4 rounded-lg border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/30 hover:bg-blue-100 dark:hover:bg-blue-950/50 transition-all"
+                onClick={() => handleVultrClick('red_card')}
+                className="block p-4 rounded-lg border-2 border-purple-500 bg-purple-50 dark:bg-purple-950/30 hover:bg-purple-100 dark:hover:bg-purple-950/50 transition-all"
               >
                 <div className="flex items-start gap-3">
-                  <div className="p-2 bg-blue-500 rounded-lg">
+                  <div className="p-2 bg-purple-500 rounded-lg">
                     <Cloud className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-bold text-blue-900 dark:text-blue-100">
+                    <div className="font-bold text-purple-900 dark:text-purple-100">
                       Run on Cloud GPU
                     </div>
-                    <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                      DeepInfra API - Instant access, no setup
+                    <p className="text-sm text-purple-700 dark:text-purple-300 mt-1">
+                      Vultr - GPU servers from $2.50/hr
                     </p>
-                    <div className="flex items-center gap-2 mt-2 text-sm font-medium text-blue-600 dark:text-blue-400">
+                    <div className="flex items-center gap-2 mt-2 text-sm font-medium text-purple-600 dark:text-purple-400">
                       Get Started <ExternalLink className="w-4 h-4" />
                     </div>
                   </div>
@@ -522,6 +522,19 @@ export function R1PreflightCheck() {
                   className="inline-flex items-center gap-1 text-sm text-text-secondary hover:text-brand-primary transition-colors"
                 >
                   Get Survival Kit (View Stop Rules) <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+
+              {/* Tertiary: DeepInfra (alternative) */}
+              <div className="text-center mt-2">
+                <a
+                  href={LINK_API}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleDeepInfraClick('red_card')}
+                  className="text-sm text-text-secondary hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  Or try DeepInfra API <ExternalLink className="w-3 h-3 inline" />
                 </a>
               </div>
 
@@ -697,6 +710,7 @@ export function R1PreflightCheck() {
               {/* Primary: Bookmark - Soft retention for GREEN (mobile) */}
               <button
                 onClick={() => {
+                  handleBookmarkClick('mobile_override')
                   if (navigator.share) {
                     navigator.share({
                       title: 'R1 Pre-flight Check',
@@ -727,6 +741,7 @@ export function R1PreflightCheck() {
               {/* Primary: Bookmark - Soft retention for GREEN (desktop) */}
               <button
                 onClick={() => {
+                  handleBookmarkClick('green_card')
                   if (navigator.share) {
                     navigator.share({
                       title: 'R1 Pre-flight Check',

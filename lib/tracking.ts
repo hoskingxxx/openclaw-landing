@@ -38,7 +38,8 @@ export type PageType =
   | "faq"
   | "resources"
   | "docs"
-  | "error_index";
+  | "error_index"
+  | "preflight";
 
 /**
  * Verdict classification for hardware reality checks
@@ -590,6 +591,7 @@ export function getPageType(pathname: string): PageType {
   if (pathname === "/oom") return "oom";
   if (pathname === "/faq") return "faq";
   if (pathname === "/resources") return "resources";
+  if (pathname === "/preflight") return "preflight";
   if (pathname.startsWith("/docs") || pathname.startsWith("/quick-start")) return "docs";
   if (pathname.includes("error-index")) return "error_index";
   return "homepage"; // fallback
