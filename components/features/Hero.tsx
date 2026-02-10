@@ -54,6 +54,11 @@ export function Hero() {
             </Button>
           </div>
 
+          {/* Trust Signal: Former names */}
+          <p className="text-xs text-text-tertiary font-mono mb-8">
+            Updated for the viral agent framework (formerly Clawdbot / Moltbot).
+          </p>
+
           {/* Crash Log Preview */}
           <div className="mt-8 text-left">
             <div className="bg-terminal-bg rounded-lg overflow-hidden border border-red-500/30 shadow-xl opacity-60 hover:opacity-100 transition-opacity">

@@ -95,8 +95,8 @@ export const faqs = [
         a: "OpenClaw is an open-source AI Agent framework that executes real tasks on your computer—reading files, running commands, modifying code—not just chat.\n\nThink of it as a junior engineer with sudo privileges. If you wouldn't trust an intern with root access to this folder, don't trust the agent.",
       },
       {
-        q: "Is this related to Clawdbot or Moltbot?",
-        a: "Yes. The ecosystem went through rapid rebranding (Clawdbot → Moltbot → OpenClaw) in a short period of time. This site exists to track the breakages and decision boundaries that tend to get lost during fast-moving rebrands — so you don't waste weekends chasing moving targets.",
+        q: "Is this related to 'Clawdbot'?",
+        a: "Yes. \"Clawdbot\" was the previous name. The project evolved rapidly into OpenClaw.\n\n⚠️ **Warning:** Most \"Clawdbot\" tutorials online are now **outdated or unsafe** because they reference deprecated dependencies and Windows pathing issues that no longer work.\n\nThis site tracks the **verified current reality**—not ghost maps from abandoned rebrands.",
       },
       {
         q: "What's the essential difference from ChatGPT / Claude?",
