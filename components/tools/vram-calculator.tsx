@@ -4,6 +4,9 @@
  * DO NOT DUPLICATE logic in other tools/pages.
  * Import and reuse this component: import { R1PreflightCheck } from "@/components/tools/vram-calculator"
  *
+ * DEV GATE: Any changes to this component require passing `npm run release:gate`
+ * 没通过 npm run release:gate 不准合并、不准部署。
+ *
  * This is the Single Source of Truth for:
  * - Status calculation (red/yellow/green based on VRAM headroom)
  * - CTA rendering (Vultr, Gumroad, Copy Link, 8B downgrade)

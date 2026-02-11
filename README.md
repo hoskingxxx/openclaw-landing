@@ -2,6 +2,18 @@
 
 Battle-tested documentation for running DeepSeek R1 locally without OOM errors.
 
+---
+
+## Development Gate
+
+**任何改动工具逻辑 / tracking / CTA / preflight：必须先跑**
+
+```bash
+npm run release:gate
+```
+
+**没 PASS 不准合并、不准部署。**
+
 ## Quick Start
 
 ```bash

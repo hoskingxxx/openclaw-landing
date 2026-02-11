@@ -2,6 +2,9 @@
  * Umami → Attribution tracking helper
  * Revenue Tracking Specification v1.0 (Frozen)
  *
+ * DEV GATE: Any changes to tracking/events require passing `npm run release:gate`
+ * 没通过 npm run release:gate 不准合并、不准部署。
+ *
  * Canonical Events:
  * - revenue_outbound: All revenue-related outbound clicks
  * - cta_impression: CTA enters viewport (once per pageview)
