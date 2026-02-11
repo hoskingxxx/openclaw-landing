@@ -1,5 +1,4 @@
 import type { MDXComponents } from 'mdx/types'
-import RealityCheck from '@/components/RealityCheck'
 import { FAQ } from '@/components/FAQ'
 import { AnswerCapsule, CriticalFix, QuickFix } from '@/components/AnswerCapsule'
 import { CodeBlockWithCTA } from '@/components/ui/CodeBlockWithCTA'
@@ -27,7 +26,6 @@ const A = (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    RealityCheck,
     FAQ,
     AnswerCapsule,
     CriticalFix,
