@@ -15,6 +15,11 @@ test.describe('Production Smoke: /preflight', () => {
   const productionUrl = 'https://openclaw-ai.org/preflight';
 
   test.beforeEach(async ({ page }) => {
+    // Enable umami debug mode BEFORE any page navigation
+    await page.addInitScript(() => {
+      localStorage.setItem('umami_debug', '1');
+    });
+
     // Set up request interception for network-level tracking validation
     page.on('request', request => {
       const url = request.url();
@@ -168,15 +173,15 @@ test.describe('Production Smoke: /preflight', () => {
     await selectCalculatorInputs(page, 'windows', '24gb', '8b');
     await page.waitForTimeout(500);
 
+    // CRITICAL: $9.90 must NOT appear in GREEN state (before any other action)
+    const priceLinks = page.locator('text=$9.90');
+    const priceCount = await priceLinks.count();
+    expect(priceCount, '$9.90 must NOT appear in GREEN state').toBe(0);
+
     await page.evaluate(() => {
       (window as any).__umamiLogs = [];
       (window as any).__pageErrors = [];
     });
-
-    // CRITICAL: $9.90 must NOT appear in GREEN state
-    const priceLinks = page.locator('text=$9.90');
-    const priceCount = await priceLinks.count();
-    expect(priceCount, '$9.90 must NOT appear in GREEN state').toBe(0);
 
     await page.getByTestId('cta-copy-link').click();
     await page.waitForTimeout(1000);
