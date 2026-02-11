@@ -22,7 +22,6 @@
 import { useState, useEffect, useCallback, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { trackAffiliateClick, trackRevenueOutbound, trackCtaImpression, trackCtaClick, getPageType } from "@/lib/tracking"
-import type { RevenueOffer } from "@/lib/tracking"
 import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Check } from "lucide-react"
 
 // ============================================================================
@@ -186,7 +185,7 @@ export function R1PreflightCheck() {
         verdict: "red",
         path: pathname,
         cta_id: "vultr_red_primary",
-        cta_position: "verdict_primary",
+        cta_position: "bottom",
         intent: "escape",
         context: "hardware",
       })
@@ -203,7 +202,7 @@ export function R1PreflightCheck() {
         verdict: "yellow",
         path: pathname,
         cta_id: "kit_yellow_primary",
-        cta_position: "verdict_primary",
+        cta_position: "bottom",
         intent: "evaluate",
         context: "hardware",
       })
@@ -213,16 +212,11 @@ export function R1PreflightCheck() {
   // Tracking helpers - Verdict Gate tracking spec
   const handleGumroadClick = useCallback((location: AffiliateLocation) => {
     const pageType = getPageType(pathname || "")
-    // Map status/location to canonical cta_id per spec
+    // Map status/location to canonical cta_id per spec (semantics in cta_id)
     const ctaIdMap: Record<Status, string> = {
       red: "kit_red_secondary",
       yellow: "kit_yellow_primary",
       green: "kit_green_secondary",
-    }
-    const offerMap: Record<Status, RevenueOffer> = {
-      red: "stop_rules" as const,
-      yellow: "fix_now" as const,
-      green: "save_time" as const,
     }
 
     trackRevenueOutbound({
@@ -233,14 +227,14 @@ export function R1PreflightCheck() {
       slug: postSlug,
       verdict: status,
       path: pathname,
-      // Verdict Gate spec
+      // Semantics expressed through cta_id only
       dest_type: "gumroad",
       dest_id: "gumroad_ymwwgm",
       cta_id: ctaIdMap[status],
-      cta_position: status === "yellow" ? "verdict_primary" : "verdict_secondary",
-      intent: status === "yellow" ? ("evaluate" as const) : ("clarity" as const),
-      context: status === "green" ? ("setup" as const) : ("hardware" as const),
-      offer_revenue: offerMap[status],
+      cta_position: "bottom",
+      intent: status === "yellow" ? "evaluate" : "escape",
+      context: "hardware",
+      offer_revenue: "fix_now",
       // Context: model, vram, environment for analysis
       model,
       vram,
@@ -273,7 +267,7 @@ export function R1PreflightCheck() {
   const handleVultrClick = useCallback((location: AffiliateLocation) => {
     const pageType = getPageType(pathname || "")
 
-    // Map status/location to canonical cta_id per spec
+    // Map status/location to canonical cta_id per spec (semantics in cta_id)
     const ctaIdMap: Record<Status, string> = {
       red: "vultr_red_primary",
       yellow: "vultr_yellow_secondary",
@@ -289,14 +283,14 @@ export function R1PreflightCheck() {
       slug: postSlug,
       verdict: status,
       path: pathname,
-      // Verdict Gate spec
+      // Semantics expressed through cta_id only
       dest_type: "vultr",
       dest_id: "vultr_cloud_gpu",
       cta_id: ctaIdMap[status],
-      cta_position: status === "red" ? ("verdict_primary" as const) : ("verdict_secondary" as const),
-      intent: "escape" as const,
-      context: "hardware" as const,
-      offer_revenue: "run_now" as const,
+      cta_position: "bottom",
+      intent: "escape",
+      context: "hardware",
+      offer_revenue: "escape_local",
       // Context: model, vram, environment for analysis
       model,
       vram,
@@ -343,13 +337,13 @@ export function R1PreflightCheck() {
       setTimeout(() => setShowCopyToast(false), 2000)
     })
 
-    // Track the copy action - Verdict Gate spec
+    // Track the copy action - Verdict Gate spec (semantics in cta_id)
     trackCtaClick({
       path: pathname,
       cta_id: "green_primary_copy",
-      cta_position: "verdict_primary",
-      intent: "ship" as const,
-      context: "setup" as const,
+      cta_position: "bottom",
+      intent: "evaluate",
+      context: "hardware",
       verdict: status,
       pageType,
       slug: postSlug,
@@ -461,7 +455,7 @@ export function R1PreflightCheck() {
                   </span>
                 </div>
                 <p className="text-sm text-purple-100 mt-2">
-                  Start from ~$0.01/hr. No hardware ceiling.
+                  Hourly billing. No hardware ceiling.
                 </p>
               </div>
               <ExternalLink className="w-4 h-4 text-white/60 flex-shrink-0" />
