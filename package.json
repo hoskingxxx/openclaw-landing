@@ -15,6 +15,8 @@
     "test:watch": "vitest",
     "test:preflight": "playwright test tests/preflight-tracking.spec.ts",
     "test:preflight:headed": "playwright test tests/preflight-tracking.spec.ts --headed",
+    "test:prod:preflight": "playwright test tests/preflight-production-smoke.spec.ts",
+    "test:dedupe": "playwright test tests/preflight-impression-dedupe.spec.ts",
     "audit": "tsx scripts/website-audit.ts",
     "audit:prod": "AUDIT_URL=https://openclaw-ai.org tsx scripts/website-audit.ts"
   },

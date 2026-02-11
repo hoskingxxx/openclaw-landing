@@ -57,8 +57,8 @@ export function rehypeVultrEnrich(options: Options) {
 
       node.properties.className = classes;
 
-      // Umami tracking - marketing affiliate schema (non-calculator)
-      node.properties["data-umami-event"] = "marketing_affiliate_click";
+      // Umami tracking - revenue outbound schema (non-calculator)
+      node.properties["data-umami-event"] = "revenue_outbound";
       node.properties["data-umami-partner"] = "vultr";
       node.properties["data-umami-placement"] =
         getQueryParam(href, "utm_content") ?? placementDefault;

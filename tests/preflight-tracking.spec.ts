@@ -238,6 +238,45 @@ test.describe('Preflight Tracking Acceptance', () => {
   }
 
   /**
+   * Helper: Validate revenue_outbound schema
+   * Ensures only allowed fields are present
+   */
+  function validateRevenueOutboundSchema(payload: any): { valid: boolean; errors: string[] } {
+    const REQUIRED_FIELDS = ["page_type", "placement"];
+    const ALLOWED_FIELDS = [
+      "page_type", "pageType", "path", "page_path",
+      "verdict", "status",
+      "placement",
+      "dest", "dest_type", "dest_id",
+      "offer", "offer_revenue",
+      "cta_id", "cta_position",
+      "intent", "context",
+      "slug", "post_slug",
+      "model", "vram", "environment",
+      "partner", "location"
+    ];
+
+    const errors: string[] = [];
+
+    // Check required fields
+    for (const field of REQUIRED_FIELDS) {
+      if (!(field in payload) || payload[field] === undefined) {
+        errors.push(`Missing required field: ${field}`);
+      }
+    }
+
+    // Check for unexpected fields
+    const unexpectedFields = Object.keys(payload).filter(
+      key => !ALLOWED_FIELDS.includes(key)
+    );
+    if (unexpectedFields.length > 0) {
+      errors.push(`Unexpected fields: ${unexpectedFields.join(", ")}`);
+    }
+
+    return { valid: errors.length === 0, errors };
+  }
+
+  /**
    * Scenario A: RED state - Windows + 8GB + 70B
    * Expected: revenue_outbound OR affiliate_click with page_type/preflight + verdict=red
    */
@@ -279,9 +318,14 @@ test.describe('Preflight Tracking Acceptance', () => {
     const revenueEvent = events.find((e: any) => e.eventName === 'revenue_outbound' || e.eventName === 'affiliate_click');
     expect(revenueEvent, 'Must have revenue_outbound or affiliate_click event').toBeDefined();
 
-    // Validate page_type from revenue_outbound (if present)
+    // Validate schema and page_type from revenue_outbound (if present)
     const revenueOutbound = events.find((e: any) => e.eventName === 'revenue_outbound');
     if (revenueOutbound) {
+      // Schema validation
+      const schemaValidation = validateRevenueOutboundSchema(revenueOutbound.payload);
+      expect(schemaValidation.valid, `Schema validation failed: ${schemaValidation.errors.join(', ')}`).toBe(true);
+
+      // Page type validation
       expect(revenueOutbound!.payload.page_type, 'page_type must be "preflight"').toBe('preflight');
     }
 
