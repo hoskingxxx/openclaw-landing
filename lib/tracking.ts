@@ -452,45 +452,6 @@ export function trackRealityCheckImpression(params: {
   trackEvent("reality_check_impression", eventData);
 }
 
-/**
- * Track Reality Check result (canonical event)
- * Fires once per session when calculator result is rendered
- * Captures final user-selected configuration
- */
-export interface RealityCheckResultEvent extends Record<string, unknown> {
-  path: string;
-  verdict: "red" | "yellow" | "green";
-  vram: string;
-  model: string;
-}
-
-export function trackRealityCheckResult(params: {
-  path: string;
-  verdict: "red" | "yellow" | "green";
-  vram: string;
-  model: string;
-}): void {
-  if (typeof window === "undefined") return;
-
-  // Check if already fired this session (fire once per session, not per pageview)
-  const sessionKey = "reality_check_result_fired";
-  if (sessionStorage.getItem(sessionKey) === "1") {
-    return;
-  }
-
-  // Mark as fired
-  sessionStorage.setItem(sessionKey, "1");
-
-  const eventData: RealityCheckResultEvent = {
-    path: params.path,
-    verdict: params.verdict,
-    vram: params.vram,
-    model: params.model,
-  };
-
-  trackEvent("reality_check_result", eventData);
-}
-
 // ============================================================================
 // Legacy Events (Deprecated - Kept for Backward Compatibility)
 // ============================================================================

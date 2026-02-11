@@ -21,7 +21,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import { usePathname } from "next/navigation"
-import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, trackCtaClick, trackRealityCheckResult, getPageType } from "@/lib/tracking"
+import { trackAffiliateClick, trackToolDowngrade, trackRevenueOutbound, trackCtaImpression, trackCtaClick, getPageType } from "@/lib/tracking"
 import { ConversionButton } from "@/components/monetization/ConversionButton"
 import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Shield, Cpu, Zap, Check } from "lucide-react"
 
@@ -256,19 +256,6 @@ export function R1PreflightCheck() {
       })
     }
   }, [pathname, postSlug, showSecurityBanner, status])
-
-  // Track calculator result when rendered (fires once per session)
-  useEffect(() => {
-    // Only fire when result is displayed (status is calculated)
-    if (pathname) {
-      trackRealityCheckResult({
-        path: pathname,
-        verdict: status,
-        vram,
-        model,
-      })
-    }
-  }, []) // Empty deps = fire once on mount after initial render
 
   // Tracking helpers - use revenue_outbound for Gumroad and DeepInfra per Spec v1.0
   // P1: Add model, vram, environment for post-hoc analysis
