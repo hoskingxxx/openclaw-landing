@@ -6,6 +6,19 @@ import { Button } from "@/components/ui/Button";
 import { StopDebuggingCTA } from "@/components/stop-debugging-cta";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "OpenClaw AI - Fix DeepSeek R1 Crashes & OOM Errors",
+  description: "Stop debugging DeepSeek R1 crashes. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
+  keywords: ["DeepSeek R1", "OOM errors", "CUDA crashes", "VRAM calculator", "OpenClaw"],
+  openGraph: {
+    title: "OpenClaw AI - Fix DeepSeek R1 Crashes & OOM Errors",
+    description: "Stop debugging DeepSeek R1 crashes. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
+    url: "https://openclaw-ai.org",
+    type: "website",
+  },
+};
 
 // HARDCODED PATH - Nuclear fix for redirect loop
 // Updated to point to new security article
@@ -66,7 +79,7 @@ export default function HomePage() {
                 className="px-8 py-4 text-lg font-bold text-[#FF4500] bg-orange-50 dark:bg-orange-900/20 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 border border-orange-200 dark:border-orange-800 transition-all flex items-center gap-2"
               >
                 🚀 Rent Cloud GPU
-                <span className="text-xs font-normal opacity-70 text-slate-600 dark:text-slate-400 block ml-2">(Stop OOM)</span>
+                <span className="text-xs font-normal opacity-70 text-slate-600 dark:text-slate-400 block ml-2">(Ctrl+F Fix)</span>
               </a>
             </div>
           </section>
