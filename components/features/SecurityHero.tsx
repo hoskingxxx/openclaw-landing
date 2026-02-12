@@ -9,6 +9,8 @@
 
 import Link from "next/link"
 import { trackVultrOutbound } from "@/lib/tracking"
+import { ContentRail } from "@/components/features/ContentRail"
+import { ContentEdge } from "@/components/features/ContentEdge"
 
 const LINK_VULTR = "https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=hero&utm_campaign=security_gate"
 
@@ -27,7 +29,8 @@ export function SecurityHero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+      <ContentRail>
+        <ContentEdge className="relative z-10 text-center">
         <div className="mb-10 inline-flex items-center px-6 py-2 rounded-full border-2 border-yellow-500 bg-yellow-500/20 font-bold text-yellow-400 font-mono">
           <span className="text-2xl">⚠️</span>
           <span>SYSTEM ADVISORY</span>
@@ -97,7 +100,8 @@ export function SecurityHero() {
             I accept the risk. Continue to local guides &darr;
           </Link>
         </div>
-      </div>
+        </ContentEdge>
+      </ContentRail>
     </section>
   )
 }
