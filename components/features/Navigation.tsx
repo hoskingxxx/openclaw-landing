@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { siteConfig, navLinks, disclaimers } from "@/lib/site-config";
 import { MenuIcon, XIcon } from "@/components/icons";
 import { NavbarSupportButton } from "@/components/monetization/NavbarSupportButton";
+import { ContentRail } from "@/components/features/ContentRail";
+import { ContentEdge } from "@/components/features/ContentEdge";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -17,7 +19,8 @@ export function Navigation() {
   return (
     <>
       <nav className="md:sticky md:top-0 z-50 w-full border-b border-white/5 bg-background-primary/70 backdrop-blur-lg supports-[backdrop-filter]:bg-background-primary/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 md:py-4">
+        <ContentRail>
+          <ContentEdge className="py-3 md:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link
@@ -74,7 +77,8 @@ export function Navigation() {
               </div>
             </div>
           )}
-        </div>
+        </ContentEdge>
+      </ContentRail>
 
         {/* Mobile Overlay - 只覆盖导航栏下方的内容 */}
         {mobileMenuOpen && (

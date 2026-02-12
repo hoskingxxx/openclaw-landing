@@ -9,6 +9,8 @@
 
 import { useState, useEffect } from "react"
 import { trackVultrOutbound } from "@/lib/tracking"
+import { ContentRail } from "@/components/features/ContentRail"
+import { ContentEdge } from "@/components/features/ContentEdge"
 
 interface ImpossibleWallWidgetProps {
   slug?: string
@@ -34,8 +36,9 @@ export function ImpossibleWallWidget({ slug }: ImpossibleWallWidgetProps) {
   if (dismissed) return null
 
   return (
-    <div className="my-8 mx-4 max-w-4xl">
-      <div className="bg-gray-950 border border-green-500/50 rounded-lg overflow-hidden shadow-xl">
+    <ContentRail>
+      <ContentEdge className="my-8">
+        <div className="bg-gray-950 border border-green-500/50 rounded-lg overflow-hidden shadow-xl">
         {/* Terminal Header */}
         <div className="bg-gray-900 px-4 py-2 border-b border-green-500/30 flex items-center gap-2">
           <div className="flex gap-1.5">
@@ -83,6 +86,7 @@ export function ImpossibleWallWidget({ slug }: ImpossibleWallWidgetProps) {
           </button>
         </div>
       </div>
-    </div>
+      </ContentEdge>
+    </ContentRail>
   )
 }
