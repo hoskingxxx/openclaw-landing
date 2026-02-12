@@ -5,7 +5,6 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { siteConfig, navLinks, disclaimers } from "@/lib/site-config";
 import { MenuIcon, XIcon } from "@/components/icons";
-import { NavbarSupportButton } from "@/components/monetization/NavbarSupportButton";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 
@@ -47,8 +46,7 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Support Button - hidden on guide detail pages */}
-            {!isGuideDetailPage && <NavbarSupportButton />}
+            {/* Support Button removed per monetization consolidation */}
 
             {/* Mobile Menu Button */}
             <button

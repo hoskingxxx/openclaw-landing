@@ -3,18 +3,17 @@ import { SecurityHero } from "@/components/features/SecurityHero";
 import { Footer } from "@/components/features/Footer";
 import { Navigation } from "@/components/features/Navigation";
 import { Button } from "@/components/ui/Button";
-import { StopDebuggingCTA } from "@/components/stop-debugging-cta";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "OpenClaw AI - Fix DeepSeek R1 Crashes & OOM Errors",
-  description: "Stop debugging DeepSeek R1 crashes. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
-  keywords: ["DeepSeek R1", "OOM errors", "CUDA crashes", "VRAM calculator", "OpenClaw"],
+  title: "OpenClaw AI - Run DeepSeek R1 Preflight & Fix OOM Errors",
+  description: "Check if your hardware can handle DeepSeek R1. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
+  keywords: ["DeepSeek R1", "R1 Preflight", "OOM errors", "CUDA crashes", "VRAM calculator", "OpenClaw"],
   openGraph: {
-    title: "OpenClaw AI - Fix DeepSeek R1 Crashes & OOM Errors",
-    description: "Stop debugging DeepSeek R1 crashes. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
+    title: "OpenClaw AI - Run DeepSeek R1 Preflight & Fix OOM Errors",
+    description: "Check if your hardware can handle DeepSeek R1. Battle-tested fixes for CUDA OOM errors, VRAM limits, and installation issues.",
     url: "https://openclaw-ai.org",
     type: "website",
   },
@@ -59,32 +58,6 @@ export default function HomePage() {
             <section className="py-12">
               <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
               {/* Action A: Diagnosis */}
-              <Link
-                href="/guides/openclaw-error-index"
-                className="px-8 py-4 text-lg font-bold text-white bg-slate-900 rounded-lg hover:bg-slate-800 transition-all flex items-center gap-2 border border-slate-700"
-              >
-                🔍 Find Your Error Code
-                <span className="text-xs font-normal opacity-70 block ml-2">(Ctrl+F Fix)</span>
-              </Link>
-
-              {/* Action B: Solution */}
-              <a
-                href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=homepage&utm_content=hero_section"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-umami-event="vultr_outbound"
-                data-umami-partner="vultr"
-                data-umami-placement="hero_section"
-                className="px-8 py-4 text-lg font-bold text-[#FF4500] bg-orange-50 dark:bg-orange-900/20 rounded-lg hover:bg-orange-100 dark:hover:bg-orange-900/30 border border-orange-200 dark:border-orange-800 transition-all flex items-center gap-2"
-              >
-                🚀 Rent Cloud GPU
-                <span className="text-xs font-normal opacity-70 text-slate-600 dark:text-slate-400 block ml-2">(Ctrl+F Fix)</span>
-              </a>
-            </div>
-          </section>
-          </ContentEdge>
-        </ContentRail>
-
         {/* The Fix You Probably Needed */}
         <ContentRail>
           <ContentEdge>
@@ -142,21 +115,19 @@ ollama run deepseek-r1:8b`}
             <section className="py-20">
               <div className="glass-card p-6 sm:p-8 text-center">
               <h2 className="text-xl md:text-2xl font-mono text-text-primary mb-4 break-words">
-                If you are here, you probably already broke things.
+                Run OpenClaw safely. Avoid local risk.
               </h2>
               <p className="text-text-secondary mb-6 break-words">
-                That's why this site exists. You're not alone.
+                Check if your hardware can handle R1 before you break it.
               </p>
-              <Button href="/docs" className="font-mono text-sm">
-                Start Setup (Survivor Mode) →
+              <Button href="/preflight" className="font-mono text-sm">
+                Run R1 Preflight →
               </Button>
               <p className="text-xs text-text-tertiary font-mono mt-6 break-words">
-                Bookmark this page. You will be back after your next OOM.
+                Takes 2 minutes. Saves you hours of debugging.
               </p>
               <p className="text-xs text-text-tertiary mt-4 leading-relaxed">
-                JetBrains / Cursor users:<br />
-                Local R1 failures usually happen <strong className="font-semibold">before inference</strong>.<br />
-                The red lines are documented inside the Survival Kit.
+                Already stuck? The Survival Kit has exit rules and workarounds.
               </p>
             </div>
           </section>
