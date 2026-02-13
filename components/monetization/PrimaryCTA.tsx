@@ -78,7 +78,7 @@ export function PrimaryCTA({
         className={`text-xs text-text-tertiary hover:text-text-secondary transition-colors underline ${className}`}
         data-cta="primary"
       >
-        {offer === "primary" ? `Get Clarity — ${offerConfig.price}` : "Deploy on Vultr →"}
+        {offer === "primary" ? `Get Clarity — ${offerConfig.price}` : `Get Cloud GPU (${offerConfig.price})`}
       </a>
     )
   }
