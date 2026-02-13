@@ -109,7 +109,7 @@ export default function OOMPage() {
               </div>
 
               {/* Option B: Pragmatist (Cloud) */}
-              <div className="glass-card p-6 border-l-4 border-l-green-500">
+              <div className="glass-card p-6 border-l-4 border-l-brand-primary">
                 <h3 className="text-lg font-semibold text-text-primary mb-4">
                   Option B: The Pragmatist (Cloud VPS / H100)
                 </h3>
@@ -130,7 +130,7 @@ export default function OOMPage() {
                     href="https://www.vultr.com/?ref=9864821-9J"
                     target="_blank"
                     rel="noopener noreferrer sponsored"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-mono text-sm font-bold rounded-lg transition-colors mt-4"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white font-mono text-sm font-bold rounded-lg transition-colors mt-4"
                     data-cta="vultr_oom_option_b"
                   >
                     Deploy Cloud GPU →
@@ -394,7 +394,7 @@ you are valuing your time at minimum hourly rates.</code>
                   href="https://www.vultr.com/?ref=9864821-9J"
                   target="_blank"
                   rel="noopener noreferrer sponsored"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-mono text-sm font-bold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-mono text-sm font-bold rounded-lg transition-colors"
                   data-cta="vultr_oom_final"
                 >
                   Deploy Cloud GPU →

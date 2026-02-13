@@ -64,7 +64,7 @@ export function ContextCTA({
 
   return (
     <div ref={containerRef} className={`my-12 pt-8 border-t border-white/10 ${className}`}>
-      <h2 className="text-2xl font-mono text-red-400 mb-4 text-center">
+      <h2 className="text-2xl font-mono text-brand-primary mb-4 text-center">
         Hardware Not Enough? Escape to Cloud.
       </h2>
       <div className="flex flex-col items-center gap-6">
@@ -74,7 +74,7 @@ export function ContextCTA({
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={handleClick}
-          className="w-full sm:w-auto px-10 py-5 text-xl font-bold text-white rounded-lg border-2 border-purple-500 bg-purple-600 hover:bg-purple-500 font-mono text-center shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
+          className="w-full sm:w-auto px-10 py-5 text-xl font-bold text-white rounded-lg border-2 border-brand-primary bg-brand-primary hover:bg-brand-hover font-mono text-center shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
           data-cta={ctaId}
         >
           Launch Cloud Sandbox ({PRIMARY_OFFER.price}) →

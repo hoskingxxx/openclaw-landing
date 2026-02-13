@@ -97,7 +97,7 @@ export function PrimaryCTA({
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={handleClick}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded transition-colors text-xs sm:text-sm flex-shrink-0"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-brand-primary hover:bg-brand-hover text-white font-bold rounded transition-colors text-xs sm:text-sm flex-shrink-0"
           data-cta={ctaId}
         >
           {offer === "primary" ? "Rent GPU" : "Get Decision Boundaries"}
@@ -109,19 +109,19 @@ export function PrimaryCTA({
 
   // Full variant: Complete promo (article bottom)
   return (
-    <div ref={elementRef} className={`my-8 border border-amber-500/50 rounded-xl bg-gradient-to-br from-amber-50/10 to-orange-50/5 dark:from-amber-900/30 dark:to-orange-900/20 relative overflow-hidden ${className}`}>
+    <div ref={elementRef} className={`my-8 border border-brand-primary/50 rounded-xl bg-gradient-to-br from-brand-primary/10 to-brand-hover/5 dark:from-brand-primary/30 dark:to-brand-hover/20 relative overflow-hidden ${className}`}>
       {/* Left accent bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 to-orange-500"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-primary to-brand-hover"></div>
 
       <div className="p-6">
         {/* Header badge */}
         <div className="flex items-center gap-2 mb-4">
-          <div className="flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 dark:bg-amber-500/10 rounded-full border border-amber-500/30">
-            <Zap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1 bg-brand-primary/20 dark:bg-brand-primary/10 rounded-full border border-brand-primary/30">
+            <Zap className="w-3.5 h-3.5 text-brand-primary dark:text-brand-primary" />
           </div>
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
             {offer === "primary" ? "Official Recommendation" : "Battle-Tested"}
-            <ExternalLink className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <ExternalLink className="w-4 h-4 text-brand-primary dark:text-brand-primary" />
           </h3>
         </div>
 
@@ -138,7 +138,7 @@ export function PrimaryCTA({
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={handleClick}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-hover hover:from-brand-hover hover:to-orange-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
           data-cta={ctaId}
         >
           {offer === "primary" ? "Deploy on Vultr →" : `Buy Clarity — ${offerConfig.price}`}
