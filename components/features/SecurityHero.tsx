@@ -8,7 +8,7 @@
 "use client"
 
 import Link from "next/link"
-import { trackVultrOutbound } from "@/lib/tracking"
+import { trackVultrOutbound } from "@/lib/tracking";
 import { ContentRail } from "@/components/features/ContentRail"
 import { ContentEdge } from "@/components/features/ContentEdge"
 
@@ -79,17 +79,7 @@ export function SecurityHero() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-          <a
-            href={LINK_VULTR}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            onClick={handleVultrClick}
-            className="w-full sm:w-auto px-12 py-6 text-xl font-bold text-white rounded-lg border-2 border-green-400 bg-green-600 hover:bg-green-500 shadow-2xl flex items-center justify-center gap-3"
-          >
-            <span className="font-mono">
-              [ LAUNCH CLOUD SANDBOX ($5/mo) {'>>'} ]
-            </span>
-          </a>
+          <PrimaryCTA variant="full" placement="hero" offer="primary" />
         </div>
 
         <div className="text-center">

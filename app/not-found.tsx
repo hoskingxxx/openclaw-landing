@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
+import { ContextCTA } from "@/components/monetization/ContextCTA";
 
-const VULTR_LINK = "https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=404&utm_campaign=error_page";
 
 export default function NotFoundPage() {
   return (
@@ -43,21 +43,18 @@ export default function NotFoundPage() {
           </div>
 
           {/* Return Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={VULTR_LINK}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="px-8 py-4 text-lg font-bold text-white rounded-lg border-2 border-green-400 bg-green-600 hover:bg-green-500 font-mono"
-            >
-              Launch Cloud Sandbox ($5/mo) →
-            </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/guides"
               className="px-8 py-4 text-lg font-bold text-text-primary border-2 border-brand-primary bg-transparent hover:bg-brand-primary/10 font-mono"
             >
               Browse Guides →
             </Link>
+          </div>
+
+          {/* Context CTA for RED verdict */}
+          <div className="mt-8 max-w-md mx-auto">
+            <ContextCTA verdict="red" placement="bottom" />
           </div>
 
           {/* Survival Tip */}
