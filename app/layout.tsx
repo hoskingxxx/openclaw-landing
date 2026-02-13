@@ -65,11 +65,9 @@ export const metadata: Metadata = {
   },
 
   // Twitter Card
+  // Note: title and description removed to allow per-page overrides
   twitter: {
     card: "summary_large_image",
-    title: "Running DeepSeek R1 Locally: The Unofficial OpenClaw Guide",
-    description: "Stop debugging DeepSeek R1 crashes. This battle-tested OpenClaw guide explains CUDA OOM errors, VRAM limits, and the fastest fixes that actually work.",
-    images: ["/opengraph-image"],
   },
 
   // Robots
