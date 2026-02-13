@@ -62,21 +62,21 @@ export function SecurityHero() {
               RUN OPENCLAW SAFELY.
             </p>
           </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 mb-4">
+            <PrimaryCTA variant="full" placement="top" offer="primary" />
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="#guides"
+              className="text-sm font-mono text-gray-400 hover:text-gray-300 underline"
+            >
+              I accept the risk. Continue to local guides →
+            </Link>
+          </div>
         </ContentEdge>
       </ContentRail>
-
-      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-        <PrimaryCTA variant="full" placement="top" offer="primary" />
-      </div>
-
-      <div className="text-center">
-        <Link
-          href="#guides"
-          className="text-sm font-mono text-gray-400 hover:text-gray-300 underline"
-        >
-          I accept the risk. Continue to local guides →
-        </Link>
-      </div>
     </section>
   )
 }
