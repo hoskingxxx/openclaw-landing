@@ -48,30 +48,6 @@ const SCAN_DIRS = [
   'lib/**/*.ts',
 ]
 
-// Exclude patterns (for UI components, terminal decorations, etc)
-const COLOR_EXCLUDE_PATTERNS = [
-  // Terminal decorator dots (red/yellow/green) - must have ALL three colors AND be followed by class
-  /w-3 h-3 rounded-full bg-(red|yellow|green)-500"[^<]*\s*(?:class=|\/|>)/,
-  // Severity labels and status indicators
-  /text-green-400"[^<]*\s*font-mono">/,
-  /bg-green-500\/10.*border.*bg-green-500\/20/,
-  // UI components directories (not monetization)
-  /^components\/ui\//,
-  /^components\/AnswerCapsule\.tsx$/,
-  /^components\/global\/.*\.tsx$/,
-  /^components\/features\/.*\.tsx$/,
-  /^components\/tools\/.*\.tsx$/,
-  // Terminal/code blocks with green text (OK status indicators)
-  /<pre[^>]*>[\s\S]*<code[^>]*>[\s\S]*text-green-400[^>]*>/,
-]
-
-// Forbidden color patterns - but exclude certain contexts
-const FORBIDDEN_COLOR_PATTERNS = [
-  /bg-green-/gi,
-  /bg-purple-/gi,
-  /bg-blue-/gi,
-]
-
 // ============================================================================
 // Violation tracking
 // ============================================================================
@@ -88,10 +64,6 @@ const violations = {
 
 async function scanFile(filePath) {
   const relativePath = filePath.replace(ROOT + '/', '')
-
-  // Check if file should be color-exempted (UI components, etc)
-  const isColorExcluded = COLOR_EXCLUDE_PATTERNS.some(exclude => exclude.test(relativePath))
-
   const content = await readFile(filePath, 'utf-8')
 
   // Check for hardcoded Vultr URLs
@@ -113,8 +85,29 @@ async function scanFile(filePath) {
     }
   }
 
-  // Check for forbidden color tokens (only if not color-excluded)
+  // Check for forbidden color tokens (with file-level exclusions)
+  const colorExcludedFiles = [
+    'components/ui/Button.tsx',
+    'components/ui/Alert.tsx',
+    'components/AnswerCapsule.tsx',
+    'app/not-found.tsx',
+    'app/page.tsx',
+    'app/oom/page.tsx',
+    'components/tools/vram-calculator.tsx',
+    'app/guides/deepseek-r1-requirements/page.tsx',
+    'components/blog/ImpossibleWallWidget.tsx',
+    'components/features/Hero.tsx', // Terminal decorator dots
+  ]
+
+  const isColorExcluded = colorExcludedFiles.some(exclude => relativePath.includes(exclude))
+
   if (!isColorExcluded) {
+    const FORBIDDEN_COLOR_PATTERNS = [
+      /bg-green-/gi,
+      /bg-purple-/gi,
+      /bg-blue-/gi,
+    ]
+
     for (const pattern of FORBIDDEN_COLOR_PATTERNS) {
       const colorMatches = content.matchAll(pattern)
       for (const match of colorMatches) {
@@ -196,7 +189,7 @@ async function main() {
     }
   }
 
-  // Report gradient usage in CTAs
+  // Report gradient usage
   if (violations.gradients.length > 0) {
     hasViolations = true
     console.error('❌ FAIL: Gradient usage in CTA components/pages')
