@@ -252,9 +252,9 @@ test.describe('Preflight Tracking Acceptance', () => {
    * Ensures only allowed fields are present
    */
   function validateRevenueOutboundSchema(payload: any): { valid: boolean; errors: string[] } {
-    const REQUIRED_FIELDS = ["page_type", "placement"];
+    const REQUIRED_FIELDS = ["pageType", "placement"];
     const ALLOWED_FIELDS = [
-      "page_type", "pageType", "path", "page_path",
+      "pageType", "path", "page_path",
       "verdict", "status",
       "placement",
       "dest", "dest_type", "dest_id",
@@ -336,7 +336,7 @@ test.describe('Preflight Tracking Acceptance', () => {
       expect(schemaValidation.valid, `Schema validation failed: ${schemaValidation.errors.join(', ')}`).toBe(true);
 
       // Page type validation
-      expect(revenueOutbound!.payload.page_type, 'page_type must be "preflight"').toBe('preflight');
+      expect(revenueOutbound!.payload.pageType, 'pageType must be "preflight"').toBe('preflight');
     }
 
     // Validate path and verdict across ALL events (different events have different field names)
@@ -401,7 +401,7 @@ test.describe('Preflight Tracking Acceptance', () => {
     expect(revenueOutbound, 'Must have revenue_outbound event').toBeDefined();
 
     // Validate payload
-    expect(revenueOutbound!.payload.page_type, 'page_type must be "preflight"').toBe('preflight');
+    expect(revenueOutbound!.payload.pageType, 'pageType must be "preflight"').toBe('preflight');
     expect(getPathFromEvent(revenueOutbound!), 'path must be "/preflight"').toBe('/preflight');
     expect(getVerdictFromEvent(revenueOutbound!), 'verdict must be "yellow"').toBe('yellow');
 
@@ -461,7 +461,7 @@ test.describe('Preflight Tracking Acceptance', () => {
     expect(ctaClick, 'Must have cta_click event').toBeDefined();
 
     // Validate payload
-    expect(ctaClick!.payload.page_type, 'page_type must be "preflight"').toBe('preflight');
+    expect(ctaClick!.payload.pageType, 'pageType must be "preflight"').toBe('preflight');
     expect(getPathFromEvent(ctaClick!), 'path must be "/preflight"').toBe('/preflight');
     expect(getVerdictFromEvent(ctaClick!), 'verdict must be "green"').toBe('green');
     expect(ctaClick!.payload.cta_id, 'cta_id must be "green_primary_copy"').toBe('green_primary_copy');

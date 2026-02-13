@@ -146,8 +146,7 @@ export interface RevenueOutboundEvent extends Record<string, unknown> {
   dest?: Dest;
   offer?: Offer;
   placement: Placement;
-  page_type: PageType;
-  pageType?: PageType; // Transitional dual-write
+  pageType: PageType;
   slug?: string;
   verdict?: Verdict;
   path: string;
@@ -181,8 +180,7 @@ export interface CtaImpressionEvent extends Record<string, unknown> {
   dest?: Dest;
   offer?: Offer;
   placement: Placement;
-  page_type: PageType;
-  pageType?: PageType; // Transitional dual-write
+  pageType: PageType;
   slug?: string;
   verdict?: Verdict;
   path: string;
@@ -208,8 +206,7 @@ export interface CtaClickEvent extends Record<string, unknown> {
   intent: Intent;
   context: Context;
   verdict: CtaVerdict;
-  page_type: PageType;
-  pageType?: PageType; // Transitional dual-write
+  pageType: PageType;
   slug?: string;
 
   // Optional: revenue context
@@ -231,7 +228,7 @@ export interface CtaClickEvent extends Record<string, unknown> {
  * Unchanged - path property only
  */
 export interface RealityCheckImpressionEvent extends Record<string, unknown> {
-  page_type: PageType;
+  pageType: PageType;
   slug?: string;
   initial_model: string;
   initial_vram: string;
@@ -289,8 +286,7 @@ export function trackRevenueOutbound(params: {
     ...(params.dest && { dest: params.dest }),
     ...(params.offer && { offer: params.offer }),
     placement: params.placement,
-    page_type: params.pageType,
-    pageType: params.pageType, // Transitional dual-write
+    pageType: params.pageType,
     ...(params.slug && { slug: params.slug }),
     ...(params.verdict && { verdict: params.verdict }),
     path: params.path,
@@ -351,8 +347,7 @@ export function trackCtaImpression(params: {
     ...(params.dest && { dest: params.dest }),
     ...(params.offer && { offer: params.offer }),
     placement: params.placement,
-    page_type: params.pageType,
-    pageType: params.pageType, // Transitional dual-write
+    pageType: params.pageType,
     ...(params.slug && { slug: params.slug }),
     ...(params.verdict && { verdict: params.verdict }),
     path: params.path,
@@ -400,8 +395,7 @@ export function trackCtaClick(params: {
     intent: params.intent,
     context: params.context,
     verdict: params.verdict,
-    page_type: params.pageType,
-    pageType: params.pageType, // Transitional dual-write
+    pageType: params.pageType,
     ...(params.slug && { slug: params.slug }),
     ...(params.dest_type && { dest_type: params.dest_type }),
     ...(params.dest_id && { dest_id: params.dest_id }),
@@ -453,7 +447,7 @@ export function trackRealityCheckImpression(params: {
   sessionStorage.setItem(sessionKey, "1");
 
   const eventData: RealityCheckImpressionEvent = {
-    page_type: params.pageType,
+    pageType: params.pageType,
     ...(params.slug && { slug: params.slug }),
     initial_model: params.initialModel,
     initial_vram: params.initialVram,

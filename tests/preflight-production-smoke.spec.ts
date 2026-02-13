@@ -127,8 +127,8 @@ test.describe('Production Smoke: /preflight', () => {
     expect(events.length, 'At least one tracking event must fire').toBeGreaterThan(0);
 
     // Validate page_type
-    const hasPageType = events.some((e: any) => e.payload.page_type === 'preflight');
-    expect(hasPageType, 'page_type must be "preflight"').toBe(true);
+    const hasPageType = events.some((e: any) => e.payload.pageType === 'preflight');
+    expect(hasPageType, 'pageType must be "preflight"').toBe(true);
 
     // No critical errors
     const criticalErrors = errors.filter((e: string) =>
@@ -161,8 +161,8 @@ test.describe('Production Smoke: /preflight', () => {
     const events = await getUmamiEvents(page);
     expect(events.length, 'At least one tracking event must fire').toBeGreaterThan(0);
 
-    const hasPageType = events.some((e: any) => e.payload.page_type === 'preflight');
-    expect(hasPageType, 'page_type must be "preflight"').toBe(true);
+    const hasPageType = events.some((e: any) => e.payload.pageType === 'preflight');
+    expect(hasPageType, 'pageType must be "preflight"').toBe(true);
   });
 
   test('GREEN state - tracking validation', async ({ page }) => {
@@ -189,7 +189,7 @@ test.describe('Production Smoke: /preflight', () => {
     const events = await getUmamiEvents(page);
     expect(events.length, 'At least one tracking event must fire').toBeGreaterThan(0);
 
-    const hasPageType = events.some((e: any) => e.payload.page_type === 'preflight');
-    expect(hasPageType, 'page_type must be "preflight"').toBe(true);
+    const hasPageType = events.some((e: any) => e.payload.pageType === 'preflight');
+    expect(hasPageType, 'pageType must be "preflight"').toBe(true);
   });
 });
