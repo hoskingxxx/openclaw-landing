@@ -11,6 +11,7 @@ import { useState, useEffect } from "react"
 import { trackVultrOutbound } from "@/lib/tracking"
 import { ContentRail } from "@/components/features/ContentRail"
 import { ContentEdge } from "@/components/features/ContentEdge"
+import { PRIMARY_OFFER } from "@/lib/offers"
 
 interface ImpossibleWallWidgetProps {
   slug?: string
@@ -68,11 +69,11 @@ export function ImpossibleWallWidget({ slug }: ImpossibleWallWidgetProps) {
 
           {/* CTA Button */}
           <a
-            href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=blog_widget&utm_campaign=conversion_funnel"
+            href={PRIMARY_OFFER.url}
             target="_blank"
             rel="noopener noreferrer sponsored"
             onClick={handleVultrClick}
-            className="block w-full py-4 px-6 bg-green-600 hover:bg-green-500 text-white font-bold text-center rounded-lg transition-colors shadow-lg"
+            className="block w-full py-4 px-6 bg-brand-primary hover:bg-brand-hover text-white font-bold text-center rounded-lg transition-colors shadow-lg"
           >
             [ Launch Cloud Sandbox ($5/mo) ]
           </a>

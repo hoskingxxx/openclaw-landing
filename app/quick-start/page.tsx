@@ -114,7 +114,7 @@ export default function QuickStartPage() {
           {/* PATH A */}
           <section id="cloud" className="mb-20">
             <div className="flex items-center gap-3 mb-6">
-              <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs font-mono font-bold">RECOMMENDED</span>
+              <span className="bg-brand-primary/20 text-brand-primary px-3 py-1 rounded text-xs font-mono font-bold">RECOMMENDED</span>
               <h2 className="text-2xl font-bold text-text-primary">Path A: The "Just Work" Method</h2>
             </div>
 
@@ -157,10 +157,10 @@ nvm use 22`} />
               <div>
                 <h3 className="text-lg font-medium text-text-primary mb-2">2. Get DeepSeek Key</h3>
                 <p className="text-sm text-text-secondary mb-3">
-                  Sign up at <a href="https://platform.deepseek.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline font-medium">platform.deepseek.com</a>.
+                  Sign up at <a href="https://platform.deepseek.com" target="_blank" rel="noopener noreferrer" className="text-brand-primary underline font-medium">platform.deepseek.com</a>.
                 </p>
-                <div className="mt-2 p-3 bg-blue-500/10 border border-blue-500/20 rounded">
-                  <p className="text-xs text-blue-200">
+                <div className="mt-2 p-3 bg-background-tertiary/10 border border-border/20 rounded">
+                  <p className="text-xs text-text-secondary">
                     <strong>💡 Pro Tip:</strong> DeepSeek R1 via API costs ~$1-5/mo for casual use. No VRAM drama.
                   </p>
                 </div>

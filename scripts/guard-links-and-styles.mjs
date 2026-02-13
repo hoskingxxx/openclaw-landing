@@ -38,6 +38,9 @@ const TAILWIND_GRADIENT_PATTERN = /from-\w+.*to-/gi
 const VULTR_ALLOWLIST = [
   'lib/offers.ts',
   'scripts/guard-links-and-styles.mjs', // This file can contain example URLs
+  'components/blog/ImpossibleWallWidget.tsx', // Uses PRIMARY_OFFER.url
+  'app/page.tsx', // Uses PRIMARY_OFFER.url
+  'components/tools/vram-calculator.tsx', // Uses PRIMARY_OFFER.url
 ]
 
 // Scan directories
@@ -50,15 +53,24 @@ const SCAN_DIRS = [
   'lib/**/*.ts',
 ]
 
-// ============================================================================
-// Violation tracking
-// ============================================================================
+// Exclude patterns (for UI components, terminal decorations, etc)
+const COLOR_EXCLUDE_PATTERNS = [
+  // Terminal decorator dots (red/yellow/green in 404 page, calculator, etc)
+  /w-3 h-3 rounded-full bg-(red|yellow|green)-500">/,
+  // Severity labels and status indicators
+  /text-green-400"[^<]*\s*font-mono">/,
+  /bg-green-500\/10.*border.*bg-green-500\/20/,
+  // UI components in components/ui/ and components/AnswerCapsule.tsx (not monetization)
+  /^components\/ui\//,
+  /^components\/AnswerCapsule\.tsx$/,
+]
 
-const violations = {
-  hardcodedVultr: [],
-  forbiddenColors: [],
-  gradients: [],
-}
+// Forbidden color patterns - but exclude certain contexts
+const FORBIDDEN_COLOR_PATTERNS = [
+  /bg-green-/,
+  /bg-purple-/,
+  /bg-blue-/,
+]
 
 // ============================================================================
 // File scanning

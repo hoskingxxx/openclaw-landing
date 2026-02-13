@@ -23,6 +23,7 @@ import { useState, useEffect, useCallback, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { trackAffiliateClick, trackRevenueOutbound, trackCtaImpression, trackCtaClick, getPageType } from "@/lib/tracking"
 import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Check } from "lucide-react"
+import { PRIMARY_OFFER } from "@/lib/offers"
 
 // ============================================================================
 // GLOBAL AFFILIATE LINKS (HARDCODED)
@@ -30,7 +31,7 @@ import { ExternalLink, Cloud, AlertTriangle, Settings, Package, Check } from "lu
 
 const LINK_KIT = "https://hilda666888.gumroad.com/l/ymwwgm"
 const LINK_API = "https://deepinfra.com/"
-const LINK_CLOUD = "https://www.vultr.com/?ref=9864821-9J"
+const LINK_CLOUD = PRIMARY_OFFER.url
 
 // ============================================================================
 // TYPES & DATA STRUCTURES (Strict Enum - Do Not Modify)

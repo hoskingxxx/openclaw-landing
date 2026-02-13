@@ -67,9 +67,9 @@ export default function DocsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Path A: Cloud API */}
-              <div className="glass-card p-8 border-2 border-green-500/30 hover:border-green-500/50 transition-colors">
+              <div className="glass-card p-8 border-2 border-brand-primary/30 hover:border-brand-primary/50 transition-colors">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded text-xs font-mono font-bold">RECOMMENDED</span>
+                  <span className="bg-brand-primary/20 text-brand-primary px-3 py-1 rounded text-xs font-mono font-bold">RECOMMENDED</span>
                   <h3 className="text-xl font-bold text-text-primary">Path A: Cloud API</h3>
                 </div>
 
@@ -92,8 +92,8 @@ export default function DocsPage() {
                   </div>
                 </div>
 
-                <div className="bg-green-500/10 border border-green-500/20 rounded p-4 mb-6">
-                  <p className="text-sm text-green-200">
+                <div className="bg-background-tertiary/10 border border-border/20 rounded p-4 mb-6">
+                  <p className="text-sm text-text-secondary">
                     <strong>Pro:</strong> Works immediately. No hardware drama.<br />
                     <strong>Con:</strong> Rate limits during peak hours (9-11AM Beijing).
                   </p>

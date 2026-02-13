@@ -249,7 +249,7 @@ export default function TroubleshootingPage() {
                         fix.severity === "critical" ? "bg-red-500/20 text-red-400" :
                         fix.severity === "high" ? "bg-orange-500/20 text-orange-400" :
                         fix.severity === "medium" ? "bg-yellow-500/20 text-yellow-400" :
-                        "bg-blue-500/20 text-blue-400"
+                        "bg-text-secondary/20 text-text-secondary"
                       }`}>
                         {fix.severity.toUpperCase()}
                       </span>

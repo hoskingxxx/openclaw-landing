@@ -5,6 +5,7 @@ import { Navigation } from "@/components/features/Navigation";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 import { PrimaryCTA } from "@/components/monetization/PrimaryCTA";
+import { PRIMARY_OFFER } from "@/lib/offers";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -170,7 +171,7 @@ ollama run deepseek-r1:8b`}
                   $5/hr. No setup. Destroy when done.
                 </p>
                 <a
-                  href="https://www.vultr.com/?ref=9864821-9J"
+                  href={PRIMARY_OFFER.url}
                   target="_blank"
                   rel="noopener noreferrer sponsored"
                   className="text-xs text-brand-primary hover:text-brand-hover underline font-mono"
