@@ -192,22 +192,6 @@ ollama run deepseek-r1:8b`}
       </div>
 
       <Footer />
-
-      {/* Secondary CTA: Survival Kit (text-only) */}
-      <div className="text-center py-6">
-        <p className="text-xs text-text-tertiary font-mono mb-2">
-          Need decision boundaries and stop rules for DeepSeek R1?
-        </p>
-        <a
-          href="https://hilda666888.gumroad.com/l/ymwwgm"
-          target="_blank"
-          rel="noopener noreferrer sponsored"
-          className="text-xs text-text-secondary hover:text-text-primary transition-colors underline"
-          data-cta="kit_text_footer"
-        >
-          Get Survival Kit ($9.90)
-        </a>
-      </div>
     </>
   );
 }

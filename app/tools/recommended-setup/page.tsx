@@ -103,7 +103,7 @@ export default function RecommendedSetupPage() {
                   Run Pre-flight Check
                 </Link>
                 <div className="text-sm text-text-secondary">
-                  Or <a href="https://hilda666888.gumroad.com/l/ymwwgm" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">get the 1-Click Survival Kit ($9.90)</a>
+                  Or <a href="https://hilda666888.gumroad.com/l/ymwwgm" target="_blank" rel="noopener noreferrer sponsored" className="text-orange-500 hover:text-orange-400 underline">get the 1-Click Survival Kit</a>
                 </div>
               </div>
             </div>
