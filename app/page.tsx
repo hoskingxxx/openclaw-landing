@@ -97,8 +97,8 @@ export default function HomePage() {
                 <p className="text-text-tertiary text-sm font-mono mb-6">
                   You can fight physics, or you can understand the limits.
                 </p>
-                {/* Primary CTA: Cloud */}
-                <PrimaryCTA variant="full" placement="bottom" offer="primary" />
+                {/* Secondary CTA: Survival Kit */}
+                <PrimaryCTA variant="full" placement="bottom" offer="secondary" />
               </div>
             </section>
           </ContentEdge>
@@ -166,11 +166,17 @@ ollama run deepseek-r1:8b`}
                 <p className="text-text-secondary mb-6 break-words">
                   Skip the hardware limits. Spin up an H100, run your job, done.
                 </p>
-                {/* Primary CTA: Cloud */}
-                <PrimaryCTA variant="full" placement="bottom" offer="primary" />
-                <p className="text-xs text-text-tertiary font-mono mt-6 break-words">
+                <p className="text-xs text-text-tertiary font-mono mb-6 break-words">
                   $5/hr. No setup. Destroy when done.
                 </p>
+                <a
+                  href="https://www.vultr.com/?ref=9864821-9J"
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="text-xs text-brand-primary hover:text-brand-hover underline font-mono"
+                >
+                  Deploy on Vultr →
+                </a>
               </div>
             </section>
           </ContentEdge>
