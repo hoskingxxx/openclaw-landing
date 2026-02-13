@@ -219,7 +219,7 @@ function generateAIJson() {
         ui: ["React", "Tailwind CSS"]
       },
       hosting: "Vercel",
-      repository: "https://github.com/hoskingxxx/openclaw-landing"
+      repository: "https://github.com/hoskingxxx/openclaw-ai"
     },
     focus: {
       phase: aicp.phase,

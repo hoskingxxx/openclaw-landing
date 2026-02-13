@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-02-13T00:52:17.891Z",
+  "generated_at": "2026-02-13T00:59:35.677Z",
   "project_info": {
     "id": "openclaw-ai-org",
     "name": "OpenClaw AI Survival Guide",
@@ -15,7 +15,7 @@
       ]
     },
     "hosting": "Vercel",
-    "repository": "https://github.com/hoskingxxx/openclaw-landing"
+    "repository": "https://github.com/hoskingxxx/openclaw-ai"
   },
   "focus": {
     "phase": "AEO-first",
