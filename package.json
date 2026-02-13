@@ -18,9 +18,11 @@
     "test:prod:preflight": "playwright test tests/preflight-production-smoke.spec.ts",
     "test:dedupe": "playwright test tests/preflight-impression-dedupe.spec.ts",
     "test:cta-guard": "playwright test tests/cta-guard.spec.ts",
+    "test:cta": "node scripts/ci/cta-lint.mjs",
+    "test:cta:strict": "node scripts/ci/cta-lint.mjs --strict",
     "guard:static": "node scripts/guard-links-and-styles.mjs",
     "ci:guard": "npm run guard:static && npm run test:cta-guard",
-    "release:gate": "npm run build && npm run test:preflight && npm run test:prod:preflight && npm run test:dedupe && npm run ci:guard",
+    "release:gate": "npm run build && npm run test:preflight && npm run test:prod:preflight && npm run test:dedupe && npm run test:cta && npm run ci:guard",
     "audit": "tsx scripts/website-audit.ts",
     "audit:prod": "AUDIT_URL=https://openclaw-ai.org tsx scripts/website-audit.ts"
   },
