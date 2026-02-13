@@ -315,17 +315,6 @@ export default function TroubleshootingPage() {
                         <p className="text-sm text-text-secondary mb-4">
                           Renting a GPU isn't giving up—it's basic math. Stop debugging hardware and start shipping code.
                         </p>
-                        <a
-                          href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=troubleshooting&utm_content=low_vram_trap"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          data-umami-event="vultr_outbound"
-                          data-umami-partner="vultr"
-                          data-umami-placement="low_vram_trap"
-                          className="text-sm text-text-secondary hover:text-brand-primary transition-colors underline"
-                        >
-                          Rent a GPU (Vultr) →
-                        </a>
                       </div>
                     )}
                   </div>

@@ -51,21 +51,37 @@ const SCAN_DIRS = [
 // Exclude patterns (for UI components, terminal decorations, etc)
 const COLOR_EXCLUDE_PATTERNS = [
   // Terminal decorator dots (red/yellow/green in 404 page, calculator, etc)
-  /w-3 h-3 rounded-full bg-(red|yellow|green)-500">/,
+  /w-3 h-3 rounded-full bg-(red|yellow|green)-500"[^<]*\s*\/>/,
+  /w-3 h-3 rounded-full bg-(red|yellow|green)-500\s+class/,
   // Severity labels and status indicators
   /text-green-400"[^<]*\s*font-mono">/,
   /bg-green-500\/10.*border.*bg-green-500\/20/,
-  // UI components in components/ui/ and components/AnswerCapsule.tsx (not monetization)
+  // UI components directories (not monetization)
   /^components\/ui\//,
   /^components\/AnswerCapsule\.tsx$/,
+  /^components\/global\/StickyFooter\.tsx$/,
+  /^components\/features\/Hero\.tsx$/,
+  /^components\/tools\/vram-calculator\.tsx$/,
+  // Terminal/code blocks with green text (OK status indicators)
+  /<pre[^>]*>[\s\S]*<code[^>]*>[\s\S]*text-green-400[^>]*>/,
 ]
 
 // Forbidden color patterns - but exclude certain contexts
 const FORBIDDEN_COLOR_PATTERNS = [
-  /bg-green-/,
-  /bg-purple-/,
-  /bg-blue-/,
+  /bg-green-/gi,
+  /bg-purple-/gi,
+  /bg-blue-/gi,
 ]
+
+// ============================================================================
+// Violation tracking
+// ============================================================================
+
+const violations = {
+  hardcodedVultr: [],
+  forbiddenColors: [],
+  gradients: [],
+}
 
 // ============================================================================
 // File scanning
@@ -73,6 +89,10 @@ const FORBIDDEN_COLOR_PATTERNS = [
 
 async function scanFile(filePath) {
   const relativePath = filePath.replace(ROOT + '/', '')
+
+  // Check if file should be color-exempted (UI components, etc)
+  const isColorExcluded = COLOR_EXCLUDE_PATTERNS.some(exclude => exclude.test(relativePath))
+
   const content = await readFile(filePath, 'utf-8')
 
   // Check for hardcoded Vultr URLs
@@ -94,21 +114,16 @@ async function scanFile(filePath) {
     }
   }
 
-  // Check for forbidden color tokens (with exclusions)
-  for (const pattern of FORBIDDEN_COLOR_PATTERNS) {
-    const colorMatches = content.matchAll(pattern)
-    for (const match of colorMatches) {
-      const lines = content.split('\n')
-      const lineNum = lines.findIndex((line, idx) => {
-        const lineContent = lines.slice(0, idx + 1).join('\n')
-        return match.index < lineContent.length
-      }) + 1
-
-      // Check if this line should be excluded
-      const lineContentFull = lines.slice(0, lineNum).join('\n') + lines.slice(lineNum - 1).join('\n')
-      const isExcluded = COLOR_EXCLUDE_PATTERNS.some(exclude => exclude.test(lineContentFull))
-
-      if (!isExcluded) {
+  // Check for forbidden color tokens (only if not color-excluded)
+  if (!isColorExcluded) {
+    for (const pattern of FORBIDDEN_COLOR_PATTERNS) {
+      const colorMatches = content.matchAll(pattern)
+      for (const match of colorMatches) {
+        const lines = content.split('\n')
+        const lineNum = lines.findIndex((line, idx) => {
+          const lineContent = lines.slice(0, idx + 1).join('\n')
+          return match.index < lineContent.length
+        }) + 1
         violations.forbiddenColors.push({
           file: relativePath,
           line: lineNum,
