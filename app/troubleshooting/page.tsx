@@ -4,8 +4,6 @@ import { Breadcrumbs } from "@/components/features/Breadcrumbs";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 import { Button } from "@/components/ui/Button";
-import { PrimaryCTA } from "@/components/monetization/PrimaryCTA";
-import { ContextCTA } from "@/components/monetization/ContextCTA";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -356,34 +354,6 @@ export default function TroubleshootingPage() {
             </p>
           </section>
 
-          {/* Bottom CTA: Primary (Survival Kit) */}
-          <div className="mt-16 mb-8">
-            <PrimaryCTA variant="full" placement="bottom" />
-          </div>
-
-          {/* Bottom CTA for Frustrated Debuggers - Downgraded */}
-          <div className="mb-8 text-center">
-            <h3 className="text-xl font-semibold text-text-primary mb-2">
-              Still broken?
-            </h3>
-            <p className="text-text-secondary mb-3 text-sm">
-              Stop debugging environment issues. Rent a clean Linux box and deploy in minutes.
-            </p>
-            <a
-              href="https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=content&utm_campaign=troubleshooting&utm_content=page_cta"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-umami-event="vultr_outbound"
-              data-umami-partner="vultr"
-              data-umami-placement="page_cta"
-              className="text-sm text-text-secondary hover:text-brand-primary transition-colors underline"
-            >
-              Deploy on Vultr →
-            </a>
-            <p className="mt-3 text-xs text-text-tertiary">
-              *Save 4+ hours of debugging for less than $0.10/hour.
-            </p>
-          </div>
 
         </div>
           </ContentEdge>
