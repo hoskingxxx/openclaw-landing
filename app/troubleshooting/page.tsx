@@ -301,7 +301,7 @@ export default function TroubleshootingPage() {
 
                     {/* THE TRAP - Hardware Limit Verdict */}
                     {fix.isTrap && (
-                      <div className="mt-6 p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/30 rounded-lg">
+                      <div className="mt-6 p-6 bg-blue-500/10 border border-blue-500/30 rounded-lg">
                         <h4 className="text-lg font-bold text-red-400 mb-3">💀 The Verdict: Hardware Limit</h4>
                         <p className="text-sm text-text-secondary mb-4">
                           <strong>This is a hardware limit.</strong> No config change, no quantization trick, no CPU offloading will fix this.<br />

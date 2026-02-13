@@ -110,9 +110,7 @@ export function PrimaryCTA({
 
   // Full variant: Complete promo (article bottom)
   return (
-    <div ref={elementRef} className={`my-8 border border-brand-primary/50 rounded-xl bg-gradient-to-br from-brand-primary/10 to-brand-hover/5 dark:from-brand-primary/30 dark:to-brand-hover/20 relative overflow-hidden ${className}`}>
-      {/* Left accent bar */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-primary to-brand-hover"></div>
+    <div ref={elementRef} className={`my-8 border border-brand-primary/50 rounded-xl bg-brand-primary/10 dark:from-brand-primary/30 dark:to-brand-hover/20 relative overflow-hidden ${className}`}>
 
       <div className="p-6">
         {/* Header badge */}
@@ -139,7 +137,7 @@ export function PrimaryCTA({
           target="_blank"
           rel="noopener noreferrer sponsored"
           onClick={handleClick}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-hover hover:from-brand-hover hover:to-orange-600 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary hover:bg-brand-hover text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-[1.02]"
           data-cta="primary"
           data-cta-strong="1"
         >

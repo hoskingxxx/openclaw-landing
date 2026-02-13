@@ -21,7 +21,6 @@ export default async function Image() {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#1a1a1a",
-          backgroundImage: "linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, transparent 50%)",
           fontSize: 48,
           fontWeight: 700,
           color: "#ffffff",
@@ -75,7 +74,7 @@ export default async function Image() {
           style={{
             fontSize: "64px",
             fontWeight: 800,
-            background: "linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%)",
+            background: "#1a1a1a",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             marginBottom: "16px",

@@ -189,7 +189,7 @@ export default function ClawdbotMigrationPage() {
 
               {/* Survival Kit CTA */}
               <div className="max-w-3xl mx-auto mb-12">
-                <div className="glass-card p-6 border border-amber-900/30 bg-gradient-to-br from-amber-950/20 to-orange-950/20">
+                <div className="glass-card p-6 border border-amber-900/30">
                   <h3 className="text-xl font-bold text-text-primary mb-4">
                     The OpenClaw Survival Kit
                   </h3>
