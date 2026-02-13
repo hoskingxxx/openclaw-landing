@@ -7,7 +7,6 @@ import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { R1PreflightCheck } from "@/components/tools/vram-calculator";
 import { HashScrollFix } from "@/components/HashScrollFix";
-import { PrimaryCTA } from "@/components/monetization/PrimaryCTA";
 import { ContextCTA } from "@/components/monetization/ContextCTA";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -297,10 +296,12 @@ export default async function BlogPostPage({
             </section>
           )}
 
-          {/* Bottom CTA: Primary (Survival Kit) */}
+          {/* Bottom CTA: Cloud (RED only) */}
           <section className="px-4 sm:px-6 mb-8">
-            {/* Primary CTA - Always show Survival Kit */}
-            <PrimaryCTA variant="full" placement="bottom" />
+            <ContextCTA verdict="red" placement="bottom" />
+            <p className="text-xs text-text-tertiary mt-4 text-center">
+              Still want local? <Link href="/troubleshooting" className="text-text-tertiary hover:text-text-secondary underline">Continue debugging →</Link>
+            </p>
           </section>
         </ContentRail>
       </main>
