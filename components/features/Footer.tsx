@@ -50,6 +50,46 @@ function FooterCoffeeLink() {
   );
 }
 
+function FooterSurvivalKitLink() {
+  const elementRef = useRef<HTMLAnchorElement>(null);
+  const pathname = usePathname();
+
+  // Track clicks
+  const handleClick = useRevenueOutbound({
+    dest: "gumroad",
+    offer: "survival_kit",
+    placement: "footer",
+  });
+
+  // Track impressions
+  useEffect(() => {
+    if (elementRef.current) {
+      const pageType = getPageType(pathname || "");
+      trackCtaImpression({
+        dest: "gumroad",
+        offer: "survival_kit",
+        placement: "footer",
+        pageType,
+        path: pathname,
+      });
+    }
+  }, [pathname]);
+
+  return (
+    <a
+      ref={elementRef}
+      href="https://hilda666888.gumroad.com/l/ymwwgm?utm_source=openclaw&utm_medium=footer"
+      target="_blank"
+      rel="noopener noreferrer sponsored"
+      onClick={handleClick}
+      className="text-xs text-text-tertiary hover:text-brand-primary transition-colors"
+      data-cta="kit-footer"
+    >
+      Survival Kit
+    </a>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="footer border-t border-white/10 mt-20">
@@ -60,7 +100,7 @@ export function Footer() {
             <h4 className="text-text-primary font-semibold mb-4">{siteConfig.name}</h4>
             <p className="text-sm text-text-secondary leading-relaxed">
               Unofficial community docs.<br />
-              Not affiliated with the official project.
+              Not affiliated with official project.
             </p>
           </div>
 
@@ -114,7 +154,11 @@ export function Footer() {
         <p className="text-sm text-text-tertiary">
           {siteConfig.copyright}
         </p>
-        <FooterCoffeeLink />
+        <div className="flex items-center justify-center gap-4 text-xs text-text-tertiary">
+          <FooterSurvivalKitLink />
+          <span>•</span>
+          <FooterCoffeeLink />
+        </div>
       </div>
     </footer>
   );

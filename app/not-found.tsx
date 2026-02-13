@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Navigation } from "@/components/features/Navigation";
 import { Footer } from "@/components/features/Footer";
-import { Button } from "@/components/ui/Button";
+
+const VULTR_LINK = "https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=404&utm_campaign=error_page";
 
 export default function NotFoundPage() {
   return (
@@ -20,7 +21,7 @@ export default function NotFoundPage() {
           {/* Description */}
           <p className="text-lg text-text-secondary mb-8">
             This page crashed (or never existed).<br />
-            <span className="text-text-tertiary">That's what happens when you ignore the compatibility matrix.</span>
+            <span className="text-text-tertiary">That's what happens when you ignore compatibility matrix.</span>
           </p>
 
           {/* Crash Log Style Box */}
@@ -41,19 +42,27 @@ export default function NotFoundPage() {
             </pre>
           </div>
 
-          {/* Return Button */}
+          {/* Return Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" href="/">
-              Return to Safety (/)
-            </Button>
-            <Button variant="secondary" href="/docs">
-              Start Setup (Survivor Mode)
-            </Button>
+            <a
+              href={VULTR_LINK}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="px-8 py-4 text-lg font-bold text-white rounded-lg border-2 border-green-400 bg-green-600 hover:bg-green-500 font-mono"
+            >
+              Launch Cloud Sandbox ($5/mo) →
+            </a>
+            <Link
+              href="/guides"
+              className="px-8 py-4 text-lg font-bold text-text-primary border-2 border-brand-primary bg-transparent hover:bg-brand-primary/10 font-mono"
+            >
+              Browse Guides →
+            </Link>
           </div>
 
           {/* Survival Tip */}
           <p className="text-xs text-text-tertiary font-mono mt-8">
-            💡 Pro tip: Bookmark the main pages. You'll need them after your next OOM.
+            💡 Pro tip: Bookmark main pages. You'll need them after your next OOM.
           </p>
         </div>
       </main>

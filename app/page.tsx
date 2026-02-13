@@ -2,7 +2,6 @@ import Link from "next/link";
 import { SecurityHero } from "@/components/features/SecurityHero";
 import { Footer } from "@/components/features/Footer";
 import { Navigation } from "@/components/features/Navigation";
-import { Button } from "@/components/ui/Button";
 import { ContentRail } from "@/components/features/ContentRail";
 import { ContentEdge } from "@/components/features/ContentEdge";
 import type { Metadata } from "next";
@@ -19,14 +18,12 @@ export const metadata: Metadata = {
   },
 };
 
-// HARDCODED PATH - Nuclear fix for redirect loop
-// Updated to point to new security article
-const FEATURED_POST_PATH = "/guides/openclaw-security-rce-cve-2026-25253";
+const VULTR_LINK = "https://www.vultr.com/?ref=9864821-9J&utm_source=openclaw&utm_medium=homepage&utm_campaign=why_local_fails";
 
 function PromoBanner() {
   return (
     <Link
-      href={FEATURED_POST_PATH}
+      href="/guides/openclaw-security-rce-cve-2026-25253"
       className="block relative overflow-hidden group cursor-pointer"
     >
       <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 opacity-90 group-hover:opacity-100 transition-opacity" />
@@ -52,24 +49,75 @@ export default function HomePage() {
         {/* Security Hero Section - "The Gate" */}
         <SecurityHero />
 
-        {/* Triage CTA */}
+        {/* Why Local Fails */}
         <ContentRail>
           <ContentEdge>
-            <section className="py-12">
-              <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+            <section className="py-16">
+              <div className="text-center mb-10">
+                <h2 className="text-2xl md:text-3xl font-mono text-red-400 mb-4">
+                  Why Local Fails
+                </h2>
+                <p className="text-text-secondary max-w-2xl mx-auto">
+                  Most users hit the same wall. Here's what actually breaks.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                {/* VRAM */}
+                <div className="bg-terminal-bg border border-red-500/30 rounded-lg p-6">
+                  <div className="text-4xl mb-4">🎮</div>
+                  <h3 className="text-lg font-mono text-red-400 mb-3">VRAM Wall</h3>
+                  <p className="text-sm text-text-secondary">
+                    R1 67B needs 48GB+. Consumer cards top out at 24GB.
+                    You're not buggy — you're physics-limited.
+                  </p>
+                </div>
+
+                {/* OOM */}
+                <div className="bg-terminal-bg border border-red-500/30 rounded-lg p-6">
+                  <div className="text-4xl mb-4">💥</div>
+                  <h3 className="text-lg font-mono text-red-400 mb-3">OOM Loops</h3>
+                  <p className="text-sm text-text-secondary">
+                    CUDA out of memory crashes mid-inference.
+                    No config tweak fixes insufficient hardware.
+                  </p>
+                </div>
+
+                {/* Risk */}
+                <div className="bg-terminal-bg border border-red-500/30 rounded-lg p-6">
+                  <div className="text-4xl mb-4">🔐</div>
+                  <h3 className="text-lg font-mono text-red-400 mb-3">Root Risk</h3>
+                  <p className="text-sm text-text-secondary">
+                    AI agents need full system privileges.
+                    One bad prompt = root-level execution.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 text-center">
+                <p className="text-text-tertiary text-sm font-mono mb-6">
+                  You can fight physics, or you can rent what you need.
+                </p>
+                <a
+                  href={VULTR_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-block px-8 py-4 text-lg font-bold text-white rounded-lg border-2 border-green-400 bg-green-600 hover:bg-green-500 font-mono"
+                >
+                  Launch Cloud Sandbox ($5/mo) →
+                </a>
               </div>
             </section>
           </ContentEdge>
         </ContentRail>
 
-        {/* Action A: Diagnosis */}
         {/* The Fix You Probably Needed */}
         <ContentRail>
           <ContentEdge>
             <section id="quick-fix" className="py-16">
               <div className="text-center mb-8">
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-mono text-brand-primary mb-4 break-words">
-                  The Fix You Probably Needed
+                  The Alternative: Run Smaller
                 </h2>
                 <p className="text-text-secondary text-sm md:text-base mb-2 break-words">
                   Stop trying to run full-size R1 (67B) — or even unquantized 32B — on a laptop. It won't happen.
@@ -79,7 +127,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="glass-card p-4 sm:p-6 mb-6">
+              <div className="glass-card p-4 sm:p-6 mb-6 max-w-3xl mx-auto">
                 <div className="bg-terminal-bg rounded-lg overflow-hidden border border-brand-primary/30">
                   <div className="flex items-center gap-2 px-4 py-3 bg-terminal-header border-b border-white/10">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -104,7 +152,7 @@ ollama run deepseek-r1:8b`}
 
               <div className="text-center">
                 <Link
-                  href={FEATURED_POST_PATH}
+                  href="/guides/openclaw-security-rce-cve-2026-25253"
                   className="text-sm text-brand-primary hover:text-brand-hover underline font-mono"
                 >
                   Hardware Reality Check →
@@ -114,28 +162,30 @@ ollama run deepseek-r1:8b`}
           </ContentEdge>
         </ContentRail>
 
-        {/* Final CTA - Survivor Style */}
+        {/* Final CTA - Cloud Sandbox */}
         <ContentRail>
           <ContentEdge>
             <section className="py-20">
-              <div className="glass-card p-6 sm:p-8 text-center">
-              <h2 className="text-xl md:text-2xl font-mono text-text-primary mb-4 break-words">
-                Run OpenClaw safely. Avoid local risk.
-              </h2>
-              <p className="text-text-secondary mb-6 break-words">
-                Check if your hardware can handle R1 before you break it.
-              </p>
-              <Button href="/preflight" className="font-mono text-sm">
-                Run R1 Preflight →
-              </Button>
-              <p className="text-xs text-text-tertiary font-mono mt-6 break-words">
-                Takes 2 minutes. Saves you hours of debugging.
-              </p>
-              <p className="text-xs text-text-tertiary mt-4 leading-relaxed">
-                Already stuck? The Survival Kit has exit rules and workarounds.
-              </p>
-            </div>
-          </section>
+              <div className="glass-card p-6 sm:p-8 text-center max-w-3xl mx-auto">
+                <h2 className="text-xl md:text-2xl font-mono text-text-primary mb-4 break-words">
+                  Run OpenClaw safely. Avoid local risk.
+                </h2>
+                <p className="text-text-secondary mb-6 break-words">
+                  Skip the OOM loops. Deploy on cloud GPU and get back to building.
+                </p>
+                <a
+                  href={VULTR_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="inline-block px-10 py-5 text-xl font-bold text-white rounded-lg border-2 border-green-400 bg-green-600 hover:bg-green-500 font-mono"
+                >
+                  Launch Cloud Sandbox ($5/mo) →
+                </a>
+                <p className="text-xs text-text-tertiary font-mono mt-6 break-words">
+                  Takes 2 minutes to spin up. Saves hours of debugging.
+                </p>
+              </div>
+            </section>
           </ContentEdge>
         </ContentRail>
       </main>

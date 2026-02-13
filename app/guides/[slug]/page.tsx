@@ -7,7 +7,7 @@ import { blogPosts } from "@/lib/blog";
 import { ArticleStructuredData, BreadcrumbStructuredData } from "@/components/SEO/StructuredData";
 import { R1PreflightCheck } from "@/components/tools/vram-calculator";
 import { HashScrollFix } from "@/components/HashScrollFix";
-import { SurvivalKitPromo } from "@/components/monetization/SurvivalKitPromo";
+import { ContinueSafely } from "@/components/monetization/ContinueSafely";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -296,9 +296,9 @@ export default async function BlogPostPage({
             </section>
           )}
 
-          {/* Gumroad 推广 - 底部 (full) */}
+          {/* Continue Safely - Unified bottom CTA */}
           <section className="px-4 sm:px-6 mb-8">
-            <SurvivalKitPromo variant="full" placement="bottom" />
+            <ContinueSafely />
           </section>
         </ContentRail>
       </main>
