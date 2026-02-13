@@ -69,7 +69,7 @@ export function SecurityHero() {
 
           <div className="text-center">
             <Link
-              href="#guides"
+              href="/guides"
               className="text-sm font-mono text-gray-400 hover:text-gray-300 underline"
             >
               I accept the risk. Continue to local guides →
