@@ -61,7 +61,8 @@ export function SecurityHero() {
             <p className="text-xl font-bold text-red-400">
               RUN OPENCLAW SAFELY.
             </p>
-          </div>
+            </div>
+            <div className="mb-10 max-w-3xl mx-auto space-y-4">
         </div>
       </ContentRail>
 
@@ -77,6 +78,7 @@ export function SecurityHero() {
           I accept the risk. Continue to local guides →
         </Link>
       </div>
+      <div className="text-center">
     </section>
   )
 }
