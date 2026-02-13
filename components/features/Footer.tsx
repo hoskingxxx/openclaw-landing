@@ -155,8 +155,6 @@ export function Footer() {
           {siteConfig.copyright}
         </p>
         <div className="flex items-center justify-center gap-4 text-xs text-text-tertiary">
-          <FooterSurvivalKitLink />
-          <span>•</span>
           <FooterCoffeeLink />
         </div>
       </div>
