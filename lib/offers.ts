@@ -35,33 +35,33 @@ export interface OfferConfig {
 }
 
 // ============================================================================
-// PRIMARY OFFER - Vultr Cloud Sandbox
+// PRIMARY OFFER - Survival Kit (Gumroad)
 // 全站主要收入路径 - 展示位置：首页、文章页、/preflight RED verdict
 // ============================================================================
 export const PRIMARY_OFFER: OfferConfig = {
-  id: "cloud_sandbox",
-  name: "Vultr Cloud Sandbox",
-  type: "primary",
-  dest_type: "vultr",
-  url: "https://www.vultr.com/?ref=9864821-9J",
-  dest_id: "vultr_cloud_gpu",
-  price: "$5/mo",
-  enabled: true,
-}
-
-// ============================================================================
-// SECONDARY OFFER - Survival Kit (Gumroad) - 降级为次要
-// 仅作为文本链接出现在 Footer 或页面底部低视觉权重区域
-// 不再作为 PrimaryCTA 组件使用
-// ============================================================================
-export const SECONDARY_OFFER: OfferConfig = {
   id: "survival_kit",
   name: "Survival Kit",
-  type: "secondary",
+  type: "primary",
   dest_type: "gumroad",
   url: "https://hilda666888.gumroad.com/l/ymwwgm",
   dest_id: "gumroad_ymwwgm",
   price: "$9.90",
+  enabled: true,
+}
+
+// ============================================================================
+// SECONDARY OFFER - Vultr Cloud Sandbox - 降级为次要
+// 仅作为文本链接出现在 Footer 或页面底部低视觉权重区域
+// 不再作为 PrimaryCTA 组件使用
+// ============================================================================
+export const SECONDARY_OFFER: OfferConfig = {
+  id: "cloud_sandbox",
+  name: "Vultr Cloud Sandbox",
+  type: "secondary",
+  dest_type: "vultr",
+  url: "https://www.vultr.com/?ref=9864821-9J",
+  dest_id: "vultr_cloud_gpu",
+  price: "$5/mo",
   enabled: true,
 }
 
