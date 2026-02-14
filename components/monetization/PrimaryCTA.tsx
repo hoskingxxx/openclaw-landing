@@ -89,7 +89,7 @@ export function PrimaryCTA({
       <div ref={elementRef} className={`my-4 border border-border rounded-lg bg-card h-[60px] sm:h-[70px] flex items-center justify-between px-4 gap-3 ${className}`}>
         <div className="flex items-center gap-2">
           <h4 className="text-sm sm:text-base font-bold text-text-primary font-mono flex-1">
-            {offer === "primary" ? "Stop Debugging." : "Stop Guessing."}
+            {offer === "primary" ? "Stop Guessing." : "Stop Debugging."}
           </h4>
         </div>
         <a
@@ -101,7 +101,7 @@ export function PrimaryCTA({
           data-cta="primary"
           data-cta-strong="1"
         >
-          {offer === "primary" ? "Get Decision Boundaries" : "Rent GPU"}
+          {offer === "primary" ? "Rent GPU" : "Get Decision Boundaries"}
           <ExternalLink className="w-4 h-4" />
         </a>
       </div>
@@ -119,7 +119,7 @@ export function PrimaryCTA({
             <Zap className="w-3.5 h-3.5 text-brand-primary dark:text-brand-primary" />
           </div>
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2">
-            {offer === "primary" ? "Battle-Tested" : "Official Recommendation"}
+            {offer === "primary" ? "Official Recommendation" : "Battle-Tested"}
             <ExternalLink className="w-4 h-4 text-brand-primary dark:text-brand-primary" />
           </h3>
         </div>
@@ -127,8 +127,8 @@ export function PrimaryCTA({
         {/* Subtitle */}
         <p className="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">
           {offer === "primary"
-            ? "Get decision boundaries, stop rules, and red lines for DeepSeek R1."
-            : "Stop fighting physics. Rent a clean Linux box with H100 GPU."}
+            ? "Stop fighting physics. Rent a clean Linux box with H100 GPU."
+            : "Get decision boundaries, stop rules, and red lines for DeepSeek R1."}
         </p>
 
         {/* CTA Button */}
@@ -147,15 +147,31 @@ export function PrimaryCTA({
 
         {/* Trust badges */}
         <div className="mt-4 flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
-          <span className="flex items-center gap-1">
-            <span>✓</span> Stop Rules
-          </span>
-          <span className="flex items-center gap-1">
-            <span>✓</span> Red Lines
-          </span>
-          <span className="flex items-center gap-1">
-            <span>✓</span> Exit Points
-          </span>
+          {offer === "primary" ? (
+            <>
+              <span className="flex items-center gap-1">
+                <span>✓</span> H100 GPU
+              </span>
+              <span className="flex items-center gap-1">
+                <span>✓</span> Instant Deploy
+              </span>
+              <span className="flex items-center gap-1">
+                <span>✓</span> Pay As You Go
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="flex items-center gap-1">
+                <span>✓</span> Stop Rules
+              </span>
+              <span className="flex items-center gap-1">
+                <span>✓</span> Red Lines
+              </span>
+              <span className="flex items-center gap-1">
+                <span>✓</span> Exit Points
+              </span>
+            </>
+          )}
         </div>
       </div>
     </div>
