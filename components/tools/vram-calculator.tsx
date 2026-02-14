@@ -163,6 +163,7 @@ export function R1PreflightCheck() {
 
   // Refs for CTA impression tracking (Verdict Gate - only primary CTAs)
   const vultrRedCardRef = useRef<HTMLAnchorElement>(null)
+  const gumroadYellowCardRef = useRef<HTMLAnchorElement>(null)
 
   // Mobile detection
   useEffect(() => {
@@ -489,6 +490,135 @@ export function R1PreflightCheck() {
             </div>
           </a>
 
+        </div>
+      )}
+
+      {/* ====================================================================
+          🟡 YELLOW STATE — Fragile Mode (Kit Dominant)
+          ==================================================================== */}
+      {status === "yellow" && (
+        <div className="space-y-4">
+          {/* Headline */}
+          <div className="pb-2 border-b border-yellow-900/30">
+            <h3 className="text-lg font-semibold text-yellow-400">
+              You are in risk zone.
+            </h3>
+          </div>
+
+          {/* Pressure line (diagnostic, not fear) */}
+          <p className="text-sm text-yellow-200/80">
+            Under real usage, memory drift typically pushes this configuration into RED.
+          </p>
+
+          {/* Factual addition */}
+          <p className="text-xs text-text-tertiary">
+            Practical headroom is within ~1–2GB.
+          </p>
+
+          {/* Primary CTA: Survival Kit (dominant) */}
+          <a
+            ref={gumroadYellowCardRef}
+            href={LINK_KIT}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            onClick={() => handleGumroadClick('yellow_card')}
+            data-testid="cta-gumroad"
+            data-cta="primary"
+            data-cta-strong="1"
+            className="block p-5 rounded-lg border-2 border-amber-500 bg-amber-600 hover:bg-amber-700 transition-all"
+          >
+            <div className="flex items-start gap-3">
+              <div className="p-2 bg-white/10 rounded-lg flex-shrink-0">
+                <Package className="w-5 h-5 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-white text-lg">
+                  Get Decision Boundaries — $9.90
+                </div>
+              </div>
+              <ExternalLink className="w-4 h-4 text-white/60 flex-shrink-0" />
+            </div>
+          </a>
+
+          {/* Secondary CTA: Cloud (muted ghost, 15% visual weight) */}
+          <div className="pt-2">
+            <a
+              href={LINK_CLOUD}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              onClick={() => handleVultrClick('yellow_card')}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-text-tertiary hover:text-text-secondary border border-text-tertiary/30 hover:border-text-tertiary/50 rounded-lg transition-all"
+            >
+              Skip tuning. Rent GPU instead.
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* ====================================================================
+          🟢 GREEN STATE — Clean Mode (No Hard Sell)
+          ==================================================================== */}
+      {status === "green" && (
+        <div className="space-y-4">
+          {/* Headline */}
+          <div className="pb-2 border-b border-green-900/30">
+            <h3 className="text-lg font-semibold text-green-400">
+              Hardware looks sufficient.
+            </h3>
+          </div>
+
+          {/* Toast feedback */}
+          {showCopyToast && (
+            <div className="p-3 rounded-lg bg-green-900/30 border border-green-700/50 text-green-300 text-sm text-center flex items-center justify-center gap-2">
+              <Check className="w-4 h-4" />
+              Config copied!
+            </div>
+          )}
+
+          {/* Primary CTA: Copy Config (no monetization) */}
+          <button
+            onClick={() => handleBookmarkClick('green_card')}
+            data-testid="cta-copy-link"
+            className="w-full p-4 rounded-lg border border-brand-primary bg-brand-primary hover:bg-brand-hover text-white font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2"
+          >
+            <span>Copy Recommended Config</span>
+          </button>
+
+          {/* Recommended Settings (trust element) */}
+          <div className="p-4 rounded-lg border border-border bg-muted/30">
+            <div className="flex items-center gap-2 font-bold text-text-primary mb-3">
+              <Settings className="w-4 h-4" />
+              Recommended Settings
+            </div>
+            <div className="grid grid-cols-3 gap-3 text-sm">
+              <div>
+                <div className="text-text-tertiary text-xs">Quantization</div>
+                <div className="font-mono font-medium">4-bit</div>
+              </div>
+              <div>
+                <div className="text-text-tertiary text-xs">Context</div>
+                <div className="font-mono font-medium">4096</div>
+              </div>
+              <div>
+                <div className="text-text-tertiary text-xs">Batch</div>
+                <div className="font-mono font-medium">1</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Secondary CTA: Survival Kit (muted text link, not primary) */}
+          <div className="text-center pt-2">
+            <a
+              href={LINK_KIT}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              onClick={() => handleGumroadClick('green_card')}
+              className="text-sm text-text-tertiary hover:text-text-secondary transition-colors"
+            >
+              Want stop rules + ready configs? The Survival Kit saves time.
+            </a>
+          </div>
         </div>
       )}
 
